@@ -1,0 +1,35 @@
+---
+import OpenBookIcon from "../assets/icons/open-book-icon.svg";
+import GithubIcon from "../assets/icons/github-icon.svg";
+---
+
+<footer class="sticky bottom-0">
+	<div class="h-[3px] bg-gradient-to-r from-[#23E800] to-[#233F1E]" />
+
+	<div class="h-[80px] bg-[#343434]">
+		<div class="container mx-auto h-full max-w-7xl px-6">
+			<div class="grid h-full grid-cols-2 items-center">
+				<h2 class="text-white text-sm font-bold">A Python API for your car</h2>
+				<div class="flex justify-end gap-4">
+					<a
+						href="/support-types"
+						class="border border-black bg-[#A0A0A0] flex items-center gap-3 px-3 lg:px-6 py-2 text-black text-sm hover:opacity-90 transition-opacity"
+					>
+						<span class="hidden lg:inline">Support Type Definitions</span>
+						<img src={OpenBookIcon.src} alt="Open book icon" class="w-5 h-5" />
+					</a>
+
+					<a
+						href="https://github.com/commaai/opendbc"
+						target="_blank"
+						rel="noopener"
+						class="border border-black bg-gradient-to-r from-[#132410] to-[#396c2f] px-3 lg:px-6 py-2 flex items-center gap-3 text-white text-sm hover:opacity-90 transition-opacity"
+					>
+						<span class="hidden lg:inline">opendbc Github Repo</span>
+						<img src={GithubIcon.src} alt="Github icon" class="w-5 h-5" loading="lazy" />
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

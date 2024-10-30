@@ -1,0 +1,143 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import OpenBookIcon from "../assets/icons/open-book-icon.svg";
+import HomeIcon from "../assets/icons/home-icon.svg";
+---
+
+<BaseLayout title="Support Types">
+  <main class="container mx-auto max-w-4xl px-6 py-8">
+    <div class="flex justify-end mb-8">
+      <a
+        href="/"
+        class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#132410] to-[#396c2f] text-white hover:opacity-90 transition-opacity"
+      >
+        <img src={HomeIcon.src} alt="Home icon" class="w-5 h-5" />
+        <span>Back Home</span>
+      </a>
+    </div>
+
+    <div class="flex items-center gap-4 mb-5">
+      <img src={OpenBookIcon.src} alt="Open book icon" class="mt-1 w-8 h-8" />
+      <h1 class="text-3xl font-bold">Types of Support:</h1>
+    </div>
+
+    <p class="mb-10">
+      <strong>opendbc can support many more cars than it currently does.</strong> There are a few reasons your car may not be supported.
+      If your car doesn't fit into any of the incompatibility criteria here, then there's a good chance it can be supported!
+      We're adding support for new cars all the time. <strong>We don't have a roadmap for car support</strong>, and in fact, most car
+      support comes from users like you!
+    </p>
+
+    <section class="mb-9">
+      <div class="flex items-center gap-2 mb-4 border-b border-black pb-2">
+        <div class="w-6 h-6 border border-black bg-[#66D855]"></div>
+        <h2 class="text-2xl font-bold">Upstream</h2>
+      </div>
+      <p>
+        A supported vehicle is one that just works when you install a comma device. All supported cars provide a better
+        experience than any stock system. Supported vehicles reference the US market unless otherwise specified.
+      </p>
+    </section>
+
+    <section class="mb-9">
+      <div class="flex items-center gap-2 mb-4 border-b border-black pb-2">
+        <div class="w-6 h-6 border border-black bg-[#F9C515]"></div>
+        <h2 class="text-2xl font-bold">Under Review</h2>
+      </div>
+      <p>
+        A vehicle under review is one for which software support has been merged into upstream openpilot, but hasn't yet been
+        tested for drive quality and conformance with <a href="https://github.com/commaai/openpilot/blob/master/docs/SAFETY.md" class="text-green-600 hover:underline">comma safety guidelines</a>.
+        This is a normal part of the development and quality assurance process. This vehicle will not work when upstream
+        openpilot is installed, but custom forks may allow their use.
+      </p>
+    </section>
+
+    <section class="mb-9">
+      <div class="flex items-center gap-2 mb-4 border-b border-black pb-2">
+        <div class="w-6 h-6 border border-black bg-[#969696]"></div>
+        <h2 class="text-2xl font-bold">Custom</h2>
+      </div>
+      <p>
+        Vehicles in this category are not considered plug-and-play. Software support is included in upstream openpilot, but
+        these vehicles might not have a harness in the comma store, or the physical install might be at an unusual or cumbersome
+        location, or they might need unusual configuration after install.
+      </p>
+    </section>
+
+    <section class="mb-9">
+      <div class="flex items-center gap-2 mb-4 border-b border-black pb-2">
+        <div class="w-6 h-6 border border-black bg-gray-400"></div>
+        <h2 class="text-2xl font-bold">Dashcam</h2>
+      </div>
+      <p>
+        Dashcam vehicles have software support in upstream openpilot, but will go into "dashcam mode" at startup and will not
+        engage. This may be due to known issues with driving safety or quality, or it may be a work in progress that isn't yet
+        ready for safety and quality review.
+      </p>
+    </section>
+
+    <section class="mb-9">
+      <div class="flex items-center gap-2 mb-4 border-b border-black pb-2">
+        <div class="w-6 h-6 border border-black bg-[#819CE1]"></div>
+        <h2 class="text-2xl font-bold">Community</h2>
+      </div>
+      <p class="mb-4">
+        Although they're not upstream, the community has openpilot running on other makes and models. See the 'Community
+        Supported Models' section of each make <a href="https://wiki.comma.ai/" class="text-green-600 hover:underline">on our wiki</a>.
+      </p>
+
+      <p class="mb-4">Some notable works-in-progress:</p>
+      <ul class="list-disc pl-8 mb-4">
+        <li class="mb-2">Honda
+          <ul class="list-disc pl-8 mt-2">
+            <li>2024 Acura Integra, commaai/openpilot#32056</li>
+            <li>2023-24 Honda Accord (CAN-FD), commaai/openpilot#32229</li>
+            <li>2024 Honda CR-V (CAN-FD), commaai/openpilot#32806</li>
+            <li>2024 Honda CR-V Hybrid (CAN-FD), commaai/openpilot#31527
+              <ul class="list-disc pl-8">
+                <li>Depends on commaai/opendbc#1100</li>
+              </ul>
+            </li>
+            <li>2021-25 Honda Odyssey, commaai/opendbc#1330</li>
+            <li>2023-24 Honda Pilot (CAN-FD), commaai/openpilot#30324</li>
+            <li>Camera ACC stability improvements, commaai/openpilot#31022
+              <ul class="list-disc pl-8">
+                <li>Depends on commaai/panda#1814</li>
+                <li>Depends on commaai/opendbc#998</li>
+                <li>These are being reworked for full-time proxy through openpilot</li>
+              </ul>
+            </li>
+            <li>Manual transmission support (Civic, Integra)
+              <ul class="list-disc pl-8">
+                <li>Depends on commaai/opendbc#1034 (merged)</li>
+                <li>Car port support PR not yet filed</li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <section class="mb-9">
+      <div class="flex items-center gap-2 mb-4 border-b border-black pb-2">
+        <div class="w-6 h-6 border border-black bg-[#D85555]"></div>
+        <h2 class="text-2xl font-bold">Incompatible</h2>
+      </div>
+
+      <h3 class="text-xl font-bold mb-3">CAN Bus Security</h3>
+      <p class="mb-4">
+        Vehicles with CAN security measures, such as AUTOSAR Secure Onboard Communication (SecOC) are not usable with openpilot
+        unless the owner can recover the message signing key and implement CAN message signing. Examples include certain newer
+        Toyota, and the GM Global B platform.
+      </p>
+
+      <h3 class="text-xl font-bold mb-3">FlexRay</h3>
+      <p>
+        All the cars that openpilot supports use a <a href="https://en.wikipedia.org/wiki/CAN_bus" class="text-green-600 hover:underline">CAN bus</a> for communication between all the car's computers, however a
+        CAN bus isn't the only way that the computers in your car can communicate. Most, if not all, vehicles from the following
+        manufacturers use <a href="https://en.wikipedia.org/wiki/FlexRay" class="text-green-600 hover:underline">FlexRay</a> instead of a CAN bus: <strong>BMW, Mercedes, Audi, Land Rover, and some Volvo</strong>. These cars
+        may one day be supported, but we have no immediate plans to support FlexRay.
+      </p>
+    </section>
+  </main>
+</BaseLayout>
