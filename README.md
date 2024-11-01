@@ -1,7 +1,3 @@
-**Readme Coming Soon**
-
-Built with Astro and Tailwind CSS.
-
 ## Development Status
 
 This project is currently under active development. Updates coming soon.
@@ -18,4 +14,4 @@ bun run dev
 This project is open source and available under the [MIT License](LICENSE).
 
 ---
-Built with ❤️ using [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/)
+Built with [Astro](https://astro.build/) and [Tailwind CSS](https://tailwindcss.com/)
