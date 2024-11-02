@@ -1,6 +1,7 @@
 ## Development Status
 
-This project is currently under active development. Updates coming soon.
+This project is currently under active development. Updates coming soon. <br>
+Try out the site at [https://opendbc-site.pages.dev/](https://opendbc-site.pages.dev/)
 
 ## Quick Start
 
