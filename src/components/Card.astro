@@ -21,12 +21,6 @@ function getSupportTypeColor(supportType: string): string {
       return 'bg-[#969696] text-white';
   }
 }
-
-function formatYears(yearList: string[]): string {
-  if (yearList.length === 0) return 'N/A';
-  if (yearList.length === 1) return yearList[0];
-  return `${yearList[0]}-${yearList[yearList.length - 1]}`;
-}
 ---
 
 <!-- Support label -->
@@ -41,7 +35,7 @@ function formatYears(yearList: string[]): string {
     <!-- Year and Model -->
     <div class="flex border-b border-black">
       <div class="px-2 py-2.5 border-r border-black flex items-center">
-        <h2 class="text-lg">{formatYears(car.year_list)}</h2>
+        <h2 class="text-lg">{car.years}</h2>
       </div>
       <div class="px-2 py-2.5">
         <h1 class="text-xl font-semibold">{car.make} {car.model}</h1>
