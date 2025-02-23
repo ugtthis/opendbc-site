@@ -6,112 +6,216 @@ import { getSupportTypeColor } from '../../utils/supportType';
 
 // Generate all possible car paths at build time
 export async function getStaticPaths() {
-  const allCars = cars as Car[];
-  return allCars.map(car => ({
-    params: { car: `${car.make}-${car.model}`.toLowerCase() },
-    props: { carData: car },
-  }));
+	const allCars = cars as Car[];
+	return allCars.map(car => ({
+		params: { car: `${car.make}-${car.model}`.toLowerCase() },
+		props: { carData: car },
+	}));
 }
 
 const { carData } = Astro.props;
 ---
 
 <BaseLayout title={`${carData.make} ${carData.model} - opendbc`}>
-  <main class="container mx-auto max-w-4xl px-6 py-8">
-    <div class="mb-8">
-      <a href="/" class="text-black hover:underline">&larr; Back to all cars</a>
-    </div>
+	<main class="min-h-screen bg-[#C2C2C2] pb-20">
+		<div class="max-w-6xl mx-auto pl-5 pt-6">
 
-    <!-- Car Header -->
-    <div class="mb-8">
-      <div class={`inline-block px-6 py-1 mb-4 ${getSupportTypeColor(carData.support_type)}`}>
-        <p class="text-[16px] uppercase">{carData.support_type}</p>
-      </div>
-      <h1 class="text-4xl font-bold mb-2">{carData.make} {carData.model}</h1>
-      <p class="text-xl text-gray-600">{carData.years}</p>
-    </div>
+				<!-- Breadcrumb -->
+				<nav class="flex items-center space-x-2 text-md pb-4">
+						<a href="/" class="hover:underline">Home</a>
+						<span>&gt;</span>
+						<span>{carData.make} {carData.model} {carData.years}</span>
+				</nav>
+		</div>
 
-    <!-- Main Content Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-      <!-- Left Column -->
-      <div>
-        <section class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Vehicle Details</h2>
-          <div class="space-y-4">
-            <div class="bg-[#F3F3F3] p-4 border border-black">
-              <p><strong>ADAS Package:</strong> {carData.package}</p>
-            </div>
-            <div class="bg-[#F3F3F3] p-4 border border-black">
-              <p><strong>Fingerprint:</strong> {carData.car_fingerprint}</p>
-            </div>
-            {carData.harness && (
-              <div class="bg-[#F3F3F3] p-4 border border-black">
-                <p><strong>Harness:</strong> {carData.harness}</p>
-              </div>
-            )}
-          </div>
-        </section>
+		<div class="max-w-6xl mx-auto px-5">
+			<div class="flex flex-col lg:flex-row gap-8">
 
-        {carData.car_parts.length > 0 && (
-          <section class="mb-8">
-            <h2 class="text-2xl font-bold mb-4">Required Parts</h2>
-            <ul class="list-disc list-inside space-y-2">
-              {carData.car_parts.map(part => (
-                <li>{part}</li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </div>
+				<!-- Left Sidebar -->
+				<div class="lg:w-80 flex-shrink-0">
+					<!-- Sidebar Header -->
+					<div class="bg-black text-white py-3 pl-4">
+						<h1 class="text-xl font-bold">{carData.make}</h1>
+					</div>
+					<div class="bg-white  mb-4">
+						<div class="py-3 pl-4">
+							<p class="font-medium">{carData.years} {carData.make} {carData.model}</p>
+						</div>
+					</div>
 
-      <!-- Right Column -->
-      <div>
-        <section class="mb-8">
-          <h2 class="text-2xl font-bold mb-4">Capabilities</h2>
-          <div class="space-y-4">
-            <div class="bg-[#F3F3F3] p-4 border border-black">
-              <p><strong>Longitudinal Control:</strong> {carData.longitudinal}</p>
-            </div>
-            <div class="bg-[#F3F3F3] p-4 border border-black">
-              <p><strong>Steering Torque:</strong> {carData.steering_torque}</p>
-            </div>
-            <div class="bg-[#F3F3F3] p-4 border border-black">
-              <p><strong>Auto Resume:</strong> {carData.auto_resume_star}</p>
-            </div>
-          </div>
-        </section>
+					<!-- Key Specs -->
+					<div class="bg-white border-2 border-black">
+						<div class="p-4 border-b border-gray-200">
+							<h2 class="font-bold text-xl">Key Specs</h2>
+						</div>
+						<div class="divide-y divide-gray-200">
+							<div class="p-4">
+								<p class="text-sm"><strong>Support Type:</strong></p>
+								<div class={`text-l mt-1 px-4 py-2 inline-block ${getSupportTypeColor(carData.support_type)}`}>
+									{carData.support_type}
+								</div>
+							</div>
+							<div class="p-4">
+								<p class="text-sm"><strong>ADAS Package:</strong></p>
+								<p class="text-l mt-1">{carData.package}</p>
+							</div>
+							<div class="p-4">
+								<p class="text-sm"><strong>Fingerprint:</strong></p>
+								<p class="text-l mt-1">{carData.car_fingerprint}</p>
+							</div>
+							{carData.harness && (
+								<div class="p-4">
+									<p class="text-sm"><strong>Harness:</strong></p>
+									<p class="text-l mt-1">{carData.harness}</p>
+								</div>
+							)}
+						</div>
+					</div>
+				</div>
 
-        {carData.video && (
-          <section class="mb-8">
-            <h2 class="text-2xl font-bold mb-4">Demo Video</h2>
-            <div class="aspect-w-16 aspect-h-9">
-              <iframe
-                src={carData.video.replace('watch?v=', 'embed/')}
-                title={`${carData.make} ${carData.model} Demo`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                class="w-full h-full border border-black"
-              ></iframe>
-            </div>
-          </section>
-        )}
-      </div>
-    </div>
+				<!-- Main Content -->
+				<div class="flex-1">
+					<!-- Info Sections -->
+					<div class="space-y-8">
 
-    <!-- Detail Sentence -->
-    <section class="mt-8 bg-[#F3F3F3] p-6 border border-black">
-      <div set:html={carData.detail_sentence} />
-    </section>
+						<!-- General Information -->
+						<div class="flex flex-col">
+							<div class="inline-flex">
+								<div class="bg-black text-white px-4 py-2">
+									<h2 class="text-md whitespace-nowrap">General Information</h2>
+								</div>
+							</div>
+							<div class="flex flex-col lg:flex-row gap-4">
+								<section class="bg-white border border-black lg:w-3/4 flex-grow">
+									<div class="p-6">
+										<div set:html={carData.detail_sentence} class="prose max-w-none" />
+										{carData.footnotes.length > 0 && (
+											<ul class="mt-4 list-disc list-inside space-y-2">
+												{carData.footnotes.map(note => (
+													<li class="text-sm text-gray-600">{note}</li>
+												))}
+											</ul>
+										)}
+									</div>
+								</section>
+								<section class="bg-white border border-black lg:w-1/4">
+									<div class="p-6">
+										<p>Additional information here</p>
+									</div>
+								</section>
+							</div>
+						</div>
 
-    {carData.footnotes.length > 0 && (
-      <section class="mt-8">
-        <h2 class="text-2xl font-bold mb-4">Additional Notes</h2>
-        <ul class="list-disc list-inside space-y-2">
-          {carData.footnotes.map(note => (
-            <li>{note}</li>
-          ))}
-        </ul>
-      </section>
-    )}
-  </main>
-</BaseLayout> 
+						<!-- Required Parts -->
+						{carData.car_parts.length > 0 && (
+							<div class="flex flex-col">
+								<div class="inline-flex">
+									<div class="bg-black text-white px-4 py-2">
+										<h2 class="text-md whitespace-nowrap">Required Parts</h2>
+									</div>
+								</div>
+								<section class="bg-white border border-black">
+									<div class="p-6">
+										<ul class="space-y-2">
+											{carData.car_parts.map(part => (
+												<li class="flex items-center space-x-2">
+													<span class="w-2 h-2 bg-black rounded-full"></span>
+													<span>{part}</span>
+												</li>
+											))}
+										</ul>
+									</div>
+								</section>
+							</div>
+						)}
+
+						<!-- Capabilities -->
+						<div class="flex flex-col">
+							<div class="inline-flex">
+								<div class="bg-black text-white px-4 py-2">
+									<h2 class="text-md whitespace-nowrap">Capabilities</h2>
+								</div>
+							</div>
+							<section class="bg-white border border-black">
+								<div class="p-6">
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+										<div class="border border-black p-4">
+											<p class="text-sm font-medium">Longitudinal Control</p>
+											<p class="mt-2">{carData.longitudinal}</p>
+										</div>
+										<div class="border border-black p-4">
+											<p class="text-sm font-medium">Steering Torque</p>
+											<p class="mt-2">{carData.steering_torque}</p>
+										</div>
+										<div class="border border-black p-4">
+											<p class="text-sm font-medium">Auto Resume</p>
+											<p class="mt-2">{carData.auto_resume_star}</p>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+
+                        <!-- Tutorials -->
+						<div class="flex flex-col">
+							<div class="inline-flex">
+								<div class="bg-black text-white px-4 py-2">
+									<h2 class="text-md whitespace-nowrap">Tutorials</h2>
+								</div>
+							</div>
+							<section class="bg-white border border-black">
+								<div class="p-6">
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+										<div class="border border-black p-4">
+											<p class="text-sm font-medium">Longitudinal Control</p>
+											<p class="mt-2">{carData.longitudinal}</p>
+										</div>
+										<div class="border border-black p-4">
+											<p class="text-sm font-medium">Steering Torque</p>
+											<p class="mt-2">{carData.steering_torque}</p>
+										</div>
+										<div class="border border-black p-4">
+											<p class="text-sm font-medium">Auto Resume</p>
+											<p class="mt-2">{carData.auto_resume_star}</p>
+										</div>
+									</div>
+								</div>
+							</section>
+						</div>
+
+						<!-- Demo Video -->
+						{carData.video && (
+							<div class="flex flex-col">
+								<div class="inline-flex">
+									<div class="bg-black text-white px-4 py-2">
+										<h2 class="text-lg font-bold whitespace-nowrap">Demo Video</h2>
+									</div>
+								</div>
+								<section class="bg-white border border-black">
+									<div class="p-6">
+										<div class="aspect-w-16 aspect-h-9">
+											<iframe
+												src={carData.video.replace('watch?v=', 'embed/')}
+												title={`${carData.make} ${carData.model} Demo`}
+												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+												allowfullscreen
+												class="w-full h-full border border-black"
+											></iframe>
+										</div>
+									</div>
+								</section>
+							</div>
+						)}
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</BaseLayout>
+
+<style>
+	/* Add smooth transitions for any height changes */
+	section {
+		transition: all 0.3s ease-in-out;
+	}
+</style> 
