@@ -1,51 +1,12 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import CarList from '../components/CarList.astro';
+import Layout from '../components/Layout';
 import cars from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
-import FilterSidebar from '../components/FilterSidebar.astro';
-
-const toggleIcon = '/icons/toggleFilterIcon.svg';
 
 const typedCars = cars as Car[];
 ---
 
 <BaseLayout title="opendbc">
-	<div class="flex overflow-hidden relative">
-		<FilterSidebar />
-		<main class="w-full mx-4 md:pl-[380px]">
-			<!-- Header -->
-			<div class="flex justify-between items-center px-4 mb-5">
-				<div class="text-lg font-semibold font-mono">123 CARS IN RESULTS</div>
-				<button
-				id="sidebarToggle"
-				class="bg-gray-300 p-2 border border-black z-50 2xl:hidden"
-				>
-				<img src={toggleIcon} alt="Toggle Icon" class="w-6 h-6" />
-				</button>
-			</div>
-			<!-- Car List -->
-			<div class="px-4">
-				<CarList cars={typedCars} />
-			</div>
-		</main>
-	</div>
+	<Layout client:load cars={typedCars} />
 </BaseLayout>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggle = document.getElementById('sidebarToggle');
-    const sidebar = document.getElementById('sidebar');
-    const mediaQuery = window.matchMedia('(min-width: 1024px)');
-
-    // Simple function to toggle sidebar
-    const toggleSidebar = () => {
-      if (!mediaQuery.matches) {
-        sidebar?.classList.toggle('-translate-x-full');
-      }
-    };
-
-    // Event listeners
-    toggle?.addEventListener('click', toggleSidebar);
-  });
-</script>
