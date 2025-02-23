@@ -1,0 +1,117 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import cars from '../../data/car_data.json';
+import type { Car } from '../../types/CarDataTypes';
+import { getSupportTypeColor } from '../../utils/supportType';
+
+// Generate all possible car paths at build time
+export async function getStaticPaths() {
+  const allCars = cars as Car[];
+  return allCars.map(car => ({
+    params: { car: `${car.make}-${car.model}`.toLowerCase() },
+    props: { carData: car },
+  }));
+}
+
+const { carData } = Astro.props;
+---
+
+<BaseLayout title={`${carData.make} ${carData.model} - opendbc`}>
+  <main class="container mx-auto max-w-4xl px-6 py-8">
+    <div class="mb-8">
+      <a href="/" class="text-black hover:underline">&larr; Back to all cars</a>
+    </div>
+
+    <!-- Car Header -->
+    <div class="mb-8">
+      <div class={`inline-block px-6 py-1 mb-4 ${getSupportTypeColor(carData.support_type)}`}>
+        <p class="text-[16px] uppercase">{carData.support_type}</p>
+      </div>
+      <h1 class="text-4xl font-bold mb-2">{carData.make} {carData.model}</h1>
+      <p class="text-xl text-gray-600">{carData.years}</p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <!-- Left Column -->
+      <div>
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Vehicle Details</h2>
+          <div class="space-y-4">
+            <div class="bg-[#F3F3F3] p-4 border border-black">
+              <p><strong>ADAS Package:</strong> {carData.package}</p>
+            </div>
+            <div class="bg-[#F3F3F3] p-4 border border-black">
+              <p><strong>Fingerprint:</strong> {carData.car_fingerprint}</p>
+            </div>
+            {carData.harness && (
+              <div class="bg-[#F3F3F3] p-4 border border-black">
+                <p><strong>Harness:</strong> {carData.harness}</p>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {carData.car_parts.length > 0 && (
+          <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Required Parts</h2>
+            <ul class="list-disc list-inside space-y-2">
+              {carData.car_parts.map(part => (
+                <li>{part}</li>
+              ))}
+            </ul>
+          </section>
+        )}
+      </div>
+
+      <!-- Right Column -->
+      <div>
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold mb-4">Capabilities</h2>
+          <div class="space-y-4">
+            <div class="bg-[#F3F3F3] p-4 border border-black">
+              <p><strong>Longitudinal Control:</strong> {carData.longitudinal}</p>
+            </div>
+            <div class="bg-[#F3F3F3] p-4 border border-black">
+              <p><strong>Steering Torque:</strong> {carData.steering_torque}</p>
+            </div>
+            <div class="bg-[#F3F3F3] p-4 border border-black">
+              <p><strong>Auto Resume:</strong> {carData.auto_resume_star}</p>
+            </div>
+          </div>
+        </section>
+
+        {carData.video && (
+          <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4">Demo Video</h2>
+            <div class="aspect-w-16 aspect-h-9">
+              <iframe
+                src={carData.video.replace('watch?v=', 'embed/')}
+                title={`${carData.make} ${carData.model} Demo`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                class="w-full h-full border border-black"
+              ></iframe>
+            </div>
+          </section>
+        )}
+      </div>
+    </div>
+
+    <!-- Detail Sentence -->
+    <section class="mt-8 bg-[#F3F3F3] p-6 border border-black">
+      <div set:html={carData.detail_sentence} />
+    </section>
+
+    {carData.footnotes.length > 0 && (
+      <section class="mt-8">
+        <h2 class="text-2xl font-bold mb-4">Additional Notes</h2>
+        <ul class="list-disc list-inside space-y-2">
+          {carData.footnotes.map(note => (
+            <li>{note}</li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </main>
+</BaseLayout> 

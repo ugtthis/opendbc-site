@@ -1,26 +1,12 @@
 ---
 import type { Car } from '../types/CarDataTypes';
+import { getSupportTypeColor } from '../utils/supportType';
 
 interface Props {
   car: Car;
 }
 
 const { car } = Astro.props;
-
-function getSupportTypeColor(supportType: string): string {
-  switch (supportType) {
-    case 'Upstream':
-      return 'bg-[#66D855] text-white';
-    case 'Under review':
-      return 'font-bold bg-[#F9C515] text-black';
-    case 'Not compatible':
-      return 'bg-[#D85555] text-white';
-    case 'Community':
-      return 'bg-[#819CE1] text-white';
-    default:
-      return 'bg-[#969696] text-white';
-  }
-}
 ---
 
 <!-- Support label -->
@@ -79,6 +65,12 @@ function getSupportTypeColor(supportType: string): string {
         <span class="text-sm">Long<br />Control</span>
         <span>N/A</span>
       </div>
+    </div>
+    <div class="flex justify-between px-4 pb-4 items-center">
+      <!-- View Details Button -->
+      <a href={`/cars/${car.make}-${car.model}`.toLowerCase()} class="w-full bg-[#969696] border border-black text-white py-4 text-center">
+        Open full details
+      </a>
     </div>
   </div>
 
