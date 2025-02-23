@@ -3,14 +3,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CarList from '../components/CarList.astro';
 import cars from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
-import Footer from '../components/Footer.astro';
+
+import { Image } from 'astro:assets';
+const toggleIcon = '/icons/toggleFilterIcon.svg';
 
 const typedCars = cars as Car[];
 ---
 
 <BaseLayout title="opendbc">
-	<main class="container mx-auto max-w-screen-xl py-6 px-4">
+	<main class="container mx-auto max-w-screen-xl pb-6 px-4">
+		<div class="flex justify-between items-center mb-7">
+			<div class="text-lg font-semibold font-mono">123 CARS IN RESULTS</div>
+			<button
+			  id="sidebarToggle"
+			  class="bg-gray-300 p-2 border border-black z-50"
+			>
+			  <img src={toggleIcon} alt="Toggle Icon" class="w-6 h-6" />
+			</button>
+		</div>
 		<CarList cars={typedCars} />
 	</main>
 </BaseLayout>
-<Footer />
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    if (toggle && sidebar) {
+      toggle.addEventListener('click', () => {
+        sidebar.classList.toggle('-translate-x-full');
+      });
+    }
+  });
+</script>

@@ -1,5 +1,6 @@
 ---
 import Header from '../components/Header.astro';
+import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
 	title: string;
@@ -21,8 +22,25 @@ const { title } = Astro.props;
 	</head>
 	<body class="bg-[#E8E8E8] h-screen flex flex-col font-mono">
 		<Header />
-		<main class="flex-1 overflow-auto">
-			<slot />
-		</main>
+		<div class="flex-1 flex overflow-hidden">
+			<Sidebar />
+			<main class="flex-1 overflow-auto p-6">
+				<slot />
+			</main>
+		</div>
 	</body>
 </html>
+
+<style>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+</style>
