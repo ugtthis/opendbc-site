@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import CarList from '../components/CarList.astro';
 import cars from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
+import Footer from '../components/Footer.astro';
 
 const typedCars = cars as Car[];
 ---
@@ -12,3 +13,4 @@ const typedCars = cars as Car[];
 		<CarList cars={typedCars} />
 	</main>
 </BaseLayout>
+<Footer />
