@@ -1,6 +1,5 @@
 ---
 import Header from '../components/Header.astro';
-import Sidebar from '../components/Sidebar.astro';
 
 interface Props {
 	title: string;
@@ -23,7 +22,6 @@ const { title } = Astro.props;
 	<body class="bg-[#E8E8E8] h-screen flex flex-col font-mono">
 		<Header />
 		<div class="flex-1 flex overflow-hidden">
-			<Sidebar />
 			<main class="flex-1 max-w-[1800px] mx-auto overflow-auto py-6">
 				<slot />
 			</main>
