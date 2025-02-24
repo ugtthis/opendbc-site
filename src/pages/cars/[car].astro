@@ -18,7 +18,7 @@ const { carData } = Astro.props;
 
 <BaseLayout title={`${carData.make} ${carData.model} - opendbc`}>
 	<main class="min-h-screen bg-[#E8E8E8] pb-20">
-		<div class="max-w-6xl mx-auto pl-5 pt-6">
+		<div class="max-w-7xl mx-auto pl-5 pt-6">
 
 				<!-- Breadcrumb -->
 				<nav class="flex items-center space-x-2 text-md pb-4">
@@ -28,7 +28,7 @@ const { carData } = Astro.props;
 				</nav>
 		</div>
 
-		<div class="max-w-6xl mx-auto px-5">
+		<div class="max-w-7xl mx-auto px-5">
 			<div class="flex flex-col lg:flex-row gap-8">
 
 				<!-- Left Sidebar -->
@@ -69,6 +69,16 @@ const { carData } = Astro.props;
 									<p class="text-l mt-1">{carData.harness}</p>
 								</div>
 							)}
+							<div class="p-4">
+								<p class="text-sm"><strong>Longitudinal Report:</strong></p>
+								<p class="text-l mt-1">
+									<a href="https://commaai.github.io/opendbc-data/longitudinal_reports/FORD_BRONCO_SPORT_MK1_b9d015f8ff659e1e_0000043a--98baf2b862.html" 
+									   class="text-blue-600 hover:text-blue-800 hover:underline" 
+									   target="_blank">
+										View Report
+									</a>
+								</p>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -99,8 +109,19 @@ const { carData } = Astro.props;
 									</div>
 								</section>
 								<section class="bg-white border border-black lg:w-1/4">
-									<div class="p-6">
-										<p>Additional information here</p>
+									<div class="divide-y divide-gray-200">
+										<div class="flex justify-between items-center px-4 py-2 bg-gray-50">
+											<span class="text-sm font-medium">Mass</span>
+											<span class="text-sm">{Math.round(carData.mass)} kg</span>
+										</div>
+										<div class="flex justify-between items-center px-4 py-2">
+											<span class="text-sm font-medium">Wheelbase</span>
+											<span class="text-sm">{carData.wheelbase} m</span>
+										</div>
+										<div class="flex justify-between items-center px-4 py-2 bg-gray-50">
+											<span class="text-sm font-medium">Steer Ratio</span>
+											<span class="text-sm">{carData.steer_ratio}</span>
+										</div>
 									</div>
 								</section>
 							</div>
@@ -129,11 +150,89 @@ const { carData } = Astro.props;
 							</div>
 						)}
 
-						<!-- Capabilities -->
+						<!-- Car Data 1 -->
 						<div class="flex flex-col">
 							<div class="inline-flex">
 								<div class="bg-black text-white px-4 py-2">
 									<h2 class="text-md whitespace-nowrap">Capabilities</h2>
+								</div>
+							</div>
+							<section class="bg-white border border-black">
+								<div class="divide-y divide-gray-200">
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">Minimum Steering Speed</span>
+										<span>{carData.min_steer_speed} mph</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3">
+										<span class="font-medium">FSR Longitudinal Control</span>
+										<span>{carData.fsr_longitudinal}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">FSR Steering Control</span>
+										<span>{carData.fsr_steering}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3">
+										<span class="font-medium">Longitudinal Control Type</span>
+										<span>{carData.longitudinal}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">Support Type</span>
+										<span>{carData.support_type}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3">
+										<span class="font-medium">Required Package</span>
+										<span>{carData.package}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">Auto Resume</span>
+										<span>{carData.auto_resume ? "Yes" : "No"}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3">
+										<span class="font-medium">Steering Torque</span>
+										<span>{carData.steering_torque}</span>
+									</div>
+								</div>
+							</section>
+						</div>
+
+                        <!-- Car Data 2 -->
+						<div class="flex flex-col">
+							<div class="inline-flex">
+								<div class="bg-black text-white px-4 py-2">
+									<h2 class="text-md whitespace-nowrap">Car Data 2</h2>
+								</div>
+							</div>
+							<section class="bg-white border border-black">
+								<div class="divide-y divide-gray-200">
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">Longitudinal Control</span>
+										<span>{carData.longitudinal}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3">
+										<span class="font-medium">Steering Torque</span>
+										<span>{carData.steering_torque}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">Auto Resume</span>
+										<span>{carData.auto_resume_star}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3">
+										<span class="font-medium">Support Type</span>
+										<span>{carData.support_type}</span>
+									</div>
+									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
+										<span class="font-medium">ADAS Package</span>
+										<span>{carData.package}</span>
+									</div>
+								</div>
+							</section>
+						</div>
+
+                        <!-- Car Notes -->
+						<div class="flex flex-col">
+							<div class="inline-flex">
+								<div class="bg-black text-white px-4 py-2">
+									<h2 class="text-md whitespace-nowrap">Car Notes</h2>
 								</div>
 							</div>
 							<section class="bg-white border border-black">
