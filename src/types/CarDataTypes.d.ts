@@ -20,6 +20,9 @@ export interface Car {
   support_type: string;
   support_link: string;
   detail_sentence: string;
+  mass: number;
+  wheelbase: number;
+  steer_ratio: number;
 
   // Identification
   car_name: string;
