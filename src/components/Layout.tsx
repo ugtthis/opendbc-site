@@ -1,5 +1,6 @@
 import { type Component, createMemo } from 'solid-js';
-import FilterSidebar, { toggleSidebar, isOpen, filters, sortConfig, type SortField } from './FilterSidebar';
+import FilterSidebar, { toggleSidebar, isOpen, filters, sortConfig } from './FilterSidebar';
+import type { SortField } from './FilterSidebar';
 import type { Car } from '../types/CarDataTypes';
 import CarList from './CarList';
 
@@ -30,10 +31,11 @@ const Layout: Component<LayoutProps> = (props) => {
     // Apply sorting
     const sort = sortConfig();
     result.sort((a, b) => {
-      let aVal = a[sort.field];
-      let bVal = b[sort.field];
+      const field: SortField = sort.field;
+      let aVal = a[field];
+      let bVal = b[field];
       
-      if (sort.field === 'year_list') {
+      if (field === 'year_list') {
         aVal = a.year_list[0];
         bVal = b.year_list[0];
       }

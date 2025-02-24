@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, createMemo, For } from 'solid-js';
+import { createSignal, onMount, onCleanup, For } from 'solid-js';
 import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
@@ -30,7 +30,7 @@ export const [filters, setFilters] = createSignal({
   year: ''
 });
 
-type SortField = keyof Pick<Car, 'make' | 'model' | 'support_type' | 'year_list'>;
+export type SortField = keyof Pick<Car, 'make' | 'model' | 'support_type' | 'year_list'>;
 
 export const [sortConfig, setSortConfig] = createSignal({
   field: 'make' as SortField,
