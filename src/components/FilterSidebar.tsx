@@ -40,11 +40,10 @@ export const [sortConfig, setSortConfig] = createSignal({
 // Support level options
 const supportLevels = [
   'Upstream',
-  'Under Review',
-  'Custom',
-  'Dashcam Mode',
+  'Under review',
   'Community',
-  'Not Compatible'
+  'Dashcam mode',
+  'Not compatible'
 ];
 
 // Extract unique makes, models, and years from car data
