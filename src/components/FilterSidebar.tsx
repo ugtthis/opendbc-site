@@ -30,6 +30,14 @@ export const [filters, setFilters] = createSignal({
   year: ''
 });
 
+// Search query state
+export const [searchQueries, setSearchQueries] = createSignal({
+  supportLevel: '',
+  make: '',
+  model: '',
+  year: ''
+});
+
 export type SortField = keyof Pick<Car, 'make' | 'model' | 'support_type' | 'year_list'>;
 
 export const [sortConfig, setSortConfig] = createSignal({
@@ -84,8 +92,37 @@ export default function FilterSidebar() {
     setSortConfig(prev => ({ ...prev, order }));
   };
 
-  const handleFilterChange = (key: FilterKeys, value: string) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
+  const handleSearchChange = (key: FilterKeys, value: string) => {
+    setSearchQueries(prev => ({ ...prev, [key]: value }));
+    
+    // Filter the options based on search
+    const filteredValue = value.toLowerCase();
+    let matchingValue = '';
+    
+    switch(key) {
+      case 'supportLevel':
+        matchingValue = supportLevels.find(level => 
+          level.toLowerCase().includes(filteredValue)
+        ) || '';
+        break;
+      case 'make':
+        matchingValue = makes.find(make => 
+          make.toLowerCase().includes(filteredValue)
+        ) || '';
+        break;
+      case 'model':
+        matchingValue = models.find(model => 
+          model.toLowerCase().includes(filteredValue)
+        ) || '';
+        break;
+      case 'year':
+        matchingValue = years.find(year => 
+          year.toString().includes(filteredValue)
+        )?.toString() || '';
+        break;
+    }
+    
+    setFilters(prev => ({ ...prev, [key]: matchingValue }));
   };
 
   return (
@@ -126,11 +163,6 @@ export default function FilterSidebar() {
               <option value="year_list">Year</option>
               <option value="support_type">Support Level</option>
             </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
           </div>
           <div class="relative w-1/2">
             <select 
@@ -141,110 +173,93 @@ export default function FilterSidebar() {
               <option value="ASC">ASC</option>
               <option value="DESC">DESC</option>
             </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
           </div>
         </div>
       </div>
 
       <div class="w-full h-[1px] bg-gray-200 my-4" />
 
-      {/* Filter By */}
-      <div>
-        <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
-        <div class="space-y-3">
-          {/* Support Level Filter */}
-          <div>
-            <span class="block mb-2">Support Level</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().supportLevel}
-                onChange={(e) => handleFilterChange('supportLevel', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={supportLevels}>
-                  {level => <option value={level}>{level}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
+    {/* Filter By */}
+<div>
+  <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
+  <div class="space-y-3">
+    {/* Support Level Filter */}
+    <div>
+      <span class="block mb-2">Support Level</span>
+      <div class="border border-black relative">
+        <input
+          type="text"
+          placeholder="Search support level..."
+          value={searchQueries().supportLevel}
+          onInput={(e) => handleSearchChange('supportLevel', e.target.value)}
+          class="w-full p-4 bg-transparent pr-10"
+        />
+        {searchQueries().supportLevel && filters().supportLevel && (
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <span class="text-green-600">✓</span>
           </div>
-
-          {/* Make Filter */}
-          <div>
-            <span class="block mb-2">Make</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().make}
-                onChange={(e) => handleFilterChange('make', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={makes}>
-                  {make => <option value={make}>{make}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          {/* Model Filter */}
-          <div>
-            <span class="block mb-2">Model</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().model}
-                onChange={(e) => handleFilterChange('model', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={models}>
-                  {model => <option value={model}>{model}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
-
-          {/* Year Filter */}
-          <div>
-            <span class="block mb-2">Year</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().year}
-                onChange={(e) => handleFilterChange('year', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={years}>
-                  {year => <option value={year}>{year}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
-        </div>
+        )}
       </div>
+    </div>
+
+    {/* Make Filter */}
+    <div>
+      <span class="block mb-2">Make</span>
+      <div class="border border-black relative">
+        <input
+          type="text"
+          placeholder="Search make..."
+          value={searchQueries().make}
+          onInput={(e) => handleSearchChange('make', e.target.value)}
+          class="w-full p-4 bg-transparent pr-10"
+        />
+        {searchQueries().make && filters().make && (
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <span class="text-green-600">✓</span>
+          </div>
+        )}
+      </div>
+    </div>
+
+    {/* Model Filter */}
+    <div>
+      <span class="block mb-2">Model</span>
+      <div class="border border-black relative">
+        <input
+          type="text"
+          placeholder="Search model..."
+          value={searchQueries().model}
+          onInput={(e) => handleSearchChange('model', e.target.value)}
+          class="w-full p-4 bg-transparent pr-10"
+        />
+        {searchQueries().model && filters().model && (
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <span class="text-green-600">✓</span>
+          </div>
+        )}
+      </div>
+    </div>
+
+    {/* Year Filter */}
+    <div>
+      <span class="block mb-2">Year</span>
+      <div class="border border-black relative">
+        <input
+          type="text"
+          placeholder="Search year..."
+          value={searchQueries().year}
+          onInput={(e) => handleSearchChange('year', e.target.value)}
+          class="w-full p-4 bg-transparent pr-10"
+        />
+        {searchQueries().year && filters().year && (
+          <div class="absolute inset-y-0 right-0 flex items-center pr-3">
+            <span class="text-green-600">✓</span>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</div>  
     </div>
   );
 } 
