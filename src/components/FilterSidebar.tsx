@@ -420,6 +420,8 @@ export default function FilterSidebar() {
             </button>
           </div>
         </div>
+        {/* Spacer */}
+        <div class="h-24" />
       </div>
       </div>
 
