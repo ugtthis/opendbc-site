@@ -255,9 +255,10 @@ export default function FilterSidebar() {
           2xl:translate-x-0 flex flex-col
           ${isOpen() ? 'translate-x-0' : '-translate-x-full'}`}
     >
-      {/* Scrollable content area */}
+      {/* Flexbox container for content and footer */}
       <div class="flex flex-col h-full">
-        <div class="flex-1 overflow-y-auto px-9 pt-4 pb-48">
+        {/* Main content area - will grow to fill available space */}
+        <div class="flex-1 overflow-y-auto px-9 pt-4">
           {/* Close button */}
           <div class="flex justify-end mb-6 lg:hidden">
             <button
@@ -380,8 +381,8 @@ export default function FilterSidebar() {
           </div>
         </div>
 
-        {/* Fixed footer with results counter and action buttons */}
-        <div class="absolute bottom-0 left-0 right-0 bg-[#FBFBFB] px-9 pb-6 pt-4 z-20">
+        {/* Footer - will stay at bottom naturally due to flexbox */}
+        <div class="flex-shrink-0 bg-[#FBFBFB] px-9 pb-[calc(24px+env(safe-area-inset-bottom,_0px))] pt-4 mt-auto">
           <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
             {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
           </div>
