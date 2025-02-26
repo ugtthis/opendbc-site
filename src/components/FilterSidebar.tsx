@@ -381,8 +381,8 @@ export default function FilterSidebar() {
           </div>
         </div>
 
-        {/* Footer - will stay at bottom naturally due to flexbox */}
-        <div class="flex-shrink-0 bg-[#FBFBFB] px-9 pb-[calc(24px+env(safe-area-inset-bottom,_0px))] pt-4 mt-auto">
+        {/* Footer - with increased bottom padding for mobile browsers */}
+        <div class="flex-shrink-0 bg-[#FBFBFB] px-9 pb-[80px] md:pb-6 pt-11 mt-auto">
           <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
             {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
           </div>
