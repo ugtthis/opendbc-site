@@ -377,51 +377,51 @@ export default function FilterSidebar() {
         </div>
         {/* Spacer */}
         <div class="h-10" />
+        {/* Footer section */}
+        <div class="bg-[#FBFBFB] pb-6 pt-4 border-t border-gray-200">
+          <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
+            {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button
+              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
+              disabled={!hasActiveFilters()}
+              class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
+                ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}
+            >
+              <img 
+                src={rotateLeftIcon} 
+                alt="" 
+                width="24"
+                height="24"
+                class="opacity-90"
+                aria-hidden="true"
+              />
+              <span>RESET</span>
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              class="md:hidden flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2"
+            >
+              <span>VIEW</span>
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
       </div>
 
-      {/* Footer section */}
-      <div class="bg-[#FBFBFB] px-9 pb-6 pt-4 border-t border-gray-200">
-        <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
-          {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
-        </div>
-        <div class="flex gap-2 mt-4">
-          <button
-            onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
-            disabled={!hasActiveFilters()}
-            class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
-              ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}
-          >
-            <img 
-              src={rotateLeftIcon} 
-              alt="" 
-              width="24"
-              height="24"
-              class="opacity-90"
-              aria-hidden="true"
-            />
-            <span>RESET</span>
-          </button>
-          <button
-            onClick={() => setIsOpen(false)}
-            class="md:hidden flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2"
-          >
-            <span>VIEW</span>
-            <svg
-              class="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
   );
 } 
