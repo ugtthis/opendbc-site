@@ -132,7 +132,7 @@ function CustomDropdown(props: DropdownProps) {
         
         <Show when={props.isOpen}>
           <div class="w-full bg-white border border-t-0 border-black">
-            <div class="max-h-[180px] overflow-y-auto">
+            <div class="max-h-[200px] overflow-y-auto">
               <div class="sticky top-0 bg-white p-2 border-b border-gray-200">
                 <input
                   ref={inputRef}
@@ -146,7 +146,7 @@ function CustomDropdown(props: DropdownProps) {
               </div>
               <div>
                 <button
-                  class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
+                  class={`w-full h-[40px] px-4 text-left hover:bg-gray-100 ${
                     !props.value ? 'bg-gray-100' : ''
                   } ${highlightedIndex() === 0 ? 'bg-gray-200' : ''}`}
                   onClick={() => handleSelect('')}
@@ -157,7 +157,7 @@ function CustomDropdown(props: DropdownProps) {
                 <For each={filteredOptions()}>
                   {(option, index) => (
                     <button
-                      class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
+                      class={`w-full h-[40px] px-4 text-left hover:bg-gray-100 ${
                         props.value === option ? 'bg-gray-100' : ''
                       } ${highlightedIndex() === index() + 1 ? 'bg-gray-200' : ''}`}
                       onClick={() => handleSelect(option)}
