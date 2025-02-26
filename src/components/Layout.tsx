@@ -12,7 +12,6 @@ const Layout: Component<LayoutProps> = (props) => {
   const filteredAndSortedCars = createMemo(() => {
     let result = [...props.cars];
     
-    // Apply filters
     const currentFilters = filters();
     if (currentFilters.supportLevel) {
       const searchValue = currentFilters.supportLevel;
@@ -50,14 +49,13 @@ const Layout: Component<LayoutProps> = (props) => {
     return result;
   });
 
-  // Support level options
   const supportLevels = [
     'Upstream',
     'Under Review',
     'Custom',
-    'Dashcam',  // Keep as 'Dashcam' (not 'Dashcam Mode')
+    'Dashcam',
     'Community',
-    'Incompatible'  // Keep as 'Incompatible' (not 'Not Compatible')
+    'Incompatible'
   ];
 
   return (
