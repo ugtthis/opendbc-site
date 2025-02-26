@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, For } from 'solid-js';
+import { createSignal, onMount, onCleanup, For, Show } from 'solid-js';
 import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
@@ -35,6 +35,80 @@ const years = [...new Set(carData.flatMap(car => car.year_list))].sort();
 
 type FilterKeys = 'supportLevel' | 'make' | 'model' | 'year';
 
+// Add this before the CustomDropdown component
+const [activeDropdown, setActiveDropdown] = createSignal<string | null>(null);
+
+type DropdownProps = {
+  options: string[];
+  value: string;
+  onChange: (value: string) => void;
+  label: string;
+  isOpen: boolean;
+  onToggle: () => void;
+};
+
+function CustomDropdown(props: DropdownProps) {
+  let dropdownRef: HTMLDivElement | undefined;
+
+  // Simplified click outside handler
+  const handleClickOutside = (e: MouseEvent) => 
+    props.isOpen && dropdownRef && !dropdownRef.contains(e.target as Node) && props.onToggle();
+
+  onMount(() => !isServer && document.addEventListener('mousedown', handleClickOutside));
+  onCleanup(() => !isServer && document.removeEventListener('mousedown', handleClickOutside));
+
+  const handleSelect = (value: string) => {
+    props.onChange(value);
+    props.onToggle();
+  };
+
+  return (
+    <div class="space-y-2" ref={dropdownRef}>
+      <span class="block">{props.label}</span>
+      <div class="w-full">
+        <button
+          type="button"
+          onClick={props.onToggle}
+          class="w-full p-4 text-left border border-black bg-white flex justify-between items-center"
+        >
+          <span>{props.value || 'All'}</span>
+          <svg
+            class={`w-6 h-6 transition-transform ${props.isOpen ? 'rotate-180' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+        
+        <Show when={props.isOpen}>
+          <div class="w-full bg-white border border-t-0 border-black">
+            <div class="max-h-[180px] overflow-y-auto">
+              <button
+                class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${!props.value ? 'bg-gray-100' : ''}`}
+                onClick={() => handleSelect('')}
+              >
+                All
+              </button>
+              <For each={props.options}>
+                {(option) => (
+                  <button
+                    class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${props.value === option ? 'bg-gray-100' : ''}`}
+                    onClick={() => handleSelect(option)}
+                  >
+                    {option}
+                  </button>
+                )}
+              </For>
+            </div>
+          </div>
+        </Show>
+      </div>
+    </div>
+  );
+}
+
 export default function FilterSidebar() {
   // Function to check screen size and set isOpen accordingly
   const handleMediaQuery = () => {
@@ -69,6 +143,11 @@ export default function FilterSidebar() {
   const handleFilterChange = (key: FilterKeys, value: string) => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
+
+  // Single signal to track which dropdown is open
+  const [openDropdown, setOpenDropdown] = createSignal<string | null>(null);
+  
+  const toggleDropdown = (id: string) => setOpenDropdown(current => current === id ? null : id);
 
   return (
     <div
@@ -138,93 +217,41 @@ export default function FilterSidebar() {
       <div>
         <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
         <div class="space-y-3">
-          {/* Support Level Filter */}
-          <div>
-            <span class="block mb-2">Support Level</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().supportLevel}
-                onChange={(e) => handleFilterChange('supportLevel', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={supportLevels}>
-                  {level => <option value={level}>{level}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
+          <CustomDropdown
+            label="Support Level"
+            options={supportLevels}
+            value={filters().supportLevel}
+            onChange={(value) => handleFilterChange('supportLevel', value)}
+            isOpen={openDropdown() === 'support-level'}
+            onToggle={() => toggleDropdown('support-level')}
+          />
 
-          {/* Make Filter */}
-          <div>
-            <span class="block mb-2">Make</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().make}
-                onChange={(e) => handleFilterChange('make', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={makes}>
-                  {make => <option value={make}>{make}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
+          <CustomDropdown
+            label="Make"
+            options={makes}
+            value={filters().make}
+            onChange={(value) => handleFilterChange('make', value)}
+            isOpen={openDropdown() === 'make'}
+            onToggle={() => toggleDropdown('make')}
+          />
 
-          {/* Model Filter */}
-          <div>
-            <span class="block mb-2">Model</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().model}
-                onChange={(e) => handleFilterChange('model', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={models}>
-                  {model => <option value={model}>{model}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
+          <CustomDropdown
+            label="Model"
+            options={models}
+            value={filters().model}
+            onChange={(value) => handleFilterChange('model', value)}
+            isOpen={openDropdown() === 'model'}
+            onToggle={() => toggleDropdown('model')}
+          />
 
-          {/* Year Filter */}
-          <div>
-            <span class="block mb-2">Year</span>
-            <div class="border border-black relative">
-              <select 
-                class="w-full p-4 bg-transparent appearance-none pr-10"
-                value={filters().year}
-                onChange={(e) => handleFilterChange('year', e.currentTarget.value)}
-              >
-                <option value="">All</option>
-                <For each={years}>
-                  {year => <option value={year}>{year}</option>}
-                </For>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
-          </div>
+          <CustomDropdown
+            label="Year"
+            options={years}
+            value={filters().year}
+            onChange={(value) => handleFilterChange('year', value)}
+            isOpen={openDropdown() === 'year'}
+            onToggle={() => toggleDropdown('year')}
+          />
         </div>
       </div>
     </div>
