@@ -49,15 +49,6 @@ const Layout: Component<LayoutProps> = (props) => {
     return result;
   });
 
-  const supportLevels = [
-    'Upstream',
-    'Under Review',
-    'Custom',
-    'Dashcam',
-    'Community',
-    'Incompatible'
-  ];
-
   return (
     <div class="flex overflow-hidden relative">
       <FilterSidebar />
