@@ -375,10 +375,9 @@ export default function FilterSidebar() {
             />
           </div>
         </div>
+        {/* Spacer */}
+        <div class="h-10" />
       </div>
-
-      {/* Spacer */}
-      <div class="grow" />
 
       {/* Footer section */}
       <div class="bg-[#FBFBFB] px-9 pb-6 pt-4 border-t border-gray-200">
