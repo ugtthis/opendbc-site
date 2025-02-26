@@ -3,21 +3,6 @@ import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
 
-type FilterSection = {
-  title: string;
-  options: string[];
-};
-
-const filterSections: FilterSection[] = [
-  { title: 'Support Level', options: [] },
-  { title: 'Transmission', options: [] },
-  { title: 'Make', options: [] },
-  { title: 'Model', options: [] },
-  { title: 'Year', options: [] },
-  { title: 'Car Type', options: [] },
-  { title: 'Drive Train', options: [] }
-];
-
 export const [isOpen, setIsOpen] = createSignal(false);
 export const toggleSidebar = () => setIsOpen(!isOpen());
 
