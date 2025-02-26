@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, For, Show } from 'solid-js';
+import { createSignal, onMount, onCleanup, For, Show, createEffect } from 'solid-js';
 import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
@@ -28,15 +28,9 @@ const supportLevels = [
   'Not compatible'
 ];
 
-// Extract unique makes, models, and years from car data
 const makes = [...new Set(carData.map(car => car.make))].sort();
 const models = [...new Set(carData.map(car => car.model))].sort();
 const years = [...new Set(carData.flatMap(car => car.year_list))].sort();
-
-type FilterKeys = 'supportLevel' | 'make' | 'model' | 'year';
-
-// Add this before the CustomDropdown component
-const [activeDropdown, setActiveDropdown] = createSignal<string | null>(null);
 
 type DropdownProps = {
   options: string[];
@@ -49,18 +43,70 @@ type DropdownProps = {
 
 function CustomDropdown(props: DropdownProps) {
   let dropdownRef: HTMLDivElement | undefined;
+  let inputRef: HTMLInputElement | undefined;
+  const [searchTerm, setSearchTerm] = createSignal('');
+  const [highlightedIndex, setHighlightedIndex] = createSignal(-1);
+  
+  const filteredOptions = () => {
+    const term = searchTerm().toLowerCase();
+    return term ? props.options.filter(option => option.toLowerCase().includes(term)) : props.options;
+  };
 
-  // Simplified click outside handler
-  const handleClickOutside = (e: MouseEvent) => 
-    props.isOpen && dropdownRef && !dropdownRef.contains(e.target as Node) && props.onToggle();
+  createEffect(() => {
+    filteredOptions();
+    setHighlightedIndex(-1);
+  });
+
+  const handleClickOutside = (e: MouseEvent) => {
+    if (props.isOpen && dropdownRef && !dropdownRef.contains(e.target as Node)) {
+      closeDropdown();
+    }
+  };
+
+  const closeDropdown = () => {
+    props.onToggle();
+    setSearchTerm('');
+    setHighlightedIndex(-1);
+  };
 
   onMount(() => !isServer && document.addEventListener('mousedown', handleClickOutside));
   onCleanup(() => !isServer && document.removeEventListener('mousedown', handleClickOutside));
 
   const handleSelect = (value: string) => {
     props.onChange(value);
-    props.onToggle();
+    closeDropdown();
   };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    const options = ['', ...filteredOptions()];
+    
+    switch (e.key) {
+      case 'ArrowDown':
+        e.preventDefault();
+        setHighlightedIndex(prev => prev < options.length - 1 ? prev + 1 : 0);
+        break;
+      case 'ArrowUp':
+        e.preventDefault();
+        setHighlightedIndex(prev => prev > 0 ? prev - 1 : options.length - 1);
+        break;
+      case 'Enter':
+        e.preventDefault();
+        if (highlightedIndex() >= 0) {
+          handleSelect(options[highlightedIndex()]);
+        }
+        break;
+      case 'Escape':
+        e.preventDefault();
+        closeDropdown();
+        break;
+    }
+  };
+
+  createEffect(() => {
+    if (props.isOpen && inputRef) {
+      inputRef.focus();
+    }
+  });
 
   return (
     <div class="space-y-2" ref={dropdownRef}>
@@ -84,18 +130,35 @@ function CustomDropdown(props: DropdownProps) {
         
         <Show when={props.isOpen}>
           <div class="w-full bg-white border border-t-0 border-black">
+            <div class="sticky top-0 bg-white p-2 border-b border-gray-200 z-10">
+              <input
+                ref={inputRef}
+                type="text"
+                value={searchTerm()}
+                onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
+                onKeyDown={handleKeyDown}
+                placeholder="Search..."
+                class="w-full p-2 border border-gray-200 focus:outline-none focus:border-black"
+              />
+            </div>
             <div class="max-h-[180px] overflow-y-auto">
               <button
-                class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${!props.value ? 'bg-gray-100' : ''}`}
+                class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
+                  !props.value ? 'bg-gray-100' : ''
+                } ${highlightedIndex() === 0 ? 'bg-gray-200' : ''}`}
                 onClick={() => handleSelect('')}
+                onMouseEnter={() => setHighlightedIndex(0)}
               >
                 All
               </button>
-              <For each={props.options}>
-                {(option) => (
+              <For each={filteredOptions()}>
+                {(option, index) => (
                   <button
-                    class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${props.value === option ? 'bg-gray-100' : ''}`}
+                    class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
+                      props.value === option ? 'bg-gray-100' : ''
+                    } ${highlightedIndex() === index() + 1 ? 'bg-gray-200' : ''}`}
                     onClick={() => handleSelect(option)}
+                    onMouseEnter={() => setHighlightedIndex(index() + 1)}
                   >
                     {option}
                   </button>
@@ -110,14 +173,12 @@ function CustomDropdown(props: DropdownProps) {
 }
 
 export default function FilterSidebar() {
-  // Function to check screen size and set isOpen accordingly
   const handleMediaQuery = () => {
-    if (window.matchMedia('(min-width: 1536px)').matches) { // 2xl breakpoint
+    if (window.matchMedia('(min-width: 1536px)').matches) {
       setIsOpen(true);
     }
   };
 
-  // On mount, run our media query check and attach a resize listener
   onMount(() => {
     if (!isServer) {
       handleMediaQuery();
@@ -125,28 +186,13 @@ export default function FilterSidebar() {
     }
   });
 
-  // Clean up the event listener on unmount
   onCleanup(() => {
     if (!isServer) {
       window.removeEventListener('resize', handleMediaQuery);
     }
   });
 
-  const handleSortChange = (field: SortField) => {
-    setSortConfig(prev => ({ ...prev, field }));
-  };
-
-  const handleSortOrderChange = (order: 'ASC' | 'DESC') => {
-    setSortConfig(prev => ({ ...prev, order }));
-  };
-
-  const handleFilterChange = (key: FilterKeys, value: string) => {
-    setFilters(prev => ({ ...prev, [key]: value }));
-  };
-
-  // Single signal to track which dropdown is open
   const [openDropdown, setOpenDropdown] = createSignal<string | null>(null);
-  
   const toggleDropdown = (id: string) => setOpenDropdown(current => current === id ? null : id);
 
   return (
@@ -157,7 +203,6 @@ export default function FilterSidebar() {
           2xl:translate-x-0
           ${isOpen() ? 'translate-x-0' : '-translate-x-full'}`}
     >
-      {/* Close button (hidden on large screens) */}
       <button
         class="lg:hidden absolute top-4 right-4 p-2 hover:bg-gray-100"
         onClick={() => setIsOpen(false)}
@@ -172,7 +217,6 @@ export default function FilterSidebar() {
         </svg>
       </button>
 
-      {/* Sort By */}
       <div class="mb-6">
         <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
         <div class="flex gap-2">
@@ -180,7 +224,7 @@ export default function FilterSidebar() {
             <select 
               class="appearance-none border border-black p-4 w-full pr-10"
               value={sortConfig().field}
-              onChange={(e) => handleSortChange(e.currentTarget.value as SortField)}
+              onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
             >
               <option value="make">Make</option>
               <option value="model">Model</option>
@@ -197,7 +241,7 @@ export default function FilterSidebar() {
             <select 
               class="appearance-none border border-black p-4 w-full pr-10"
               value={sortConfig().order}
-              onChange={(e) => handleSortOrderChange(e.currentTarget.value as 'ASC' | 'DESC')}
+              onChange={(e) => setSortConfig(prev => ({ ...prev, order: e.currentTarget.value as 'ASC' | 'DESC' }))}
             >
               <option value="ASC">ASC</option>
               <option value="DESC">DESC</option>
@@ -213,7 +257,6 @@ export default function FilterSidebar() {
 
       <div class="w-full h-[1px] bg-gray-200 my-4" />
 
-      {/* Filter By */}
       <div>
         <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
         <div class="space-y-3">
@@ -221,7 +264,7 @@ export default function FilterSidebar() {
             label="Support Level"
             options={supportLevels}
             value={filters().supportLevel}
-            onChange={(value) => handleFilterChange('supportLevel', value)}
+            onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
             isOpen={openDropdown() === 'support-level'}
             onToggle={() => toggleDropdown('support-level')}
           />
@@ -230,7 +273,7 @@ export default function FilterSidebar() {
             label="Make"
             options={makes}
             value={filters().make}
-            onChange={(value) => handleFilterChange('make', value)}
+            onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
             isOpen={openDropdown() === 'make'}
             onToggle={() => toggleDropdown('make')}
           />
@@ -239,7 +282,7 @@ export default function FilterSidebar() {
             label="Model"
             options={models}
             value={filters().model}
-            onChange={(value) => handleFilterChange('model', value)}
+            onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
             isOpen={openDropdown() === 'model'}
             onToggle={() => toggleDropdown('model')}
           />
@@ -248,7 +291,7 @@ export default function FilterSidebar() {
             label="Year"
             options={years}
             value={filters().year}
-            onChange={(value) => handleFilterChange('year', value)}
+            onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
             isOpen={openDropdown() === 'year'}
             onToggle={() => toggleDropdown('year')}
           />
