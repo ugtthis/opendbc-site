@@ -255,172 +255,172 @@ export default function FilterSidebar() {
           2xl:translate-x-0 flex flex-col
           ${isOpen() ? 'translate-x-0' : '-translate-x-full'}`}
     >
-      {/* Flexbox container for content and footer */}
-      <div class="flex flex-col h-full">
-        {/* Main content area - will grow to fill available space */}
-        <div class="flex-1 overflow-y-auto px-9 pt-4">
-          {/* Close button */}
-          <div class="flex justify-end mb-3 lg:hidden">
-            <button
-              class="p-2 hover:bg-gray-100"
-              onClick={() => setIsOpen(false)}
-            >
-              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  stroke-width="3.5"
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              </svg>
-            </button>
-          </div>
+      {/* Scrollable content area */}
+      <div class="overflow-y-auto px-9 pt-4">
+        {/* Close button */}
+        <div class="flex justify-end mb-3 lg:hidden">
+          <button
+            class="p-2 hover:bg-gray-100"
+            onClick={() => setIsOpen(false)}
+          >
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path
+                stroke-width="3.5"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
 
-          <div class="mb-6">
-            <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
-            <div class="flex gap-2">
-              <div class="relative w-2/3" ref={sortRef}>
-                <button
-                  type="button"
-                  onClick={() => setOpenSort(!openSort())}
-                  class="w-full p-4 text-left border border-black bg-white flex justify-between items-center"
+        <div class="mb-6">
+          <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
+          <div class="flex gap-2">
+            <div class="relative w-2/3" ref={sortRef}>
+              <button
+                type="button"
+                onClick={() => setOpenSort(!openSort())}
+                class="w-full p-4 text-left border border-black bg-white flex justify-between items-center"
+              >
+                <span>{sortOptions.find(opt => opt.value === sortConfig().field)?.label || 'Make'}</span>
+                <svg
+                  class={`w-6 h-6 transition-transform ${openSort() ? 'rotate-180' : ''}`}
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
                 >
-                  <span>{sortOptions.find(opt => opt.value === sortConfig().field)?.label || 'Make'}</span>
-                  <svg
-                    class={`w-6 h-6 transition-transform ${openSort() ? 'rotate-180' : ''}`}
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                  </svg>
-                </button>
-                
-                <Show when={openSort()}>
-                  <div class="absolute w-full bg-white border border-t-0 border-black z-10">
-                    <div class="max-h-[180px] overflow-y-auto">
-                      <div>
-                        {sortOptions.map(option => (
-                          <button
-                            class={`w-full h-10 px-4 text-left hover:bg-gray-100 
-                              ${sortConfig().field === option.value ? 'bg-gray-100' : ''}`}
-                            onClick={() => {
-                              setSortConfig(prev => ({ ...prev, field: option.value }));
-                              setOpenSort(false);
-                            }}
-                          >
-                            {option.label}
-                          </button>
-                        ))}
-                      </div>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              <Show when={openSort()}>
+                <div class="absolute w-full bg-white border border-t-0 border-black z-10">
+                  <div class="max-h-[180px] overflow-y-auto">
+                    <div>
+                      {sortOptions.map(option => (
+                        <button
+                          class={`w-full h-10 px-4 text-left hover:bg-gray-100 
+                            ${sortConfig().field === option.value ? 'bg-gray-100' : ''}`}
+                          onClick={() => {
+                            setSortConfig(prev => ({ ...prev, field: option.value }));
+                            setOpenSort(false);
+                          }}
+                        >
+                          {option.label}
+                        </button>
+                      ))}
                     </div>
                   </div>
-                </Show>
-              </div>
-              <button
-                onClick={() => setSortConfig(prev => ({ 
-                  ...prev, 
-                  order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
-                }))}
-                class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
-                aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
-              >
-                <img 
-                  src={sortOrderIcon} 
-                  alt="" 
-                  width="32"
-                  height="28"
-                  class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
-                  aria-hidden="true"
-                />
-              </button>
+                </div>
+              </Show>
             </div>
-          </div>
-
-          <div class="w-full h-[1px] bg-gray-200 my-4" />
-
-          <div>
-            <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
-            <div class="space-y-3">
-              <CustomDropdown
-                label="Support Level"
-                options={supportLevels}
-                value={filters().supportLevel}
-                onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
-                isOpen={openDropdown() === 'support-level'}
-                onToggle={() => toggleDropdown('support-level')}
+            <button
+              onClick={() => setSortConfig(prev => ({ 
+                ...prev, 
+                order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
+              }))}
+              class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
+              aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
+            >
+              <img 
+                src={sortOrderIcon} 
+                alt="" 
+                width="32"
+                height="28"
+                class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
+                aria-hidden="true"
               />
-
-              <CustomDropdown
-                label="Make"
-                options={makes}
-                value={filters().make}
-                onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
-                isOpen={openDropdown() === 'make'}
-                onToggle={() => toggleDropdown('make')}
-              />
-
-              <CustomDropdown
-                label="Model"
-                options={models}
-                value={filters().model}
-                onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
-                isOpen={openDropdown() === 'model'}
-                onToggle={() => toggleDropdown('model')}
-              />
-
-              <CustomDropdown
-                label="Year"
-                options={years}
-                value={filters().year}
-                onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
-                isOpen={openDropdown() === 'year'}
-                onToggle={() => toggleDropdown('year')}
-              />
-            </div>
+            </button>
           </div>
         </div>
 
-        {/* Footer - with increased bottom padding for mobile browsers */}
-        <div class="flex-shrink-0 bg-[#FBFBFB] px-9 pb-[80px] md:pb-6 pt-11 mt-auto">
-          <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
-            {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
+        <div class="w-full h-[1px] bg-gray-200 my-4" />
+
+        <div>
+          <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
+          <div class="space-y-3">
+            <CustomDropdown
+              label="Support Level"
+              options={supportLevels}
+              value={filters().supportLevel}
+              onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
+              isOpen={openDropdown() === 'support-level'}
+              onToggle={() => toggleDropdown('support-level')}
+            />
+
+            <CustomDropdown
+              label="Make"
+              options={makes}
+              value={filters().make}
+              onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
+              isOpen={openDropdown() === 'make'}
+              onToggle={() => toggleDropdown('make')}
+            />
+
+            <CustomDropdown
+              label="Model"
+              options={models}
+              value={filters().model}
+              onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
+              isOpen={openDropdown() === 'model'}
+              onToggle={() => toggleDropdown('model')}
+            />
+
+            <CustomDropdown
+              label="Year"
+              options={years}
+              value={filters().year}
+              onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
+              isOpen={openDropdown() === 'year'}
+              onToggle={() => toggleDropdown('year')}
+            />
           </div>
-          <div class="flex gap-2 mt-4">
-            <button
-              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
-              disabled={!hasActiveFilters()}
-              class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
-                ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}
+        </div>
+      </div>
+
+      {/* Spacer */}
+      <div class="grow" />
+
+      {/* Footer section */}
+      <div class="bg-[#FBFBFB] px-9 pb-6 pt-4 border-t border-gray-200">
+        <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
+          {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
+        </div>
+        <div class="flex gap-2 mt-4">
+          <button
+            onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
+            disabled={!hasActiveFilters()}
+            class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
+              ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}
+          >
+            <img 
+              src={rotateLeftIcon} 
+              alt="" 
+              width="24"
+              height="24"
+              class="opacity-90"
+              aria-hidden="true"
+            />
+            <span>RESET</span>
+          </button>
+          <button
+            onClick={() => setIsOpen(false)}
+            class="md:hidden flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2"
+          >
+            <span>VIEW</span>
+            <svg
+              class="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              <img 
-                src={rotateLeftIcon} 
-                alt="" 
-                width="24"
-                height="24"
-                class="opacity-90"
-                aria-hidden="true"
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
               />
-              <span>RESET</span>
-            </button>
-            <button
-              onClick={() => setIsOpen(false)}
-              class="md:hidden flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2"
-            >
-              <span>VIEW</span>
-              <svg
-                class="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </button>
-          </div>
+            </svg>
+          </button>
         </div>
       </div>
     </div>
