@@ -2,6 +2,7 @@ import { createSignal, onMount, onCleanup, For, Show, createEffect } from 'solid
 import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
+import sortOrderIcon from '../assets/icons/sort-order-icon.svg?url';
 
 export const [isOpen, setIsOpen] = createSignal(false);
 export const toggleSidebar = () => setIsOpen(!isOpen());
@@ -220,7 +221,7 @@ export default function FilterSidebar() {
       <div class="mb-6">
         <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
         <div class="flex gap-2">
-          <div class="relative w-1/2">
+          <div class="relative w-2/3">
             <select 
               class="appearance-none border border-black p-4 w-full pr-10"
               value={sortConfig().field}
@@ -237,21 +238,23 @@ export default function FilterSidebar() {
               </svg>
             </div>
           </div>
-          <div class="relative w-1/2">
-            <select 
-              class="appearance-none border border-black p-4 w-full pr-10"
-              value={sortConfig().order}
-              onChange={(e) => setSortConfig(prev => ({ ...prev, order: e.currentTarget.value as 'ASC' | 'DESC' }))}
-            >
-              <option value="ASC">ASC</option>
-              <option value="DESC">DESC</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-              </svg>
-            </div>
-          </div>
+          <button
+            onClick={() => setSortConfig(prev => ({ 
+              ...prev, 
+              order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
+            }))}
+            class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
+            aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
+          >
+            <img 
+              src={sortOrderIcon} 
+              alt="" 
+              width="32"
+              height="28"
+              class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
+              aria-hidden="true"
+            />
+          </button>
         </div>
       </div>
 
