@@ -13,7 +13,7 @@ export const [filters, setFilters] = createSignal({
   year: ''
 });
 
-export type SortField = keyof Pick<Car, 'make' | 'model' | 'support_type' | 'year_list'>;
+export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>;
 
 export const [sortConfig, setSortConfig] = createSignal({
   field: 'make' as SortField,
@@ -227,7 +227,7 @@ export default function FilterSidebar() {
               onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
             >
               <option value="make">Make</option>
-              <option value="model">Model</option>
+              {/* Model sort will be added in a future update */}
               <option value="year_list">Year</option>
               <option value="support_type">Support Level</option>
             </select>
