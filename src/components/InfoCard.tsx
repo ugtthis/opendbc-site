@@ -54,7 +54,7 @@ const InfoCard: Component<InfoCardProps> = (props) => {
   };
 
   return (
-    <div class={`flex flex-col w-full mb-10 ${props.class || ''}`}>
+    <div class={`flex flex-col w-full mb-6 ${props.class || ''}`}>
       <div class="flex items-stretch">
         <div class="bg-neutral-900 text-white px-4 py-2 flex-grow flex items-center">
           <h2 class="text-md">{props.label}</h2>
