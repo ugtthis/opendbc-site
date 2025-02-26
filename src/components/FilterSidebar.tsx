@@ -227,7 +227,7 @@ export default function FilterSidebar() {
   const getResultsStyle = (count: number) => {
     if (count === 0) return 'bg-black text-[#FF5733]'; // Red text
     if (count <= 5) return 'bg-black text-[#FFD700]'; // Yellow text
-    return 'bg-black text-[#33FF33]'; // Green text
+    return 'bg-black text-[#32E347]'; // Green text
   };
 
   return (
