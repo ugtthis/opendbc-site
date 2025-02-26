@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import cars from '../../data/car_data.json';
 import type { Car } from '../../types/CarDataTypes';
 import { getSupportTypeColor } from '../../utils/supportType';
+import InfoCard from '../../components/InfoCard';
 
 // Generate all possible car paths at build time
 export async function getStaticPaths() {
@@ -19,7 +20,6 @@ const { carData } = Astro.props;
 <BaseLayout title={`${carData.make} ${carData.model} - opendbc`}>
 	<main class="min-h-screen bg-[#E8E8E8] pb-20">
 		<div class="max-w-7xl mx-auto pl-5 pt-6">
-
 				<!-- Breadcrumb -->
 				<nav class="flex items-center space-x-2 text-md pb-4">
 						<a href="/" class="hover:underline">Home</a>
@@ -30,24 +30,22 @@ const { carData } = Astro.props;
 
 		<div class="max-w-7xl mx-auto px-5">
 			<div class="flex flex-col lg:flex-row gap-8">
-
 				<!-- Left Sidebar -->
 				<div class="lg:w-80 flex-shrink-0">
 					<!-- Sidebar Header -->
-					<div class="bg-black text-white py-3 pl-4">
-						<h1 class="text-xl font-bold">{carData.make}</h1>
-					</div>
-					<div class="bg-white  mb-4">
-						<div class="py-3 pl-4">
-							<p class="font-medium">{carData.years} {carData.make} {carData.model}</p>
+					<div class="mb-6">
+						<div class="bg-black text-white py-3 pl-4">
+							<h1 class="text-xl font-bold">{carData.make}</h1>
+						</div>
+						<div class="bg-white">
+							<div class="py-3 pl-4">
+								<p class="font-medium">{carData.years} {carData.make} {carData.model}</p>
+							</div>
 						</div>
 					</div>
 
 					<!-- Key Specs -->
-					<div class="bg-white border-2 border-black">
-						<div class="p-4 border-b border-gray-200">
-							<h2 class="font-bold text-xl">Key Specs</h2>
-						</div>
+					<InfoCard label="Key Specs" client:load>
 						<div class="divide-y divide-gray-200">
 							<div class="p-4">
 								<p class="text-sm"><strong>Support Type:</strong></p>
@@ -80,241 +78,183 @@ const { carData } = Astro.props;
 								</p>
 							</div>
 						</div>
-					</div>
+					</InfoCard>
 				</div>
 
 				<!-- Main Content -->
 				<div class="flex-1">
-					<!-- Info Sections -->
-					<div class="space-y-8">
-
-						<!-- General Information -->
-						<div class="flex flex-col">
-							<div class="inline-flex">
-								<div class="bg-black text-white px-4 py-2">
-									<h2 class="text-md whitespace-nowrap">General Information</h2>
-								</div>
-							</div>
-							<div class="flex flex-col lg:flex-row gap-4">
-								<section class="bg-white border border-black lg:w-3/4 flex-grow">
-									<div class="p-6">
-										<div set:html={carData.detail_sentence} class="prose max-w-none" />
-										{carData.footnotes.length > 0 && (
-											<ul class="mt-4 list-disc list-inside space-y-2">
-												{carData.footnotes.map(note => (
-													<li class="text-sm text-gray-600">{note}</li>
-												))}
-											</ul>
-										)}
-									</div>
-								</section>
-								<section class="bg-white border border-black lg:w-1/4">
-									<div class="divide-y divide-gray-200">
-										<div class="flex justify-between items-center px-4 py-2 bg-gray-50">
-											<span class="text-sm font-medium">Mass</span>
-											<span class="text-sm">{Math.round(carData.mass)} kg</span>
-										</div>
-										<div class="flex justify-between items-center px-4 py-2">
-											<span class="text-sm font-medium">Wheelbase</span>
-											<span class="text-sm">{carData.wheelbase} m</span>
-										</div>
-										<div class="flex justify-between items-center px-4 py-2 bg-gray-50">
-											<span class="text-sm font-medium">Steer Ratio</span>
-											<span class="text-sm">{carData.steer_ratio}</span>
-										</div>
-									</div>
-								</section>
-							</div>
-						</div>
-
-						<!-- Required Parts -->
-						{carData.car_parts.length > 0 && (
-							<div class="flex flex-col">
-								<div class="inline-flex">
-									<div class="bg-black text-white px-4 py-2">
-										<h2 class="text-md whitespace-nowrap">Required Parts</h2>
-									</div>
-								</div>
-								<section class="bg-white border border-black">
-									<div class="p-6">
-										<ul class="space-y-2">
-											{carData.car_parts.map(part => (
-												<li class="flex items-center space-x-2">
-													<span class="w-2 h-2 bg-black rounded-full"></span>
-													<span>{part}</span>
-												</li>
+					<!-- General Information -->
+					<InfoCard label="General Information" client:load>
+						<div class="flex flex-col lg:flex-row gap-4">
+							<section class="lg:w-3/4 flex-grow">
+								<div class="p-6">
+									<div set:html={carData.detail_sentence} class="prose max-w-none" />
+									{carData.footnotes.length > 0 && (
+										<ul class="mt-4 list-disc list-inside space-y-2">
+											{carData.footnotes.map(note => (
+												<li class="text-sm text-gray-600">{note}</li>
 											))}
 										</ul>
-									</div>
-								</section>
-							</div>
-						)}
-
-						<!-- Car Data 1 -->
-						<div class="flex flex-col">
-							<div class="inline-flex">
-								<div class="bg-black text-white px-4 py-2">
-									<h2 class="text-md whitespace-nowrap">Capabilities</h2>
+									)}
 								</div>
-							</div>
-							<section class="bg-white border border-black">
+							</section>
+							<section class="pt-1 border-l border-gray-500 lg:w-1/4">
 								<div class="divide-y divide-gray-200">
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">Minimum Steering Speed</span>
-										<span>{carData.min_steer_speed} mph</span>
+									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
+										<span class="text-xs font-medium">Mass</span>
+										<span class="text-sm">{Math.round(carData.mass)} kg</span>
 									</div>
-									<div class="flex justify-between items-center px-6 py-3">
-										<span class="font-medium">FSR Longitudinal Control</span>
-										<span>{carData.fsr_longitudinal}</span>
+									<div class="flex justify-between items-center px-4 py-3">
+										<span class="text-xs font-medium">Wheelbase</span>
+										<span class="text-sm">{carData.wheelbase} m</span>
 									</div>
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">FSR Steering Control</span>
-										<span>{carData.fsr_steering}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3">
-										<span class="font-medium">Longitudinal Control Type</span>
-										<span>{carData.longitudinal}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">Support Type</span>
-										<span>{carData.support_type}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3">
-										<span class="font-medium">Required Package</span>
-										<span>{carData.package}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">Auto Resume</span>
-										<span>{carData.auto_resume ? "Yes" : "No"}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3">
-										<span class="font-medium">Steering Torque</span>
-										<span>{carData.steering_torque}</span>
+									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
+										<span class="text-xs font-medium">Steer Ratio</span>
+										<span class="text-sm">{carData.steer_ratio}</span>
 									</div>
 								</div>
 							</section>
 						</div>
+					</InfoCard>
 
-                        <!-- Car Data 2 -->
-						<div class="flex flex-col">
-							<div class="inline-flex">
-								<div class="bg-black text-white px-4 py-2">
-									<h2 class="text-md whitespace-nowrap">Car Data 2</h2>
-								</div>
+					<!-- Required Parts -->
+					{carData.car_parts.length > 0 && (
+						<InfoCard label="Required Parts" client:load>
+							<div class="p-6">
+								<ul class="space-y-3">
+									{carData.car_parts.map(part => (
+										<li class="flex items-center space-x-2">
+											<span class="w-2 h-2 bg-black rounded-full"></span>
+											<span>{part}</span>
+										</li>
+									))}
+								</ul>
 							</div>
-							<section class="bg-white border border-black">
-								<div class="divide-y divide-gray-200">
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">Longitudinal Control</span>
-										<span>{carData.longitudinal}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3">
-										<span class="font-medium">Steering Torque</span>
-										<span>{carData.steering_torque}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">Auto Resume</span>
-										<span>{carData.auto_resume_star}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3">
-										<span class="font-medium">Support Type</span>
-										<span>{carData.support_type}</span>
-									</div>
-									<div class="flex justify-between items-center px-6 py-3 bg-gray-50">
-										<span class="font-medium">ADAS Package</span>
-										<span>{carData.package}</span>
-									</div>
-								</div>
-							</section>
+						</InfoCard>
+					)}
+
+					<!-- Capabilities -->
+					<InfoCard label="Capabilities" client:load>
+						<div class="divide-y divide-gray-200">
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">Minimum Steering Speed</span>
+								<span>{carData.min_steer_speed} mph</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4">
+								<span class="font-medium">FSR Longitudinal Control</span>
+								<span>{carData.fsr_longitudinal}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">FSR Steering Control</span>
+								<span>{carData.fsr_steering}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4">
+								<span class="font-medium">Longitudinal Control Type</span>
+								<span>{carData.longitudinal}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">Support Type</span>
+								<span>{carData.support_type}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4">
+								<span class="font-medium">Required Package</span>
+								<span>{carData.package}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">Auto Resume</span>
+								<span>{carData.auto_resume ? "Yes" : "No"}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4">
+								<span class="font-medium">Steering Torque</span>
+								<span>{carData.steering_torque}</span>
+							</div>
 						</div>
+					</InfoCard>
 
-                        <!-- Car Notes -->
-						<div class="flex flex-col">
-							<div class="inline-flex">
-								<div class="bg-black text-white px-4 py-2">
-									<h2 class="text-md whitespace-nowrap">Car Notes</h2>
-								</div>
+					<!-- Car Data 2 -->
+					<InfoCard label="Car Data 2" client:load>
+						<div class="divide-y divide-gray-200">
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">Longitudinal Control</span>
+								<span>{carData.longitudinal}</span>
 							</div>
-							<section class="bg-white border border-black">
-								<div class="p-6">
-									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-										<div class="border border-black p-4">
-											<p class="text-sm font-medium">Longitudinal Control</p>
-											<p class="mt-2">{carData.longitudinal}</p>
-										</div>
-										<div class="border border-black p-4">
-											<p class="text-sm font-medium">Steering Torque</p>
-											<p class="mt-2">{carData.steering_torque}</p>
-										</div>
-										<div class="border border-black p-4">
-											<p class="text-sm font-medium">Auto Resume</p>
-											<p class="mt-2">{carData.auto_resume_star}</p>
-										</div>
-									</div>
-								</div>
-							</section>
+							<div class="flex justify-between items-center px-6 py-4">
+								<span class="font-medium">Steering Torque</span>
+								<span>{carData.steering_torque}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">Auto Resume</span>
+								<span>{carData.auto_resume_star}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4">
+								<span class="font-medium">Support Type</span>
+								<span>{carData.support_type}</span>
+							</div>
+							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
+								<span class="font-medium">ADAS Package</span>
+								<span>{carData.package}</span>
+							</div>
 						</div>
+					</InfoCard>
 
-                        <!-- Tutorials -->
-						<div class="flex flex-col">
-							<div class="inline-flex">
-								<div class="bg-black text-white px-4 py-2">
-									<h2 class="text-md whitespace-nowrap">Tutorials</h2>
+					<!-- Car Notes -->
+					<InfoCard label="Car Notes" client:load>
+						<div class="p-6">
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+								<div class="border border-black p-4">
+									<p class="text-sm font-medium">Longitudinal Control</p>
+									<p class="mt-2">{carData.longitudinal}</p>
+								</div>
+								<div class="border border-black p-4">
+									<p class="text-sm font-medium">Steering Torque</p>
+									<p class="mt-2">{carData.steering_torque}</p>
+								</div>
+								<div class="border border-black p-4">
+									<p class="text-sm font-medium">Auto Resume</p>
+									<p class="mt-2">{carData.auto_resume_star}</p>
 								</div>
 							</div>
-							<section class="bg-white border border-black">
-								<div class="p-6">
-									<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-										<div class="border border-black p-4">
-											<p class="text-sm font-medium">Longitudinal Control</p>
-											<p class="mt-2">{carData.longitudinal}</p>
-										</div>
-										<div class="border border-black p-4">
-											<p class="text-sm font-medium">Steering Torque</p>
-											<p class="mt-2">{carData.steering_torque}</p>
-										</div>
-										<div class="border border-black p-4">
-											<p class="text-sm font-medium">Auto Resume</p>
-											<p class="mt-2">{carData.auto_resume_star}</p>
-										</div>
-									</div>
-								</div>
-							</section>
 						</div>
+					</InfoCard>
 
-						<!-- Demo Video -->
-						{carData.video && (
-							<div class="flex flex-col">
-								<div class="inline-flex">
-									<div class="bg-black text-white px-4 py-2">
-										<h2 class="text-lg font-bold whitespace-nowrap">Demo Video</h2>
-									</div>
+					<!-- Tutorials -->
+					<InfoCard label="Tutorials" client:load>
+						<div class="p-6">
+							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+								<div class="border border-black p-4">
+									<p class="text-sm font-medium">Longitudinal Control</p>
+									<p class="mt-2">{carData.longitudinal}</p>
 								</div>
-								<section class="bg-white border border-black">
-									<div class="p-6">
-										<div class="aspect-w-16 aspect-h-9">
-											<iframe
-												src={carData.video.replace('watch?v=', 'embed/')}
-												title={`${carData.make} ${carData.model} Demo`}
-												allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-												allowfullscreen
-												class="w-full h-full border border-black"
-											></iframe>
-										</div>
-									</div>
-								</section>
+								<div class="border border-black p-4">
+									<p class="text-sm font-medium">Steering Torque</p>
+									<p class="mt-2">{carData.steering_torque}</p>
+								</div>
+								<div class="border border-black p-4">
+									<p class="text-sm font-medium">Auto Resume</p>
+									<p class="mt-2">{carData.auto_resume_star}</p>
+								</div>
 							</div>
-						)}
-					</div>
+						</div>
+					</InfoCard>
+
+					<!-- Demo Video -->
+					{carData.video && (
+						<InfoCard label="Demo Video" client:load>
+							<div class="p-6">
+								<div class="aspect-w-16 aspect-h-9">
+									<iframe
+										src={carData.video.replace('watch?v=', 'embed/')}
+										title={`${carData.make} ${carData.model} Demo`}
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+										allowfullscreen
+										class="w-full h-full border border-black"
+									></iframe>
+								</div>
+							</div>
+						</InfoCard>
+					)}
 				</div>
 			</div>
 		</div>
 	</main>
-</BaseLayout>
-
-<style>
-	/* Add smooth transitions for any height changes */
-	section {
-		transition: all 0.3s ease-in-out;
-	}
-</style> 
+</BaseLayout> 
