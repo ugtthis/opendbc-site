@@ -3,6 +3,7 @@ import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
 import sortOrderIcon from '../assets/icons/sort-order-icon.svg?url';
+import rotateLeftIcon from '../assets/icons/rotate-left.svg?url';
 
 export const [isOpen, setIsOpen] = createSignal(false);
 export const toggleSidebar = () => setIsOpen(!isOpen());
@@ -218,6 +219,11 @@ export default function FilterSidebar() {
     return result.length;
   };
 
+  const hasActiveFilters = () => {
+    const currentFilters = filters();
+    return Object.values(currentFilters).some(value => value !== '');
+  };
+
   const getResultsStyle = (count: number) => {
     if (count === 0) return 'bg-black text-[#FF5733]'; // Red text
     if (count <= 5) return 'bg-black text-[#FFD700]'; // Yellow text
@@ -234,7 +240,7 @@ export default function FilterSidebar() {
     >
       {/* Scrollable content area */}
       <div class="flex flex-col h-full">
-        <div class="flex-1 overflow-y-auto px-9 pt-4 pb-24">
+        <div class="flex-1 overflow-y-auto px-9 pt-4 pb-48">
           {/* Close button */}
           <div class="flex justify-end mb-6 lg:hidden">
             <button
@@ -336,10 +342,47 @@ export default function FilterSidebar() {
           </div>
         </div>
 
-        {/* Fixed footer with results counter */}
+        {/* Fixed footer with results counter and action buttons */}
         <div class="absolute bottom-0 left-0 right-0 bg-[#FBFBFB] px-9 pb-6 pt-4 z-20">
           <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
             {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
+          </div>
+          <div class="flex gap-2 mt-4">
+            <button
+              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
+              disabled={!hasActiveFilters()}
+              class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
+                ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}
+            >
+              <img 
+                src={rotateLeftIcon} 
+                alt="" 
+                width="24"
+                height="24"
+                class="opacity-90"
+                aria-hidden="true"
+              />
+              <span>RESET</span>
+            </button>
+            <button
+              onClick={() => setIsOpen(false)}
+              class="md:hidden flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2"
+            >
+              <span>VIEW</span>
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
