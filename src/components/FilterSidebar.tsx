@@ -183,16 +183,27 @@ export default function FilterSidebar() {
     }
   };
 
+  const [openSort, setOpenSort] = createSignal(false);
+  let sortRef: HTMLDivElement | undefined;
+
+  const handleSortClickOutside = (e: MouseEvent) => {
+    if (openSort() && sortRef && !sortRef.contains(e.target as Node)) {
+      setOpenSort(false);
+    }
+  };
+
   onMount(() => {
     if (!isServer) {
       handleMediaQuery();
       window.addEventListener('resize', handleMediaQuery);
+      document.addEventListener('mousedown', handleSortClickOutside);
     }
   });
 
   onCleanup(() => {
     if (!isServer) {
       window.removeEventListener('resize', handleMediaQuery);
+      document.removeEventListener('mousedown', handleSortClickOutside);
     }
   });
 
@@ -230,6 +241,12 @@ export default function FilterSidebar() {
     return 'bg-black text-[#32E347]'; // Green text
   };
 
+  const sortOptions: { label: string; value: SortField }[] = [
+    { label: 'Make', value: 'make' },
+    { label: 'Year', value: 'year_list' },
+    { label: 'Support Level', value: 'support_type' }
+  ];
+
   return (
     <div
       id="sidebar"
@@ -261,22 +278,43 @@ export default function FilterSidebar() {
           <div class="mb-6">
             <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
             <div class="flex gap-2">
-              <div class="relative w-2/3">
-                <select 
-                  class="appearance-none border border-black p-4 w-full pr-10"
-                  value={sortConfig().field}
-                  onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
+              <div class="relative w-2/3" ref={sortRef}>
+                <button
+                  type="button"
+                  onClick={() => setOpenSort(!openSort())}
+                  class="w-full p-4 text-left border border-black bg-white flex justify-between items-center"
                 >
-                  <option value="make">Make</option>
-                  {/* Model sort will be added in a future update */}
-                  <option value="year_list">Year</option>
-                  <option value="support_type">Support Level</option>
-                </select>
-                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <span>{sortOptions.find(opt => opt.value === sortConfig().field)?.label || 'Make'}</span>
+                  <svg
+                    class={`w-6 h-6 transition-transform ${openSort() ? 'rotate-180' : ''}`}
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
                   </svg>
-                </div>
+                </button>
+                
+                <Show when={openSort()}>
+                  <div class="absolute w-full bg-white border border-t-0 border-black z-10">
+                    <div class="max-h-[180px] overflow-y-auto">
+                      <div>
+                        {sortOptions.map(option => (
+                          <button
+                            class={`w-full h-10 px-4 text-left hover:bg-gray-100 
+                              ${sortConfig().field === option.value ? 'bg-gray-100' : ''}`}
+                            onClick={() => {
+                              setSortConfig(prev => ({ ...prev, field: option.value }));
+                              setOpenSort(false);
+                            }}
+                          >
+                            {option.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </Show>
               </div>
               <button
                 onClick={() => setSortConfig(prev => ({ 
