@@ -24,7 +24,7 @@ export const [sortConfig, setSortConfig] = createSignal({
 const supportLevels = [
   'Upstream',
   'Under review',
-  'Community',
+  'Community',      
   'Dashcam mode',
   'Not compatible'
 ];
@@ -131,40 +131,42 @@ function CustomDropdown(props: DropdownProps) {
         
         <Show when={props.isOpen}>
           <div class="w-full bg-white border border-t-0 border-black">
-            <div class="sticky top-0 bg-white p-2 border-b border-gray-200 z-10">
-              <input
-                ref={inputRef}
-                type="text"
-                value={searchTerm()}
-                onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
-                onKeyDown={handleKeyDown}
-                placeholder="Search..."
-                class="w-full p-2 border border-gray-200 focus:outline-none focus:border-black"
-              />
-            </div>
             <div class="max-h-[180px] overflow-y-auto">
-              <button
-                class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
-                  !props.value ? 'bg-gray-100' : ''
-                } ${highlightedIndex() === 0 ? 'bg-gray-200' : ''}`}
-                onClick={() => handleSelect('')}
-                onMouseEnter={() => setHighlightedIndex(0)}
-              >
-                All
-              </button>
-              <For each={filteredOptions()}>
-                {(option, index) => (
-                  <button
-                    class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
-                      props.value === option ? 'bg-gray-100' : ''
-                    } ${highlightedIndex() === index() + 1 ? 'bg-gray-200' : ''}`}
-                    onClick={() => handleSelect(option)}
-                    onMouseEnter={() => setHighlightedIndex(index() + 1)}
-                  >
-                    {option}
-                  </button>
-                )}
-              </For>
+              <div class="sticky top-0 bg-white p-2 border-b border-gray-200">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={searchTerm()}
+                  onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder="Search..."
+                  class="w-full p-2 border border-gray-200 focus:outline-none focus:border-black"
+                />
+              </div>
+              <div>
+                <button
+                  class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
+                    !props.value ? 'bg-gray-100' : ''
+                  } ${highlightedIndex() === 0 ? 'bg-gray-200' : ''}`}
+                  onClick={() => handleSelect('')}
+                  onMouseEnter={() => setHighlightedIndex(0)}
+                >
+                  All
+                </button>
+                <For each={filteredOptions()}>
+                  {(option, index) => (
+                    <button
+                      class={`w-full h-10 px-4 text-left hover:bg-gray-100 ${
+                        props.value === option ? 'bg-gray-100' : ''
+                      } ${highlightedIndex() === index() + 1 ? 'bg-gray-200' : ''}`}
+                      onClick={() => handleSelect(option)}
+                      onMouseEnter={() => setHighlightedIndex(index() + 1)}
+                    >
+                      {option}
+                    </button>
+                  )}
+                </For>
+              </div>
             </div>
           </div>
         </Show>
@@ -225,113 +227,121 @@ export default function FilterSidebar() {
   return (
     <div
       id="sidebar"
-      class={`fixed left-0 top-[99px] h-[calc(100vh-99px)] bg-[#FBFBFB] shadow-m shadow-gray-400 
-          w-full md:w-[380px] p-9 border-r-4 border-white z-50 overflow-y-auto
+      class={`fixed left-0 md:top-[99px] top-0 md:h-[calc(100vh-99px)] h-screen bg-[#FBFBFB] shadow-m shadow-gray-400 
+          w-full md:w-[380px] border-r-4 border-white z-50
           2xl:translate-x-0 flex flex-col
           ${isOpen() ? 'translate-x-0' : '-translate-x-full'}`}
     >
-      <button
-        class="lg:hidden absolute top-4 right-4 p-2 hover:bg-gray-100"
-        onClick={() => setIsOpen(false)}
-      >
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-
-      <div class="flex-1">
-        <div class="mb-6">
-          <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
-          <div class="flex gap-2">
-            <div class="relative w-2/3">
-              <select 
-                class="appearance-none border border-black p-4 w-full pr-10"
-                value={sortConfig().field}
-                onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
-              >
-                <option value="make">Make</option>
-                {/* Model sort will be added in a future update */}
-                <option value="year_list">Year</option>
-                <option value="support_type">Support Level</option>
-              </select>
-              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div>
-            </div>
+      {/* Scrollable content area */}
+      <div class="flex flex-col h-full">
+        <div class="flex-1 overflow-y-auto px-9 pt-4 pb-24">
+          {/* Close button */}
+          <div class="flex justify-end mb-6 lg:hidden">
             <button
-              onClick={() => setSortConfig(prev => ({ 
-                ...prev, 
-                order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
-              }))}
-              class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
-              aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
+              class="p-2 hover:bg-gray-100"
+              onClick={() => setIsOpen(false)}
             >
-              <img 
-                src={sortOrderIcon} 
-                alt="" 
-                width="32"
-                height="28"
-                class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
-                aria-hidden="true"
-              />
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
             </button>
           </div>
-        </div>
 
-        <div class="w-full h-[1px] bg-gray-200 my-4" />
+          <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
+            <div class="flex gap-2">
+              <div class="relative w-2/3">
+                <select 
+                  class="appearance-none border border-black p-4 w-full pr-10"
+                  value={sortConfig().field}
+                  onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
+                >
+                  <option value="make">Make</option>
+                  {/* Model sort will be added in a future update */}
+                  <option value="year_list">Year</option>
+                  <option value="support_type">Support Level</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+              <button
+                onClick={() => setSortConfig(prev => ({ 
+                  ...prev, 
+                  order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
+                }))}
+                class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
+                aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
+              >
+                <img 
+                  src={sortOrderIcon} 
+                  alt="" 
+                  width="32"
+                  height="28"
+                  class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
+                  aria-hidden="true"
+                />
+              </button>
+            </div>
+          </div>
 
-        <div>
-          <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
-          <div class="space-y-3">
-            <CustomDropdown
-              label="Support Level"
-              options={supportLevels}
-              value={filters().supportLevel}
-              onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
-              isOpen={openDropdown() === 'support-level'}
-              onToggle={() => toggleDropdown('support-level')}
-            />
+          <div class="w-full h-[1px] bg-gray-200 my-4" />
 
-            <CustomDropdown
-              label="Make"
-              options={makes}
-              value={filters().make}
-              onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
-              isOpen={openDropdown() === 'make'}
-              onToggle={() => toggleDropdown('make')}
-            />
+          <div>
+            <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
+            <div class="space-y-3">
+              <CustomDropdown
+                label="Support Level"
+                options={supportLevels}
+                value={filters().supportLevel}
+                onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
+                isOpen={openDropdown() === 'support-level'}
+                onToggle={() => toggleDropdown('support-level')}
+              />
 
-            <CustomDropdown
-              label="Model"
-              options={models}
-              value={filters().model}
-              onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
-              isOpen={openDropdown() === 'model'}
-              onToggle={() => toggleDropdown('model')}
-            />
+              <CustomDropdown
+                label="Make"
+                options={makes}
+                value={filters().make}
+                onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
+                isOpen={openDropdown() === 'make'}
+                onToggle={() => toggleDropdown('make')}
+              />
 
-            <CustomDropdown
-              label="Year"
-              options={years}
-              value={filters().year}
-              onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
-              isOpen={openDropdown() === 'year'}
-              onToggle={() => toggleDropdown('year')}
-            />
+              <CustomDropdown
+                label="Model"
+                options={models}
+                value={filters().model}
+                onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
+                isOpen={openDropdown() === 'model'}
+                onToggle={() => toggleDropdown('model')}
+              />
+
+              <CustomDropdown
+                label="Year"
+                options={years}
+                value={filters().year}
+                onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
+                isOpen={openDropdown() === 'year'}
+                onToggle={() => toggleDropdown('year')}
+              />
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Results counter */}
-      <div class={`mt-16 p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
-        {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
+        {/* Fixed footer with results counter */}
+        <div class="absolute bottom-0 left-0 right-0 bg-[#FBFBFB] px-9 pb-6 pt-4 z-20">
+          <div class={`p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
+            {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
+          </div>
+        </div>
       </div>
     </div>
   );
