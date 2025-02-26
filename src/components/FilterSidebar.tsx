@@ -196,12 +196,38 @@ export default function FilterSidebar() {
   const [openDropdown, setOpenDropdown] = createSignal<string | null>(null);
   const toggleDropdown = (id: string) => setOpenDropdown(current => current === id ? null : id);
 
+  const filteredResults = () => {
+    let result = [...carData];
+    const currentFilters = filters();
+    
+    if (currentFilters.supportLevel) {
+      result = result.filter(car => car.support_type === currentFilters.supportLevel);
+    }
+    if (currentFilters.make) {
+      result = result.filter(car => car.make === currentFilters.make);
+    }
+    if (currentFilters.model) {
+      result = result.filter(car => car.model === currentFilters.model);
+    }
+    if (currentFilters.year) {
+      result = result.filter(car => car.year_list.includes(currentFilters.year));
+    }
+    
+    return result.length;
+  };
+
+  const getResultsStyle = (count: number) => {
+    if (count === 0) return 'bg-black text-[#FF5733]'; // Red text
+    if (count <= 5) return 'bg-black text-[#FFD700]'; // Yellow text
+    return 'bg-black text-[#33FF33]'; // Green text
+  };
+
   return (
     <div
       id="sidebar"
       class={`fixed left-0 top-[99px] h-[calc(100vh-99px)] bg-[#FBFBFB] shadow-m shadow-gray-400 
           w-full md:w-[380px] p-9 border-r-4 border-white z-50 overflow-y-auto
-          2xl:translate-x-0
+          2xl:translate-x-0 flex flex-col
           ${isOpen() ? 'translate-x-0' : '-translate-x-full'}`}
     >
       <button
@@ -218,87 +244,94 @@ export default function FilterSidebar() {
         </svg>
       </button>
 
-      <div class="mb-6">
-        <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
-        <div class="flex gap-2">
-          <div class="relative w-2/3">
-            <select 
-              class="appearance-none border border-black p-4 w-full pr-10"
-              value={sortConfig().field}
-              onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
-            >
-              <option value="make">Make</option>
-              {/* Model sort will be added in a future update */}
-              <option value="year_list">Year</option>
-              <option value="support_type">Support Level</option>
-            </select>
-            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
-              </svg>
+      <div class="flex-1">
+        <div class="mb-6">
+          <h2 class="text-lg font-semibold mb-4">SORT BY:</h2>
+          <div class="flex gap-2">
+            <div class="relative w-2/3">
+              <select 
+                class="appearance-none border border-black p-4 w-full pr-10"
+                value={sortConfig().field}
+                onChange={(e) => setSortConfig(prev => ({ ...prev, field: e.currentTarget.value as SortField }))}
+              >
+                <option value="make">Make</option>
+                {/* Model sort will be added in a future update */}
+                <option value="year_list">Year</option>
+                <option value="support_type">Support Level</option>
+              </select>
+              <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
             </div>
+            <button
+              onClick={() => setSortConfig(prev => ({ 
+                ...prev, 
+                order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
+              }))}
+              class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
+              aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
+            >
+              <img 
+                src={sortOrderIcon} 
+                alt="" 
+                width="32"
+                height="28"
+                class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
+                aria-hidden="true"
+              />
+            </button>
           </div>
-          <button
-            onClick={() => setSortConfig(prev => ({ 
-              ...prev, 
-              order: prev.order === 'ASC' ? 'DESC' : 'ASC' 
-            }))}
-            class="w-1/3 border border-black p-3 flex items-center justify-center hover:bg-gray-50"
-            aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
-          >
-            <img 
-              src={sortOrderIcon} 
-              alt="" 
-              width="32"
-              height="28"
-              class={`${sortConfig().order === 'DESC' ? 'rotate-180' : ''}`}
-              aria-hidden="true"
+        </div>
+
+        <div class="w-full h-[1px] bg-gray-200 my-4" />
+
+        <div>
+          <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
+          <div class="space-y-3">
+            <CustomDropdown
+              label="Support Level"
+              options={supportLevels}
+              value={filters().supportLevel}
+              onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
+              isOpen={openDropdown() === 'support-level'}
+              onToggle={() => toggleDropdown('support-level')}
             />
-          </button>
+
+            <CustomDropdown
+              label="Make"
+              options={makes}
+              value={filters().make}
+              onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
+              isOpen={openDropdown() === 'make'}
+              onToggle={() => toggleDropdown('make')}
+            />
+
+            <CustomDropdown
+              label="Model"
+              options={models}
+              value={filters().model}
+              onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
+              isOpen={openDropdown() === 'model'}
+              onToggle={() => toggleDropdown('model')}
+            />
+
+            <CustomDropdown
+              label="Year"
+              options={years}
+              value={filters().year}
+              onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
+              isOpen={openDropdown() === 'year'}
+              onToggle={() => toggleDropdown('year')}
+            />
+          </div>
         </div>
       </div>
 
-      <div class="w-full h-[1px] bg-gray-200 my-4" />
-
-      <div>
-        <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
-        <div class="space-y-3">
-          <CustomDropdown
-            label="Support Level"
-            options={supportLevels}
-            value={filters().supportLevel}
-            onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
-            isOpen={openDropdown() === 'support-level'}
-            onToggle={() => toggleDropdown('support-level')}
-          />
-
-          <CustomDropdown
-            label="Make"
-            options={makes}
-            value={filters().make}
-            onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
-            isOpen={openDropdown() === 'make'}
-            onToggle={() => toggleDropdown('make')}
-          />
-
-          <CustomDropdown
-            label="Model"
-            options={models}
-            value={filters().model}
-            onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
-            isOpen={openDropdown() === 'model'}
-            onToggle={() => toggleDropdown('model')}
-          />
-
-          <CustomDropdown
-            label="Year"
-            options={years}
-            value={filters().year}
-            onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
-            isOpen={openDropdown() === 'year'}
-            onToggle={() => toggleDropdown('year')}
-          />
-        </div>
+      {/* Results counter */}
+      <div class={`mt-16 p-2 border border-white text-center font-semibold ${getResultsStyle(filteredResults())}`}>
+        {filteredResults()} RESULT{filteredResults() !== 1 ? 'S' : ''}
       </div>
     </div>
   );
