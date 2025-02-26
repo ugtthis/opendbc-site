@@ -260,16 +260,14 @@ export default function FilterSidebar() {
         {/* Main content area - will grow to fill available space */}
         <div class="flex-1 overflow-y-auto px-9 pt-4">
           {/* Close button */}
-          <div class="flex justify-end mb-6 lg:hidden">
+          <div class="flex justify-end mb-3 lg:hidden">
             <button
               class="p-2 hover:bg-gray-100"
               onClick={() => setIsOpen(false)}
             >
-              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  stroke-width="3.5"
                   d="M6 18L18 6M6 6l12 12"
                 />
               </svg>
