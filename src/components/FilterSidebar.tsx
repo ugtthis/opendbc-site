@@ -18,11 +18,9 @@ const filterSections: FilterSection[] = [
   { title: 'Drive Train', options: [] }
 ];
 
-// Move the signal outside the component
 export const [isOpen, setIsOpen] = createSignal(false);
 export const toggleSidebar = () => setIsOpen(!isOpen());
 
-// Filter state
 export const [filters, setFilters] = createSignal({
   supportLevel: '',
   make: '',
@@ -37,7 +35,6 @@ export const [sortConfig, setSortConfig] = createSignal({
   order: 'ASC' as 'ASC' | 'DESC'
 });
 
-// Support level options
 const supportLevels = [
   'Upstream',
   'Under review',
