@@ -6,7 +6,21 @@ import sortOrderIcon from '../assets/icons/sort-order-icon.svg?url';
 import rotateLeftIcon from '../assets/icons/rotate-left.svg?url';
 
 export const [isOpen, setIsOpen] = createSignal(false);
-export const toggleSidebar = () => setIsOpen(!isOpen());
+export const toggleSidebar = () => {
+  const newIsOpen = !isOpen();
+  setIsOpen(newIsOpen);
+  // Only toggle body scroll on mobile
+  if (!isServer && window.matchMedia('(max-width: 767px)').matches) {
+    document.body.classList.toggle('overflow-hidden', newIsOpen);
+  }
+};
+
+// Cleanup scroll lock on unmount
+onCleanup(() => {
+  if (!isServer) {
+    document.body.classList.remove('overflow-hidden');
+  }
+});
 
 export const [filters, setFilters] = createSignal({
   supportLevel: '',
