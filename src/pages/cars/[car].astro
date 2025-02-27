@@ -129,53 +129,53 @@ const { carData } = Astro.props;
 
 					<!-- Technical Parameters -->
 					<InfoCard label="Technical Parameters" client:load>
-						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-6">
-							<div class="border p-4 bg-gray-50">
-								<h3 class="text-sm font-medium mb-2">Tire Configuration</h3>
-								<div class="space-y-2">
-									<div class="flex justify-between">
+						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5 py-8">
+							<div class="border bg-white flex flex-col">
+								<h3 class="text-sm font-bold px-3 py-3">Tire Configuration:</h3>
+								<div class="flex-1 flex flex-col">
+									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stiffness Factor</span>
 										<span class="text-sm">{carData.tire_stiffness_factor}</span>
 									</div>
-									<div class="flex justify-between">
+									<div class="flex justify-between flex-1 items-center px-3 py-5">
 										<span class="text-sm">Front Stiffness</span>
 										<span class="text-sm">{Math.round(carData.tire_stiffness_front)}</span>
 									</div>
-									<div class="flex justify-between">
+									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Rear Stiffness</span>
 										<span class="text-sm">{Math.round(carData.tire_stiffness_rear)}</span>
 									</div>
 								</div>
 							</div>
-							<div class="border p-4">
-								<h3 class="text-sm font-medium mb-2">Vehicle Control</h3>
-								<div class="space-y-2">
-									<div class="flex justify-between">
+							<div class="border bg-white flex flex-col">
+								<h3 class="text-sm font-bold px-3 py-3">Vehicle Control:</h3>
+								<div class="flex-1 flex flex-col">
+									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Actuator Delay</span>
 										<span class="text-sm">{carData.steer_actuator_delay}s</span>
 									</div>
-									<div class="flex justify-between">
+									<div class="flex justify-between flex-1 items-center px-3 py-5">
 										<span class="text-sm">Limit Timer</span>
 										<span class="text-sm">{carData.steer_limit_timer}s</span>
 									</div>
-									<div class="flex justify-between">
+									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Control Type</span>
 										<span class="text-sm">{carData.steer_control_type}</span>
 									</div>
 								</div>
 							</div>
-							<div class="border p-4 bg-gray-50">
-								<h3 class="text-sm font-medium mb-2">Speed Parameters</h3>
-								<div class="space-y-2">
-									<div class="flex justify-between">
+							<div class="border bg-white flex flex-col">
+								<h3 class="text-sm font-bold px-3 py-3">Speed Parameters:</h3>
+								<div class="flex-1 flex flex-col">
+									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stopping Speed</span>
 										<span class="text-sm">{carData.vEgo_stopping} m/s</span>
 									</div>
-									<div class="flex justify-between">
+									<div class="flex justify-between flex-1 items-center px-3 py-5">
 										<span class="text-sm">Starting Speed</span>
 										<span class="text-sm">{carData.vEgo_starting} m/s</span>
 									</div>
-									<div class="flex justify-between">
+									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stop Accel</span>
 										<span class="text-sm">{carData.stop_accel} m/s²</span>
 									</div>
