@@ -73,7 +73,7 @@ const Card: Component<CardProps> = (props) => {
         </div>
 
         <label for={`toggle-${props.car.name}-${props.car.car_fingerprint}`} class="flex justify-center bg-[#969696] peer-checked:bg-[#D9D9D9] border-t border-black mt-auto py-1 cursor-pointer">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="4 6 12 8" fill="none" stroke="white" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="4 6 12 8" fill="none" stroke="#2D2D2D" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter">
             <path d="M5.293 7.293L10 11.586l4.707-4.293" />
           </svg>
         </label>
