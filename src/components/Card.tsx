@@ -15,7 +15,7 @@ const Card: Component<CardProps> = (props) => {
       </div>
 
       {/* Card body */}
-      <div class="border border-black bg-[#F3F3F3] shadow min-h-[180px] flex flex-col">
+      <div class="border border-black bg-[#F3F3F3] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.20)] min-h-[180px] flex flex-col">
         <div class="flex-grow">
           {/* Year and Model */}
           <div class="flex border-b border-black">
