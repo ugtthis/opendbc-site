@@ -35,9 +35,8 @@ const Card: Component<CardProps> = (props) => {
           </div>
 
           <div class="flex flex-row justify-start divide-x divide-black">
-            <p class="text-sm px-3 py-2">AWD</p>
-            <p class="text-sm px-3 py-2">Gas</p>
-            <p class="text-sm px-3 py-2">Hybrid</p>
+            <div class="h-6"/> 
+            {/* spacer for future drivetrain label */}
           </div>
         </div>
 
