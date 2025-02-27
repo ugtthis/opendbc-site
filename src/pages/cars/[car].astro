@@ -68,16 +68,18 @@ const { carData } = Astro.props;
 									<p class="text-l mt-1">{carData.harness}</p>
 								</div>
 							)}
-							<div class="p-4">
-								<p class="text-sm"><strong>Longitudinal Report:</strong></p>
-								<p class="text-l mt-1">
-									<a href="https://commaai.github.io/opendbc-data/longitudinal_reports/FORD_BRONCO_SPORT_MK1_b9d015f8ff659e1e_0000043a--98baf2b862.html" 
-									   class="text-blue-600 hover:text-blue-800 hover:underline" 
-									   target="_blank">
-										View Report
-									</a>
-								</p>
-							</div>
+							{carData.longitudinal_report_link && (
+								<div class="p-4">
+									<p class="text-sm"><strong>Longitudinal Report:</strong></p>
+									<p class="text-l mt-1">
+										<a href={carData.longitudinal_report_link} 
+										   class="text-blue-600 hover:text-blue-800 hover:underline" 
+										   target="_blank">
+											View Report
+										</a>
+									</p>
+								</div>
+							)}
 						</div>
 					</InfoCard>
 				</div>

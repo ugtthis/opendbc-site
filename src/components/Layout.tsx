@@ -26,6 +26,12 @@ const Layout: Component<LayoutProps> = (props) => {
     if (currentFilters.year) {
       result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
     }
+    if (currentFilters.hasLongitudinalReport) {
+      result = result.filter(car => {
+        const hasReport = !!car.longitudinal_report_link;
+        return currentFilters.hasLongitudinalReport === 'True' ? hasReport : !hasReport;
+      });
+    }
 
     // Apply sorting
     const sort = sortConfig();

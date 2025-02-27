@@ -15,11 +15,13 @@ export const [filters, setFilters] = createSignal<{
   make: string;
   model: string;
   year: string;
+  hasLongitudinalReport: string;
 }>({
   supportLevel: '',
   make: '',
   model: '',
-  year: ''
+  year: '',
+  hasLongitudinalReport: ''
 });
 
 export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>;
@@ -183,6 +185,34 @@ function CustomDropdown(props: DropdownProps) {
   );
 }
 
+export const getFilteredResults = () => {
+  let result: Car[] = [...carData];
+  const currentFilters = filters();
+  
+  if (currentFilters.supportLevel) {
+    result = result.filter(car => car.support_type === currentFilters.supportLevel);
+  }
+  if (currentFilters.make) {
+    result = result.filter(car => car.make === currentFilters.make);
+  }
+  if (currentFilters.model) {
+    result = result.filter(car => car.model === currentFilters.model);
+  }
+  if (currentFilters.year) {
+    result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
+  }
+  if (currentFilters.hasLongitudinalReport) {
+    result = result.filter(car => {
+      const hasReport = !!car.longitudinal_report_link;
+      return currentFilters.hasLongitudinalReport === 'True' ? hasReport : !hasReport;
+    });
+  }
+  
+  return result;
+};
+
+export const filteredResults = () => getFilteredResults().length;
+
 export default function FilterSidebar() {
   const handleMediaQuery = () => {
     if (window.matchMedia('(min-width: 1536px)').matches) {
@@ -216,26 +246,6 @@ export default function FilterSidebar() {
 
   const [openDropdown, setOpenDropdown] = createSignal<string | null>(null);
   const toggleDropdown = (id: string) => setOpenDropdown(current => current === id ? null : id);
-
-  const filteredResults = () => {
-    let result: Car[] = [...carData];
-    const currentFilters = filters();
-    
-    if (currentFilters.supportLevel) {
-      result = result.filter(car => car.support_type === currentFilters.supportLevel);
-    }
-    if (currentFilters.make) {
-      result = result.filter(car => car.make === currentFilters.make);
-    }
-    if (currentFilters.model) {
-      result = result.filter(car => car.model === currentFilters.model);
-    }
-    if (currentFilters.year) {
-      result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
-    }
-    
-    return result.length;
-  };
 
   const hasActiveFilters = () => {
     const currentFilters = filters();
@@ -380,6 +390,15 @@ export default function FilterSidebar() {
               isOpen={openDropdown() === 'year'}
               onToggle={() => toggleDropdown('year')}
             />
+
+            <CustomDropdown
+              label="Has Longitudinal Report"
+              options={['True', 'False']}
+              value={filters().hasLongitudinalReport}
+              onChange={(value) => setFilters(prev => ({ ...prev, hasLongitudinalReport: value }))}
+              isOpen={openDropdown() === 'longitudinal-report'}
+              onToggle={() => toggleDropdown('longitudinal-report')}
+            />
           </div>
         </div>
         {/* Spacer */}
@@ -391,7 +410,7 @@ export default function FilterSidebar() {
           </div>
           <div class="flex gap-2 mt-4">
             <button
-              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
+              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '', hasLongitudinalReport: '' })}
               disabled={!hasActiveFilters()}
               class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
                 ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}
