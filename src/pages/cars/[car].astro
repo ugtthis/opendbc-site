@@ -107,23 +107,23 @@ const { carData } = Astro.props;
 								<div class="divide-y divide-gray-200">
 									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
 										<span class="text-sm font-medium">Mass</span>
-										<span class="text-sm">{Math.round(carData.mass)} kg</span>
+										<span class="text-sm">~{Math.round(carData.mass).toLocaleString()} kg</span>
 									</div>
 									<div class="flex justify-between items-center px-4 py-3">
 										<span class="text-sm font-medium">Wheelbase</span>
-										<span class="text-sm">{carData.wheelbase} m</span>
+										<span class="text-sm">~{Number(carData.wheelbase).toFixed(2)} m</span>
 									</div>
 									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
 										<span class="text-sm font-medium">Steer Ratio</span>
-										<span class="text-sm">{carData.steer_ratio}</span>
+										<span class="text-sm">~{Number(carData.steer_ratio).toFixed(2)}</span>
 									</div>
 									<div class="flex justify-between items-center px-4 py-3">
 										<span class="text-sm font-medium">Center to Front Ratio</span>
-										<span class="text-sm">{carData.center_to_front_ratio}</span>
+										<span class="text-sm">~{Number(carData.center_to_front_ratio).toFixed(2)}</span>
 									</div>
 									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
 										<span class="text-sm font-medium">Max Lateral Accel</span>
-										<span class="text-sm">{carData.max_lateral_accel} m/s²</span>
+										<span class="text-sm">~{Number(carData.max_lateral_accel).toFixed(2)} m/s²</span>
 									</div>
 								</div>
 							</InfoCard>
@@ -138,15 +138,15 @@ const { carData } = Astro.props;
 								<div class="flex-1 flex flex-col">
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stiffness Factor</span>
-										<span class="text-sm">{carData.tire_stiffness_factor}</span>
+										<span class="text-sm">~{Number(carData.tire_stiffness_factor).toFixed(2)}</span>
 									</div>
 									<div class="flex justify-between flex-1 items-center px-3 py-5">
 										<span class="text-sm">Front Stiffness</span>
-										<span class="text-sm">{Math.round(carData.tire_stiffness_front)}</span>
+										<span class="text-sm">~{Math.round(carData.tire_stiffness_front).toLocaleString()}</span>
 									</div>
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Rear Stiffness</span>
-										<span class="text-sm">{Math.round(carData.tire_stiffness_rear)}</span>
+										<span class="text-sm">~{Math.round(carData.tire_stiffness_rear).toLocaleString()}</span>
 									</div>
 								</div>
 							</div>
@@ -155,11 +155,11 @@ const { carData } = Astro.props;
 								<div class="flex-1 flex flex-col">
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Actuator Delay</span>
-										<span class="text-sm">{carData.steer_actuator_delay}s</span>
+										<span class="text-sm">~{Number(carData.steer_actuator_delay).toFixed(2)}s</span>
 									</div>
 									<div class="flex justify-between flex-1 items-center px-3 py-5">
 										<span class="text-sm">Limit Timer</span>
-										<span class="text-sm">{carData.steer_limit_timer}s</span>
+										<span class="text-sm">~{Number(carData.steer_limit_timer).toFixed(2)}s</span>
 									</div>
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Control Type</span>
@@ -172,15 +172,15 @@ const { carData } = Astro.props;
 								<div class="flex-1 flex flex-col">
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stopping Speed</span>
-										<span class="text-sm">{carData.vEgo_stopping} m/s</span>
+										<span class="text-sm">~{Number(carData.vEgo_stopping).toFixed(2)} m/s</span>
 									</div>
 									<div class="flex justify-between flex-1 items-center px-3 py-5">
 										<span class="text-sm">Starting Speed</span>
-										<span class="text-sm">{carData.vEgo_starting} m/s</span>
+										<span class="text-sm">~{Number(carData.vEgo_starting).toFixed(2)} m/s</span>
 									</div>
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stop Accel</span>
-										<span class="text-sm">{carData.stop_accel} m/s²</span>
+										<span class="text-sm">~{Number(carData.stop_accel).toFixed(2)} m/s²</span>
 									</div>
 								</div>
 							</div>
