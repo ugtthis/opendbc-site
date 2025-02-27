@@ -45,21 +45,21 @@ const Card: Component<CardProps> = (props) => {
 
         <div class="bg-[#D9D9D9] overflow-hidden max-h-0 peer-checked:max-h-[400px] peer-checked:border-t peer-checked:border-black">
           <div class="p-4 grid grid-cols-2 gap-4">
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center">
-              <span class="text-sm">Steering<br />Torque</span>
-              <span>2048</span>
+            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
+              <span class="text-sm">Mass</span>
+              <span>~{Number.isInteger(props.car.mass) ? Math.round(props.car.mass).toLocaleString() : Number(props.car.mass).toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kg</span>
             </div>
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center">
+            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
               <span class="text-sm">Harness</span>
               <p>{props.car.harness ? props.car.harness : 'N/A'}</p>
             </div>
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center">
-              <span class="text-sm">Lat<br />Control</span>
-              <span>N/A</span>
+            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
+              <span class="text-sm">Auto<br />Resume</span>
+              <span>{props.car.auto_resume ? 'Yes' : 'No'}</span>
             </div>
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center">
-              <span class="text-sm">Long<br />Control</span>
-              <span>N/A</span>
+            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
+              <span class="text-sm">Steer<br />Ratio</span>
+              <span>~{Number.isInteger(props.car.steer_ratio) ? props.car.steer_ratio : Number(props.car.steer_ratio).toFixed(2)}</span>
             </div>
           </div>
           <div class="flex justify-between px-4 pb-4 items-center">
