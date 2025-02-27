@@ -8,7 +8,7 @@ type CarListProps = {
 
 const CarList: Component<CarListProps> = (props) => {
   return (
-    <div class="flex-1 overflow-auto">
+    <div class="flex-1 overflow-auto -webkit-overflow-scrolling-touch">
       <div class="responsive-grid gap-4">
         <For each={props.cars}>
           {(car) => (
