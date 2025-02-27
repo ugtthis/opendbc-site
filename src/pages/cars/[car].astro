@@ -47,9 +47,12 @@ const { carData } = Astro.props;
 						<div class="divide-y divide-gray-200">
 							<div class="p-4">
 								<p class="text-sm"><strong>Support Type:</strong></p>
-								<div class={`text-l mt-1 px-4 py-2 inline-block ${getSupportTypeColor(carData.support_type)}`}>
+								<a 
+									href={`/support-types`} 
+									class={`text-l mt-1 px-4 py-2 inline-block ${getSupportTypeColor(carData.support_type)} hover:opacity-90 transition-opacity cursor-pointer`}
+								>
 									{carData.support_type}
-								</div>
+								</a>
 							</div>
 							<div class="p-4">
 								<p class="text-sm"><strong>ADAS Package:</strong></p>
