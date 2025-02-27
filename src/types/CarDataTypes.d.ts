@@ -1,4 +1,9 @@
-export interface Car {
+import cars from '../data/car_data.json';
+
+export type Car = typeof cars[number];
+
+// Optional: You can still document the shape with a separate interface
+export interface CarDocumentation {
   // Basic Information
   name: string;
   make: string;

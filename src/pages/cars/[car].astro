@@ -1,14 +1,12 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import cars from '../../data/car_data.json';
-import type { Car } from '../../types/CarDataTypes';
 import { getSupportTypeColor } from '../../utils/supportType';
 import InfoCard from '../../components/InfoCard';
 
 // Generate all possible car paths at build time
 export async function getStaticPaths() {
-	const allCars = cars as unknown as Car[];
-	return allCars.map(car => ({
+	return cars.map(car => ({
 		params: { car: `${car.make}-${car.model}`.toLowerCase() },
 		props: { carData: car },
 	}));

@@ -2,11 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Layout from '../components/Layout';
 import cars from '../data/car_data.json';
-import type { Car } from '../types/CarDataTypes';
-
-const typedCars = cars as Car[];
 ---
 
 <BaseLayout title="opendbc">
-	<Layout client:load cars={typedCars} />
+	<Layout client:load cars={cars} />
 </BaseLayout>
