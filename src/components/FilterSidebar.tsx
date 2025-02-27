@@ -6,21 +6,7 @@ import sortOrderIcon from '../assets/icons/sort-order-icon.svg?url';
 import rotateLeftIcon from '../assets/icons/rotate-left.svg?url';
 
 export const [isOpen, setIsOpen] = createSignal(false);
-export const toggleSidebar = () => {
-  const newIsOpen = !isOpen();
-  setIsOpen(newIsOpen);
-  // Only toggle body scroll on mobile
-  if (!isServer && window.matchMedia('(max-width: 767px)').matches) {
-    document.body.classList.toggle('overflow-hidden', newIsOpen);
-  }
-};
-
-// Cleanup scroll lock on unmount
-onCleanup(() => {
-  if (!isServer) {
-    document.body.classList.remove('overflow-hidden');
-  }
-});
+export const toggleSidebar = () => setIsOpen(!isOpen());
 
 export const [filters, setFilters] = createSignal({
   supportLevel: '',
@@ -264,13 +250,13 @@ export default function FilterSidebar() {
   return (
     <div
       id="sidebar"
-      class={`fixed left-0 md:top-[99px] top-0 md:h-[calc(100vh-99px)] h-screen bg-[#FBFBFB] shadow-m shadow-gray-400 
-          w-full md:w-[380px] border-r-4 border-white z-50
+      class={`fixed inset-0 md:inset-auto md:left-0 md:top-[99px] md:h-[calc(100vh-99px)] bg-[#FBFBFB] shadow-m shadow-gray-400 
+          w-full md:w-[380px] border-r-4 border-white z-50 touch-none
           2xl:translate-x-0 flex flex-col
           ${isOpen() ? 'translate-x-0' : '-translate-x-full'}`}
     >
       {/* Scrollable content area */}
-      <div class="overflow-y-auto px-9 pt-4">
+      <div class="overflow-y-auto px-9 pt-4 touch-auto">
         {/* Close button */}
         <div class="flex justify-end mb-3 lg:hidden">
           <button
@@ -437,7 +423,6 @@ export default function FilterSidebar() {
         {/* Spacer */}
         <div class="h-24" />
       </div>
-      </div>
-
+    </div>
   );
 } 
