@@ -5,10 +5,17 @@ import type { Car } from '../types/CarDataTypes';
 import sortOrderIcon from '../assets/icons/sort-order-icon.svg?url';
 import rotateLeftIcon from '../assets/icons/rotate-left.svg?url';
 
+const typedCarData: Car[] = carData;
+
 export const [isOpen, setIsOpen] = createSignal(false);
 export const toggleSidebar = () => setIsOpen(!isOpen());
 
-export const [filters, setFilters] = createSignal({
+export const [filters, setFilters] = createSignal<{
+  supportLevel: string;
+  make: string;
+  model: string;
+  year: string;
+}>({
   supportLevel: '',
   make: '',
   model: '',
@@ -32,7 +39,7 @@ const supportLevels = [
 
 const makes = [...new Set(carData.map(car => car.make))].sort();
 const models = [...new Set(carData.map(car => car.model))].sort();
-const years = [...new Set(carData.flatMap(car => car.year_list))].sort();
+const years: string[] = [...new Set(carData.flatMap(car => car.year_list))].sort();
 
 type DropdownProps = {
   options: string[];
@@ -211,7 +218,7 @@ export default function FilterSidebar() {
   const toggleDropdown = (id: string) => setOpenDropdown(current => current === id ? null : id);
 
   const filteredResults = () => {
-    let result = [...carData];
+    let result: Car[] = [...carData];
     const currentFilters = filters();
     
     if (currentFilters.supportLevel) {
@@ -224,7 +231,7 @@ export default function FilterSidebar() {
       result = result.filter(car => car.model === currentFilters.model);
     }
     if (currentFilters.year) {
-      result = result.filter(car => car.year_list.includes(currentFilters.year));
+      result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
     }
     
     return result.length;

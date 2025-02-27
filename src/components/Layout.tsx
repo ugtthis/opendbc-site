@@ -24,7 +24,7 @@ const Layout: Component<LayoutProps> = (props) => {
       result = result.filter(car => car.model === currentFilters.model);
     }
     if (currentFilters.year) {
-      result = result.filter(car => car.year_list.includes(currentFilters.year));
+      result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
     }
 
     // Apply sorting
