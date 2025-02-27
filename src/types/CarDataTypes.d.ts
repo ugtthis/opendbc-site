@@ -8,7 +8,7 @@ export interface Car {
   package: string;
   requirements: string | null;
   video_link: string | null;
-  footnotes: number[];
+  footnotes: string[];
 
   // Performance and Features
   min_steer_speed: number;
@@ -39,8 +39,29 @@ export interface Car {
   hardware: string;
   video: string | null;
 
+  // Technical Parameters
+  center_to_front_ratio: number;
+  max_lateral_accel: number;
+  tire_stiffness_factor: number;
+  tire_stiffness_front: number;
+  tire_stiffness_rear: number;
+  steer_actuator_delay: number;
+  steer_limit_timer: number;
+  steer_control_type: string;
+  vEgo_stopping: number;
+  vEgo_starting: number;
+  stop_accel: number;
+
+  // System Configuration
+  network_location: string;
+  transmissionType: string;
+  bus_lookup: Record<string, string>;
+  experimental_longitudinal_available: boolean;
+  enable_dsu: boolean;
+  enable_bsm: boolean;
+  pcm_cruise: boolean;
+
   // Control Capabilities
-  tire_stiffness_factor: number | null;
   has_lat_control: boolean | null;
   has_long_control: boolean | null;
   has_auto_resume: boolean | null;
