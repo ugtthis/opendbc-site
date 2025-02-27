@@ -59,9 +59,9 @@ const Layout: Component<LayoutProps> = (props) => {
           </div>
           <button
             onClick={toggleSidebar}
-            class="bg-gray-300 p-2 border border-black z-10 2xl:hidden"
+            class="bg-[#969696] p-2 border-4 border-[#d9d9d9] z-10 2xl:hidden"
           >
-            <img src="/icons/toggleFilterIcon.svg" alt="Toggle Icon" class="w-6 h-6" />
+            <img src="/icons/toggleFilterIcon.svg" alt="Toggle Icon" class="w-4 h-4" />
           </button>
         </div>
         <div class="px-4">
