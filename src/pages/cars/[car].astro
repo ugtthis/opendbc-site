@@ -131,7 +131,7 @@ const { carData } = Astro.props;
 					<InfoCard label="Technical Parameters" client:load>
 						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5 py-8">
 							<div class="border bg-white flex flex-col">
-								<h3 class="text-sm font-bold px-3 py-3">Tire Configuration:</h3>
+								<h3 class="text-sm font-medium px-3 py-3 uppercase">Tire Configuration:</h3>
 								<div class="flex-1 flex flex-col">
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stiffness Factor</span>
@@ -148,7 +148,7 @@ const { carData } = Astro.props;
 								</div>
 							</div>
 							<div class="border bg-white flex flex-col">
-								<h3 class="text-sm font-bold px-3 py-3">Vehicle Control:</h3>
+								<h3 class="text-sm font-medium px-3 py-3 uppercase">Vehicle Control:</h3>
 								<div class="flex-1 flex flex-col">
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Actuator Delay</span>
@@ -165,7 +165,7 @@ const { carData } = Astro.props;
 								</div>
 							</div>
 							<div class="border bg-white flex flex-col">
-								<h3 class="text-sm font-bold px-3 py-3">Speed Parameters:</h3>
+								<h3 class="text-sm font-medium px-3 py-3 uppercase">Speed Parameters:</h3>
 								<div class="flex-1 flex flex-col">
 									<div class="flex justify-between bg-gray-50 flex-1 items-center px-3 py-5">
 										<span class="text-sm">Stopping Speed</span>
@@ -189,38 +189,38 @@ const { carData } = Astro.props;
 						<div class="p-6">
 							<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 								<div>
-									<h3 class="text-sm font-medium mb-3">Network Settings</h3>
+									<h3 class="text-sm font-medium mb-3 uppercase">Network Settings:</h3>
 									<div class="space-y-3">
-										<div class="flex items-center justify-between bg-gray-50 p-3 rounded">
+										<div class="flex items-center justify-between bg-gray-50 p-3">
 											<span class="text-sm">Network Location</span>
 											<span class="text-sm font-mono">{carData.network_location}</span>
 										</div>
-										<div class="flex items-center justify-between p-3 rounded border">
+										<div class="flex items-center justify-between p-3 border">
 											<span class="text-sm">Transmission Type</span>
 											<span class="text-sm">{carData.transmissionType}</span>
 										</div>
-										<div class="flex items-center justify-between bg-gray-50 p-3 rounded">
+										<div class="flex items-center justify-between bg-gray-50 p-3">
 											<span class="text-sm">Bus Lookup</span>
 											<span class="text-sm font-mono">{JSON.stringify(carData.bus_lookup)}</span>
 										</div>
 									</div>
 								</div>
 								<div>
-									<h3 class="text-sm font-medium mb-3">Feature Flags</h3>
+									<h3 class="text-sm font-medium mb-3 uppercase">Feature Flags:</h3>
 									<div class="space-y-3">
-										<div class="flex items-center justify-between p-3 rounded border">
+										<div class="flex items-center justify-between p-3 border">
 											<span class="text-sm">Experimental Longitudinal</span>
 											<span class="text-sm">{carData.experimental_longitudinal_available ? "Enabled" : "Disabled"}</span>
 										</div>
-										<div class="flex items-center justify-between bg-gray-50 p-3 rounded">
+										<div class="flex items-center justify-between bg-gray-50 p-3">
 											<span class="text-sm">DSU Enabled</span>
 											<span class="text-sm">{carData.enable_dsu ? "Yes" : "No"}</span>
 										</div>
-										<div class="flex items-center justify-between p-3 rounded border">
+										<div class="flex items-center justify-between p-3 border">
 											<span class="text-sm">BSM Enabled</span>
 											<span class="text-sm">{carData.enable_bsm ? "Yes" : "No"}</span>
 										</div>
-										<div class="flex items-center justify-between bg-gray-50 p-3 rounded">
+										<div class="flex items-center justify-between bg-gray-50 p-3">
 											<span class="text-sm">PCM Cruise</span>
 											<span class="text-sm">{carData.pcm_cruise ? "Yes" : "No"}</span>
 										</div>
