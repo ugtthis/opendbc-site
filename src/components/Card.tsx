@@ -44,21 +44,21 @@ const Card: Component<CardProps> = (props) => {
 
         <div class="bg-[#D9D9D9] overflow-hidden max-h-0 peer-checked:max-h-[400px] peer-checked:border-t peer-checked:border-black">
           <div class="p-4 grid grid-cols-2 gap-4">
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
-              <span class="text-sm">Mass</span>
-              <span>~{Number.isInteger(props.car.mass) ? Math.round(props.car.mass).toLocaleString() : Number(props.car.mass).toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kg</span>
+            <div class="flex flex-col bg-[#F3F3F3] px-4 py-3 border border-black h-[80px] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.25)]">
+              <span class="text-md font-medium">Mass</span>
+              <span class="text-xs md:text-sm mt-2">~{Number.isInteger(props.car.mass) ? Math.round(props.car.mass).toLocaleString() : Number(props.car.mass).toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kg</span>
             </div>
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
-              <span class="text-sm">Harness</span>
-              <p>{props.car.harness ? props.car.harness : 'N/A'}</p>
+            <div class="flex flex-col bg-[#F3F3F3] px-4 py-3 border border-black h-[80px] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.25)]">
+              <span class="text-md font-medium">Harness</span>
+              <p class="text-xs md:text-sm mt-2">{props.car.harness ? props.car.harness : 'N/A'}</p>
             </div>
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
-              <span class="text-sm">Auto<br />Resume</span>
-              <span>{props.car.auto_resume ? 'Yes' : 'No'}</span>
+            <div class="flex flex-col bg-[#F3F3F3] px-4 py-3 border border-black h-[80px] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.25)]">
+              <span class="text-md font-medium">Auto Resume</span>
+              <span class="text-xs md:text-sm mt-2">{props.car.auto_resume ? 'Yes' : 'No'}</span>
             </div>
-            <div class="flex justify-between bg-white px-4 py-2 border border-black items-center h-[60px]">
-              <span class="text-sm">Steer<br />Ratio</span>
-              <span>~{Number.isInteger(props.car.steer_ratio) ? props.car.steer_ratio : Number(props.car.steer_ratio).toFixed(2)}</span>
+            <div class="flex flex-col bg-[#F3F3F3] px-4 py-3 border border-black h-[80px] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.25)]">
+              <span class="text-md font-medium">Steer Ratio</span>
+              <span class="text-xs md:text-sm mt-2">~{Number.isInteger(props.car.steer_ratio) ? props.car.steer_ratio : Number(props.car.steer_ratio).toFixed(2)}</span>
             </div>
           </div>
           <div class="flex justify-between px-4 pb-4 items-center">
