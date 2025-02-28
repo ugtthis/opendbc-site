@@ -11,7 +11,7 @@ const MasterToggle: Component = () => {
     >
       <span 
         class="transform transition-transform duration-300 flex items-center justify-center w-full"
-        style={{ transform: expandedCards().size > 0 ? 'rotate(180deg)' : 'rotate(0deg)' }}
+        style={{ transform: expandedCards().size > 0 ? 'rotate(0deg)' : 'rotate(180deg)' }}
       >
         <svg 
           xmlns="http://www.w3.org/2000/svg" 
@@ -19,6 +19,8 @@ const MasterToggle: Component = () => {
           class="w-8 h-8"
           fill="none"
           stroke-width="2"
+          stroke-linecap="square"
+          stroke-linejoin="miter"
         >
           <path d="M7 13l5 5 5-5" stroke="#969696"/>
           <path d="M7 6l5 5 5-5" stroke="white"/>
