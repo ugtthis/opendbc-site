@@ -3,6 +3,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import cars from '../../data/car_data.json';
 import { getSupportTypeColor } from '../../utils/supportType';
 import InfoCard from '../../components/InfoCard';
+import MasterToggle from '../../components/MasterToggle';
 
 // Generate all possible car paths at build time
 export async function getStaticPaths() {
@@ -32,8 +33,9 @@ const { carData } = Astro.props;
 				<div class="lg:w-80 flex-shrink-0">
 					<!-- Sidebar Header -->
 					<div class="mb-6">
-						<div class="bg-black text-white py-3 pl-4">
-							<h1 class="text-xl font-bold">{carData.make}</h1>
+						<div class="bg-black text-white flex items-stretch">
+							<h1 class="text-xl font-bold flex-grow py-3 pl-4">{carData.make}</h1>
+							<MasterToggle client:load />
 						</div>
 						<div class="bg-white">
 							<div class="py-3 pl-4">

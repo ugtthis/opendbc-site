@@ -1,60 +1,45 @@
-import { createSignal, onMount, onCleanup, type Component } from 'solid-js';
+import { onMount, onCleanup, type Component, createEffect } from 'solid-js';
+import { initializeCard, isCardExpanded, toggleCard } from '../store/toggleStore';
 
 interface InfoCardProps {
   label: string;
   defaultExpanded?: boolean;
   class?: string;
   children?: any;
+  id?: string;
 }
 
 const InfoCard: Component<InfoCardProps> = (props) => {
-  const [isExpanded, setIsExpanded] = createSignal(props.defaultExpanded ?? true);
+  const cardId = props.id || props.label.toLowerCase().replace(/\s+/g, '-');
   let contentRef: HTMLDivElement | undefined;
-  let observer: ResizeObserver | undefined;
 
   onMount(() => {
     if (!contentRef) return;
+    initializeCard(cardId, props.defaultExpanded ?? true);
+    updateHeight();
+  });
 
-    // Initialize ResizeObserver
-    observer = new ResizeObserver(() => {
-      if (isExpanded() && contentRef) {
-        contentRef.style.height = 'auto';
-        const height = contentRef.offsetHeight;
-        contentRef.style.height = `${height}px`;
-      }
-    });
-
-    observer.observe(contentRef);
-    
-    // Set initial height
-    if (isExpanded()) {
-      contentRef.style.height = `${contentRef.scrollHeight}px`;
-    } else {
-      contentRef.style.height = '0';
+  createEffect(() => {
+    const expanded = isCardExpanded(cardId);
+    if (contentRef) {
+      updateHeight();
     }
   });
 
-  onCleanup(() => {
-    if (observer && contentRef) {
-      observer.unobserve(contentRef);
-      observer.disconnect();
-    }
-  });
-
-  const toggleExpand = () => {
+  const updateHeight = () => {
     if (!contentRef) return;
     
-    setIsExpanded(!isExpanded());
-    
-    if (isExpanded()) {
-      contentRef.style.height = `${contentRef.scrollHeight}px`;
+    if (isCardExpanded(cardId)) {
+      contentRef.style.height = 'auto';
+      const height = contentRef.scrollHeight;
+      contentRef.style.height = `${height}px`;
     } else {
       contentRef.style.height = '0';
     }
   };
 
   return (
-    <div class={`flex flex-col w-full mb-6 ${props.class || ''}`}>
+    <div class={`flex flex-col w-full mb-6 ${props.class || ''}`} data-info-card id={cardId}>
       <div class="flex items-stretch">
         <div class="bg-neutral-900 text-white border-r-4 border-gray-700 px-4 py-2 flex-grow flex items-center">
           <h2 class="text-md">{props.label}</h2>
@@ -62,12 +47,12 @@ const InfoCard: Component<InfoCardProps> = (props) => {
         <button
           type="button"
           class="w-10 h-10 flex items-center justify-center bg-[#969696] hover:bg-gray-300 transition-colors flex-shrink-0"
-          onClick={toggleExpand}
-          aria-expanded={isExpanded()}
+          onClick={() => toggleCard(cardId)}
+          aria-expanded={isCardExpanded(cardId)}
         >
           <span 
             class="transform transition-transform duration-300"
-            style={{ transform: isExpanded() ? 'rotate(0deg)' : 'rotate(180deg)' }}
+            style={{ transform: isCardExpanded(cardId) ? 'rotate(0deg)' : 'rotate(180deg)' }}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
