@@ -2639,6 +2639,7 @@
     "support_link": "#upstream",
     "detail_sentence": "openpilot upgrades your <strong>Ford Bronco Sport</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='link-light-new-regular-text'>Experimental mode</a>.",
     "car_fingerprint": "FORD_BRONCO_SPORT_MK1",
+    "longitudinal_report_link": "https://commaai.github.io/opendbc-data/longitudinal_reports/FORD_BRONCO_SPORT_MK1_b9d015f8ff659e1e_0000043a--98baf2b862.html",
     "detailed_parts": [
       {
         "count": 1,
