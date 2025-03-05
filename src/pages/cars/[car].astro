@@ -134,6 +134,84 @@ const { carData } = Astro.props;
 						</div>
 					</div>
 
+					<!-- Required Parts -->
+					{carData.car_parts.length > 0 && (
+						<InfoCard label="Required Parts" client:load>
+							<div class="p-6">
+								{/* Detailed parts table */}
+								{carData.detailed_parts && carData.detailed_parts.length > 0 && (
+									<div>
+										<div class="overflow-x-auto">
+											<table class="min-w-full divide-y divide-gray-200">
+												<thead class="bg-gray-50">
+													<tr>
+														<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Qty</th>
+														<th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Part Name</th>
+														<th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Included with Harness</th>
+														<th scope="col" class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Included with comma 3X</th>
+													</tr>
+												</thead>
+												<tbody class="bg-white divide-y divide-gray-200">
+													{/* Sort parts to show device first, then connector, then mount */}
+													{carData.detailed_parts
+														.sort((a, b) => {
+															// First priority: comma 3X device (check both name and enum_name)
+															if (a.name.toLowerCase().includes('comma 3x') || a.enum_name === 'threex') return -1;
+															if (b.name.toLowerCase().includes('comma 3x') || b.enum_name === 'threex') return 1;
+															
+															// Second priority: connector (any part with type "connector" or name containing "connector")
+															if ((a.type === 'connector' || a.name.toLowerCase().includes('connector')) && 
+																!(b.type === 'connector' || b.name.toLowerCase().includes('connector'))) return -1;
+															if (!(a.type === 'connector' || a.name.toLowerCase().includes('connector')) && 
+																(b.type === 'connector' || b.name.toLowerCase().includes('connector'))) return 1;
+															
+															// Third priority: mount (any part with type "mount" or name containing "mount")
+															if ((a.type === 'mount' || a.name.toLowerCase().includes('mount')) && 
+																!(b.type === 'mount' || b.name.toLowerCase().includes('mount'))) return -1;
+															if (!(a.type === 'mount' || a.name.toLowerCase().includes('mount')) && 
+																(b.type === 'mount' || b.name.toLowerCase().includes('mount'))) return 1;
+															
+															// Default sorting by name
+															return a.name.localeCompare(b.name);
+														})
+														.map((part, index) => {
+															// Determine if part is included with harness or comma 3X
+															const isIncludedWithComma3X = 
+																part.name.toLowerCase().includes('comma 3x') || 
+																part.enum_name === 'threex' || 
+																(part.name.toLowerCase().includes('mount') && !part.name.toLowerCase().includes('angle')) ||
+																part.name.toLowerCase().includes('right angle obd-c');
+															
+															// Everything else is included with harness
+															const isIncludedWithHarness = !isIncludedWithComma3X;
+															
+															return (
+																<tr class={index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+																	<td class="px-6 py-4 whitespace-nowrap text-sm">{part.count}</td>
+																	<td class="px-6 py-4 whitespace-nowrap text-sm font-medium">{part.name}</td>
+																	<td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+																		{isIncludedWithHarness ? 
+																			<span class="text-green-600 text-xl font-bold">✓</span> : 
+																			<span class="text-gray-400">—</span>}
+																	</td>
+																	<td class="px-6 py-4 whitespace-nowrap text-sm text-center">
+																		{isIncludedWithComma3X ? 
+																			<span class="text-green-600 text-xl font-bold">✓</span> : 
+																			<span class="text-gray-400">—</span>}
+																	</td>
+																</tr>
+															);
+														})
+													}
+												</tbody>
+											</table>
+										</div>
+									</div>
+								)}
+							</div>
+						</InfoCard>
+					)}
+
 					<!-- Technical Parameters -->
 					<InfoCard label="Technical Parameters" client:load>
 						<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 px-5 py-8">
@@ -236,22 +314,6 @@ const { carData } = Astro.props;
 							</div>
 						</div>
 					</InfoCard>
-
-					<!-- Required Parts -->
-					{carData.car_parts.length > 0 && (
-						<InfoCard label="Required Parts" client:load>
-							<div class="p-6">
-								<ul class="space-y-3">
-									{carData.car_parts.map(part => (
-										<li class="flex items-center space-x-2">
-											<span class="w-2 h-2 bg-black rounded-full"></span>
-											<span>{part}</span>
-										</li>
-									))}
-								</ul>
-							</div>
-						</InfoCard>
-					)}
 
 					<!-- Capabilities -->
 					<InfoCard label="Capabilities" client:load>

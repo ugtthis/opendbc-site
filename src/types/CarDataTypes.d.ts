@@ -20,6 +20,12 @@ export interface CarDocumentation {
   min_enable_speed: number;
   auto_resume: boolean;
   car_parts: string[];
+  detailed_parts?: {
+    count: number;
+    name: string;
+    type: string;
+    enum_name: string;
+  }[];
   harness: string | null;
   merged: boolean;
   support_type: string;
