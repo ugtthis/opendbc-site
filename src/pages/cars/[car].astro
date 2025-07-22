@@ -314,7 +314,7 @@ const { carData } = Astro.props;
 						<div class="divide-y divide-gray-200">
 							<div class="flex justify-between items-center px-6 py-4 bg-gray-50">
 								<span class="font-medium">Minimum Steering Speed</span>
-								<span>{carData.min_steer_speed} mph</span>
+								<span>{parseFloat(Number(carData.min_steer_speed).toFixed(1))} mph</span>
 							</div>
 							<div class="flex justify-between items-center px-6 py-4">
 								<span class="font-medium">FSR Longitudinal Control</span>
