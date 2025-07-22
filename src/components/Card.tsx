@@ -22,8 +22,26 @@ const Card: Component<CardProps> = (props) => {
             <div class="px-2 py-2.5 border-r border-black flex items-center">
               <h2 class="text-lg">{props.car.years}</h2>
             </div>
-            <div class="px-2 py-2.5">
-              <h1 class="text-xl font-semibold">{props.car.make} {props.car.model}</h1>
+            <div class="px-3 py-2.5 flex-1 flex items-center justify-between min-h-[60px]">
+              <h1 class="text-xl font-semibold pr-3 flex-1">{props.car.make} {props.car.model}</h1>
+              {props.car.video && props.car.video.trim() !== '' && (
+                <div class="flex-shrink-0 ml-2">
+                  <a 
+                    href={props.car.video}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="video-icon-link flex items-center bg-[#969696] bg-opacity-80 hover:bg-red-600 hover:bg-opacity-100 text-white text-opacity-90 hover:text-opacity-100 p-2 hover:shadow-lg transition-all duration-200 cursor-pointer"
+                    title="Watch user video on YouTube"
+                  >
+                    <svg class="camera-icon w-5 h-5 transition-opacity duration-200" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M3 6h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V7a1 1 0 011-1zm15 3l4-2a1 1 0 011 1v8a1 1 0 01-1 1l-4-2v-6z"/>
+                    </svg>
+                    <svg class="play-icon w-5 h-5 absolute opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M8 5v14l11-7z"/>
+                    </svg>
+                  </a>
+                </div>
+              )}
             </div>
           </div>
 
@@ -87,6 +105,14 @@ const Card: Component<CardProps> = (props) => {
         input:checked + div + label svg {
           transform: rotate(180deg);
           stroke: black;
+        }
+        
+        .video-icon-link:hover .camera-icon {
+          opacity: 0;
+        }
+        
+        .video-icon-link:hover .play-icon {
+          opacity: 1;
         }
       `}</style>
     </>

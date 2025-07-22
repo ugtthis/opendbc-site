@@ -26,6 +26,13 @@ const Layout: Component<LayoutProps> = (props) => {
     if (currentFilters.year) {
       result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
     }
+    if (currentFilters.hasUserVideo) {
+      if (currentFilters.hasUserVideo === 'Yes') {
+        result = result.filter(car => car.video && car.video.trim() !== '');
+      } else if (currentFilters.hasUserVideo === 'No') {
+        result = result.filter(car => !car.video || car.video.trim() === '');
+      }
+    }
 
     // Apply sorting
     const sort = sortConfig();

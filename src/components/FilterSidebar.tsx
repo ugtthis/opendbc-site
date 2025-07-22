@@ -15,11 +15,13 @@ export const [filters, setFilters] = createSignal<{
   make: string;
   model: string;
   year: string;
+  hasUserVideo: string;
 }>({
   supportLevel: '',
   make: '',
   model: '',
-  year: ''
+  year: '',
+  hasUserVideo: ''
 });
 
 export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>;
@@ -198,6 +200,13 @@ export const getFilteredResults = () => {
   }
   if (currentFilters.year) {
     result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
+  }
+  if (currentFilters.hasUserVideo) {
+    if (currentFilters.hasUserVideo === 'Yes') {
+      result = result.filter(car => car.video && car.video.trim() !== '');
+    } else if (currentFilters.hasUserVideo === 'No') {
+      result = result.filter(car => !car.video || car.video.trim() === '');
+    }
   }
   
   return result;
@@ -382,6 +391,15 @@ export default function FilterSidebar() {
               isOpen={openDropdown() === 'year'}
               onToggle={() => toggleDropdown('year')}
             />
+
+            <CustomDropdown
+              label="Has User Video"
+              options={['Yes', 'No']}
+              value={filters().hasUserVideo}
+              onChange={(value) => setFilters(prev => ({ ...prev, hasUserVideo: value }))}
+              isOpen={openDropdown() === 'has-user-video'}
+              onToggle={() => toggleDropdown('has-user-video')}
+            />
           </div>
         </div>
         {/* Spacer */}
@@ -393,7 +411,7 @@ export default function FilterSidebar() {
           </div>
           <div class="flex gap-2 mt-4">
             <button
-              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '' })}
+              onClick={() => hasActiveFilters() && setFilters({ supportLevel: '', make: '', model: '', year: '', hasUserVideo: '' })}
               disabled={!hasActiveFilters()}
               class={`flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2 
                 ${!hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : ''}`}

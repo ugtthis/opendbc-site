@@ -44,6 +44,40 @@ const { carData } = Astro.props;
 						</div>
 					</div>
 
+					<!-- User Video -->
+					{carData.video && (
+						<InfoCard label="User Video" defaultExpanded={false} client:load>
+							<div class="w-full overflow-hidden aspect-video">
+								<iframe
+									src={(() => {
+										const videoUrl = carData.video;
+										let embedUrl = '';
+										
+										if (videoUrl.includes('youtu.be/')) {
+											// Handle youtu.be format: https://youtu.be/VIDEO_ID or https://youtu.be/VIDEO_ID?t=26
+											const videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
+											const timestamp = videoUrl.includes('?t=') ? `&start=${videoUrl.split('?t=')[1]}` : '';
+											embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0${timestamp}`;
+										} else if (videoUrl.includes('youtube.com/watch?v=')) {
+											// Handle youtube.com format: https://www.youtube.com/watch?v=VIDEO_ID
+											const videoId = videoUrl.split('v=')[1].split('&')[0];
+											embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0`;
+										} else {
+											// Fallback to original URL
+											embedUrl = videoUrl;
+										}
+										
+										return embedUrl;
+									})()}
+									title={`${carData.make} ${carData.model} User Video`}
+									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+									allowfullscreen
+									class="w-full h-full border-0"
+								></iframe>
+							</div>
+						</InfoCard>
+					)}
+
 					<!-- Key Specs -->
 					<InfoCard label="Key Specs" client:load>
 						<div class="divide-y divide-gray-200">
@@ -386,23 +420,6 @@ const { carData } = Astro.props;
 							</div>
 						</div>
 					</InfoCard>
-
-					<!-- Demo Video -->
-					{carData.video && (
-						<InfoCard label="Demo Video" client:load>
-							<div class="p-6">
-								<div class="aspect-w-16 aspect-h-9">
-									<iframe
-										src={carData.video.replace('watch?v=', 'embed/')}
-										title={`${carData.make} ${carData.model} Demo`}
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowfullscreen
-										class="w-full h-full border border-black"
-									></iframe>
-								</div>
-							</div>
-						</InfoCard>
-					)}
 				</div>
 			</div>
 		</div>
