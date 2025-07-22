@@ -382,41 +382,31 @@ const { carData } = Astro.props;
 					</InfoCard>
 
 					<!-- Car Notes -->
-					<InfoCard label="Car Notes" client:load>
+					<InfoCard label="Car Notes" defaultExpanded={false} client:load>
 						<div class="p-6">
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-								<div class="border border-black p-4">
-									<p class="text-sm font-medium">Longitudinal Control</p>
-									<p class="mt-2">{carData.longitudinal}</p>
+							<div class="border border-black bg-white p-8 text-center">
+								<div class="text-gray-500 mb-2">
+									<svg class="w-12 h-12 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+										<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+									</svg>
 								</div>
-								<div class="border border-black p-4">
-									<p class="text-sm font-medium">Steering Torque</p>
-									<p class="mt-2">{carData.steering_torque}</p>
-								</div>
-								<div class="border border-black p-4">
-									<p class="text-sm font-medium">Auto Resume</p>
-									<p class="mt-2">{carData.auto_resume_star}</p>
-								</div>
+								<h3 class="text-lg font-medium text-gray-700 mb-2">Coming Soon</h3>
+								<p class="text-sm text-gray-500">Car notes and insights will be available here.</p>
 							</div>
 						</div>
 					</InfoCard>
 
 					<!-- Tutorials -->
-					<InfoCard label="Tutorials" client:load>
+					<InfoCard label="Tutorials" defaultExpanded={false} client:load>
 						<div class="p-6">
-							<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-								<div class="border border-black p-4">
-									<p class="text-sm font-medium">Longitudinal Control</p>
-									<p class="mt-2">{carData.longitudinal}</p>
+							<div class="border border-black bg-white p-8 text-center">
+								<div class="text-gray-500 mb-2">
+									<svg class="w-12 h-12 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+										<path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+									</svg>
 								</div>
-								<div class="border border-black p-4">
-									<p class="text-sm font-medium">Steering Torque</p>
-									<p class="mt-2">{carData.steering_torque}</p>
-								</div>
-								<div class="border border-black p-4">
-									<p class="text-sm font-medium">Auto Resume</p>
-									<p class="mt-2">{carData.auto_resume_star}</p>
-								</div>
+								<h3 class="text-lg font-medium text-gray-700 mb-2">Coming Soon</h3>
+								<p class="text-sm text-gray-500">Install tips and tricks will be available here.</p>
 							</div>
 						</div>
 					</InfoCard>
