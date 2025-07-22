@@ -1,0 +1,44 @@
+name: Update Car Metadata
+
+on:
+  schedule:
+    # Run daily at 12:05am PST (5 minutes after opendbc updates)
+    - cron: '5 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  update-car-metadata:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Clone opendbc repo
+        run: |
+          git clone https://github.com/commaai/opendbc.git ./tmp/opendbc
+
+      - name: Install dependencies and build opendbc
+        run: |
+          cd ./tmp/opendbc
+          pip install -e .
+          scons -c && scons -j$(nproc)
+
+      - name: Run data extraction script
+        run: |
+          cd ./tmp/opendbc
+          python ../../scripts/get_metadata.py
+          mv metadata.json ../../src/data/car_data.json
+
+      - name: Commit changes if any
+        uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ca1b5058a842
+        with:
+          commit_message: 'metadata: Auto-update from opendbc repo'
+          file_pattern: 'src/data/car_data.json' 
