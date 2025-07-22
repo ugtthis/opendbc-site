@@ -29,6 +29,7 @@ jobs:
         run: |
           cd ./tmp/opendbc
           pip install -e .
+          pip install jinja2==3.1.4 natsort==8.4.0
           scons -c && scons -j$(nproc)
 
       - name: Run data extraction script
