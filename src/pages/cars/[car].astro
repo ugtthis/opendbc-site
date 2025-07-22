@@ -123,11 +123,11 @@ const { carData } = Astro.props;
 					</div>
 
 					<!-- Required Parts -->
-					{carData.car_parts.length > 0 && (
+					{carData.parts && carData.parts.length > 0 && (
 						<InfoCard label="Required Parts" client:load>
 							<div class="p-6">
-								{/* Detailed parts table */}
-								{carData.detailed_parts && carData.detailed_parts.length > 0 && (
+								{/* Parts table */}
+								{carData.parts && carData.parts.length > 0 && (
 									<div>
 										<div class="overflow-x-auto">
 											<table class="min-w-full divide-y divide-gray-200">
@@ -141,11 +141,11 @@ const { carData } = Astro.props;
 												</thead>
 												<tbody class="bg-white divide-y divide-gray-200">
 													{/* Sort parts to show device first, then connector, then mount */}
-													{carData.detailed_parts
-														.sort((a, b) => {
-															// First priority: comma 3X device (check both name and enum_name)
-															if (a.name.toLowerCase().includes('comma 3x') || a.enum_name === 'threex') return -1;
-															if (b.name.toLowerCase().includes('comma 3x') || b.enum_name === 'threex') return 1;
+													{carData.parts
+														.sort((a: any, b: any) => {
+															// First priority: comma 3X device (check both name and type)
+															if (a.name.toLowerCase().includes('comma 3x') || a.type === 'device') return -1;
+															if (b.name.toLowerCase().includes('comma 3x') || b.type === 'device') return 1;
 															
 															// Second priority: connector (any part with type "connector" or name containing "connector")
 															if ((a.type === 'connector' || a.name.toLowerCase().includes('connector')) && 
@@ -162,11 +162,11 @@ const { carData } = Astro.props;
 															// Default sorting by name
 															return a.name.localeCompare(b.name);
 														})
-														.map((part, index) => {
+														.map((part: any, index: any) => {
 															// Determine if part is included with harness or comma 3X
 															const isIncludedWithComma3X = 
 																part.name.toLowerCase().includes('comma 3x') || 
-																part.enum_name === 'threex' || 
+																part.type === 'device' || 
 																(part.name.toLowerCase().includes('mount') && !part.name.toLowerCase().includes('angle')) ||
 																part.name.toLowerCase().includes('right angle obd-c');
 															
