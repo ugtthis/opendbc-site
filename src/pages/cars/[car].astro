@@ -302,10 +302,6 @@ const { carData } = Astro.props;
 											<span class="text-sm">Network Location</span>
 											<span class="text-sm font-mono">{carData.network_location}</span>
 										</div>
-										<div class="flex items-center justify-between p-3 border">
-											<span class="text-sm">Transmission Type</span>
-											<span class="text-sm">{carData.transmissionType}</span>
-										</div>
 										<div class="bg-gray-50 p-3">
 											<span class="text-sm block mb-1">Bus Lookup</span>
 											{Object.keys(carData.bus_lookup).length > 0 && (
