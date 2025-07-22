@@ -272,9 +272,15 @@ const { carData } = Astro.props;
 											<span class="text-sm">Transmission Type</span>
 											<span class="text-sm">{carData.transmissionType}</span>
 										</div>
-										<div class="flex items-center justify-between bg-gray-50 p-3">
-											<span class="text-sm">Bus Lookup</span>
-											<span class="text-sm font-mono">{JSON.stringify(carData.bus_lookup)}</span>
+										<div class="bg-gray-50 p-3">
+											<span class="text-sm block mb-1">Bus Lookup</span>
+											{Object.keys(carData.bus_lookup).length > 0 && (
+												<div class="text-sm">
+													{Object.entries(carData.bus_lookup).map(([key, value]) => (
+														<div class="break-all"><span class="font-medium">{key}:</span> {value}</div>
+													))}
+												</div>
+											)}
 										</div>
 									</div>
 								</div>
