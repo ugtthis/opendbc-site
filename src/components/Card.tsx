@@ -45,8 +45,8 @@ const Card: Component<CardProps> = (props) => {
         <div class="bg-[#D9D9D9] overflow-hidden max-h-0 peer-checked:max-h-[400px] peer-checked:border-t peer-checked:border-black">
           <div class="p-4 grid grid-cols-2 gap-4">
             <div class="flex flex-col bg-[#F3F3F3] px-4 py-3 border border-black h-[80px] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.25)]">
-              <span class="text-md font-medium">Mass</span>
-              <span class="text-xs md:text-sm mt-2">~{Number.isInteger(props.car.mass) ? Math.round(props.car.mass).toLocaleString() : Number(props.car.mass).toFixed(1).replace(/\B(?=(\d{3})+(?!\d))/g, ",")} kg</span>
+              <span class="text-md font-medium">Curb Weight</span>
+              <span class="text-xs md:text-sm mt-2">{Math.round(props.car.mass_curb_weight).toLocaleString()} kg</span>
             </div>
             <div class="flex flex-col bg-[#F3F3F3] px-4 py-3 border border-black h-[80px] shadow-[2px_2px_4px_0px_rgba(0,0,0,0.25)]">
               <span class="text-md font-medium">Harness</span>

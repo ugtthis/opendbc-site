@@ -98,8 +98,8 @@ const { carData } = Astro.props;
 							<InfoCard label="Vehicle Metrics" client:load>
 								<div class="divide-y divide-gray-200">
 									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
-										<span class="text-sm font-medium">Mass</span>
-										<span class="text-sm">~{Math.round(carData.mass).toLocaleString()} kg</span>
+										<span class="text-sm font-medium">Curb Weight</span>
+										<span class="text-sm">{Math.round(carData.mass_curb_weight).toLocaleString()} kg</span>
 									</div>
 									<div class="flex justify-between items-center px-4 py-3">
 										<span class="text-sm font-medium">Wheelbase</span>
