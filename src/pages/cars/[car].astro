@@ -124,7 +124,7 @@ const { carData } = Astro.props;
 
 					<!-- Required Parts -->
 					{carData.parts && carData.parts.length > 0 && (
-						<InfoCard label="Required Parts" client:load>
+						<InfoCard label="Required Parts" defaultExpanded={false} client:load>
 							<div class="p-6">
 								{/* Parts table */}
 								{carData.parts && carData.parts.length > 0 && (
