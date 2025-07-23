@@ -181,14 +181,10 @@ const { carData } = Astro.props;
 															return partsSortComparison !== 0 ? partsSortComparison : a.name.localeCompare(b.name);
 														})
 														.map((part: any, index: any) => {
-															// Determine if part is included with harness or comma 3X
 															const isIncludedWithComma3X = 
-																part.name.toLowerCase().includes('comma 3x') || 
-																part.type === 'device' || 
-																(part.name.toLowerCase().includes('mount') && !part.name.toLowerCase().includes('angle')) ||
-																part.name.toLowerCase().includes('right angle obd-c');
-															
-															// Everything else is included with harness
+																part.type === 'device' ||
+																(part.type === 'mount' && !part.name.includes('angled')) ||
+																(part.type === 'cable' && part.name.includes('right angle OBD-C'));
 															const isIncludedWithHarness = !isIncludedWithComma3X;
 															
 															return (
