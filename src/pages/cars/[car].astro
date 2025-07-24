@@ -52,23 +52,16 @@ const { carData } = Astro.props;
 								<iframe
 									src={(() => {
 										const videoUrl = carData.video;
-										let embedUrl = '';
 										
-										if (videoUrl.includes('youtu.be/')) {
-											// Handle youtu.be format: https://youtu.be/VIDEO_ID or https://youtu.be/VIDEO_ID?t=26
-											const videoId = videoUrl.split('youtu.be/')[1].split('?')[0];
-											const timestamp = videoUrl.includes('?t=') ? `&start=${videoUrl.split('?t=')[1]}` : '';
-											embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0${timestamp}`;
-										} else if (videoUrl.includes('youtube.com/watch?v=')) {
-											// Handle youtube.com format: https://www.youtube.com/watch?v=VIDEO_ID
-											const videoId = videoUrl.split('v=')[1].split('&')[0];
-											embedUrl = `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1&showinfo=0`;
-										} else {
-											// Fallback to original URL
-											embedUrl = videoUrl;
+										// Converts both youtu.be and youtube.com formats to embed URLs
+										// Also preserves any timestamp parameter (t=123)
+										let match = videoUrl.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?]+)(?:.*[?&]t=(\d+))?/);
+										if (match) {
+											const videoId = match[1];
+											const timestamp = match[2] ? `&start=${match[2]}` : '';
+											return `https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1${timestamp}`;
 										}
-										
-										return embedUrl;
+										return videoUrl;
 									})()}
 									title={`${carData.make} ${carData.model} User Video`}
 									allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
