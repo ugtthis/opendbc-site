@@ -17,6 +17,26 @@ const InfoCard: Component<InfoCardProps> = (props) => {
     if (!contentRef) return;
     initializeCard(cardId, props.defaultExpanded ?? true);
     updateHeight();
+    
+    const recalculateIfExpanded = () => {
+      if (isCardExpanded(cardId)) {
+        updateHeight();
+      }
+    };
+    
+    const recalculateWithDelay = () => {
+      if (isCardExpanded(cardId)) {
+        setTimeout(updateHeight, 50);
+      }
+    };
+    
+    document.addEventListener('recalculateHeight', recalculateIfExpanded);
+    window.addEventListener('resize', recalculateWithDelay);
+    
+    onCleanup(() => {
+      document.removeEventListener('recalculateHeight', recalculateIfExpanded);
+      window.removeEventListener('resize', recalculateWithDelay);
+    });
   });
 
   createEffect(() => {
@@ -31,8 +51,8 @@ const InfoCard: Component<InfoCardProps> = (props) => {
     
     if (isCardExpanded(cardId)) {
       contentRef.style.height = 'auto';
-      const height = contentRef.scrollHeight;
-      contentRef.style.height = `${height}px`;
+      void contentRef.offsetHeight; // Force browser reflow
+      contentRef.style.height = `${contentRef.scrollHeight}px`;
     } else {
       contentRef.style.height = '0';
     }

@@ -6,6 +6,9 @@ export default {
 			fontFamily: {
 				mono: ['"JetBrains Mono"', 'monospace'],
 			},
+			screens: {
+				'lg-2': '1160px',
+			},
 		},
 	},
 	plugins: [],

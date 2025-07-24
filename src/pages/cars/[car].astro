@@ -4,6 +4,7 @@ import cars from '../../data/car_data.json';
 import { getSupportTypeColor } from '../../utils/supportType';
 import InfoCard from '../../components/InfoCard';
 import MasterToggle from '../../components/MasterToggle';
+import VehicleMetrics from '../../components/VehicleMetrics';
 
 // Generate all possible car paths at build time
 export async function getStaticPaths() {
@@ -110,9 +111,9 @@ const { carData } = Astro.props;
 
 				<!-- Main Content -->
 				<div class="flex-1">
-					<div class="flex flex-col lg:flex-row lg:gap-4">
+					<div class="flex flex-col lg-2:flex-row lg-2:gap-4">
 						<!-- General Information -->
-						<div class="lg:w-2/3">
+						<div class="lg-2:w-2/3">
 							<InfoCard label="General Information" client:load>
 								<div class="p-6">
 									<div set:html={carData.detail_sentence} class="prose max-w-none" />
@@ -128,30 +129,9 @@ const { carData } = Astro.props;
 						</div>
 
 						<!-- Metrics Section -->
-						<div class="lg:w-1/3">
+						<div class="lg-2:w-1/3">
 							<InfoCard label="Vehicle Metrics" client:load>
-								<div class="divide-y divide-gray-200">
-									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
-										<span class="text-sm font-medium">Curb Weight</span>
-										<span class="text-sm">{Math.round(carData.mass_curb_weight).toLocaleString()} kg</span>
-									</div>
-									<div class="flex justify-between items-center px-4 py-3">
-										<span class="text-sm font-medium">Wheelbase</span>
-										<span class="text-sm">~{Number(carData.wheelbase).toFixed(2)} m</span>
-									</div>
-									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
-										<span class="text-sm font-medium">Steer Ratio</span>
-										<span class="text-sm">~{Number(carData.steer_ratio).toFixed(2)}</span>
-									</div>
-									<div class="flex justify-between items-center px-4 py-3">
-										<span class="text-sm font-medium">Center to Front Ratio</span>
-										<span class="text-sm">~{Number(carData.center_to_front_ratio).toFixed(2)}</span>
-									</div>
-									<div class="flex justify-between items-center px-4 py-3 bg-gray-50">
-										<span class="text-sm font-medium">Max Lateral Accel</span>
-										<span class="text-sm">~{Number(carData.max_lateral_accel).toFixed(2)} m/s²</span>
-									</div>
-								</div>
+								<VehicleMetrics carData={carData} client:load />
 							</InfoCard>
 						</div>
 					</div>
