@@ -371,6 +371,16 @@ export default function FilterSidebar() {
           <h2 class="text-lg font-semibold mb-4">FILTER BY:</h2>
           <div class="space-y-3">
             <CustomDropdown
+              label="Has User Video"
+              options={['Yes', 'No']}
+              value={filters().hasUserVideo}
+              onChange={(value) => setFilters(prev => ({ ...prev, hasUserVideo: value }))}
+              isOpen={openDropdown() === 'has-user-video'}
+              onToggle={() => toggleDropdown('has-user-video')}
+              showSearch={false}
+            />
+
+            <CustomDropdown
               label="Support Level"
               options={supportLevels}
               value={filters().supportLevel}
@@ -408,16 +418,6 @@ export default function FilterSidebar() {
               isOpen={openDropdown() === 'year'}
               onToggle={() => toggleDropdown('year')}
               showSearch={true}
-            />
-
-            <CustomDropdown
-              label="Has User Video"
-              options={['Yes', 'No']}
-              value={filters().hasUserVideo}
-              onChange={(value) => setFilters(prev => ({ ...prev, hasUserVideo: value }))}
-              isOpen={openDropdown() === 'has-user-video'}
-              onToggle={() => toggleDropdown('has-user-video')}
-              showSearch={false}
             />
           </div>
         </div>
