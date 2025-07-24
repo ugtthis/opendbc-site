@@ -26978,6 +26978,123 @@
     ]
   },
   {
+    "name": "Tesla Model X (with HW4) 2024",
+    "make": "Tesla",
+    "model": "Model X (with HW4)",
+    "years": "2024",
+    "year_list": [
+      "2024"
+    ],
+    "package": "All",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [
+      "Some 2023 model years have HW4. To check which hardware type your vehicle has, look for <b>Autopilot computer</b> under <b>Software -> Additional Vehicle Information</b> on your vehicle's touchscreen. </br></br>See <a href=\"https://www.notateslaapp.com/news/2173/how-to-check-if-your-tesla-has-hardware-4-ai4-or-hardware-3\">this page</a> for more information.",
+      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>.",
+      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Dashcam mode",
+    "support_link": "#dashcam",
+    "detail_sentence": "openpilot upgrades your <strong>Tesla Model X (with HW4)</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "TESLA_MODEL_X",
+    "brand": "tesla",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Tesla%20Model%20X%20(with%20HW4)%202024",
+    "longitudinal": "openpilot available",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 2631.0,
+    "wheelbase": 2.9600000381469727,
+    "steer_ratio": 12.0,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.0,
+    "steer_actuator_delay": 0.10000000149011612,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.4000000059604645,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 288159.28125,
+    "tire_stiffness_rear": 455521.125,
+    "rotational_inertia": 5407.162109375,
+    "experimental_longitudinal_available": true,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": true,
+    "enable_dsu": false,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 0,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.30000001192092896,
+    "vEgo_stopping": 0.10000000149011612,
+    "vEgo_starting": 0.10000000149011612,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.15000000596046448,
+    "max_lateral_accel": 2.5,
+    "network_location": "fwdCamera",
+    "steer_control_type": "angle",
+    "mass_curb_weight": 2495.0,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "party": "tesla_model3_party"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "has_angled_mount": false,
+    "harness": "tesla_b",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Tesla B connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma 3X",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "long OBD-C cable (9.5 ft)",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "USB-C coupler",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "right angle OBD-C cable (1.5 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Tesla Model Y (with HW3) 2020-23",
     "make": "Tesla",
     "model": "Model Y (with HW3)",
