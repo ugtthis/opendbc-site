@@ -50,15 +50,18 @@ type DropdownProps = {
   label: string;
   isOpen: boolean;
   onToggle: () => void;
+  showSearch?: boolean;
 };
 
 function CustomDropdown(props: DropdownProps) {
   let dropdownRef: HTMLDivElement | undefined;
   let inputRef: HTMLInputElement | undefined;
+  let containerRef: HTMLDivElement | undefined;
   const [searchTerm, setSearchTerm] = createSignal('');
   const [highlightedIndex, setHighlightedIndex] = createSignal(-1);
   
   const filteredOptions = () => {
+    if (!props.showSearch) return props.options;
     const term = searchTerm().toLowerCase();
     return term ? props.options.filter(option => option.toLowerCase().includes(term)) : props.options;
   };
@@ -114,8 +117,12 @@ function CustomDropdown(props: DropdownProps) {
   };
 
   createEffect(() => {
-    if (props.isOpen && inputRef) {
-      inputRef.focus();
+    if (props.isOpen) {
+      if (props.showSearch && inputRef) {
+        inputRef.focus();
+      } else if (!props.showSearch && containerRef) {
+        containerRef.focus();
+      }
     }
   });
 
@@ -140,20 +147,27 @@ function CustomDropdown(props: DropdownProps) {
         </button>
         
         <Show when={props.isOpen}>
-          <div class="w-full bg-white border border-t-0 border-black">
+          <div 
+            class="w-full bg-white border border-t-0 border-black"
+            tabIndex={props.showSearch ? -1 : 0}
+            onKeyDown={props.showSearch ? undefined : handleKeyDown}
+            style={{ outline: 'none' }}
+          >
             <div class="max-h-[200px] overflow-y-auto">
-              <div class="sticky top-0 bg-white p-2 border-b border-gray-200">
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={searchTerm()}
-                  onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
-                  onKeyDown={handleKeyDown}
-                  placeholder="Search..."
-                  class="w-full p-2 border border-gray-200 focus:outline-none focus:border-black"
-                />
-              </div>
-              <div>
+              <Show when={props.showSearch}>
+                <div class="sticky top-0 bg-white p-2 border-b border-gray-200">
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={searchTerm()}
+                    onInput={(e) => setSearchTerm((e.target as HTMLInputElement).value)}
+                    onKeyDown={handleKeyDown}
+                    placeholder="Search..."
+                    class="w-full p-2 border border-gray-200 focus:outline-none focus:border-black"
+                  />
+                </div>
+              </Show>
+              <div ref={containerRef}>
                 <button
                   class={`w-full h-[40px] px-4 text-left hover:bg-gray-100 ${
                     !props.value ? 'bg-gray-100' : ''
@@ -363,6 +377,7 @@ export default function FilterSidebar() {
               onChange={(value) => setFilters(prev => ({ ...prev, supportLevel: value }))}
               isOpen={openDropdown() === 'support-level'}
               onToggle={() => toggleDropdown('support-level')}
+              showSearch={true}
             />
 
             <CustomDropdown
@@ -372,6 +387,7 @@ export default function FilterSidebar() {
               onChange={(value) => setFilters(prev => ({ ...prev, make: value }))}
               isOpen={openDropdown() === 'make'}
               onToggle={() => toggleDropdown('make')}
+              showSearch={true}
             />
 
             <CustomDropdown
@@ -381,6 +397,7 @@ export default function FilterSidebar() {
               onChange={(value) => setFilters(prev => ({ ...prev, model: value }))}
               isOpen={openDropdown() === 'model'}
               onToggle={() => toggleDropdown('model')}
+              showSearch={true}
             />
 
             <CustomDropdown
@@ -390,6 +407,7 @@ export default function FilterSidebar() {
               onChange={(value) => setFilters(prev => ({ ...prev, year: value }))}
               isOpen={openDropdown() === 'year'}
               onToggle={() => toggleDropdown('year')}
+              showSearch={true}
             />
 
             <CustomDropdown
@@ -399,6 +417,7 @@ export default function FilterSidebar() {
               onChange={(value) => setFilters(prev => ({ ...prev, hasUserVideo: value }))}
               isOpen={openDropdown() === 'has-user-video'}
               onToggle={() => toggleDropdown('has-user-video')}
+              showSearch={false}
             />
           </div>
         </div>
