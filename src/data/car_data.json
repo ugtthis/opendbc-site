@@ -9895,7 +9895,7 @@
     "mass_curb_weight": 1940.466576,
     "center_to_front_ratio_base": 0.428,
     "bus_lookup": {
-      "pt": "honda_pilot_2023_can_generated"
+      "pt": "honda_common_canfd_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
