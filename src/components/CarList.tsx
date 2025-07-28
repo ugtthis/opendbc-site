@@ -72,7 +72,7 @@ const CarList: Component<CarListProps> = (props) => {
                           <span class={`py-1 px-2 text-xs uppercase inline-block rounded-sm ${getSupportTypeColor(car.support_type)}`}>
                             {car.support_type}
                           </span>
-                          <span class="text-xs text-gray-600 break-words leading-tight">
+                          <span class="text-xs pl-1 text-gray-600 break-words leading-tight">
                             {car.package}
                           </span>
                         </div>
