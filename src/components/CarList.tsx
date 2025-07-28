@@ -123,11 +123,14 @@ const CarList: Component<CarListProps> = (props) => {
                             href={car.video}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center bg-[#969696] bg-opacity-80 hover:bg-red-600 hover:bg-opacity-100 text-white text-opacity-90 hover:text-opacity-100 p-1 hover:shadow-lg transition-all duration-200 cursor-pointer rounded-sm relative z-10 pointer-events-auto"
+                            class="video-icon-link inline-flex items-center bg-[#969696] bg-opacity-80 hover:bg-red-600 hover:bg-opacity-100 text-white text-opacity-90 hover:text-opacity-100 p-1 hover:shadow-lg transition-all duration-200 cursor-pointer relative z-10 pointer-events-auto"
                             title="Watch user video on YouTube"
                           >
-                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <svg class="camera-icon w-4 h-4 transition-opacity duration-200" fill="currentColor" viewBox="0 0 24 24">
                               <path d="M3 6h14a1 1 0 011 1v10a1 1 0 01-1 1H3a1 1 0 01-1-1V7a1 1 0 011-1zm15 3l4-2a1 1 0 011 1v8a1 1 0 01-1 1l-4-2v-6z"/>
+                            </svg>
+                            <svg class="play-icon w-4 h-4 absolute opacity-0 transition-opacity duration-200" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M8 5v14l11-7z"/>
                             </svg>
                           </a>
                         ) : (
@@ -165,6 +168,14 @@ const CarList: Component<CarListProps> = (props) => {
           .responsive-grid {
             grid-template-columns: repeat(3, 1fr);
           }
+        }
+
+        .video-icon-link:hover .camera-icon {
+          opacity: 0;
+        }
+        
+        .video-icon-link:hover .play-icon {
+          opacity: 1;
         }
       `}</style>
     </div>
