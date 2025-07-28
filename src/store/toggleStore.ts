@@ -2,6 +2,9 @@ import { createSignal } from 'solid-js';
 
 export const [expandedCards, setExpandedCards] = createSignal<Set<string>>(new Set());
 
+export const [viewMode, setViewMode] = createSignal<'grid' | 'list'>('grid');
+export const toggleViewMode = () => setViewMode(viewMode() === 'grid' ? 'list' : 'grid');
+
 export const initializeCard = (id: string, defaultExpanded: boolean = true) => {
   setExpandedCards(prev => {
     const next = new Set(prev);
