@@ -83,8 +83,17 @@ function CustomDropdown(props: DropdownProps) {
     setHighlightedIndex(-1);
   };
 
-  onMount(() => !isServer && document.addEventListener('mousedown', handleClickOutside));
-  onCleanup(() => !isServer && document.removeEventListener('mousedown', handleClickOutside));
+  onMount(() => {
+    if (!isServer) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+  });
+  
+  onCleanup(() => {
+    if (!isServer) {
+      document.removeEventListener('mousedown', handleClickOutside);
+    }
+  });
 
   const handleSelect = (value: string) => {
     props.onChange(value);
@@ -199,7 +208,7 @@ function CustomDropdown(props: DropdownProps) {
   );
 }
 
-export const getFilteredResults = createMemo(() => {
+export const getFilteredAndSortedCars = () => {
   let result: Car[] = [...carData];
   const currentFilters = filters();
   
@@ -217,36 +226,37 @@ export const getFilteredResults = createMemo(() => {
   }
   if (currentFilters.hasUserVideo) {
     if (currentFilters.hasUserVideo === 'Yes') {
-      result = result.filter(car => car.video);
+      result = result.filter(car => car.video !== null && car.video !== '');
     } else if (currentFilters.hasUserVideo === 'No') {
-      result = result.filter(car => !car.video);
+      result = result.filter(car => car.video === null || car.video === '');
     }
   }
   
   const sort = sortConfig();
   result.sort((a, b) => {
     const field: SortField = sort.field;
-    let aVal = a[field];
-    let bVal = b[field];
+    let aVal: string | number | string[] = a[field];
+    let bVal: string | number | string[] = b[field];
     
     if (field === 'year_list') {
-      aVal = a.year_list[0];
-      bVal = b.year_list[0];
+      aVal = parseInt((aVal as string[])[0] || '0', 10);
+      bVal = parseInt((bVal as string[])[0] || '0', 10);
     }
     
     if (sort.order === 'ASC') {
-      return aVal > bVal ? 1 : -1;
+      return aVal < bVal ? -1 : aVal > bVal ? 1 : 0;
     } else {
-      return aVal < bVal ? 1 : -1;
+      return aVal < bVal ? 1 : aVal > bVal ? -1 : 0;
     }
   });
   
   return result;
-});
-
-export const filteredResults = () => getFilteredResults().length;
+};
 
 export default function FilterSidebar() {
+  const getFilteredResults = createMemo(() => getFilteredAndSortedCars());
+  const filteredResults = createMemo(() => getFilteredResults().length);
+
   const handleMediaQuery = () => {
     if (window.matchMedia('(min-width: 1536px)').matches) {
       setIsOpen(true);
@@ -489,4 +499,4 @@ export default function FilterSidebar() {
       </div>
     </div>
   );
-} 
+}

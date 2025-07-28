@@ -1,5 +1,5 @@
 import { type Component, createMemo } from 'solid-js';
-import FilterSidebar, { toggleSidebar, isOpen, getFilteredResults } from './FilterSidebar';
+import FilterSidebar, { toggleSidebar, isOpen, getFilteredAndSortedCars } from './FilterSidebar';
 import type { Car } from '../types/CarDataTypes';
 import CarList from './CarList';
 
@@ -8,7 +8,7 @@ type LayoutProps = {
 };
 
 const Layout: Component<LayoutProps> = (props) => {
-  const filteredAndSortedCars = getFilteredResults;
+  const filteredAndSortedCars = createMemo(() => getFilteredAndSortedCars());
 
   return (
     <div class="flex overflow-hidden relative">
