@@ -204,8 +204,8 @@ const DashIcon = () => <span class="text-gray-400">—</span>;
 const getACCIcon = (longitudinal: string) => {
   if (longitudinal === 'openpilot') {
     return (
-      <svg class="w-4 h-4 text-green-600 mx-auto" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+      <svg class="w-4 h-4 text-green-600 mx-auto" fill="none" stroke="currentColor" stroke-width="4" viewBox="0 0 24 24">
+        <path d="M20 6L9 17l-5-5"/>
       </svg>
     );
   }
