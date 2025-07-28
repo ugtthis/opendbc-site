@@ -61,9 +61,16 @@ const CarList: Component<CarListProps> = (props) => {
               <tbody>
                 <For each={props.cars}>
                   {(car) => (
-                    <tr class="hover:bg-[#e9e9e9] transition-colors">
+                    <tr class="hover:bg-[#e9e9e9] transition-colors relative">
                       <td class="border border-black px-2 py-2">
-                        <div class="flex flex-col gap-1 w-full">
+                        <a 
+                          href={`/cars/${car.name.replace(/\s+/g, '-')}`}
+                          class="absolute inset-0 w-full h-full"
+                          aria-label={`View details for ${car.make} ${car.model} ${car.years}`}
+                        >
+                          <span class="sr-only">View {car.make} {car.model} details</span>
+                        </a>
+                        <div class="flex flex-col gap-1 w-full pointer-events-none">
                           <span class={`py-1 px-2 text-xs uppercase inline-block rounded-sm ${getSupportTypeColor(car.support_type)}`}>
                             {car.support_type}
                           </span>
@@ -73,38 +80,44 @@ const CarList: Component<CarListProps> = (props) => {
                         </div>
                       </td>
                       <td class="border border-black px-2 py-2 font-semibold text-sm">
-                        <div class="truncate w-full" title={car.make}>
+                        <div class="truncate w-full pointer-events-none" title={car.make}>
                           {car.make}
                         </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-sm">
-                        <div class="truncate w-full" title={car.model}>
+                        <div class="truncate w-full pointer-events-none" title={car.model}>
                           {car.model}
                         </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-sm">
-                        <div class="truncate w-full" title={car.years}>
+                        <div class="truncate w-full pointer-events-none" title={car.years}>
                           {car.years}
                         </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-center">
-                        {getACCIcon(car.longitudinal)}
+                        <div class="pointer-events-none">
+                          {getACCIcon(car.longitudinal)}
+                        </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-center text-sm">
-                        <div class="truncate w-full" title={car.fsr_longitudinal}>
+                        <div class="truncate w-full pointer-events-none" title={car.fsr_longitudinal}>
                           {car.fsr_longitudinal && car.fsr_longitudinal !== "0 mph" ? car.fsr_longitudinal : "—"}
                         </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-center text-sm">
-                        <div class="truncate w-full" title={car.fsr_steering}>
+                        <div class="truncate w-full pointer-events-none" title={car.fsr_steering}>
                           {car.fsr_steering && car.fsr_steering !== "0 mph" ? car.fsr_steering : "—"}
                         </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-center">
-                        {getSteeringTorqueIcon(car.steering_torque)}
+                        <div class="pointer-events-none">
+                          {getSteeringTorqueIcon(car.steering_torque)}
+                        </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-center">
-                        {getAutoResumeIcon(car.auto_resume)}
+                        <div class="pointer-events-none">
+                          {getAutoResumeIcon(car.auto_resume)}
+                        </div>
                       </td>
                       <td class="border border-black px-2 py-2 text-center">
                         {car.video ? (
@@ -112,7 +125,7 @@ const CarList: Component<CarListProps> = (props) => {
                             href={car.video}
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center bg-[#969696] bg-opacity-80 hover:bg-red-600 hover:bg-opacity-100 text-white text-opacity-90 hover:text-opacity-100 p-1 hover:shadow-lg transition-all duration-200 cursor-pointer rounded-sm"
+                            class="inline-flex items-center bg-[#969696] bg-opacity-80 hover:bg-red-600 hover:bg-opacity-100 text-white text-opacity-90 hover:text-opacity-100 p-1 hover:shadow-lg transition-all duration-200 cursor-pointer rounded-sm relative z-10 pointer-events-auto"
                             title="Watch user video on YouTube"
                           >
                             <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
@@ -120,7 +133,7 @@ const CarList: Component<CarListProps> = (props) => {
                             </svg>
                           </a>
                         ) : (
-                          <span class="text-gray-400 text-sm">—</span>
+                          <span class="text-gray-400 text-sm pointer-events-none">—</span>
                         )}
                       </td>
                     </tr>
