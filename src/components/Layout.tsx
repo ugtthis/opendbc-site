@@ -64,9 +64,12 @@ const Layout: Component<LayoutProps> = (props) => {
             {/* Sidebar toggle button */}
             <button
               onClick={toggleSidebar}
-              class="bg-[#969696] p-2 border-4 border-[#d9d9d9] z-10 2xl:hidden"
+              class="bg-[#969696] hover:bg-[#787878] p-2 border-4 border-[#d9d9d9] hover:border-[#c9c9c9] z-10 2xl:hidden transition-all duration-200"
+              aria-label="Toggle filters"
             >
-              <img src="/icons/toggleFilterIcon.svg" alt="Toggle Icon" class="w-4 h-4" />
+              <svg class="w-5 h-5 text-white group-hover:text-gray-100 transition-colors duration-200" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd" />
+              </svg>
             </button>
           </div>
         </div>
