@@ -66,9 +66,7 @@ const CarList: Component<CarListProps> = (props) => {
                         <a 
                           href={`/cars/${car.name.replace(/\s+/g, '-')}`}
                           class="absolute inset-0 w-full h-full"
-                          aria-label={`View details for ${car.make} ${car.model} ${car.years}`}
                         >
-                          <span class="sr-only">View {car.make} {car.model} details</span>
                         </a>
                         <div class="flex flex-col gap-1 w-full pointer-events-none">
                           <span class={`py-1 px-2 text-xs uppercase inline-block rounded-sm ${getSupportTypeColor(car.support_type)}`}>
