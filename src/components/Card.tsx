@@ -80,7 +80,7 @@ const Card: Component<CardProps> = (props) => {
             </div>
           </div>
           <div class="flex justify-between px-4 pb-4 items-center">
-            <a href={`/cars/${props.car.make}-${props.car.model}`.toLowerCase()} 
+            <a href={`/cars/${props.car.name.replace(/\s+/g, '-')}`} 
               class="group w-full bg-gradient-to-r from-[#4A4A4A] to-[#686868] hover:from-[#222121] hover:to-[#585858] 
               border-2 border-gray-700 uppercase text-white py-4 text-center flex items-center justify-center gap-3
               transition-all duration-400 ease-in-out hover:shadow-lg hover:translate-y-[-2px]">

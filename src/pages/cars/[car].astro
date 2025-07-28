@@ -9,7 +9,7 @@ import VehicleMetrics from '../../components/VehicleMetrics';
 // Generate all possible car paths at build time
 export async function getStaticPaths() {
 	return cars.map(car => ({
-		params: { car: `${car.make}-${car.model}`.toLowerCase() },
+		params: { car: car.name.replace(/\s+/g, '-') },
 		props: { carData: car },
 	}));
 }
