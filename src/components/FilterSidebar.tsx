@@ -1,4 +1,4 @@
-import { createSignal, onMount, onCleanup, For, Show, createEffect } from 'solid-js';
+import { createSignal, createMemo, onMount, onCleanup, For, Show, createEffect } from 'solid-js';
 import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
@@ -199,7 +199,7 @@ function CustomDropdown(props: DropdownProps) {
   );
 }
 
-export const getFilteredResults = () => {
+export const getFilteredResults = createMemo(() => {
   let result: Car[] = [...carData];
   const currentFilters = filters();
   
@@ -217,14 +217,32 @@ export const getFilteredResults = () => {
   }
   if (currentFilters.hasUserVideo) {
     if (currentFilters.hasUserVideo === 'Yes') {
-      result = result.filter(car => car.video && car.video.trim() !== '');
+      result = result.filter(car => car.video);
     } else if (currentFilters.hasUserVideo === 'No') {
-      result = result.filter(car => !car.video || car.video.trim() === '');
+      result = result.filter(car => !car.video);
     }
   }
   
+  const sort = sortConfig();
+  result.sort((a, b) => {
+    const field: SortField = sort.field;
+    let aVal = a[field];
+    let bVal = b[field];
+    
+    if (field === 'year_list') {
+      aVal = a.year_list[0];
+      bVal = b.year_list[0];
+    }
+    
+    if (sort.order === 'ASC') {
+      return aVal > bVal ? 1 : -1;
+    } else {
+      return aVal < bVal ? 1 : -1;
+    }
+  });
+  
   return result;
-};
+});
 
 export const filteredResults = () => getFilteredResults().length;
 

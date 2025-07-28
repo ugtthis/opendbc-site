@@ -1,6 +1,5 @@
 import { type Component, createMemo } from 'solid-js';
-import FilterSidebar, { toggleSidebar, isOpen, filters, sortConfig } from './FilterSidebar';
-import type { SortField } from './FilterSidebar';
+import FilterSidebar, { toggleSidebar, isOpen, getFilteredResults } from './FilterSidebar';
 import type { Car } from '../types/CarDataTypes';
 import CarList from './CarList';
 
@@ -9,52 +8,7 @@ type LayoutProps = {
 };
 
 const Layout: Component<LayoutProps> = (props) => {
-  const filteredAndSortedCars = createMemo(() => {
-    let result = [...props.cars];
-    
-    const currentFilters = filters();
-    if (currentFilters.supportLevel) {
-      const searchValue = currentFilters.supportLevel;
-      result = result.filter(car => car.support_type === searchValue);
-    }
-    if (currentFilters.make) {
-      result = result.filter(car => car.make === currentFilters.make);
-    }
-    if (currentFilters.model) {
-      result = result.filter(car => car.model === currentFilters.model);
-    }
-    if (currentFilters.year) {
-      result = result.filter(car => (car.year_list as string[]).includes(currentFilters.year));
-    }
-    if (currentFilters.hasUserVideo) {
-      if (currentFilters.hasUserVideo === 'Yes') {
-        result = result.filter(car => car.video && car.video.trim() !== '');
-      } else if (currentFilters.hasUserVideo === 'No') {
-        result = result.filter(car => !car.video || car.video.trim() === '');
-      }
-    }
-
-    // Apply sorting
-    const sort = sortConfig();
-    result.sort((a, b) => {
-      const field: SortField = sort.field;
-      let aVal = a[field];
-      let bVal = b[field];
-      
-      if (field === 'year_list') {
-        aVal = a.year_list[0];
-        bVal = b.year_list[0];
-      }
-      
-      if (sort.order === 'ASC') {
-        return aVal > bVal ? 1 : -1;
-      } else {
-        return aVal < bVal ? 1 : -1;
-      }
-    });
-
-    return result;
-  });
+  const filteredAndSortedCars = getFilteredResults;
 
   return (
     <div class="flex overflow-hidden relative">
