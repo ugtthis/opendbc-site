@@ -21,7 +21,7 @@ const Layout: Component<LayoutProps> = (props) => {
           </div>
           <div class="flex gap-2">
             {/* View toggle switch */}
-            <div class="relative border-4 border-[#dadada]">
+            <div class="relative border-4 border-[#dadada] h-11">
               <button
                 onClick={toggleViewMode}
                 class="relative bg-[#F3F3F3] w-20 h-full rounded-none overflow-hidden transition-all duration-200 hover:border-[#969696] hover:shadow-sm"
