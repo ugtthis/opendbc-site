@@ -16,27 +16,29 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
 
+      - name: Checkout opendbc repo
+        uses: actions/checkout@v4
+        with:
+          repository: commaai/opendbc
+          path: opendbc
+
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: Clone opendbc repo
+      - name: Build opendbc
         run: |
-          git clone https://github.com/commaai/opendbc.git ./tmp/opendbc
-
-      - name: Install dependencies and build opendbc
-        run: |
-          cd ./tmp/opendbc
+          cd opendbc
           pip install -e .
           pip install jinja2==3.1.4 natsort==8.4.0
           scons -c && scons -j$(nproc)
 
-      - name: Run data extraction script
+      - name: Extract metadata
         run: |
-          cd ./tmp/opendbc
-          python ../../scripts/get_metadata.py
-          mv metadata.json ../../src/data/car_data.json
+          cd opendbc
+          python ../scripts/get_metadata.py
+          mv metadata.json ../src/data/car_data.json
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@af7c021bb9c41362d0986422bd244ce51a3bf52f
