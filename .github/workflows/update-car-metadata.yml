@@ -44,7 +44,7 @@ jobs:
         uses: peter-evans/create-pull-request@af7c021bb9c41362d0986422bd244ce51a3bf52f
         with:
           commit-message: 'metadata: Auto-update from opendbc repo'
-          title: 'Scheduled metadata update'
+          title: '[bot] Scheduled metadata update'
           body: 'Automated PR to update metadata from opendbc repo'
           branch: update-car-metadata
           base: main
