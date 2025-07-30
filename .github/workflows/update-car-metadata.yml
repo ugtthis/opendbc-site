@@ -20,7 +20,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           repository: commaai/opendbc
-          path: opendbc
+          path: external-opendbc
 
       - name: Setup Python
         uses: actions/setup-python@v4
@@ -29,14 +29,14 @@ jobs:
 
       - name: Build opendbc
         run: |
-          cd opendbc
+          cd external-opendbc
           pip install -e .
           pip install jinja2==3.1.4 natsort==8.4.0
           scons -c && scons -j$(nproc)
 
       - name: Extract metadata
         run: |
-          cd opendbc
+          cd external-opendbc
           python ../scripts/get_metadata.py
           mv metadata.json ../src/data/car_data.json
 
@@ -46,7 +46,6 @@ jobs:
           commit-message: 'metadata: Auto-update from opendbc repo'
           title: 'Scheduled metadata update'
           body: 'Automated PR to update metadata from opendbc repo'
-          labels: bot
           branch: update-car-metadata
           base: main
           delete-branch: true 

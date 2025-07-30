@@ -22,3 +22,7 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# opendbc repository (used only during workflow)
+opendbc/
+opendbc-repo/
