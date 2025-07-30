@@ -24,4 +24,4 @@ pnpm-debug.log*
 .idea/
 
 # opendbc repository (used only during workflow)
-external-opendbc/
+opendbc/
