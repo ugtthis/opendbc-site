@@ -2,8 +2,8 @@ import { createSignal, createMemo, onMount, onCleanup, For, Show, createEffect }
 import { isServer } from 'solid-js/web';
 import carData from '../data/car_data.json';
 import type { Car } from '../types/CarDataTypes';
-import sortOrderIcon from '../assets/icons/sort-order-icon.svg?url';
-import rotateLeftIcon from '../assets/icons/rotate-left.svg?url';
+import sortOrderIcon from '../lib/icons/sort-order-icon.svg?url';
+import rotateLeftIcon from '../lib/icons/rotate-left.svg?url';
 
 const typedCarData: Car[] = carData;
 
