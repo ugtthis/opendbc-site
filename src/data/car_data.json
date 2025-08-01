@@ -19479,18 +19479,28 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 0.63,
     "center_to_front_ratio": 0.5,
-    "has_angled_mount": false,
+    "has_angled_mount": true,
     "harness": "hyundai_h",
     "tools_required": [],
     "parts": [
+      {
+        "name": "comma 3X",
+        "type": "device",
+        "count": 1
+      },
       {
         "name": "Hyundai H connector",
         "type": "connector",
         "count": 1
       },
       {
-        "name": "comma 3X",
-        "type": "device",
+        "name": "angled mount (8 degrees)",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "right angle OBD-C cable (1.5 ft)",
+        "type": "cable",
         "count": 1
       },
       {
@@ -19501,16 +19511,6 @@
       {
         "name": "comma power v3",
         "type": "accessory",
-        "count": 1
-      },
-      {
-        "name": "mount",
-        "type": "mount",
-        "count": 1
-      },
-      {
-        "name": "right angle OBD-C cable (1.5 ft)",
-        "type": "cable",
         "count": 1
       }
     ]
