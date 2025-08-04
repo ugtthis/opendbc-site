@@ -1,5 +1,6 @@
 # Build outputs
 dist
+.output
 .wrangler
 .vinxi
 
