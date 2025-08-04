@@ -1,27 +1,25 @@
-# build output
-dist/
+# Build outputs
+dist
+.wrangler
+.vinxi
 
-# generated types
-.astro/
-
-# dependencies
-node_modules/
-
-# logs
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# environment variables
+# Environment
 .env
-.env.production
+.env*.local
 
-# macOS-specific files
+# Dependencies
+/node_modules
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+*.launch
+.settings/
+
+# System Files
 .DS_Store
-
-# jetbrains setting folder
-.idea/
+Thumbs.db
 
 # opendbc repository (used only during workflow)
 opendbc/
