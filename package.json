@@ -27,12 +27,14 @@
   "//dependencies": {
     "@solidjs/router": "client-side routing for solidjs",
     "@solidjs/start": "full-stack web framework for solidjs",
+    "corvu": "ui components for solidjs",
     "solid-js": "reactive js lib for ui",
     "vinxi": "build tool and dev server for solidstart"
   },
   "dependencies": {
     "@solidjs/router": "^0.15.0",
     "@solidjs/start": "^1.1.0",
+    "corvu": "^0.7.2",
     "solid-js": "^1.9.5",
     "vinxi": "^0.5.7"
   },
