@@ -1,6 +1,6 @@
 import { createSignal, createMemo, onMount, onCleanup, For, Show, createEffect } from 'solid-js';
 import { isServer } from 'solid-js/web';
-import carData from '../data/car_data.json';
+import carData from '../data/metadata.json';
 import type { Car } from '../types/CarDataTypes';
 import sortOrderIcon from '../lib/icons/sort-order-icon.svg?url';
 import rotateLeftIcon from '../lib/icons/rotate-left.svg?url';

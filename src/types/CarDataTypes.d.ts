@@ -1,4 +1,4 @@
-import cars from '../data/car_data.json';
+import cars from '../data/metadata.json';
 
 export type Car = typeof cars[number];
 
