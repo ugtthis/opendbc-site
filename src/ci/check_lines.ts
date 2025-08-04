@@ -13,6 +13,7 @@ async function generateStats(root = 'src') {
   const files: FileStats[] = []
   for await (const path of $`find . -type f`.cwd(root).lines()) {
     if (!path) continue
+    if (path.endsWith('metadata.json')) continue
     files.push({
       path,
       lines: Number(
