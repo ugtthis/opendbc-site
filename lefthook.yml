@@ -7,6 +7,10 @@ pre-commit:
     check:
       run: bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true --colors=off {staged_files}
       stage_fixed: true
+    rustywind:
+      run: ./node_modules/.bin/rustywind --write {staged_files}
+      stage_fixed: true
+      files: git diff --name-only --cached
     lines:
       run: bun src/ci/check_lines.ts
 
