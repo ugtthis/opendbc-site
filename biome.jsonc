@@ -12,7 +12,8 @@
     "enabled": true,
     "formatWithErrors": true,
     "indentStyle": "space",
-    "useEditorconfig": true
+    "useEditorconfig": true,
+    "lineWidth": 140
   },
   "linter": {
     "enabled": true,
