@@ -3,7 +3,7 @@ import { type Component, type ParentProps } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 
 import GradientButton from '~/components/ui/GradientButton'
-import { getSupportTypeColor } from '~/lib/supportType'
+import { getSupportTypeColor } from '~/types/supportType'
 import { cn } from '~/lib/utils'
 
 import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
