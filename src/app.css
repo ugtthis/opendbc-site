@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
-:root {
-  --background-rgb: 214, 219, 220;
-  --foreground-rgb: 0, 0, 0;
+@theme {
+  --shadow-elev-1: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo;
+  --font-sans: "Inter", system-ui, "Segoe UI";
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background-rgb: 255, 255, 255;
-    --foreground-rgb: 0, 0, 0;
-  }
+:root {
+  --background-rgb: 196 196 196;
+  --foreground-rgb: 0 0 0;
 }
 
 body {
   background: rgb(var(--background-rgb));
   color: rgb(var(--foreground-rgb));
+  font-family: var(--font-mono);
 }
