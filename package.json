@@ -9,8 +9,8 @@
     "lint": "biome lint --write",
     "check": "biome check --write",
     "lines": "bun run src/ci/check_lines.ts",
-    "check-styles": "rustywind --check-formatted . --custom-regex 'class=\"([^\"]*)\"'",
-    "sort-all-styles": "rustywind --write . --custom-regex 'class=\"([^\"]*)\"'"
+    "check-styles": "bash scripts/rustywind.sh --check-formatted .",
+    "sort-all-styles": "bash scripts/rustywind.sh --write ."
   },
   "//devDependencies": {
     "@biomejs/biome": "all-in-one linter, formatter, and import organizer",
