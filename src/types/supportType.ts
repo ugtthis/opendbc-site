@@ -5,7 +5,7 @@ export const supportTypeStyles: Record<string, string> = {
   'Under review': 'bg-yellow-400 text-black font-bold',
   'Not compatible': 'bg-red-500 text-white',
   Community: 'bg-blue-400 text-white',
-  'Dashcam mode': 'bg-purple-500 text-white',
+  'Dashcam mode': 'bg-gray-400 text-white',
   default: 'bg-gray-400 text-white',
 }
 
