@@ -1,5 +1,5 @@
 {
-  "name": "example-with-tailwindcss",
+  "name": "opendbc-site",
   "type": "module",
   "scripts": {
     "dev": "vinxi dev",
