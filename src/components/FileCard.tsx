@@ -3,6 +3,7 @@ import { type Component, type ParentProps } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 
 import GradientButton from '~/components/ui/GradientButton'
+import HighlightText from '~/components/ui/HighlightText'
 import { getSupportTypeColor } from '~/types/supportType'
 import { cn } from '~/lib/utils'
 
@@ -13,6 +14,7 @@ import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
 
 type CardProps = {
   car: Car
+  searchQuery: string
 }
 
 type StatBoxProps = ParentProps<{
@@ -39,7 +41,9 @@ const Card: Component<CardProps> = (props) => {
     <>
       {/* Support label */}
       <div class={supportLabelClass}>
-        <p class="uppercase text-[16px]">{props.car.support_type}</p>
+        <p class="uppercase text-[16px]">
+          <HighlightText text={props.car.support_type} query={props.searchQuery} />
+        </p>
       </div>
 
       {/* Card body */}
@@ -52,7 +56,7 @@ const Card: Component<CardProps> = (props) => {
             </div>
             <div class="flex flex-1 justify-between items-center py-2.5 px-3 min-h-[60px]">
               <h1 class="flex-1 pr-3 text-xl font-semibold">
-                {props.car.make} {props.car.model}
+                <HighlightText text={`${props.car.make} ${props.car.model}`} query={props.searchQuery} />
               </h1>
               <div class={`flex-shrink-0 ml-2 ${!props.car.video ? 'invisible' : ''}`}>
                 <a

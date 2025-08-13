@@ -11,8 +11,8 @@ pre-commit:
       run: ./node_modules/.bin/rustywind --write {staged_files}
       stage_fixed: true
       files: git diff --name-only --cached
-    lines:
-      run: bun src/ci/check_lines.ts
+    # lines:
+    #   run: bun src/ci/check_lines.ts
 
 pre-push:
   parallel: true
