@@ -15,5 +15,6 @@ export type Car = {
   harness: string | null
   mass_curb_weight: number
   steer_ratio: number
+  min_enable_speed: number
   [key: string]: string | number | boolean | string[] | null | undefined | Record<string, unknown>
 }

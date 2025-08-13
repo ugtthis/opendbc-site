@@ -7,6 +7,12 @@ import HighlightText from '~/components/ui/HighlightText'
 import { getSupportTypeColor } from '~/types/supportType'
 import { cn } from '~/lib/utils'
 
+const MS_TO_MPH = 2.237
+
+const formatEngageSpeed = (speedMs: number): string => {
+  return speedMs >= 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'at any speed'
+}
+
 import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
 import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
 import VideoCameraSvg from '~/lib/icons/video-camera.svg?raw'
@@ -82,7 +88,7 @@ const Card: Component<CardProps> = (props) => {
           </div>
           <div class="py-2.5 px-2 border-b border-black">
             <p class="text-sm">
-              <strong>Fingerprint:</strong> {props.car.car_fingerprint}
+              <strong>Min Engage Speed:</strong> {formatEngageSpeed(props.car.min_enable_speed)}
             </p>
           </div>
 
