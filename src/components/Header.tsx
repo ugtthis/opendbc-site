@@ -1,45 +1,16 @@
 import type { Component } from 'solid-js'
-import { createSignal, createMemo } from 'solid-js'
+import { createSignal } from 'solid-js'
 import { A } from '@solidjs/router'
 
 import FilterSvg from '~/lib/icons/filter.svg?raw'
 import SearchGlassSvg from '~/lib/icons/search-glass.svg?raw'
 import ShineBorder from '~/components/ui/ShineBorder'
 import FilterModal from '~/components/FilterModal'
-import type { Car } from '~/types/CarDataTypes'
-import type { SupportType } from '~/types/supportType'
 import { useFilter } from '~/contexts/FilterContext'
-
-import metadata from '~/data/metadata.json'
 
 const Header: Component = () => {
   const [isFilterOpen, setIsFilterOpen] = createSignal(false)
-  const { filters, setFilters, searchQuery, setSearchQuery } = useFilter()
-
-  // Extract unique values from metadata
-  const availableYears = createMemo(() => {
-    const yearSet = new Set<string>()
-    ;(metadata as Car[]).forEach((car) => {
-      car.year_list.forEach((year) => yearSet.add(year))
-    })
-    return Array.from(yearSet).sort()
-  })
-
-  const availableMakes = createMemo(() => {
-    const makeSet = new Set<string>()
-    ;(metadata as Car[]).forEach((car) => {
-      makeSet.add(car.make)
-    })
-    return Array.from(makeSet).sort()
-  })
-
-  const availableSupportTypes = createMemo(() => {
-    const supportTypeSet = new Set<SupportType>()
-    ;(metadata as Car[]).forEach((car) => {
-      supportTypeSet.add(car.support_type)
-    })
-    return Array.from(supportTypeSet)
-  })
+  const { searchQuery, setSearchQuery } = useFilter()
 
   return (
     <>
@@ -80,15 +51,7 @@ const Header: Component = () => {
         </div>
       </header>
 
-      <FilterModal
-        isOpen={isFilterOpen()}
-        onOpenChange={setIsFilterOpen}
-        filters={filters()}
-        onFiltersChange={setFilters}
-        availableYears={availableYears()}
-        availableMakes={availableMakes()}
-        availableSupportTypes={availableSupportTypes()}
-      />
+      <FilterModal isOpen={isFilterOpen()} onOpenChange={setIsFilterOpen} />
     </>
   )
 }

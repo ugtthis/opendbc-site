@@ -1,34 +1,31 @@
 import { type Component, Show, For } from 'solid-js'
 import { cn } from '~/lib/utils'
-import type { FilterState } from '~/components/FilterModal'
+import { useFilter, type FilterState } from '~/contexts/FilterContext'
 
-type FilterChipsProps = {
-  filters: FilterState
-  searchQuery: string
-  onFilterRemove: (key: keyof FilterState) => void
-  onSearchClear: () => void
-  onClearAll: () => void
-}
+const FilterChips: Component = () => {
+  const { filters, searchQuery, removeFilter, setSearchQuery, clearAllFilters } = useFilter()
 
-const FilterChips: Component<FilterChipsProps> = (props) => {
   const activeFilters = () => {
-    const filters = props.filters
+    const currentFilters = filters()
     const active: Array<{ key: keyof FilterState; label: string; value: string }> = []
 
-    if (filters.year) {
-      active.push({ key: 'year', label: 'Year', value: filters.year })
+    if (currentFilters.year) {
+      active.push({ key: 'year', label: 'Year', value: currentFilters.year })
     }
-    if (filters.make) {
-      active.push({ key: 'make', label: 'Make', value: filters.make })
+    if (currentFilters.make) {
+      active.push({ key: 'make', label: 'Make', value: currentFilters.make })
     }
-    if (filters.supportType) {
-      active.push({ key: 'supportType', label: 'Support', value: filters.supportType })
+    if (currentFilters.supportLevel) {
+      active.push({ key: 'supportLevel', label: 'Support', value: currentFilters.supportLevel })
+    }
+    if (currentFilters.hasUserVideo) {
+      active.push({ key: 'hasUserVideo', label: 'Has Video', value: currentFilters.hasUserVideo })
     }
 
     return active
   }
 
-  const hasActiveFilters = () => activeFilters().length > 0 || props.searchQuery.trim().length > 0
+  const hasActiveFilters = () => activeFilters().length > 0 || searchQuery().trim().length > 0
 
   return (
     <Show when={hasActiveFilters()}>
@@ -36,7 +33,7 @@ const FilterChips: Component<FilterChipsProps> = (props) => {
         <span class="mr-2 text-sm font-semibold text-black">Active filters:</span>
 
         {/* Search chip */}
-        <Show when={props.searchQuery.trim()}>
+        <Show when={searchQuery().trim()}>
           <div
             class={cn(
               'flex items-center gap-1.5 px-3 py-1.5',
@@ -45,9 +42,9 @@ const FilterChips: Component<FilterChipsProps> = (props) => {
             )}
           >
             <span class="font-medium">Search:</span>
-            <span>"{props.searchQuery}"</span>
+            <span>"{searchQuery()}"</span>
             <button
-              onClick={props.onSearchClear}
+              onClick={() => setSearchQuery('')}
               class={cn(
                 'ml-1 flex items-center justify-center size-4',
                 'bg-[#D9D9D9] text-black text-xs font-bold',
@@ -73,7 +70,7 @@ const FilterChips: Component<FilterChipsProps> = (props) => {
               <span class="font-medium">{filter.label}:</span>
               <span>{filter.value}</span>
               <button
-                onClick={() => props.onFilterRemove(filter.key)}
+                onClick={() => removeFilter(filter.key)}
                 class={cn(
                   'ml-1 flex items-center justify-center size-4',
                   'bg-[#D9D9D9] text-black text-xs font-bold',
@@ -89,7 +86,7 @@ const FilterChips: Component<FilterChipsProps> = (props) => {
         </For>
 
         <button
-          onClick={props.onClearAll}
+          onClick={clearAllFilters}
           class={cn(
             'px-3 py-1.5 text-sm font-semibold',
             'bg-white text-black border border-black',
