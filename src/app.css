@@ -16,3 +16,24 @@ body {
   color: rgb(var(--foreground-rgb));
   font-family: var(--font-mono);
 }
+
+@keyframes shine {
+  0% {
+    background-position: -200% 0%;
+  }
+  100% {
+    background-position: 200% 0%;
+  }
+}
+
+.shine-border-overlay {
+  animation: shine 30s infinite linear;
+  background: linear-gradient(90deg, transparent, #00b925, #002a08, transparent);
+  background-size: 200% 100%;
+}
+
+.gradient-dark-forrest {
+  background:
+    radial-gradient(ellipse at center, #2d4a35 20%, #1e3a28 35%, #0a0f0e 80%),
+    linear-gradient(135deg, #0a0f0e 0%, #1a2f1e 25%, #2d4a35 50%, #1e3a28 75%, #0a0f0e 100%);
+}
