@@ -258,7 +258,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             <Drawer.Content
               class={cn(
                 'fixed inset-x-0 bottom-0 z-50 flex flex-col',
-                'min-h-[95vh] rounded-t-4xl',
+                'max-h-[min(95vh,800px)] rounded-t-4xl',
                 'bg-[#FBFBFB] shadow-[0_-6px_20px_rgba(0,0,0,0.6)]',
                 'data-[transitioning]:transition-transform data-[transitioning]:duration-300',
                 'data-[transitioning]:ease-[cubic-bezier(0.32,0.72,0,1)]',
@@ -314,7 +314,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             'data-[opening]:zoom-in-95 data-[opening]:slide-in-from-top-2',
             'data-[closing]:animate-out data-[closing]:fade-out-0',
             'data-[closing]:zoom-out-95 data-[closing]:slide-out-to-top-2',
-            'max-h-[85vh] flex flex-col',
+            'max-h-[min(85vh,850px)] flex flex-col',
           )}
         >
           {/* Header */}
