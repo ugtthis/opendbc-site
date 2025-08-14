@@ -90,7 +90,10 @@ const FilterModal: Component<FilterModalProps> = (props) => {
               <button
                 type="button"
                 onClick={() => setOpenSort(!openSort())}
-                class="flex justify-between items-center p-4 w-full text-left bg-white border border-black"
+                class={`
+                  flex justify-between items-center p-4 w-full h-[56px] text-left
+                  bg-white border border-black hover:bg-[#F3F3F3] transition-colors cursor-pointer
+                `}
               >
                 <span>
                   {sortOptions.find((opt) => opt.value === sortConfig().field)
@@ -112,11 +115,11 @@ const FilterModal: Component<FilterModalProps> = (props) => {
               </button>
 
               <Show when={openSort()}>
-                <div class="absolute z-10 w-full bg-white border border-t-0 border-black">
-                  <div class="overflow-y-auto max-h-[180px]">
+                <div class="w-full bg-white border border-t-0 border-black">
+                  <div class="overflow-y-auto max-h-[200px]">
                     {sortOptions.map((option) => (
                       <button
-                        class={`w-full h-10 px-4 text-left hover:bg-gray-100
+                        class={`w-full h-[40px] px-4 text-left hover:bg-gray-100 cursor-pointer
                           ${sortConfig().field === option.value ? 'bg-gray-100' : ''}`}
                         onClick={() => {
                           setSortConfig((prev) => ({
@@ -140,7 +143,10 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                   order: prev.order === 'ASC' ? 'DESC' : 'ASC',
                 }))
               }
-              class="flex justify-center items-center p-3 w-1/3 border border-black hover:bg-gray-50"
+              class={`
+                flex justify-center items-center p-4 w-1/3 h-[56px]
+                border border-black hover:bg-[#F3F3F3] self-start cursor-pointer
+              `}
               aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
             >
               <img
