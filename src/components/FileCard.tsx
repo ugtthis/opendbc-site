@@ -10,7 +10,7 @@ import { cn } from '~/lib/utils'
 const MS_TO_MPH = 2.237
 
 const formatEngageSpeed = (speedMs: number): string => {
-  return speedMs >= 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'at any speed'
+  return speedMs >= 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
 import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
@@ -86,10 +86,26 @@ const Card: Component<CardProps> = (props) => {
               <strong>ADAS Package:</strong> {props.car.package}
             </p>
           </div>
-          <div class="py-2.5 px-2 border-b border-black">
-            <p class="text-sm">
-              <strong>Min Engage Speed:</strong> {formatEngageSpeed(props.car.min_enable_speed)}
-            </p>
+          <div class="flex p-2 border-b border-black">
+            <div class="flex flex-1 items-center">
+              <p class="flex-1 text-md">
+                <strong>Minimum<br/>Engage Speed</strong>
+              </p>
+            </div>
+            <div class="flex flex-col gap-2 flex-[1.618]">
+              <div class="flex flex-col flex-1 justify-center py-1 px-2 bg-white border border-black">
+                <p class="text-sm">
+                  <strong>ALC:</strong> {formatEngageSpeed(props.car.min_steer_speed)}
+                </p>
+                <p class="text-xs text-gray-500">Automated Lane Centering</p>
+              </div>
+              <div class="flex flex-col flex-1 justify-center py-1 px-2 bg-white border border-black">
+                <p class="text-sm">
+                  <strong>ACC:</strong> {formatEngageSpeed(props.car.min_enable_speed)}
+                </p>
+                <p class="text-xs text-gray-500">Adaptive Cruise Control</p>
+              </div>
+            </div>
           </div>
 
           <div class="h-6" />
