@@ -81,7 +81,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
   const FilterContent = () => (
     <>
       {/* Scrollable content area */}
-      <div class="overflow-y-auto flex-1 px-6 pt-4 pb-4">
+      <div class="overflow-y-auto flex-1 px-6 pt-4 pb-11">
         {/* Sort Section */}
         <div class="mb-6">
           <h2 class="mb-4 text-lg font-semibold">SORT BY:</h2>
