@@ -4,7 +4,13 @@ import type { Car } from '~/types/CarDataTypes'
 import carData from '~/data/metadata.json'
 
 const searchAttributes = (car: Car, query: string): boolean => {
-  const searchFields = [car.make, car.model, car.support_type, car.package, car.year_list]
+  const searchFields = [
+    car.make,
+    car.model,
+    car.support_type,
+    car.package,
+    car.year_list,
+  ]
 
   return searchFields.some((field) =>
     String(field || '')
@@ -65,13 +71,17 @@ export const FilterProvider = (props: ParentProps) => {
     const currentFilters = filters()
 
     if (currentFilters.supportLevel) {
-      result = result.filter((car) => car.support_type === currentFilters.supportLevel)
+      result = result.filter(
+        (car) => car.support_type === currentFilters.supportLevel,
+      )
     }
     if (currentFilters.make) {
       result = result.filter((car) => car.make === currentFilters.make)
     }
     if (currentFilters.year) {
-      result = result.filter((car) => (car.year_list as string[]).includes(currentFilters.year))
+      result = result.filter((car) =>
+        (car.year_list as string[]).includes(currentFilters.year),
+      )
     }
     if (currentFilters.hasUserVideo) {
       if (currentFilters.hasUserVideo === 'Yes') {
@@ -113,7 +123,10 @@ export const FilterProvider = (props: ParentProps) => {
 
   const hasActiveFilters = createMemo(() => {
     const currentFilters = filters()
-    return Object.values(currentFilters).some((value) => value !== '') || searchQuery().trim().length > 0
+    return (
+      Object.values(currentFilters).some((value) => value !== '') ||
+      searchQuery().trim().length > 0
+    )
   })
 
   const removeFilter = (key: keyof FilterState) => {
