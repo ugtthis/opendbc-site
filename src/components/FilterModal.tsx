@@ -13,6 +13,8 @@ import CustomDropdown from '~/components/ui/CustomDropdown'
 import { useFilter, type SortField } from '~/contexts/FilterContext'
 import type { Car } from '~/types/CarDataTypes'
 import carData from '~/data/metadata.json'
+import { getSupportLevels } from '~/types/supportType'
+
 import { cn } from '~/lib/utils'
 import sortOrderIcon from '~/lib/icons/sort-order-icon.svg?url'
 import rotateLeftIcon from '~/lib/icons/rotate-left.svg?url'
@@ -36,13 +38,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
 
   // Get unique values for dropdowns
   const typedCarData = carData as Car[]
-  const supportLevels = [
-    'Upstream',
-    'Under review',
-    'Community',
-    'Dashcam mode',
-    'Not compatible',
-  ]
+  const supportLevels = getSupportLevels()
   const makes = [...new Set(typedCarData.map((car) => car.make))].sort()
   const years: string[] = [
     ...new Set(typedCarData.flatMap((car) => car.year_list)),
