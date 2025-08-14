@@ -13,9 +13,7 @@ const searchAttributes = (car: Car, query: string): boolean => {
   ]
 
   return searchFields.some((field) =>
-    String(field || '')
-      .toLowerCase()
-      .includes(query),
+    String(field || '').toLowerCase().includes(query),
   )
 }
 
