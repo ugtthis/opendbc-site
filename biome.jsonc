@@ -9,10 +9,7 @@
     "ignoreUnknown": false
   },
   "formatter": {
-    "enabled": true,
-    "formatWithErrors": true,
-    "indentStyle": "space",
-    "useEditorconfig": true
+    "enabled": false
   },
   "linter": {
     "enabled": true,
