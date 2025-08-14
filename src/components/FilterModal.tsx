@@ -1,10 +1,17 @@
-import { type Component, Show, createSignal, onMount, onCleanup } from 'solid-js'
+import {
+  type Component,
+  Show,
+  createSignal,
+  onMount,
+  onCleanup,
+} from 'solid-js'
 import * as Drawer from 'corvu/drawer'
 import * as Dialog from 'corvu/dialog'
 import { isServer } from 'solid-js/web'
 import createMediaQuery from '~/utils/createMediaQuery'
 import CustomDropdown from '~/components/ui/CustomDropdown'
 import { useFilter, type SortField } from '~/contexts/FilterContext'
+import type { Car } from '~/types/CarDataTypes'
 import carData from '~/data/metadata.json'
 import { cn } from '~/lib/utils'
 import sortOrderIcon from '~/lib/icons/sort-order-icon.svg?url'
@@ -17,22 +24,33 @@ type FilterModalProps = {
 
 const FilterModal: Component<FilterModalProps> = (props) => {
   const isDesktop = createMediaQuery('(min-width: 768px)')
-  const { filters, setFilters, clearAllFilters, sortConfig, setSortConfig, resultCount, hasActiveFilters } = useFilter()
+  const {
+    filters,
+    setFilters,
+    clearAllFilters,
+    sortConfig,
+    setSortConfig,
+    resultCount,
+    hasActiveFilters,
+  } = useFilter()
 
   // Get unique values for dropdowns
-  const typedCarData = carData as Array<Record<string, any>>
-  const supportLevels = ['Upstream', 'Under review', 'Community', 'Dashcam mode', 'Not compatible']
+  const typedCarData = carData as Car[]
+  const supportLevels = [
+    'Upstream',
+    'Under review',
+    'Community',
+    'Dashcam mode',
+    'Not compatible',
+  ]
   const makes = [...new Set(typedCarData.map((car) => car.make))].sort()
-  const years: string[] = [...new Set(typedCarData.flatMap((car) => car.year_list))].sort()
+  const years: string[] = [
+    ...new Set(typedCarData.flatMap((car) => car.year_list)),
+  ].sort()
 
-  const [openDropdown, setOpenDropdown] = createSignal<string | null>(null)
   const [openSort, setOpenSort] = createSignal(false)
 
   let sortRef: HTMLDivElement | undefined
-
-  const toggleDropdown = (id: string) => {
-    setOpenDropdown((current) => (current === id ? null : id))
-  }
 
   const handleSortClickOutside = (e: MouseEvent) => {
     if (openSort() && sortRef && !sortRef.contains(e.target as Node)) {
@@ -78,14 +96,22 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                 onClick={() => setOpenSort(!openSort())}
                 class="flex justify-between items-center p-4 w-full text-left bg-white border border-black"
               >
-                <span>{sortOptions.find((opt) => opt.value === sortConfig().field)?.label || 'Make'}</span>
+                <span>
+                  {sortOptions.find((opt) => opt.value === sortConfig().field)
+                    ?.label || 'Make'}
+                </span>
                 <svg
                   class={`w-6 h-6 transition-transform ${openSort() ? 'rotate-180' : ''}`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1"
+                    d="M19 9l-7 7-7-7"
+                  />
                 </svg>
               </button>
 
@@ -97,7 +123,10 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                         class={`w-full h-10 px-4 text-left hover:bg-gray-100
                           ${sortConfig().field === option.value ? 'bg-gray-100' : ''}`}
                         onClick={() => {
-                          setSortConfig((prev) => ({ ...prev, field: option.value }))
+                          setSortConfig((prev) => ({
+                            ...prev,
+                            field: option.value,
+                          }))
                           setOpenSort(false)
                         }}
                       >
@@ -140,36 +169,36 @@ const FilterModal: Component<FilterModalProps> = (props) => {
               label="Has User Video"
               options={['Yes', 'No']}
               value={filters().hasUserVideo}
-              onChange={(value) => setFilters((prev) => ({ ...prev, hasUserVideo: value }))}
-              isOpen={openDropdown() === 'has-user-video'}
-              onToggle={() => toggleDropdown('has-user-video')}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, hasUserVideo: value }))
+              }
             />
 
             <CustomDropdown
               label="Support Level"
               options={supportLevels}
               value={filters().supportLevel}
-              onChange={(value) => setFilters((prev) => ({ ...prev, supportLevel: value }))}
-              isOpen={openDropdown() === 'support-level'}
-              onToggle={() => toggleDropdown('support-level')}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, supportLevel: value }))
+              }
             />
 
             <CustomDropdown
               label="Make"
               options={makes}
               value={filters().make}
-              onChange={(value) => setFilters((prev) => ({ ...prev, make: value }))}
-              isOpen={openDropdown() === 'make'}
-              onToggle={() => toggleDropdown('make')}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, make: value }))
+              }
             />
 
             <CustomDropdown
               label="Year"
               options={years}
               value={filters().year}
-              onChange={(value) => setFilters((prev) => ({ ...prev, year: value }))}
-              isOpen={openDropdown() === 'year'}
-              onToggle={() => toggleDropdown('year')}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, year: value }))
+              }
             />
           </div>
         </div>
@@ -177,7 +206,9 @@ const FilterModal: Component<FilterModalProps> = (props) => {
 
       {/* Fixed Footer section */}
       <div class="flex-shrink-0 p-6 border-t border-gray-200 bg-[#F3F3F3] shadow-[0_-6px_16px_rgba(0,0,0,0.2)]">
-        <div class={`p-3 border border-white text-center font-semibold mb-4 ${getResultsStyle(resultCount() || 0)}`}>
+        <div
+          class={`p-3 border border-white text-center font-semibold mb-4 ${getResultsStyle(resultCount() || 0)}`}
+        >
           {resultCount() || 0} RESULT{(resultCount() || 0) !== 1 ? 'S' : ''}
         </div>
         <div class="flex gap-2">
@@ -186,10 +217,19 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             disabled={!hasActiveFilters()}
             class={cn(
               'flex-1 p-3 border border-black bg-white hover:bg-gray-50 font-medium flex items-center justify-center gap-2',
-              !hasActiveFilters() ? 'opacity-50 cursor-not-allowed hover:bg-white' : '',
+              !hasActiveFilters()
+                ? 'opacity-50 cursor-not-allowed hover:bg-white'
+                : '',
             )}
           >
-            <img src={rotateLeftIcon} alt="" width="24" height="24" class="opacity-90" aria-hidden="true" />
+            <img
+              src={rotateLeftIcon}
+              alt=""
+              width="24"
+              height="24"
+              class="opacity-90"
+              aria-hidden="true"
+            />
             <span>RESET</span>
           </button>
         </div>
@@ -198,7 +238,12 @@ const FilterModal: Component<FilterModalProps> = (props) => {
   )
 
   const MobileDrawer = () => (
-    <Drawer.Root open={props.isOpen} onOpenChange={props.onOpenChange} breakPoints={[0.85]} side="bottom">
+    <Drawer.Root
+      open={props.isOpen}
+      onOpenChange={props.onOpenChange}
+      breakPoints={[0.85]}
+      side="bottom"
+    >
       {(drawerProps: { openPercentage: number }) => (
         <>
           <Drawer.Portal>
@@ -224,7 +269,9 @@ const FilterModal: Component<FilterModalProps> = (props) => {
 
               {/* Header */}
               <div class="flex justify-between items-center p-4 border-b border-black bg-[#969696]">
-                <Drawer.Label class="text-xl font-bold text-white">Filter & Sort</Drawer.Label>
+                <Drawer.Label class="text-xl font-bold text-white">
+                  Filter & Sort
+                </Drawer.Label>
                 <Drawer.Close
                   class={cn(
                     'flex items-center justify-center size-8',
@@ -267,7 +314,9 @@ const FilterModal: Component<FilterModalProps> = (props) => {
         >
           {/* Header */}
           <div class="flex flex-shrink-0 justify-between items-center p-4 border-b border-black bg-[#969696]">
-            <Dialog.Label class="text-xl font-bold text-white">Filter & Sort</Dialog.Label>
+            <Dialog.Label class="text-xl font-bold text-white">
+              Filter & Sort
+            </Dialog.Label>
             <Dialog.Close
               class={cn(
                 'flex items-center justify-center size-8',

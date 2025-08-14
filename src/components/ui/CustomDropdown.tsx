@@ -1,4 +1,11 @@
-import { type Component, onMount, onCleanup, For, Show } from 'solid-js'
+import {
+  type Component,
+  onMount,
+  onCleanup,
+  For,
+  Show,
+  createSignal,
+} from 'solid-js'
 import { isServer } from 'solid-js/web'
 import { cn } from '~/lib/utils'
 
@@ -7,16 +14,15 @@ type CustomDropdownProps = {
   value: string
   onChange: (value: string) => void
   label: string
-  isOpen: boolean
-  onToggle: () => void
 }
 
 const CustomDropdown: Component<CustomDropdownProps> = (props) => {
+  const [isOpen, setIsOpen] = createSignal(false)
   let dropdownRef: HTMLDivElement | undefined
 
   const handleClickOutside = (e: MouseEvent) => {
-    if (props.isOpen && dropdownRef && !dropdownRef.contains(e.target as Node)) {
-      props.onToggle()
+    if (isOpen() && dropdownRef && !dropdownRef.contains(e.target as Node)) {
+      setIsOpen(false)
     }
   }
 
@@ -34,7 +40,7 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
 
   const handleSelect = (value: string) => {
     props.onChange(value)
-    props.onToggle()
+    setIsOpen(false)
   }
 
   return (
@@ -43,7 +49,7 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
       <div class="w-full">
         <button
           type="button"
-          onClick={props.onToggle}
+          onClick={() => setIsOpen(!isOpen())}
           class={cn(
             'w-full p-4 text-left border border-black bg-white flex justify-between items-center',
             'hover:bg-[#F3F3F3] transition-colors',
@@ -51,19 +57,27 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
         >
           <span>{props.value || 'All'}</span>
           <svg
-            class={`w-6 h-6 transition-transform ${props.isOpen ? 'rotate-180' : ''}`}
+            class={`w-6 h-6 transition-transform ${isOpen() ? 'rotate-180' : ''}`}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 9l-7 7-7-7" />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
         </button>
 
-        <Show when={props.isOpen}>
+        <Show when={isOpen()}>
           <div class="overflow-y-auto w-full bg-white border border-t-0 border-black max-h-[200px]">
             <button
-              class={cn('w-full h-[40px] px-4 text-left hover:bg-gray-100', !props.value ? 'bg-gray-100' : '')}
+              class={cn(
+                'w-full h-[40px] px-4 text-left hover:bg-gray-100',
+                !props.value ? 'bg-gray-100' : '',
+              )}
               onClick={() => handleSelect('')}
             >
               All
@@ -71,7 +85,10 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
             <For each={props.options}>
               {(option) => (
                 <button
-                  class={cn('w-full h-[40px] px-4 text-left hover:bg-gray-100', props.value === option ? 'bg-gray-100' : '')}
+                  class={cn(
+                    'w-full h-[40px] px-4 text-left hover:bg-gray-100',
+                    props.value === option ? 'bg-gray-100' : '',
+                  )}
                   onClick={() => handleSelect(option)}
                 >
                   {option}
