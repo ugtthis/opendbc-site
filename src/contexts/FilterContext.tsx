@@ -24,6 +24,13 @@ export type FilterState = {
   hasUserVideo: string
 }
 
+export const filterLabels = {
+  year: 'Year',
+  make: 'Make',
+  supportLevel: 'Support',
+  hasUserVideo: 'Has Video'
+} as const
+
 export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>
 
 export type SortConfig = {

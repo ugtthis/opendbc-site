@@ -1,15 +1,8 @@
 import { type Component, Show, For, createMemo } from 'solid-js'
-import { useFilter } from '~/contexts/FilterContext'
+import { useFilter, filterLabels } from '~/contexts/FilterContext'
 
 const FilterChips: Component = () => {
   const { filters, searchQuery, removeFilter, setSearchQuery, clearAllFilters } = useFilter()
-
-  const filterLabels = {
-    year: 'Year',
-    make: 'Make',
-    supportLevel: 'Support',
-    hasUserVideo: 'Has Video'
-  }
 
   const activeFilters = createMemo(() => {
     const currentFilters = filters()
