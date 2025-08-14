@@ -1,98 +1,73 @@
-import { type Component, Show, For } from 'solid-js'
-import { cn } from '~/lib/utils'
-import { useFilter, type FilterState } from '~/contexts/FilterContext'
+import { type Component, Show, For, createMemo } from 'solid-js'
+import { useFilter } from '~/contexts/FilterContext'
 
 const FilterChips: Component = () => {
   const { filters, searchQuery, removeFilter, setSearchQuery, clearAllFilters } = useFilter()
 
-  const activeFilters = () => {
-    const currentFilters = filters()
-    const active: Array<{ key: keyof FilterState; label: string; value: string }> = []
-
-    if (currentFilters.year) {
-      active.push({ key: 'year', label: 'Year', value: currentFilters.year })
-    }
-    if (currentFilters.make) {
-      active.push({ key: 'make', label: 'Make', value: currentFilters.make })
-    }
-    if (currentFilters.supportLevel) {
-      active.push({ key: 'supportLevel', label: 'Support', value: currentFilters.supportLevel })
-    }
-    if (currentFilters.hasUserVideo) {
-      active.push({ key: 'hasUserVideo', label: 'Has Video', value: currentFilters.hasUserVideo })
-    }
-
-    return active
+  const filterLabels = {
+    year: 'Year',
+    make: 'Make',
+    supportLevel: 'Support',
+    hasUserVideo: 'Has Video'
   }
 
-  const hasActiveFilters = () => activeFilters().length > 0 || searchQuery().trim().length > 0
+  const activeFilters = createMemo(() => {
+    const currentFilters = filters()
+    return Object.entries(currentFilters)
+      .filter(([_, value]) => value)
+      .map(([key, value]) => ({
+        key: key as keyof typeof filterLabels,
+        label: filterLabels[key as keyof typeof filterLabels],
+        value
+      }))
+  })
+
+  const hasActiveFilters = createMemo(() =>
+    activeFilters().length > 0 || searchQuery().trim().length > 0
+  )
+
+  const Chip = (props: { label: string; value: string; bgColor: string; onRemove: () => void }) => (
+    <div class={`flex items-center gap-1.5 px-3 py-1.5 ${props.bgColor} border border-black text-white text-sm rounded-sm shadow-elev-1`}>
+      <span class="font-medium">{props.label}:</span>
+      <span>{props.value}</span>
+      <button
+        onClick={props.onRemove}
+        class="flex justify-center items-center ml-1 text-xs font-bold text-black rounded-sm border border-black transition-colors hover:bg-white size-4 bg-[#D9D9D9]"
+        aria-label={`Remove ${props.label}`}
+      >
+        ×
+      </button>
+    </div>
+  )
 
   return (
     <Show when={hasActiveFilters()}>
       <div class="flex flex-wrap gap-2 items-center p-4 mb-4 rounded-sm border border-black bg-[#F3F3F3] shadow-elev-1">
         <span class="mr-2 text-sm font-semibold text-black">Active filters:</span>
 
-        {/* Search chip */}
         <Show when={searchQuery().trim()}>
-          <div
-            class={cn(
-              'flex items-center gap-1.5 px-3 py-1.5',
-              'bg-[#00b925] border border-black text-white text-sm',
-              'rounded-sm shadow-elev-1',
-            )}
-          >
-            <span class="font-medium">Search:</span>
-            <span>"{searchQuery()}"</span>
-            <button
-              onClick={() => setSearchQuery('')}
-              class={cn(
-                'ml-1 flex items-center justify-center size-4',
-                'bg-[#D9D9D9] text-black text-xs font-bold',
-                'rounded-sm hover:bg-white transition-colors',
-                'border border-black',
-              )}
-              aria-label="Clear search"
-            >
-              ×
-            </button>
-          </div>
+          <Chip
+            label="Search"
+            value={`"${searchQuery()}"`}
+            bgColor="bg-[#00b925]"
+            onRemove={() => setSearchQuery('')}
+          />
         </Show>
 
         <For each={activeFilters()}>
           {(filter) => (
-            <div
-              class={cn(
-                'flex items-center gap-1.5 px-3 py-1.5',
-                'bg-[#969696] border border-black text-white text-sm',
-                'rounded-sm shadow-elev-1',
-              )}
-            >
-              <span class="font-medium">{filter.label}:</span>
-              <span>{filter.value}</span>
-              <button
-                onClick={() => removeFilter(filter.key)}
-                class={cn(
-                  'ml-1 flex items-center justify-center size-4',
-                  'bg-[#D9D9D9] text-black text-xs font-bold',
-                  'rounded-sm hover:bg-white transition-colors',
-                  'border border-black',
-                )}
-                aria-label={`Remove ${filter.label} filter`}
-              >
-                ×
-              </button>
-            </div>
+            <Chip
+              label={filter.label}
+              value={filter.value}
+              bgColor="bg-[#969696]"
+              onRemove={() => removeFilter(filter.key)}
+            />
           )}
         </For>
 
         <button
           onClick={clearAllFilters}
-          class={cn(
-            'px-3 py-1.5 text-sm font-semibold',
-            'bg-white text-black border border-black',
-            'rounded-sm hover:bg-[#F3F3F3] transition-colors',
-            'shadow-elev-1',
-          )}
+          class="py-1.5 px-3 text-sm font-semibold text-black bg-white rounded-sm border border-black transition-colors shadow-elev-1 hover:bg-[#F3F3F3]"
         >
           Clear all
         </button>
