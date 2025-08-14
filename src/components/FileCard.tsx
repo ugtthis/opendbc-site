@@ -86,7 +86,7 @@ const Card: Component<CardProps> = (props) => {
               <strong>ADAS Package:</strong> {props.car.package}
             </p>
           </div>
-          <div class="flex p-2 border-b border-black">
+          <div class="flex p-3 border-b border-black">
             <div class="flex flex-1 items-center">
               <p class="flex-1 text-md">
                 <strong>Minimum<br/>Engage Speed</strong>
