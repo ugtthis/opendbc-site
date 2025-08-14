@@ -243,7 +243,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
     <Drawer.Root
       open={props.isOpen}
       onOpenChange={props.onOpenChange}
-      breakPoints={[0.85]}
+      breakPoints={[0.95]}
       side="bottom"
     >
       {(drawerProps: { openPercentage: number }) => (
@@ -258,32 +258,35 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             <Drawer.Content
               class={cn(
                 'fixed inset-x-0 bottom-0 z-50 flex flex-col',
-                'max-h-[85vh] rounded-t-lg border-t-4 border-black',
+                'min-h-[95vh] rounded-t-4xl',
                 'bg-[#FBFBFB] shadow-[0_-6px_20px_rgba(0,0,0,0.6)]',
                 'data-[transitioning]:transition-transform data-[transitioning]:duration-300',
                 'data-[transitioning]:ease-[cubic-bezier(0.32,0.72,0,1)]',
               )}
             >
-              {/* Mobile drawer handle */}
-              <div class="flex justify-center pt-3 pb-2">
-                <div class="w-10 h-1 rounded-full bg-[#969696]" />
-              </div>
+              {/* Grey top section covering entire top area */}
+              <div class="bg-[#616161] rounded-t-4xl">
+                {/* Mobile drawer handle */}
+                <div class="flex justify-center pt-4 pb-3">
+                  <div class="w-12 h-1.5 rounded-full shadow-sm bg-[#292929]" />
+                </div>
 
-              {/* Header */}
-              <div class="flex justify-between items-center p-4 border-b border-black bg-[#969696]">
-                <Drawer.Label class="text-xl font-bold text-white">
-                  Filter & Sort
-                </Drawer.Label>
-                <Drawer.Close
-                  class={cn(
-                    'flex items-center justify-center size-8',
-                    'bg-[#D9D9D9] border border-black',
-                    'hover:bg-white transition-colors',
-                    'text-lg font-bold text-black',
-                  )}
-                >
-                  ×
-                </Drawer.Close>
+                {/* Header */}
+                <div class="flex justify-between items-center px-4 pb-4 border-b border-black">
+                  <Drawer.Label class="text-xl font-bold text-white">
+                    Filter & Sort
+                  </Drawer.Label>
+                  <Drawer.Close
+                    class={cn(
+                      'flex items-center justify-center size-8',
+                      'bg-[#D9D9D9] border border-black',
+                      'hover:bg-white transition-colors',
+                      'text-lg font-bold text-black cursor-pointer',
+                    )}
+                  >
+                    ×
+                  </Drawer.Close>
+                </div>
               </div>
 
               {/* Filter content with proper height handling */}
