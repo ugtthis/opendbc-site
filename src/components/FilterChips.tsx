@@ -42,7 +42,7 @@ const FilterChips: Component = () => {
           <Chip
             label="Search"
             value={`"${searchQuery()}"`}
-            bgColor="bg-[#00b925]"
+            bgColor="bg-[#969696]"
             onRemove={() => setSearchQuery('')}
           />
         </Show>
