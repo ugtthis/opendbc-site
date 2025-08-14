@@ -3,6 +3,16 @@ import { createSignal, type Accessor, type Setter, createMemo } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 import carData from '~/data/metadata.json'
 
+const searchAttributes = (car: Car, query: string): boolean => {
+  const searchFields = [car.make, car.model, car.support_type, car.package, car.year_list]
+
+  return searchFields.some((field) =>
+    String(field || '')
+      .toLowerCase()
+      .includes(query),
+  )
+}
+
 export type FilterState = {
   supportLevel: string
   make: string
@@ -74,12 +84,7 @@ export const FilterProvider = (props: ParentProps) => {
     // Apply search query
     const query = searchQuery().toLowerCase().trim()
     if (query) {
-      result = result.filter(
-        (car) =>
-          car.make.toLowerCase().includes(query) ||
-          car.name.toLowerCase().includes(query) ||
-          car.support_type.toLowerCase().includes(query),
-      )
+      result = result.filter((car) => searchAttributes(car, query))
     }
 
     // Apply sorting
