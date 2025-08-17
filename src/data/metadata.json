@@ -24516,6 +24516,120 @@
     ]
   },
   {
+    "name": "Peugeot 208 2019-25",
+    "make": "Peugeot",
+    "model": "208",
+    "years": "2019-25",
+    "year_list": [
+      "2019",
+      "2020",
+      "2021",
+      "2022",
+      "2023",
+      "2024",
+      "2025"
+    ],
+    "package": "Adaptive Cruise Control (ACC) & Lane Assist",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Dashcam mode",
+    "support_link": "#dashcam",
+    "detail_sentence": "openpilot upgrades your <strong>Peugeot 208</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "PSA_PEUGEOT_208",
+    "brand": "psa",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Peugeot%20208%202019-25",
+    "longitudinal": "Stock",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 1666.0,
+    "wheelbase": 2.5399999618530273,
+    "steer_ratio": 17.600000381469727,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.0,
+    "steer_actuator_delay": 0.30000001192092896,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.10000000149011612,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 182468.015625,
+    "tire_stiffness_rear": 288444.78125,
+    "rotational_inertia": 2521.201416015625,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
+    "dashcam_only": true,
+    "enable_dsu": false,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 0,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.5,
+    "vEgo_starting": 0.5,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.15000000596046448,
+    "max_lateral_accel": 2.0,
+    "network_location": "fwdCamera",
+    "steer_control_type": "angle",
+    "mass_curb_weight": 1530,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "psa_aee2010_r3"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "has_angled_mount": false,
+    "harness": "psa_a",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "PSA A connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma 3X",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "long OBD-C cable (9.5 ft)",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "USB-C coupler",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "right angle OBD-C cable (1.5 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Ram 1500 2019-24",
     "make": "Ram",
     "model": "1500",
