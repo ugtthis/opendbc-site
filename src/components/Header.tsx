@@ -38,6 +38,7 @@ const Header: Component = () => {
                     e.currentTarget.blur()
                   }
                 }}
+                maxLength={45}
                 class="pr-4 pl-12 w-full h-12 font-sans bg-white outline-none"
               />
               <span class="grid absolute inset-y-0 left-0 place-items-center w-12 text-gray-500" aria-hidden="true">
