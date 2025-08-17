@@ -4,19 +4,20 @@ type HighlightTextProps = {
   text: string
   query: string
   class?: string
+  yearList?: string[]
 }
 
 const HighlightText: Component<HighlightTextProps> = (props) => {
   const segments = createMemo(() => {
-    const { text, query } = props
+    const { text, query, yearList } = props
+    const trimmedQuery = query.trim()
 
-    if (!query.trim()) {
-      return [{ text, highlighted: false }]
-    }
+    if (!trimmedQuery) return [{ text, highlighted: false }]
 
-    const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi')
-    const parts = text.split(regex)
+    const shouldHighlightAll = yearList?.includes(trimmedQuery)
+    if (shouldHighlightAll) return [{ text, highlighted: true }]
 
+    const parts = text.split(new RegExp(`(${trimmedQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'))
     return parts.map((part, index) => ({
       text: part,
       highlighted: part !== '' && index % 2 === 1,
@@ -26,7 +27,11 @@ const HighlightText: Component<HighlightTextProps> = (props) => {
   return (
     <span class={props.class}>
       <For each={segments()}>
-        {(segment) => (segment.highlighted ? <mark class="text-black bg-yellow-300">{segment.text}</mark> : <span>{segment.text}</span>)}
+        {(segment) =>
+          segment.highlighted
+            ? <mark class="text-black bg-yellow-300">{segment.text}</mark>
+            : <span>{segment.text}</span>
+        }
       </For>
     </span>
   )

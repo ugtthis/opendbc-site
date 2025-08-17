@@ -58,7 +58,9 @@ const Card: Component<CardProps> = (props) => {
           {/* Year and Model */}
           <div class="flex border-b border-black">
             <div class="flex items-center py-2.5 px-2 border-r border-black">
-              <h2 class="text-lg">{props.car.years}</h2>
+              <h2 class="text-lg">
+                <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
+              </h2>
             </div>
             <div class="flex flex-1 justify-between items-center py-2.5 px-3 min-h-[60px]">
               <h1 class="flex-1 pr-3 text-xl font-semibold">
