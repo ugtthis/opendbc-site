@@ -328,7 +328,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
           class={cn(
             'fixed left-1/2 top-1/2 z-50 w-full max-w-2xl',
             '-translate-x-1/2 -translate-y-1/2',
-            'rounded-lg border-4 border-black bg-[#FBFBFB]',
+            'border-4 border-black bg-[#FBFBFB]',
             'shadow-[0_6px_20px_rgba(0,0,0,0.6)]',
             'data-[opening]:animate-in data-[opening]:fade-in-0',
             'data-[opening]:zoom-in-95 data-[opening]:slide-in-from-top-2',
@@ -338,7 +338,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
           )}
         >
           {/* Desktop header */}
-          <div class="flex flex-shrink-0 justify-between items-center p-4 rounded-t-lg border-b border-black bg-[#969696]">
+          <div class="flex flex-shrink-0 justify-between items-center p-4 border-b border-black bg-[#969696]">
             <Dialog.Label class="text-xl font-bold text-white">
               Filter & Sort
             </Dialog.Label>
