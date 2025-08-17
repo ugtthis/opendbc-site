@@ -25,7 +25,7 @@ const FilterChips: Component = () => {
       <span>{props.value}</span>
       <button
         onClick={props.onRemove}
-        class="flex justify-center items-center ml-1 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white size-6 bg-[#D9D9D9]"
+        class="flex justify-center items-center ml-4 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white size-6 bg-[#D9D9D9]"
         aria-label={`Remove ${props.label}`}
       >
         ×
