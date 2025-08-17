@@ -20,12 +20,12 @@ const FilterChips: Component = () => {
   )
 
   const Chip = (props: { label: string; value: string; bgColor: string; onRemove: () => void }) => (
-    <div class={`flex items-center gap-1.5 px-3 py-1.5 ${props.bgColor} border border-black text-white text-sm rounded-sm shadow-elev-1`}>
+    <div class={`flex items-center gap-1.5 px-3 py-1.5 ${props.bgColor} border border-black text-white text-sm rounded-sm shadow-elev-1 max-w-full`}>
       <span class="font-medium">{props.label}:</span>
-      <span>{props.value}</span>
+      <span class="min-w-0 truncate max-w-[30ch]">{props.value}</span>
       <button
         onClick={props.onRemove}
-        class="flex justify-center items-center ml-4 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white size-6 bg-[#D9D9D9]"
+        class="flex justify-center items-center ml-4 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-[#D9D9D9]"
         aria-label={`Remove ${props.label}`}
       >
         ×
