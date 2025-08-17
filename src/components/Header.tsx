@@ -51,7 +51,7 @@ const Header: Component = () => {
         </div>
       </header>
 
-      <FilterModal isOpen={isFilterOpen()} onOpenChange={setIsFilterOpen} />
+      <FilterModal open={isFilterOpen()} onOpenChange={setIsFilterOpen} />
     </>
   )
 }

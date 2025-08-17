@@ -2,6 +2,7 @@ import {
   type Component,
   Show,
   createSignal,
+  createEffect,
   onMount,
   onCleanup,
 } from 'solid-js'
@@ -20,12 +21,35 @@ import sortOrderIcon from '~/lib/icons/sort-order-icon.svg?url'
 import rotateLeftIcon from '~/lib/icons/rotate-left.svg?url'
 
 type FilterModalProps = {
-  isOpen: boolean
+  open: boolean
   onOpenChange: (open: boolean) => void
 }
 
 const FilterModal: Component<FilterModalProps> = (props) => {
   const isDesktop = createMediaQuery('(min-width: 768px)')
+
+  const [openedAsDesktop, setOpenedAsDesktop] = createSignal<boolean | null>(null)
+
+  createEffect(() => {
+    if (props.open && openedAsDesktop() === null) {
+      setOpenedAsDesktop(isDesktop())
+    } else if (!props.open) {
+      setOpenedAsDesktop(null)
+    }
+  })
+
+  // Close modal if screen size changes while open
+  createEffect(() => {
+    if (props.open && openedAsDesktop() !== null) {
+      const currentIsDesktop = isDesktop()
+      if (openedAsDesktop() !== currentIsDesktop) {
+        props.onOpenChange(false)
+      }
+    }
+  })
+
+  // Use locked state when open, current state when closed
+  const shouldUseDesktop = () => openedAsDesktop() ?? isDesktop()
   const {
     filters,
     setFilters,
@@ -241,67 +265,68 @@ const FilterModal: Component<FilterModalProps> = (props) => {
 
   const MobileDrawer = () => (
     <Drawer.Root
-      open={props.isOpen}
+      open={props.open}
       onOpenChange={props.onOpenChange}
       breakPoints={[0.95]}
       side="bottom"
     >
-      {(drawerProps: { openPercentage: number }) => (
-        <>
-          <Drawer.Portal>
-            <Drawer.Overlay
-              class="fixed inset-0 z-40 bg-black/50 data-[transitioning]:transition-all data-[transitioning]:duration-300"
-              style={{
-                'background-color': `rgb(0 0 0 / ${0.5 * drawerProps.openPercentage})`,
-              }}
-            />
-            <Drawer.Content
-              class={cn(
-                'fixed inset-x-0 bottom-0 z-50 flex flex-col',
-                'max-h-[min(95vh,800px)] rounded-t-4xl',
-                'bg-[#FBFBFB] shadow-[0_-6px_20px_rgba(0,0,0,0.6)]',
-                'data-[transitioning]:transition-transform data-[transitioning]:duration-300',
-                'data-[transitioning]:ease-[cubic-bezier(0.32,0.72,0,1)]',
-              )}
-            >
-              {/* Grey top section covering entire top area */}
-              <div class="bg-[#616161] rounded-t-4xl">
-                {/* Mobile drawer handle */}
-                <div class="flex justify-center pt-4 pb-3">
-                  <div class="w-12 h-1.5 rounded-full shadow-sm bg-[#292929]" />
-                </div>
-
-                {/* Header */}
-                <div class="flex justify-between items-center px-4 pb-4 border-b border-black">
-                  <Drawer.Label class="text-xl font-bold text-white">
-                    Filter & Sort
-                  </Drawer.Label>
-                  <Drawer.Close
-                    class={cn(
-                      'flex items-center justify-center size-8',
-                      'bg-[#D9D9D9] border border-black',
-                      'hover:bg-white transition-colors',
-                      'text-lg font-bold text-black cursor-pointer',
-                    )}
-                  >
-                    ×
-                  </Drawer.Close>
-                </div>
+      {(drawerProps) => (
+        <Drawer.Portal>
+          <Drawer.Overlay
+            class="fixed inset-0 z-40 bg-black/50 data-[transitioning]:transition-all data-[transitioning]:duration-300"
+            style={{
+              'background-color': `rgb(0 0 0 / ${0.5 * drawerProps.openPercentage})`,
+            }}
+          />
+          <Drawer.Content
+            class={cn(
+              'fixed inset-x-0 bottom-0 z-50 flex flex-col',
+              'max-h-[min(95vh,800px)] rounded-t-4xl bg-[#FBFBFB]',
+              'shadow-[0_-6px_20px_rgba(0,0,0,0.6)]',
+              'data-[transitioning]:transition-transform data-[transitioning]:duration-300',
+              'data-[transitioning]:ease-[cubic-bezier(0.32,0.72,0,1)]',
+            )}
+          >
+            {/* Mobile header with drawer handle */}
+            <div class="bg-[#616161] rounded-t-4xl">
+              {/* Drawer handle */}
+              <div class="flex justify-center pt-4 pb-3">
+                <div class="w-12 h-1.5 rounded-full shadow-sm bg-[#292929]" />
               </div>
 
-              {/* Filter content with proper height handling */}
-              <div class="flex flex-col flex-1 min-h-0">
-                <FilterContent />
+              {/* Header */}
+              <div class="flex justify-between items-center px-4 pb-4 border-b border-black">
+                <Drawer.Label class="text-xl font-bold text-white">
+                  Filter & Sort
+                </Drawer.Label>
+                <Drawer.Description class="sr-only">
+                  Configure filters and sorting options for the car database
+                </Drawer.Description>
+                <Drawer.Close
+                  class={cn(
+                    'flex items-center justify-center size-8',
+                    'bg-[#D9D9D9] border border-black',
+                    'hover:bg-white transition-colors',
+                    'text-lg font-bold text-black cursor-pointer',
+                  )}
+                >
+                  ×
+                </Drawer.Close>
               </div>
-            </Drawer.Content>
-          </Drawer.Portal>
-        </>
+            </div>
+
+            {/* Filter content */}
+            <div class="flex flex-col flex-1 min-h-0">
+              <FilterContent />
+            </div>
+          </Drawer.Content>
+        </Drawer.Portal>
       )}
     </Drawer.Root>
   )
 
   const DesktopDialog = () => (
-    <Dialog.Root open={props.isOpen} onOpenChange={props.onOpenChange}>
+    <Dialog.Root open={props.open} onOpenChange={props.onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay class="fixed inset-0 z-40 bg-black/50 data-[opening]:animate-in data-[opening]:fade-in-0 data-[closing]:animate-out data-[closing]:fade-out-0" />
         <Dialog.Content
@@ -317,8 +342,8 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             'max-h-[min(85vh,850px)] flex flex-col',
           )}
         >
-          {/* Header */}
-          <div class="flex flex-shrink-0 justify-between items-center p-4 border-b border-black bg-[#969696]">
+          {/* Desktop header */}
+          <div class="flex flex-shrink-0 justify-between items-center p-4 rounded-t-lg border-b border-black bg-[#969696]">
             <Dialog.Label class="text-xl font-bold text-white">
               Filter & Sort
             </Dialog.Label>
@@ -327,14 +352,14 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                 'flex items-center justify-center size-8',
                 'bg-[#D9D9D9] border border-black',
                 'hover:bg-white transition-colors',
-                'text-lg font-bold text-black',
+                'text-lg font-bold text-black cursor-pointer',
               )}
             >
               ×
             </Dialog.Close>
           </div>
 
-          {/* Filter content with proper height handling */}
+          {/* Filter content */}
           <div class="flex flex-col flex-1 min-h-0">
             <FilterContent />
           </div>
@@ -343,8 +368,9 @@ const FilterModal: Component<FilterModalProps> = (props) => {
     </Dialog.Root>
   )
 
+  // Use locked component type to prevent switching during resize
   return (
-    <Show when={isDesktop()} fallback={<MobileDrawer />}>
+    <Show when={shouldUseDesktop()} fallback={<MobileDrawer />}>
       <DesktopDialog />
     </Show>
   )
