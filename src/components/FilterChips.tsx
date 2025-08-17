@@ -25,7 +25,7 @@ const FilterChips: Component = () => {
       <span>{props.value}</span>
       <button
         onClick={props.onRemove}
-        class="flex justify-center items-center ml-1 text-xs font-bold text-black rounded-sm border border-black transition-colors hover:bg-white size-4 bg-[#D9D9D9]"
+        class="flex justify-center items-center ml-1 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white size-6 bg-[#D9D9D9]"
         aria-label={`Remove ${props.label}`}
       >
         ×
@@ -60,7 +60,7 @@ const FilterChips: Component = () => {
 
         <button
           onClick={clearAllFilters}
-          class="py-1.5 px-3 text-sm font-semibold text-black bg-white rounded-sm border border-black transition-colors shadow-elev-1 hover:bg-[#F3F3F3]"
+          class="py-1.5 px-3 text-sm font-semibold text-black bg-white rounded-sm border border-black transition-colors cursor-pointer shadow-elev-1 hover:bg-[#F3F3F3]"
         >
           Clear all
         </button>
