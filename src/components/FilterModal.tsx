@@ -262,7 +262,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
     <Drawer.Root
       open={props.open}
       onOpenChange={props.onOpenChange}
-      breakPoints={[0.95]}
+      breakPoints={[0.95]} // mobile-drawer-viewport-safe sets max-height
       side="bottom"
     >
       {(drawerProps) => (
@@ -275,8 +275,8 @@ const FilterModal: Component<FilterModalProps> = (props) => {
           />
           <Drawer.Content
             class={cn(
-              'fixed inset-x-0 bottom-0 z-50 flex flex-col',
-              'max-h-[min(95vh,800px)] rounded-t-4xl bg-[#FBFBFB]',
+              'mobile-drawer-viewport-safe fixed inset-x-0 bottom-0 z-50 flex flex-col',
+              'rounded-t-4xl bg-[#FBFBFB]',
               'shadow-[0_-6px_20px_rgba(0,0,0,0.6)]',
               'data-[transitioning]:transition-transform data-[transitioning]:duration-300',
               'data-[transitioning]:ease-[cubic-bezier(0.32,0.72,0,1)]',

@@ -17,6 +17,25 @@ body {
   font-family: var(--font-mono);
 }
 
+.mobile-drawer-viewport-safe {
+  /* Base conservative fallback for all browsers */
+  max-height: 85vh;
+}
+
+/* WebKit browsers that support fill-available */
+@supports (max-height: -webkit-fill-available) {
+  .mobile-drawer-viewport-safe {
+    max-height: min(-webkit-fill-available, 95vh);
+  }
+}
+
+/* svh accounts for address bar being visible */
+@supports (max-height: 1svh) {
+  .mobile-drawer-viewport-safe {
+    max-height: min(95svh, 95vh);
+  }
+}
+
 @keyframes shine {
   0% {
     background-position: -200% 0%;
