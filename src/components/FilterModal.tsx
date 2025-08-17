@@ -20,6 +20,7 @@ import { cn } from '~/lib/utils'
 import sortOrderIcon from '~/lib/icons/sort-order-icon.svg?url'
 import rotateLeftIcon from '~/lib/icons/rotate-left.svg?url'
 import downChevronIcon from '~/lib/icons/down-chevron.svg?url'
+import rightArrowIcon from '~/lib/icons/right-arrow.svg?url'
 
 type FilterModalProps = {
   open: boolean
@@ -95,6 +96,12 @@ const FilterModal: Component<FilterModalProps> = (props) => {
     if (count === 0) return 'bg-black text-[#FF5733]' // Red text
     if (count <= 5) return 'bg-black text-[#FFD700]' // Yellow text
     return 'bg-black text-[#32E347]' // Green text
+  }
+
+  const getResultsColor = (count: number) => {
+    if (count === 0) return '#B22222' // Red
+    if (count <= 5) return '#DAA520' // Yellow
+    return '#228B22' // Green
   }
 
   const sortOptions: { label: string; value: SortField }[] = [
@@ -252,6 +259,22 @@ const FilterModal: Component<FilterModalProps> = (props) => {
               aria-hidden="true"
             />
             <span>RESET</span>
+          </button>
+          <button
+            onClick={() => props.onOpenChange(false)}
+            class="flex relative flex-1 gap-2 justify-center items-center p-3 font-medium border-2 border-black transition-colors cursor-pointer"
+            style={{
+              'color': getResultsColor(resultCount() || 0),
+              'background-color': `color-mix(in srgb, ${getResultsColor(resultCount() || 0)} 15%, white 85%)`
+            }}
+          >
+            <span class="font-bold">VIEW</span>
+            <img
+              src={rightArrowIcon}
+              width="24"
+              height="24"
+              aria-hidden="true"
+            />
           </button>
         </div>
       </div>
