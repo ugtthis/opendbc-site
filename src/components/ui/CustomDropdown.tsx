@@ -8,6 +8,7 @@ import {
 } from 'solid-js'
 import { isServer } from 'solid-js/web'
 import { cn } from '~/lib/utils'
+import downChevronIcon from '~/lib/icons/down-chevron.svg?url'
 
 type CustomDropdownProps = {
   options: string[]
@@ -56,19 +57,13 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
           )}
         >
           <span>{props.value || 'All'}</span>
-          <svg
-            class={`w-6 h-6 transition-transform ${isOpen() ? 'rotate-180' : ''}`}
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
+          <img
+            src={downChevronIcon}
+            alt=""
+            width="24"
+            height="24"
+            class={`transition-transform ${isOpen() ? 'rotate-180' : ''} opacity-60`}
+          />
         </button>
 
         <Show when={isOpen()}>

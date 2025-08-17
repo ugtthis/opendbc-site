@@ -19,6 +19,7 @@ import { getSupportLevels } from '~/types/supportType'
 import { cn } from '~/lib/utils'
 import sortOrderIcon from '~/lib/icons/sort-order-icon.svg?url'
 import rotateLeftIcon from '~/lib/icons/rotate-left.svg?url'
+import downChevronIcon from '~/lib/icons/down-chevron.svg?url'
 
 type FilterModalProps = {
   open: boolean
@@ -123,19 +124,13 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                   {sortOptions.find((opt) => opt.value === sortConfig().field)
                     ?.label || 'Make'}
                 </span>
-                <svg
-                  class={`w-6 h-6 transition-transform ${openSort() ? 'rotate-180' : ''}`}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="1"
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
+                <img
+                  src={downChevronIcon}
+                  alt=""
+                  width="24"
+                  height="24"
+                  class={`transition-transform ${openSort() ? 'rotate-180' : ''} opacity-60`}
+                />
               </button>
 
               <Show when={openSort()}>
