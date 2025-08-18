@@ -92,16 +92,10 @@ const FilterModal: Component<FilterModalProps> = (props) => {
     }
   })
 
-  const getResultsStyle = (count: number) => {
-    if (count === 0) return 'bg-black text-[#FF5733]' // Red text
-    if (count <= 5) return 'bg-black text-[#FFD700]' // Yellow text
-    return 'bg-black text-[#32E347]' // Green text
-  }
-
   const getResultsColor = (count: number) => {
-    if (count === 0) return '#B22222' // Red
-    if (count <= 5) return '#DAA520' // Yellow
-    return '#228B22' // Green
+    if (count === 0) return '#FF5733' // Red
+    if (count <= 5) return '#E6A500' // Yellow
+    return '#00CC33' // Green
   }
 
   const sortOptions: { label: string; value: SortField }[] = [
@@ -235,7 +229,8 @@ const FilterModal: Component<FilterModalProps> = (props) => {
       {/* Fixed Footer section */}
       <div class="flex-shrink-0 p-6 border-t border-gray-200 bg-[#F3F3F3] shadow-[0_-6px_16px_rgba(0,0,0,0.2)]">
         <div
-          class={`p-3 border border-white text-center font-semibold mb-4 ${getResultsStyle(resultCount() || 0)}`}
+          class="p-3 mb-4 font-semibold text-center bg-black border border-white"
+          style={{ color: getResultsColor(resultCount() || 0) }}
         >
           {resultCount() || 0} RESULT{(resultCount() || 0) !== 1 ? 'S' : ''}
         </div>
@@ -264,8 +259,8 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             onClick={() => props.onOpenChange(false)}
             class="flex relative flex-1 gap-2 justify-center items-center p-3 font-medium border-2 border-black transition-colors cursor-pointer"
             style={{
-              'color': getResultsColor(resultCount() || 0),
-              'background-color': `color-mix(in srgb, ${getResultsColor(resultCount() || 0)} 15%, white 85%)`
+              color: `color-mix(in srgb, ${getResultsColor(resultCount() || 0)} 90%, black 10%)`,
+              'background-color': `color-mix(in srgb, ${getResultsColor(resultCount() || 0)} 20%, white 80%)`
             }}
           >
             <span class="font-bold">VIEW</span>
