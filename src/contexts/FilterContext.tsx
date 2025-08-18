@@ -5,16 +5,18 @@ import carData from '~/data/metadata.json'
 
 const searchAttributes = (car: Car, query: string): boolean => {
   const searchFields = [
+    car.name,
     car.make,
     car.model,
     car.support_type,
     car.package,
-    car.year_list,
+    ...(car.year_list as string[])
   ]
 
-  return searchFields.some((field) =>
-    String(field || '').toLowerCase().includes(query),
-  )
+  const searchText = searchFields.join(' ').toLowerCase()
+  const queryWords = query.toLowerCase().trim().split(/\s+/)
+
+  return queryWords.every(word => searchText.includes(word))
 }
 
 export type FilterState = {

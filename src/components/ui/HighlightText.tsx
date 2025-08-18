@@ -12,15 +12,30 @@ const HighlightText: Component<HighlightTextProps> = (props) => {
     const { text, query, yearList } = props
     const trimmedQuery = query.trim()
 
-    if (!trimmedQuery) return [{ text, highlighted: false }]
+    if (!trimmedQuery) {
+      return [{ text, highlighted: false }]
+    }
 
-    const shouldHighlightAll = yearList?.includes(trimmedQuery)
-    if (shouldHighlightAll) return [{ text, highlighted: true }]
+    const queryWords = trimmedQuery.toLowerCase().split(/\s+/)
 
-    const parts = text.split(new RegExp(`(${trimmedQuery.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi'))
+    // Highlight whole text if searching for a year that's in the yearList
+    const hasYearMatch = yearList?.some(year =>
+      queryWords.includes(year.toLowerCase())
+    )
+    if (hasYearMatch) {
+      return [{ text, highlighted: true }]
+    }
+
+    // Highlight individual matching words
+    const escapedWords = queryWords.map(word =>
+      word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')
+    )
+    const pattern = escapedWords.join('|')
+    const parts = text.split(new RegExp(`(${pattern})`, 'gi'))
+
     return parts.map((part, index) => ({
       text: part,
-      highlighted: part !== '' && index % 2 === 1,
+      highlighted: index % 2 === 1,
     }))
   })
 
