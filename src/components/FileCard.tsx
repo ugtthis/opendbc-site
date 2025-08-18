@@ -10,7 +10,7 @@ import { cn } from '~/lib/utils'
 const MS_TO_MPH = 2.237
 
 const formatEngageSpeed = (speedMs: number): string => {
-  return speedMs >= 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
+  return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
 import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
