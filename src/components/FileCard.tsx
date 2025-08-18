@@ -88,10 +88,13 @@ const Card: Component<CardProps> = (props) => {
               <strong>ADAS Package:</strong> <HighlightText text={props.car.package} query={props.searchQuery} />
             </p>
           </div>
-          <div class="flex p-3 border-b border-black">
-            <div class="flex flex-1 items-center">
-              <p class="flex-1 text-md">
-                <strong>Minimum<br/>Engage Speed</strong>
+          <div class="flex p-3 border-b border-black @container">
+            <div class="flex flex-1 items-center min-w-0">
+              <p class="leading-tight text-md">
+                <strong>
+                  Minimum<br/>
+                  <span>Engage <span class="@max-xs:block">Speed</span></span>
+                </strong>
               </p>
             </div>
             <div class="flex flex-col gap-2 flex-[1.618]">
