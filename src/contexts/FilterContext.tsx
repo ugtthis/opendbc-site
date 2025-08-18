@@ -96,15 +96,31 @@ export const FilterProvider = (props: ParentProps) => {
       }
     }
 
-    // Apply search query
     const query = searchQuery().toLowerCase().trim()
     if (query) {
       result = result.filter((car) => searchAttributes(car, query))
     }
 
-    // Apply sorting
     const sort = sortConfig()
     result.sort((a, b) => {
+      if (query) {
+        // Sort priority: make prefix > make contains > model prefix > model contains
+        const getScore = (car: Car) => {
+          const make = car.make.toLowerCase()
+          const model = car.model.toLowerCase()
+          if (make.startsWith(query)) return 4
+          if (make.includes(query)) return 3
+          if (model.startsWith(query)) return 2
+          if (model.includes(query)) return 1
+          return 0
+        }
+
+        const scoreA = getScore(a)
+        const scoreB = getScore(b)
+        if (scoreA !== scoreB) return scoreB - scoreA
+      }
+
+      // Regular sorting
       const field: SortField = sort.field
       let aVal: string | number | string[] = a[field]
       let bVal: string | number | string[] = b[field]
