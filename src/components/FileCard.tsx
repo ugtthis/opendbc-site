@@ -83,7 +83,7 @@ const Card: Component<CardProps> = (props) => {
             </div>
           </div>
 
-          <div class="py-2.5 px-2 border-b border-black h-[60px]">
+          <div class="py-2.5 px-2 border-b border-black min-h-[60px]">
             <p class="font-sans text-sm">
               <strong>ADAS Package:</strong> <HighlightText text={props.car.package} query={props.searchQuery} />
             </p>
