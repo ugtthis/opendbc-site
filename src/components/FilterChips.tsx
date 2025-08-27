@@ -20,12 +20,12 @@ const FilterChips: Component = () => {
   )
 
   const Chip = (props: { label: string; value: string; bgColor: string; onRemove: () => void }) => (
-    <div class={`flex items-center gap-1.5 px-3 py-1.5 ${props.bgColor} border border-black text-white text-sm rounded-sm shadow-elev-1 max-w-full`}>
+    <div class={`flex items-center gap-1.5 px-3 py-1.5 ${props.bgColor} border border-black text-white text-sm shadow-elev-1 max-w-full`}>
       <span class="font-medium">{props.label}:</span>
       <span class="min-w-0 truncate max-w-[30ch]">{props.value}</span>
       <button
         onClick={props.onRemove}
-        class="flex justify-center items-center ml-4 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-surface-secondary"
+        class="flex justify-center items-center ml-4 text-xs font-bold text-black border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-surface-secondary"
         aria-label={`Remove ${props.label}`}
       >
         ×
@@ -35,7 +35,7 @@ const FilterChips: Component = () => {
 
   return (
     <Show when={hasActiveFilters()}>
-      <div class="flex flex-wrap gap-2 items-center p-4 mb-4 rounded-sm border border-black bg-surface shadow-elev-1">
+      <div class="flex flex-wrap gap-2 items-center p-4 mb-4 border border-black bg-surface shadow-elev-1">
         <span class="mr-2 text-sm font-semibold text-black">Active filters:</span>
 
         <Show when={searchQuery().trim()}>
@@ -60,7 +60,7 @@ const FilterChips: Component = () => {
 
         <button
           onClick={clearAllFilters}
-          class="py-1.5 px-3 text-sm font-semibold text-black bg-white rounded-sm border border-black transition-colors cursor-pointer shadow-elev-1 hover:bg-surface"
+          class="py-1.5 px-3 text-sm font-semibold text-black bg-white border border-black transition-colors cursor-pointer shadow-elev-1 hover:bg-surface"
         >
           Clear all
         </button>
