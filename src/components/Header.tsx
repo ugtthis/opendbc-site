@@ -22,7 +22,13 @@ const Header: Component = () => {
         `}
       >
         <A href="/">
-          <img src="/opendbc-logo.png" alt="opendbc logo" class="h-auto w-[200px]" loading="eager" decoding="async" fetchpriority="high" />
+          <img
+            src="/opendbc-logo.png"
+            alt="opendbc logo"
+            width="200"
+            height="59"
+            class="h-auto w-[200px]"
+          />
         </A>
 
         <div class="flex justify-center px-4 w-full max-w-3xl">
