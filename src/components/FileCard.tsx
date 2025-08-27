@@ -293,6 +293,10 @@ const Card: Component<CardProps> = (props) => {
           class={`
             flex justify-center py-1 border-t border-black cursor-pointer
             bg-accent peer-checked:bg-surface-secondary peer-checked:[&>div]:rotate-180
+            max-md:bg-[#727272] max-md:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]
+            peer-checked:max-md:shadow-none
+            hover:bg-[#727272] hover:duration-300
+            hover:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]
           `}
         >
           <div class="w-5 h-5" innerHTML={DownChevronSvg} />
