@@ -9,7 +9,7 @@ export default function Home() {
   const { filteredResults, resultCount, searchQuery } = useFilter()
 
   return (
-    <main class="p-4 mx-auto max-w-7xl">
+    <main class="px-4 pt-4 pb-16 mx-auto max-w-7xl">
       <div class="mb-4 text-sm text-gray-600">
         Showing {resultCount()} of {metadata.length} cars
       </div>
