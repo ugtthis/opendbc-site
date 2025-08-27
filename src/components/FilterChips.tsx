@@ -25,7 +25,7 @@ const FilterChips: Component = () => {
       <span class="min-w-0 truncate max-w-[30ch]">{props.value}</span>
       <button
         onClick={props.onRemove}
-        class="flex justify-center items-center ml-4 text-xs font-bold text-black border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-surface-secondary"
+        class="flex justify-center items-center ml-4 text-lg font-bold text-black border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-surface-secondary"
         aria-label={`Remove ${props.label}`}
       >
         ×
