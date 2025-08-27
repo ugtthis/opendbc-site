@@ -57,7 +57,7 @@ type InfoBoxProps = {
 
 const InfoBox = (props: InfoBoxProps) => {
   return (
-    <div class={cn('flex flex-col justify-center py-4 px-4 border border-black bg-[#F3F3F3] min-h-[80px]', props.class)}>
+    <div class={cn('flex flex-col justify-center py-4 px-4 border border-black bg-surface min-h-[80px]', props.class)}>
       <div class="text-sm font-medium">{props.label}</div>
       <div class="mt-1 text-lg font-semibold">{props.value}</div>
     </div>
@@ -95,10 +95,10 @@ const ExpandableRow = (props: ExpandableRowProps) => {
   }
 
   return (
-    <div class={cn('border border-black bg-[#F3F3F3]', props.class)}>
+    <div class={cn('border border-black bg-surface', props.class)}>
       {/* Main row */}
       <div
-        class="flex justify-between items-center py-4 px-4 transition-colors duration-200 cursor-pointer hover:text-white hover:bg-[#969696]"
+        class="flex justify-between items-center py-4 px-4 transition-colors duration-200 cursor-pointer hover:text-white hover:bg-accent"
         onClick={props.onToggle}
       >
         <div class="text-sm font-medium">{props.label}</div>
@@ -120,7 +120,7 @@ const ExpandableRow = (props: ExpandableRowProps) => {
         <div class="relative">
           <div
             ref={scrollRef}
-            class="overflow-y-auto py-3 px-4 h-20 text-sm text-black bg-[#D9D9D9]"
+            class="overflow-y-auto py-3 px-4 text-sm text-black h-row-height bg-surface-secondary"
             onScroll={handleScroll}
           >
             {props.description}
@@ -155,7 +155,7 @@ const Card: Component<CardProps> = (props) => {
       </div>
 
       {/* Card body */}
-      <div class="flex flex-col border border-black bg-[#F3F3F3] shadow-elev-1 min-h-[180px]">
+      <div class="flex flex-col border border-black bg-surface shadow-elev-1 min-h-[180px]">
         <div class="flex-grow">
           {/* Year and Model */}
           <div class="flex border-b border-black">
@@ -175,7 +175,7 @@ const Card: Component<CardProps> = (props) => {
                   rel="noopener noreferrer"
                   class={`
                     flex items-center p-2 text-white transition-all duration-300 cursor-pointer
-                    hover:bg-red-600 hover:shadow-xl group bg-[#969696]
+                    hover:bg-red-600 hover:shadow-xl group bg-accent
                   `}
                 >
                   <div class="block w-5 h-5 transition-opacity duration-200 group-hover:hidden" innerHTML={VideoCameraSvg} />
@@ -222,7 +222,7 @@ const Card: Component<CardProps> = (props) => {
         <input type="checkbox" id={`toggle-${props.car.name}`} class="hidden peer" />
 
         {/* Expanded Card Body */}
-        <div class="overflow-hidden max-h-0 transition-all duration-300 bg-[#D9D9D9] peer-checked:max-h-[600px] peer-checked:border-t peer-checked:border-black">
+        <div class="overflow-hidden max-h-0 transition-all duration-300 bg-surface-secondary peer-checked:max-h-card-height peer-checked:border-t peer-checked:border-black">
           <div class="p-4">
             {/* Layout: Row + 2 Boxes + 2 Rows + Button */}
             <div class="flex flex-col gap-2">
@@ -232,7 +232,7 @@ const Card: Component<CardProps> = (props) => {
                 value="NA"
                 icon={props.car.auto_resume ? CheckSvg : undefined}
                 description={getAutoResumeDescription(props.car.auto_resume)}
-                class="border-2 border-[#CDCDCD]"
+                class="border-2 border-border-soft"
                 isExpanded={expandedRow() === "resume"}
                 onToggle={() => toggleRow("resume")}
               />
@@ -242,12 +242,12 @@ const Card: Component<CardProps> = (props) => {
                 <InfoBox
                   label="curb weight"
                   value={`${Math.round(props.car.mass_curb_weight).toLocaleString()}lb`}
-                  class="flex-1 border-2 border-[#CDCDCD]"
+                  class="flex-1 border-2 border-border-soft"
                 />
                 <InfoBox
                   label="Install video"
                   value="NA"
-                  class="flex-1 border-2 border-[#CDCDCD]"
+                  class="flex-1 border-2 border-border-soft"
                 />
               </div>
 
@@ -256,7 +256,7 @@ const Card: Component<CardProps> = (props) => {
                 label="ACC"
                 value={props.car.longitudinal as string || "Stock"}
                 description={getACCDescription(props.car.longitudinal as string || "Stock", props.car.min_enable_speed)}
-                class="border-2 border-[#CDCDCD]"
+                class="border-2 border-border-soft"
                 isExpanded={expandedRow() === "acc"}
                 onToggle={() => toggleRow("acc")}
               />
@@ -266,7 +266,7 @@ const Card: Component<CardProps> = (props) => {
                 label="Steering Ratio"
                 value={Math.round(props.car.steer_ratio).toString()}
                 description="The steering ratio is the relationship between steering wheel rotation and front wheel angle. A lower ratio means more responsive steering - less steering wheel input needed for the same wheel movement."
-                class="border-2 border-[#CDCDCD]"
+                class="border-2 border-border-soft"
                 isExpanded={expandedRow() === "steering"}
                 onToggle={() => toggleRow("steering")}
               />
@@ -278,7 +278,7 @@ const Card: Component<CardProps> = (props) => {
                 <div
                   class={`
                     text-black transition-all duration-200 ease-in w-[28px] h-[24px]
-                    translate-y-[-1px] group-hover:translate-x-[2px] group-hover:text-[#F3F3F3]
+                    translate-y-[-1px] group-hover:translate-x-[2px] group-hover:text-surface
                   `}
                   innerHTML={OpenFolderSvg}
                 />
@@ -292,7 +292,7 @@ const Card: Component<CardProps> = (props) => {
           for={`toggle-${props.car.name}`}
           class={`
             flex justify-center py-1 border-t border-black cursor-pointer
-            bg-[#969696] peer-checked:bg-[#D9D9D9] peer-checked:[&>div]:rotate-180
+            bg-accent peer-checked:bg-surface-secondary peer-checked:[&>div]:rotate-180
           `}
         >
           <div class="w-5 h-5" innerHTML={DownChevronSvg} />

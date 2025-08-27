@@ -25,7 +25,7 @@ const FilterChips: Component = () => {
       <span class="min-w-0 truncate max-w-[30ch]">{props.value}</span>
       <button
         onClick={props.onRemove}
-        class="flex justify-center items-center ml-4 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-[#D9D9D9]"
+        class="flex justify-center items-center ml-4 text-xs font-bold text-black rounded-sm border border-black transition-colors cursor-pointer hover:bg-white shrink-0 size-6 bg-surface-secondary"
         aria-label={`Remove ${props.label}`}
       >
         ×
@@ -35,14 +35,14 @@ const FilterChips: Component = () => {
 
   return (
     <Show when={hasActiveFilters()}>
-      <div class="flex flex-wrap gap-2 items-center p-4 mb-4 rounded-sm border border-black bg-[#F3F3F3] shadow-elev-1">
+      <div class="flex flex-wrap gap-2 items-center p-4 mb-4 rounded-sm border border-black bg-surface shadow-elev-1">
         <span class="mr-2 text-sm font-semibold text-black">Active filters:</span>
 
         <Show when={searchQuery().trim()}>
           <Chip
             label="Search"
             value={`"${searchQuery()}"`}
-            bgColor="bg-[#969696]"
+            bgColor="bg-accent"
             onRemove={() => setSearchQuery('')}
           />
         </Show>
@@ -52,7 +52,7 @@ const FilterChips: Component = () => {
             <Chip
               label={filter.label}
               value={filter.value}
-              bgColor="bg-[#969696]"
+              bgColor="bg-accent"
               onRemove={() => removeFilter(filter.key)}
             />
           )}
@@ -60,7 +60,7 @@ const FilterChips: Component = () => {
 
         <button
           onClick={clearAllFilters}
-          class="py-1.5 px-3 text-sm font-semibold text-black bg-white rounded-sm border border-black transition-colors cursor-pointer shadow-elev-1 hover:bg-[#F3F3F3]"
+          class="py-1.5 px-3 text-sm font-semibold text-black bg-white rounded-sm border border-black transition-colors cursor-pointer shadow-elev-1 hover:bg-surface"
         >
           Clear all
         </button>

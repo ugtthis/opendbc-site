@@ -42,7 +42,7 @@ const Header: Component = () => {
                 class="pr-4 pl-12 w-full h-12 font-sans bg-white outline-none"
               />
               <span class="grid absolute inset-y-0 left-0 place-items-center w-12 text-gray-500" aria-hidden="true">
-                <div class="w-5 h-5 text-[#969696]" innerHTML={SearchGlassSvg} />
+                <div class="w-5 h-5 text-accent" innerHTML={SearchGlassSvg} />
               </span>
             </ShineBorder>
 

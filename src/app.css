@@ -4,6 +4,13 @@
   --shadow-elev-1: 2px 2px 4px 0 rgba(0, 0, 0, 0.2);
   --font-mono: "JetBrains Mono", ui-monospace, Menlo;
   --font-sans: "Inter", system-ui, "Segoe UI";
+
+  --color-surface: #F3F3F3;
+  --color-surface-secondary: #D9D9D9;
+  --color-accent: #969696;
+  --color-border-soft: #CDCDCD;
+  --spacing-card-height: 600px;
+  --spacing-row-height: 80px;
 }
 
 :root {

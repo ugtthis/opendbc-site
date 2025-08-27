@@ -53,7 +53,7 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
           onClick={() => setIsOpen(!isOpen())}
           class={cn(
             'w-full p-4 text-left border border-black bg-white flex justify-between items-center',
-            'hover:bg-[#F3F3F3] transition-colors cursor-pointer',
+            'hover:bg-surface transition-colors cursor-pointer',
           )}
         >
           <span>{props.value || 'All'}</span>

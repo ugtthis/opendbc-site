@@ -118,7 +118,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                 onClick={() => setOpenSort(!openSort())}
                 class={`
                   flex justify-between items-center p-4 w-full h-[56px] text-left
-                  bg-white border border-black hover:bg-[#F3F3F3] transition-colors cursor-pointer
+                  bg-white border border-black hover:bg-surface transition-colors cursor-pointer
                 `}
               >
                 <span>
@@ -165,7 +165,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
               }
               class={`
                 flex justify-center items-center p-4 w-1/3 h-[56px]
-                border border-black hover:bg-[#F3F3F3] self-start cursor-pointer
+                border border-black hover:bg-surface self-start cursor-pointer
               `}
               aria-label={`Toggle sort order: currently ${sortConfig().order === 'ASC' ? 'Ascending' : 'Descending'}`}
             >
@@ -227,7 +227,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
       </div>
 
       {/* Fixed Footer section */}
-      <div class="flex-shrink-0 p-6 border-t border-gray-200 bg-[#F3F3F3] shadow-[0_-6px_16px_rgba(0,0,0,0.2)]">
+      <div class="flex-shrink-0 p-6 border-t border-gray-200 bg-surface shadow-[0_-6px_16px_rgba(0,0,0,0.2)]">
         <div
           class="p-3 mb-4 font-semibold text-center bg-black border border-white"
           style={{ color: getResultsColor(resultCount() || 0) }}
@@ -318,7 +318,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
                 <Drawer.Close
                   class={cn(
                     'flex items-center justify-center size-8',
-                    'bg-[#D9D9D9] border border-black',
+                    'bg-surface-secondary border border-black',
                     'hover:bg-white transition-colors',
                     'text-lg font-bold text-black cursor-pointer',
                   )}
@@ -356,7 +356,7 @@ const FilterModal: Component<FilterModalProps> = (props) => {
           )}
         >
           {/* Desktop header */}
-          <div class="flex flex-shrink-0 justify-between items-center p-4 border-b border-black bg-[#969696]">
+          <div class="flex flex-shrink-0 justify-between items-center p-4 border-b border-black bg-accent">
             <Dialog.Label class="text-xl font-bold text-white">
               Filter & Sort
             </Dialog.Label>
