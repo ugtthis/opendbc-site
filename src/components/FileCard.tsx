@@ -58,7 +58,7 @@ type InfoBoxProps = {
 const InfoBox = (props: InfoBoxProps) => {
   return (
     <div class={cn('flex flex-col justify-center py-4 px-4 border border-black bg-[#F3F3F3] min-h-[80px]', props.class)}>
-      <div class="text-sm font-medium text-gray-600">{props.label}</div>
+      <div class="text-sm font-medium">{props.label}</div>
       <div class="mt-1 text-lg font-semibold">{props.value}</div>
     </div>
   )
