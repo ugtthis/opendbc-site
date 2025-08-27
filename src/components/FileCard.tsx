@@ -1,4 +1,4 @@
-import { type Component, type ParentProps } from 'solid-js'
+import { type Component, createSignal, createEffect } from 'solid-js'
 
 import type { Car } from '~/types/CarDataTypes'
 
@@ -7,37 +7,139 @@ import HighlightText from '~/components/ui/HighlightText'
 import { getSupportTypeColor } from '~/types/supportType'
 import { cn } from '~/lib/utils'
 
+import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
+import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
+import VideoCameraSvg from '~/lib/icons/video-camera.svg?raw'
+import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
+import CheckSvg from '~/lib/icons/checkmark.svg?raw'
+
 const MS_TO_MPH = 2.237
 
 const formatEngageSpeed = (speedMs: number): string => {
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
-import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
-import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
-import VideoCameraSvg from '~/lib/icons/video-camera.svg?raw'
-import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
+const getACCDescription = (longitudinal: string, minEngageSpeed: number): string => {
+  const speed = formatEngageSpeed(minEngageSpeed)
+
+  switch (longitudinal) {
+    case 'openpilot':
+      return `Full openpilot Adaptive Cruise Control (ACC) with automatic speed and following distance control. openpilot handles all longitudinal control including acceleration, deceleration, and maintaining safe following distances. Minimum engagement speed: ${speed}.`
+    case 'openpilot available':
+      return `openpilot Adaptive Cruise Control (ACC) is available as an option but requires enabling. When enabled, openpilot provides enhanced longitudinal control with automatic speed and following distance management. Minimum engagement speed: ${speed}.`
+    case 'Stock':
+      return `Uses the vehicle's factory Adaptive Cruise Control (ACC) system. openpilot provides steering assistance but relies on the car's built-in cruise control for speed management. Minimum engagement speed: ${speed}.`
+    default:
+      return `Adaptive Cruise Control (ACC) maintains a safe following distance from the vehicle ahead. Minimum engagement speed: ${speed}.`
+  }
+}
+
+const getAutoResumeDescription = (autoResume: boolean): string => {
+  if (autoResume) {
+    return `Automatically resumes from a complete stop when traffic ahead starts moving again. This feature works with openpilot's Adaptive Cruise Control and eliminates the need to manually restart cruise control after coming to a stop in traffic.`
+  } else {
+    return `Does not automatically resume from a complete stop. When traffic stops, you'll need to manually press the accelerator or cruise control button to resume after the vehicle ahead starts moving again.`
+  }
+}
 
 type CardProps = {
   car: Car
   searchQuery: string
 }
 
-type StatBoxProps = ParentProps<{
-  class?: string
-  label: string
-}>
 
-const StatBox = (props: StatBoxProps) => {
+
+type InfoBoxProps = {
+  label: string
+  value: string
+  class?: string
+}
+
+const InfoBox = (props: InfoBoxProps) => {
   return (
-    <div class={cn('flex flex-col py-3 px-4 border border-black bg-[#F3F3F3] min-h-[80px] shadow-elev-1', props.class)}>
-      <span class={'font-medium text-md'}>{props.label}</span>
-      <div class={'mt-2 text-xs md:text-sm'}>{props.children}</div>
+    <div class={cn('flex flex-col justify-center py-4 px-4 border border-black bg-[#F3F3F3] min-h-[80px]', props.class)}>
+      <div class="text-sm font-medium text-gray-600">{props.label}</div>
+      <div class="mt-1 text-lg font-semibold">{props.value}</div>
+    </div>
+  )
+}
+
+// Expandable row component with hover effects and description toggle
+type ExpandableRowProps = {
+  label: string
+  value: string
+  description: string
+  class?: string
+  icon?: string
+  isExpanded: boolean
+  onToggle: () => void
+}
+
+const ExpandableRow = (props: ExpandableRowProps) => {
+  const [isScrolledToBottom, setIsScrolledToBottom] = createSignal(false)
+  let scrollRef: HTMLDivElement | undefined
+
+  const resetScrollOnOpen = () => {
+    if (props.isExpanded && scrollRef) {
+      scrollRef.scrollTop = 0
+      setIsScrolledToBottom(false)
+    }
+  }
+
+  createEffect(resetScrollOnOpen)
+
+  const handleScroll = (e: Event) => {
+    const target = e.target as HTMLDivElement
+    const isAtBottom = target.scrollTop + target.clientHeight >= target.scrollHeight - 1
+    setIsScrolledToBottom(isAtBottom)
+  }
+
+  return (
+    <div class={cn('border border-black bg-[#F3F3F3]', props.class)}>
+      {/* Main row */}
+      <div
+        class="flex justify-between items-center py-4 px-4 transition-colors duration-200 cursor-pointer hover:text-white hover:bg-[#969696]"
+        onClick={props.onToggle}
+      >
+        <div class="text-sm font-medium">{props.label}</div>
+        <div class="flex gap-3 items-center">
+          {props.icon ? (
+            <div class="w-5 h-5" innerHTML={props.icon} />
+          ) : (
+            <div class="text-sm font-semibold">{props.value}</div>
+          )}
+          <div
+            class={`w-2 h-2 transition-transform duration-200 ${props.isExpanded ? 'rotate-180' : ''}`}
+            innerHTML={DownChevronSvg}
+          />
+        </div>
+      </div>
+
+      {/* Expandable description */}
+      <div class={`overflow-hidden transition-all duration-300 ${props.isExpanded ? 'max-h-20' : 'max-h-0'}`}>
+        <div class="relative">
+          <div
+            ref={scrollRef}
+            class="overflow-y-auto py-3 px-4 h-20 text-sm text-black bg-[#D9D9D9]"
+            onScroll={handleScroll}
+          >
+            {props.description}
+          </div>
+          {/* Scroll gradient indicator */}
+          <div class={`absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/50 to-transparent pointer-events-none transition-opacity duration-200 ${isScrolledToBottom() ? 'opacity-0' : 'opacity-100'}`} />
+        </div>
+      </div>
     </div>
   )
 }
 
 const Card: Component<CardProps> = (props) => {
+  const [expandedRow, setExpandedRow] = createSignal<string | null>(null)
+
+  const toggleRow = (rowId: string) => {
+    setExpandedRow(expandedRow() === rowId ? null : rowId)
+  }
+
   const supportLabelClass = cn(
     'py-1 px-6 inline-block border border-black border-b-0 text-center',
     getSupportTypeColor(props.car.support_type),
@@ -120,24 +222,68 @@ const Card: Component<CardProps> = (props) => {
         <input type="checkbox" id={`toggle-${props.car.name}`} class="hidden peer" />
 
         {/* Expanded Card Body */}
-        <div class="overflow-hidden max-h-0 bg-[#D9D9D9] peer-checked:max-h-[400px] peer-checked:border-t peer-checked:border-black">
-          <div class="grid grid-cols-2 gap-4 p-4">
-            <StatBox label="Curb Weight">{Math.round(props.car.mass_curb_weight).toLocaleString()} kg</StatBox>
-            <StatBox label="Harness">{props.car.harness ? props.car.harness : 'N/A'}</StatBox>
-            <StatBox label="Auto Resume">{props.car.auto_resume ? 'Yes' : 'No'}</StatBox>
-            <StatBox label="Steer Ratio">~{Number(props.car.steer_ratio).toFixed(2)}</StatBox>
-          </div>
-          <div class="px-4 pb-4">
-            {/* Open model details button */}
-            <GradientButton href={`/cars/${props.car.name.replace(/\s+/g, '-')}`}>
-              <div
-                class={`
-                  text-black transition-all duration-200 ease-in w-[28px] h-[24px]
-                  translate-y-[-1px] group-hover:translate-x-[2px] group-hover:text-[#F3F3F3]
-                `}
-                innerHTML={OpenFolderSvg}
+        <div class="overflow-hidden max-h-0 transition-all duration-300 bg-[#D9D9D9] peer-checked:max-h-[600px] peer-checked:border-t peer-checked:border-black">
+          <div class="p-4">
+            {/* Layout: Row + 2 Boxes + 2 Rows + Button */}
+            <div class="flex flex-col gap-2">
+              {/* Row 1: Resume from stop */}
+              <ExpandableRow
+                label="Resume from stop"
+                value="NA"
+                icon={props.car.auto_resume ? CheckSvg : undefined}
+                description={getAutoResumeDescription(props.car.auto_resume)}
+                class="border-2 border-[#CDCDCD]"
+                isExpanded={expandedRow() === "resume"}
+                onToggle={() => toggleRow("resume")}
               />
-            </GradientButton>
+
+              {/* Two info boxes side by side */}
+              <div class="flex gap-2">
+                <InfoBox
+                  label="curb weight"
+                  value={`${Math.round(props.car.mass_curb_weight).toLocaleString()}lb`}
+                  class="flex-1 border-2 border-[#CDCDCD]"
+                />
+                <InfoBox
+                  label="Install video"
+                  value="NA"
+                  class="flex-1 border-2 border-[#CDCDCD]"
+                />
+              </div>
+
+              {/* Row 2: ACC */}
+              <ExpandableRow
+                label="ACC"
+                value={props.car.longitudinal as string || "Stock"}
+                description={getACCDescription(props.car.longitudinal as string || "Stock", props.car.min_enable_speed)}
+                class="border-2 border-[#CDCDCD]"
+                isExpanded={expandedRow() === "acc"}
+                onToggle={() => toggleRow("acc")}
+              />
+
+              {/* Row 3: Steering Ratio */}
+              <ExpandableRow
+                label="Steering Ratio"
+                value={Math.round(props.car.steer_ratio).toString()}
+                description="The steering ratio is the relationship between steering wheel rotation and front wheel angle. A lower ratio means more responsive steering - less steering wheel input needed for the same wheel movement."
+                class="border-2 border-[#CDCDCD]"
+                isExpanded={expandedRow() === "steering"}
+                onToggle={() => toggleRow("steering")}
+              />
+            </div>
+
+            {/* Gradient Button */}
+            <div class="mt-4">
+              <GradientButton href={`/cars/${props.car.name.replace(/\s+/g, '-')}`}>
+                <div
+                  class={`
+                    text-black transition-all duration-200 ease-in w-[28px] h-[24px]
+                    translate-y-[-1px] group-hover:translate-x-[2px] group-hover:text-[#F3F3F3]
+                  `}
+                  innerHTML={OpenFolderSvg}
+                />
+              </GradientButton>
+            </div>
           </div>
         </div>
 
