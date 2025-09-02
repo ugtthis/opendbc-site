@@ -47,8 +47,6 @@ type CardProps = {
   searchQuery: string
 }
 
-
-
 type InfoBoxProps = {
   label: string
   value: string
