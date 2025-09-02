@@ -136,6 +136,28 @@ const ExpandableRow = (props: ExpandableRowProps) => {
 const Card: Component<CardProps> = (props) => {
   const [expandedRow, setExpandedRow] = createSignal<string | null>(null)
 
+  const resumeRowProps = {
+    label: "Resume from stop",
+    value: "NA",
+    icon: props.car.auto_resume ? CheckSvg : undefined,
+    description: getAutoResumeDescription(props.car.auto_resume),
+    class: "border-2 border-border-soft"
+  }
+
+  const accRowProps = {
+    label: "ACC",
+    value: props.car.longitudinal as string || "Stock",
+    description: getACCDescription(props.car.longitudinal as string || "Stock", props.car.min_enable_speed),
+    class: "border-2 border-border-soft"
+  }
+
+  const steeringRowProps = {
+    label: "Steering Ratio",
+    value: Math.round(props.car.steer_ratio).toString(),
+    description: "The steering ratio is the relationship between steering wheel rotation and front wheel angle. A lower ratio means more responsive steering - less steering wheel input needed for the same wheel movement.",
+    class: "border-2 border-border-soft"
+  }
+
   const toggleRow = (rowId: string) => {
     setExpandedRow(expandedRow() === rowId ? null : rowId)
   }
@@ -228,11 +250,7 @@ const Card: Component<CardProps> = (props) => {
             <div class="flex flex-col gap-2">
               {/* Row 1: Resume from stop */}
               <ExpandableRow
-                label="Resume from stop"
-                value="NA"
-                icon={props.car.auto_resume ? CheckSvg : undefined}
-                description={getAutoResumeDescription(props.car.auto_resume)}
-                class="border-2 border-border-soft"
+                {...resumeRowProps}
                 isExpanded={expandedRow() === "resume"}
                 onToggle={() => toggleRow("resume")}
               />
@@ -253,20 +271,14 @@ const Card: Component<CardProps> = (props) => {
 
               {/* Row 2: ACC */}
               <ExpandableRow
-                label="ACC"
-                value={props.car.longitudinal as string || "Stock"}
-                description={getACCDescription(props.car.longitudinal as string || "Stock", props.car.min_enable_speed)}
-                class="border-2 border-border-soft"
+                {...accRowProps}
                 isExpanded={expandedRow() === "acc"}
                 onToggle={() => toggleRow("acc")}
               />
 
               {/* Row 3: Steering Ratio */}
               <ExpandableRow
-                label="Steering Ratio"
-                value={Math.round(props.car.steer_ratio).toString()}
-                description="The steering ratio is the relationship between steering wheel rotation and front wheel angle. A lower ratio means more responsive steering - less steering wheel input needed for the same wheel movement."
-                class="border-2 border-border-soft"
+                {...steeringRowProps}
                 isExpanded={expandedRow() === "steering"}
                 onToggle={() => toggleRow("steering")}
               />
