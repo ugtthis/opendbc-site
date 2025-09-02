@@ -64,7 +64,6 @@ const InfoBox = (props: InfoBoxProps) => {
   )
 }
 
-// Expandable row component with hover effects and description toggle
 type ExpandableRowProps = {
   label: string
   value: string
@@ -96,7 +95,7 @@ const ExpandableRow = (props: ExpandableRowProps) => {
 
   return (
     <div class={cn('border border-black bg-surface', props.class)}>
-      {/* Main row */}
+      {/* Toggle header */}
       <div
         class="flex justify-between items-center py-4 px-4 transition-colors duration-200 cursor-pointer hover:text-white hover:bg-accent"
         onClick={props.onToggle}
@@ -246,9 +245,8 @@ const Card: Component<CardProps> = (props) => {
         {/* Expanded Card Body */}
         <div class="overflow-hidden max-h-0 transition-all duration-300 bg-surface-secondary peer-checked:max-h-card-height peer-checked:border-t peer-checked:border-black">
           <div class="p-4">
-            {/* Layout: Row + 2 Boxes + 2 Rows + Button */}
             <div class="flex flex-col gap-2">
-              {/* Row 1: Resume from stop */}
+              {/* Row 1 */}
               <ExpandableRow
                 {...resumeRowProps}
                 isExpanded={expandedRow() === "resume"}
@@ -269,14 +267,14 @@ const Card: Component<CardProps> = (props) => {
                 />
               </div>
 
-              {/* Row 2: ACC */}
+              {/* Row 2 */}
               <ExpandableRow
                 {...accRowProps}
                 isExpanded={expandedRow() === "acc"}
                 onToggle={() => toggleRow("acc")}
               />
 
-              {/* Row 3: Steering Ratio */}
+              {/* Row 3 */}
               <ExpandableRow
                 {...steeringRowProps}
                 isExpanded={expandedRow() === "steering"}
