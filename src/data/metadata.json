@@ -7861,7 +7861,7 @@
     "mass_curb_weight": 1487.328168,
     "center_to_front_ratio_base": 0.39,
     "bus_lookup": {
-      "pt": "honda_accord_2018_can_generated"
+      "pt": "honda_civic_hatchback_ex_2017_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -8075,7 +8075,7 @@
     "mass_curb_weight": 1487.328168,
     "center_to_front_ratio_base": 0.39,
     "bus_lookup": {
-      "pt": "honda_accord_2018_can_generated"
+      "pt": "honda_civic_hatchback_ex_2017_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -8395,7 +8395,7 @@
     "mass_curb_weight": 1546.74872,
     "center_to_front_ratio_base": 0.41,
     "bus_lookup": {
-      "pt": "honda_crv_ex_2017_can_generated",
+      "pt": "honda_civic_hatchback_ex_2017_can_generated",
       "body": "honda_crv_ex_2017_body_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -8611,7 +8611,7 @@
     "mass_curb_weight": 1667,
     "center_to_front_ratio_base": 0.41,
     "bus_lookup": {
-      "pt": "honda_accord_2018_can_generated"
+      "pt": "honda_civic_hatchback_ex_2017_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -8821,7 +8821,7 @@
     "mass_curb_weight": 1417.475,
     "center_to_front_ratio_base": 0.41,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 6.388888888888889,
     "min_enable_speed_base": -1.0,
@@ -9142,7 +9142,7 @@
     "mass_curb_weight": 1326,
     "center_to_front_ratio_base": 0.4,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -9462,7 +9462,7 @@
     "mass_curb_weight": 1326,
     "center_to_front_ratio_base": 0.4,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -9567,7 +9567,7 @@
     "mass_curb_weight": 1326,
     "center_to_front_ratio_base": 0.4,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -9672,7 +9672,7 @@
     "mass_curb_weight": 1326,
     "center_to_front_ratio_base": 0.4,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -9777,7 +9777,7 @@
     "mass_curb_weight": 1326,
     "center_to_front_ratio_base": 0.4,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -9955,7 +9955,7 @@
     "mass_curb_weight": 1199.297248,
     "center_to_front_ratio_base": 0.39,
     "bus_lookup": {
-      "pt": "honda_fit_ex_2018_can_generated",
+      "pt": "acura_ilx_2016_can_generated",
       "radar": "acura_ilx_2016_nidec"
     },
     "min_steer_speed_base": 0.0,
@@ -10059,7 +10059,7 @@
     "mass_curb_weight": 1399.784912,
     "center_to_front_ratio_base": 0.39,
     "bus_lookup": {
-      "pt": "honda_fit_ex_2018_can_generated",
+      "pt": "acura_ilx_2016_can_generated",
       "radar": "acura_ilx_2016_nidec"
     },
     "min_steer_speed_base": 0.0,
@@ -10166,7 +10166,7 @@
     "mass_curb_weight": 1417.475,
     "center_to_front_ratio_base": 0.41,
     "bus_lookup": {
-      "pt": "honda_fit_ex_2018_can_generated",
+      "pt": "acura_ilx_2016_can_generated",
       "radar": "acura_ilx_2016_nidec"
     },
     "min_steer_speed_base": 0.0,
@@ -10274,7 +10274,7 @@
     "mass_curb_weight": 1417.475,
     "center_to_front_ratio_base": 0.41,
     "bus_lookup": {
-      "pt": "honda_civic_ex_2022_can_generated"
+      "pt": "honda_bosch_radarless_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -10487,7 +10487,7 @@
     "mass_curb_weight": 1487.328168,
     "center_to_front_ratio_base": 0.39,
     "bus_lookup": {
-      "pt": "honda_accord_2018_can_generated"
+      "pt": "honda_civic_hatchback_ex_2017_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
