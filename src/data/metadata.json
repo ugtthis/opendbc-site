@@ -28497,12 +28497,13 @@
     ]
   },
   {
-    "name": "Tesla Model Y (with HW4) 2024",
+    "name": "Tesla Model Y (with HW4) 2024-25",
     "make": "Tesla",
     "model": "Model Y (with HW4)",
-    "years": "2024",
+    "years": "2024-25",
     "year_list": [
-      "2024"
+      "2024",
+      "2025"
     ],
     "package": "All",
     "video": null,
@@ -28521,7 +28522,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Tesla Model Y (with HW4)</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "TESLA_MODEL_Y",
     "brand": "tesla",
-    "buy_link": "https://comma.ai/shop/comma-3x?harness=Tesla%20Model%20Y%20(with%20HW4)%202024",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Tesla%20Model%20Y%20(with%20HW4)%202024-25",
     "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
