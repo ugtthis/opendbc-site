@@ -9505,12 +9505,13 @@
     ]
   },
   {
-    "name": "Honda Civic Hatchback Hybrid 2025",
+    "name": "Honda Civic Hatchback Hybrid 2025-26",
     "make": "Honda",
     "model": "Civic Hatchback Hybrid",
-    "years": "2025",
+    "years": "2025-26",
     "year_list": [
-      "2025"
+      "2025",
+      "2026"
     ],
     "package": "All",
     "video": null,
@@ -9527,7 +9528,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda Civic Hatchback Hybrid</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "HONDA_CIVIC_2022",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Civic%20Hatchback%20Hybrid%202025",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Civic%20Hatchback%20Hybrid%202025-26",
     "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
