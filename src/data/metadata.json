@@ -10531,6 +10531,111 @@
     ]
   },
   {
+    "name": "Honda N-Box 2018",
+    "make": "Honda",
+    "model": "N-Box",
+    "years": "2018",
+    "year_list": [
+      "2018"
+    ],
+    "package": "All",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [
+      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "min_steer_speed": 5.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Honda N-Box</strong> with automated lane centering <strong>above 11 mph</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "HONDA_NBOX_2G",
+    "brand": "honda",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20N-Box%202018",
+    "longitudinal": "openpilot available",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "11 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 1026.0,
+    "wheelbase": 2.5199999809265137,
+    "steer_ratio": 18.639999389648438,
+    "radar_delay": 0.10000000149011612,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.0,
+    "steer_actuator_delay": 0.10000000149011612,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.800000011920929,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 112372.265625,
+    "tire_stiffness_rear": 177637.65625,
+    "rotational_inertia": 1528.3173828125,
+    "experimental_longitudinal_available": true,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": false,
+    "enable_dsu": false,
+    "enable_bsm": false,
+    "pcm_cruise": false,
+    "flags": 4,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.5,
+    "vEgo_starting": 0.5,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.5,
+    "max_lateral_accel": 1.2000000476837158,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 890.0,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "acura_rdx_2020_can_generated"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "has_angled_mount": false,
+    "harness": "bosch_a",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Honda Bosch A connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma 3X",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "right angle OBD-C cable (1.5 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Honda Odyssey 2018-20",
     "make": "Honda",
     "model": "Odyssey",
@@ -10651,64 +10756,99 @@
     "package": "All",
     "video": null,
     "setup_video": null,
-    "footnotes": [],
-    "min_steer_speed": 0.0,
+    "footnotes": [
+      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "min_steer_speed": 19.444444444444446,
     "min_enable_speed": -1.0,
     "auto_resume": true,
-    "merged": false,
-    "support_type": "Community",
-    "support_link": "#community",
-    "detail_sentence": "openpilot upgrades your <strong>Honda Odyssey</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
-    "car_fingerprint": "MOCK",
-    "brand": "mock",
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Honda Odyssey</strong> with automated lane centering <strong>above 43 mph</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. This car may not be able to take tight turns on its own.",
+    "car_fingerprint": "HONDA_ODYSSEY_5G_MMR",
+    "brand": "honda",
     "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Odyssey%202021-25",
-    "longitudinal": "Stock",
+    "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
-    "fsr_steering": "0 mph",
-    "steering_torque": "full",
+    "fsr_steering": "43 mph",
+    "steering_torque": "empty",
     "auto_resume_star": "full",
-    "mass": 1836.0,
-    "wheelbase": 2.700000047683716,
-    "steer_ratio": 13.0,
-    "radar_delay": 0.0,
+    "mass": 2217.9873046875,
+    "wheelbase": 3.0,
+    "steer_ratio": 19.399999618530273,
+    "radar_delay": 0.10000000149011612,
     "wheel_speed_factor": 1.0,
     "start_accel": 0.0,
-    "steer_actuator_delay": 0.0,
+    "steer_actuator_delay": 0.15000000596046448,
     "steer_ratio_rear": 0.0,
-    "steer_limit_timer": 1.0,
+    "steer_limit_timer": 0.800000011920929,
     "tire_stiffness_factor": 1.0,
-    "tire_stiffness_front": 201087.203125,
-    "tire_stiffness_rear": 317877.90625,
-    "rotational_inertia": 3139.534912109375,
-    "experimental_longitudinal_available": false,
-    "openpilot_longitudinal_control": false,
-    "dashcam_only": true,
+    "tire_stiffness_front": 286650.59375,
+    "tire_stiffness_rear": 314891.25,
+    "rotational_inertia": 4682.38037109375,
+    "experimental_longitudinal_available": true,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": false,
     "enable_dsu": false,
     "enable_bsm": false,
-    "pcm_cruise": true,
-    "flags": 0,
+    "pcm_cruise": false,
+    "flags": 518,
     "auto_resume_sng": true,
-    "radarUnavailable": false,
+    "radarUnavailable": true,
     "passive": false,
     "stopping_decel_rate": 0.800000011920929,
     "vEgo_stopping": 0.5,
     "vEgo_starting": 0.5,
     "stop_accel": -2.0,
-    "longitudinal_actuator_delay": 0.15000000596046448,
-    "max_lateral_accel": 10.0,
+    "longitudinal_actuator_delay": 0.5,
+    "max_lateral_accel": 0.8999999761581421,
     "network_location": "fwdCamera",
     "steer_control_type": "torque",
-    "mass_curb_weight": 1700,
-    "center_to_front_ratio_base": 0.5,
-    "bus_lookup": {},
+    "mass_curb_weight": 2081.98728,
+    "center_to_front_ratio_base": 0.41,
+    "bus_lookup": {
+      "pt": "acura_rdx_2020_can_generated"
+    },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
-    "center_to_front_ratio": 0.5,
+    "center_to_front_ratio": 0.41,
     "has_angled_mount": false,
-    "harness": null,
+    "harness": "bosch_a",
     "tools_required": [],
-    "parts": []
+    "parts": [
+      {
+        "name": "Honda Bosch A connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma 3X",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "right angle OBD-C cable (1.5 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
   },
   {
     "name": "Honda Passport 2019-25",
@@ -28116,11 +28256,6 @@
         "count": 1
       },
       {
-        "name": "comma power v3",
-        "type": "accessory",
-        "count": 1
-      },
-      {
         "name": "long OBD-C cable (9.5 ft)",
         "type": "cable",
         "count": 1
@@ -28234,11 +28369,6 @@
         "count": 1
       },
       {
-        "name": "comma power v3",
-        "type": "accessory",
-        "count": 1
-      },
-      {
         "name": "long OBD-C cable (9.5 ft)",
         "type": "cable",
         "count": 1
@@ -28347,11 +28477,6 @@
       },
       {
         "name": "harness box",
-        "type": "accessory",
-        "count": 1
-      },
-      {
-        "name": "comma power v3",
         "type": "accessory",
         "count": 1
       },
@@ -28471,11 +28596,6 @@
         "count": 1
       },
       {
-        "name": "comma power v3",
-        "type": "accessory",
-        "count": 1
-      },
-      {
         "name": "long OBD-C cable (9.5 ft)",
         "type": "cable",
         "count": 1
@@ -28585,11 +28705,6 @@
       },
       {
         "name": "harness box",
-        "type": "accessory",
-        "count": 1
-      },
-      {
-        "name": "comma power v3",
         "type": "accessory",
         "count": 1
       },
