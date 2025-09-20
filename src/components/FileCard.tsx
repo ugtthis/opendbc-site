@@ -282,7 +282,7 @@ const Card: Component<CardProps> = (props) => {
 
             {/* Gradient Button */}
             <div class="mt-4">
-              <GradientButton href={`/cars/${props.car.name.replace(/\s+/g, '-')}`}>
+              <GradientButton href={`/cars/${encodeURIComponent(props.car.name)}`}>
                 <div
                   class={`
                     text-black transition-all duration-200 ease-in w-[28px] h-[24px]
