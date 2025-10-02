@@ -6,6 +6,7 @@ import { cn } from '~/lib/utils'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
+import ExpandableSpec from '~/components/ExpandableSpec'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 
 import metadata from '~/data/metadata.json'
@@ -91,6 +92,7 @@ function CarDetailContent() {
   const toggle = useToggle()
   const [highlightedMetric, setHighlightedMetric] = createSignal<string | null>(null)
   const [showUpArrow, setShowUpArrow] = createSignal(false)
+  const [openDesc, setOpenDesc] = createSignal<string | null>(null)
 
   // Force scrollbar to show = prevents layout shift when using MasterToggle
   onMount(() => {
@@ -139,6 +141,11 @@ function CarDetailContent() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
+
+  const toggleDesc = (detailId: string) => {
+    setOpenDesc(prev => prev === detailId ? null : detailId)
+  }
+
 
   // Mapping of metric IDs to their parent sections
   const metricToSection: Record<string, string> = {
@@ -520,31 +527,48 @@ function CarDetailContent() {
                 <AccordionContainer
                   title="Vehicle Metrics"
                   id="vehicle-metrics"
-                  contentClass="p-4 space-y-4 text-sm"
                   disableDefaultPadding={true}
                 >
-                    <div id="metric-curb-weight" class={`p-3 bg-gray-50 rounded border transition-all duration-300 ${highlightedMetric() === 'metric-curb-weight' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-1 text-xs tracking-wide text-gray-500 uppercase">Curb Weight</div>
-                      <div class="text-base font-bold text-gray-900 md:text-lg">{Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs</div>
-                    </div>
-                    <div id="metric-wheelbase" class={`p-3 bg-gray-50 rounded border transition-all duration-300 ${highlightedMetric() === 'metric-wheelbase' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-1 text-xs tracking-wide text-gray-500 uppercase">Wheelbase</div>
-                      <div class="text-base font-bold text-gray-900 md:text-lg">{car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '2.67 m'}</div>
-                    </div>
-                    <div id="metric-steer-ratio" class={`p-3 bg-gray-50 rounded border transition-all duration-300 ${highlightedMetric() === 'metric-steer-ratio' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-1 text-xs tracking-wide text-gray-500 uppercase">Steer Ratio</div>
-                      <div class="text-base font-bold text-gray-900 md:text-lg">{car()!.steer_ratio ? (car()!.steer_ratio as number).toFixed(1) : '18.61'}</div>
-                    </div>
-                    <div id="metric-center-front-ratio" class={`p-3 bg-gray-50 rounded border transition-all duration-300 ${highlightedMetric() === 'metric-center-front-ratio' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-1 text-xs tracking-wide text-gray-500 uppercase">Center to Front Ratio</div>
-                      <div class="text-base font-bold text-gray-900 md:text-lg">{car()!.center_to_front_ratio ? (car()!.center_to_front_ratio as number).toFixed(2) : '0.37'}</div>
-                    </div>
-                    <div id="metric-max-lateral-accel" class={`p-3 bg-gray-50 rounded border transition-all duration-300 ${highlightedMetric() === 'metric-max-lateral-accel' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-1 text-xs tracking-wide text-gray-500 uppercase">Max Lateral Accel</div>
-                      <div class="text-base font-bold text-gray-900 md:text-lg">
-                        {car()!.max_lateral_accel ? `${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '0.52 m/s²'}
-                      </div>
-                    </div>
+                  <ExpandableSpec
+                    label="Curb Weight"
+                    value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
+                    description="The weight of the vehicle without passengers or cargo, including all fluids and a full tank of fuel."
+                    isEven={false}
+                    isOpen={openDesc() === 'curb-weight'}
+                    onToggle={() => toggleDesc('curb-weight')}
+                  />
+                  <ExpandableSpec
+                    label="Wheelbase"
+                    value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
+                    description="The distance between the centers of the front and rear wheels. A longer wheelbase typically provides better stability at high speeds."
+                    isEven={true}
+                    isOpen={openDesc() === 'wheelbase'}
+                    onToggle={() => toggleDesc('wheelbase')}
+                  />
+                  <ExpandableSpec
+                    label="Steer Ratio"
+                    value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
+                    description="The ratio between the steering wheel angle and the front wheel angle. A higher ratio means more steering wheel turns are needed for the same wheel angle."
+                    isEven={false}
+                    isOpen={openDesc() === 'steer-ratio'}
+                    onToggle={() => toggleDesc('steer-ratio')}
+                  />
+                  <ExpandableSpec
+                    label="Center to Front Ratio"
+                    value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
+                    description="The ratio of the distance from the center of gravity to the front axle versus the total wheelbase. Affects weight distribution and handling characteristics."
+                    isEven={true}
+                    isOpen={openDesc() === 'center-front-ratio'}
+                    onToggle={() => toggleDesc('center-front-ratio')}
+                  />
+                  <ExpandableSpec
+                    label="Max Lateral Accel"
+                    value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}
+                    description="The maximum lateral acceleration the vehicle can sustain during cornering before losing traction. Higher values indicate better cornering capability."
+                    isEven={false}
+                    isOpen={openDesc() === 'max-lateral-accel'}
+                    onToggle={() => toggleDesc('max-lateral-accel')}
+                  />
                 </AccordionContainer>
               </div>
             </div>
