@@ -11,16 +11,19 @@ type ToggleContextType = {
 const ToggleContext = createContext<ToggleContextType>()
 
 export function ToggleProvider(props: { children: JSX.Element }) {
-  // Initialize with 'general' section open (matches current behavior)
-  const [openSections, setOpenSections] = createSignal<Set<string>>(new Set(['general']))
-
-  // All possible section IDs - must match the sections in CarDetailPage
-  const ALL_SECTIONS = [
-    // Main content sections
-    'general', 'parts', 'technical', 'system', 'capabilities',
-    // Sidebar sections
+  // Using section ids
+  const DEFAULT_OPEN_SECTIONS = new Set<string>([
+    'general', 'technical', 'system', 'capabilities',
     'key-specs', 'quick-nav', 'vehicle-metrics'
-  ]
+  ])
+
+  // All sections plus the closed ones
+  const ALL_SECTIONS = new Set<string>([
+    ...DEFAULT_OPEN_SECTIONS,
+    'parts'
+  ])
+
+  const [openSections, setOpenSections] = createSignal<Set<string>>(DEFAULT_OPEN_SECTIONS)
 
   // Toggle individual section
   const toggleSection = (id: string) => {
@@ -38,11 +41,11 @@ export function ToggleProvider(props: { children: JSX.Element }) {
   // Master toggle: close all if any are open, open all if all are closed
   const toggleAll = () => {
     const anyOpen = openSections().size > 0
-    setOpenSections(anyOpen ? new Set<string>() : new Set<string>(ALL_SECTIONS))
+    setOpenSections(anyOpen ? new Set<string>() : new Set(ALL_SECTIONS))
   }
 
   // Helper to check if all sections are open
-  const isAllOpen = () => openSections().size === ALL_SECTIONS.length
+  const isAllOpen = () => openSections().size === ALL_SECTIONS.size
 
   return (
     <ToggleContext.Provider value={{
