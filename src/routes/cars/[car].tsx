@@ -437,39 +437,97 @@ function CarDetailContent() {
                   title="Capabilities"
                   id="capabilities"
                   disableDefaultPadding={true}
-                  contentClass="p-4"
                 >
-                  <div class="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-4">
-                    <div id="metric-min-steering-speed" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-min-steering-speed' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Min Steering Speed</div>
-                      <div class="text-lg font-bold md:text-xl">{formatSpeed(car()!.min_steer_speed)}</div>
-                    </div>
-                    <div id="metric-fsr-longitudinal" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-fsr-longitudinal' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">FSR Longitudinal</div>
-                      <div class="text-lg font-bold md:text-xl">{car()!.fsr_longitudinal || '26 mph'}</div>
-                    </div>
-                    <div id="metric-fsr-steering" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-fsr-steering' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">FSR Steering</div>
-                      <div class="text-lg font-bold md:text-xl">{car()!.fsr_steering || '25 mph'}</div>
-                    </div>
-                    <div id="metric-longitudinal-control" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-longitudinal-control' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Longitudinal Control</div>
-                      <div class="text-lg font-bold md:text-xl">{car()!.longitudinal || 'openpilot'}</div>
-                    </div>
-                    <div id="metric-support-type" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-support-type' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Support Type</div>
-                      <div class="text-lg font-bold md:text-xl">{car()!.support_type}</div>
-                    </div>
-                    <div id="metric-auto-resume" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-auto-resume' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Auto Resume</div>
-                      <div class={`text-lg md:text-xl font-bold`}>
-                        {car()!.auto_resume ? 'Yes' : 'No'}
-                      </div>
-                    </div>
-                    <div id="metric-steering-torque" class={`text-center p-3 md:p-4 bg-gray-50 rounded-lg border transition-all duration-300 ${highlightedMetric() === 'metric-steering-torque' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
-                      <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Steering Torque</div>
-                      <div class="text-lg font-bold text-gray-700">{car()!.steering_torque || 'empty'}</div>
-                    </div>
+                  <div
+                    id="metric-min-steering-speed"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-min-steering-speed' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="Min Steering Speed"
+                      value={formatSpeed(car()!.min_steer_speed)}
+                      description="The minimum speed at which openpilot can provide steering assistance. Below this speed, the driver must steer manually."
+                      isEven={false}
+                      isOpen={openDesc() === 'min-steering-speed'}
+                      onToggle={() => toggleDesc('min-steering-speed')}
+                    />
+                  </div>
+                  <div
+                    id="metric-fsr-longitudinal"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-fsr-longitudinal' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="FSR Longitudinal"
+                      value={car()!.fsr_longitudinal || '26 mph'}
+                      description="Full Self-Driving Capability longitudinal speed threshold. The minimum speed for longitudinal (acceleration/braking) control in FSR mode."
+                      isEven={true}
+                      isOpen={openDesc() === 'fsr-longitudinal'}
+                      onToggle={() => toggleDesc('fsr-longitudinal')}
+                    />
+                  </div>
+                  <div
+                    id="metric-fsr-steering"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-fsr-steering' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="FSR Steering"
+                      value={car()!.fsr_steering || '25 mph'}
+                      description="Full Self-Driving Capability steering speed threshold. The minimum speed for steering control in FSR mode."
+                      isEven={false}
+                      isOpen={openDesc() === 'fsr-steering'}
+                      onToggle={() => toggleDesc('fsr-steering')}
+                    />
+                  </div>
+                  <div
+                    id="metric-longitudinal-control"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-longitudinal-control' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="Longitudinal Control"
+                      value={car()!.longitudinal || 'openpilot'}
+                      description="The system responsible for acceleration and braking control. 'openpilot' means full longitudinal control, while other values may indicate limited or no longitudinal control."
+                      isEven={true}
+                      isOpen={openDesc() === 'longitudinal-control'}
+                      onToggle={() => toggleDesc('longitudinal-control')}
+                    />
+                  </div>
+                  <div
+                    id="metric-support-type"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-support-type' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="Support Type"
+                      value={car()!.support_type}
+                      description="The level of openpilot support for this vehicle. 'Upstream' indicates full official support, while other types may have varying levels of functionality."
+                      isEven={false}
+                      isOpen={openDesc() === 'support-type'}
+                      onToggle={() => toggleDesc('support-type')}
+                    />
+                  </div>
+                  <div
+                    id="metric-auto-resume"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-auto-resume' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="Auto Resume"
+                      value={car()!.auto_resume ? 'Yes' : 'No'}
+                      description="Whether openpilot can automatically resume driving after coming to a complete stop, without driver intervention."
+                      isEven={true}
+                      isOpen={openDesc() === 'auto-resume'}
+                      onToggle={() => toggleDesc('auto-resume')}
+                    />
+                  </div>
+                  <div
+                    id="metric-steering-torque"
+                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-steering-torque' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                  >
+                    <ExpandableSpec
+                      label="Steering Torque"
+                      value={car()!.steering_torque || 'empty'}
+                      description="Information about the steering torque characteristics or limitations for this vehicle. 'Empty' typically means no specific torque data is available."
+                      isEven={false}
+                      isOpen={openDesc() === 'steering-torque'}
+                      onToggle={() => toggleDesc('steering-torque')}
+                    />
                   </div>
                 </AccordionContainer>
               </div>
