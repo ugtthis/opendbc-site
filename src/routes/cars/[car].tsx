@@ -17,6 +17,93 @@ const formatSpeed = (speedMs: number): string => {
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
+const SPEC_ID = {
+  // Technical Parameters
+  TIRE_STIFFNESS_FACTOR: 'tire-stiffness-factor',
+  TIRE_FRONT_STIFFNESS: 'tire-front-stiffness',
+  TIRE_REAR_STIFFNESS: 'tire-rear-stiffness',
+  ACTUATOR_DELAY: 'actuator-delay',
+  LIMIT_TIMER: 'limit-timer',
+  CONTROL_TYPE: 'control-type',
+  STOPPING_SPEED: 'stopping-speed',
+  STARTING_SPEED: 'starting-speed',
+  STOP_ACCEL: 'stop-accel',
+  // System Configuration
+  NETWORK_LOCATION: 'network-location',
+  BUS_LOOKUP: 'bus-lookup',
+  EXPERIMENTAL_LONGITUDINAL: 'experimental-longitudinal',
+  DSU_ENABLED: 'dsu-enabled',
+  BSM_ENABLED: 'bsm-enabled',
+  PCM_CRUISE: 'pcm-cruise',
+  // Capabilities
+  MIN_STEERING_SPEED: 'min-steering-speed',
+  FSR_LONGITUDINAL: 'fsr-longitudinal',
+  FSR_STEERING: 'fsr-steering',
+  LONGITUDINAL_CONTROL: 'longitudinal-control',
+  SUPPORT_TYPE: 'support-type',
+  AUTO_RESUME: 'auto-resume',
+  STEERING_TORQUE: 'steering-torque',
+  // Vehicle Metrics
+  CURB_WEIGHT: 'curb-weight',
+  WHEELBASE: 'wheelbase',
+  STEER_RATIO: 'steer-ratio',
+  CENTER_FRONT_RATIO: 'center-front-ratio',
+  MAX_LATERAL_ACCEL: 'max-lateral-accel',
+} as const
+
+const QUICK_NAV_SPECS = [
+  // Technical Parameters
+  { id: SPEC_ID.TIRE_STIFFNESS_FACTOR, label: 'Tire Stiffness Factor', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.TIRE_FRONT_STIFFNESS, label: 'Front Stiffness', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.TIRE_REAR_STIFFNESS, label: 'Rear Stiffness', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.ACTUATOR_DELAY, label: 'Actuator Delay', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.LIMIT_TIMER, label: 'Limit Timer', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.CONTROL_TYPE, label: 'Control Type', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.STOPPING_SPEED, label: 'Stopping Speed', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.STARTING_SPEED, label: 'Starting Speed', section: 'technical', category: 'Technical Parameters' },
+  { id: SPEC_ID.STOP_ACCEL, label: 'Stop Accel', section: 'technical', category: 'Technical Parameters' },
+  // System Configuration
+  { id: SPEC_ID.NETWORK_LOCATION, label: 'Network Location', section: 'system', category: 'System Configuration' },
+  { id: SPEC_ID.BUS_LOOKUP, label: 'Bus Lookup', section: 'system', category: 'System Configuration' },
+  { id: SPEC_ID.EXPERIMENTAL_LONGITUDINAL, label: 'Experimental Longitudinal', section: 'system', category: 'System Configuration' },
+  { id: SPEC_ID.DSU_ENABLED, label: 'DSU Enabled', section: 'system', category: 'System Configuration' },
+  { id: SPEC_ID.BSM_ENABLED, label: 'BSM Enabled', section: 'system', category: 'System Configuration' },
+  { id: SPEC_ID.PCM_CRUISE, label: 'PCM Cruise', section: 'system', category: 'System Configuration' },
+  // Capabilities
+  { id: SPEC_ID.MIN_STEERING_SPEED, label: 'Min Steering Speed', section: 'capabilities', category: 'Capabilities' },
+  { id: SPEC_ID.FSR_LONGITUDINAL, label: 'FSR Longitudinal', section: 'capabilities', category: 'Capabilities' },
+  { id: SPEC_ID.FSR_STEERING, label: 'FSR Steering', section: 'capabilities', category: 'Capabilities' },
+  { id: SPEC_ID.LONGITUDINAL_CONTROL, label: 'Longitudinal Control', section: 'capabilities', category: 'Capabilities' },
+  { id: SPEC_ID.SUPPORT_TYPE, label: 'Support Type', section: 'capabilities', category: 'Capabilities' },
+  { id: SPEC_ID.AUTO_RESUME, label: 'Auto Resume', section: 'capabilities', category: 'Capabilities' },
+  { id: SPEC_ID.STEERING_TORQUE, label: 'Steering Torque', section: 'capabilities', category: 'Capabilities' },
+  // Vehicle Metrics
+  { id: SPEC_ID.CURB_WEIGHT, label: 'Curb Weight', section: 'vehicle-metrics', category: 'Vehicle Metrics' },
+  { id: SPEC_ID.WHEELBASE, label: 'Wheelbase', section: 'vehicle-metrics', category: 'Vehicle Metrics' },
+  { id: SPEC_ID.STEER_RATIO, label: 'Steer Ratio', section: 'vehicle-metrics', category: 'Vehicle Metrics' },
+  { id: SPEC_ID.CENTER_FRONT_RATIO, label: 'Center to Front Ratio', section: 'vehicle-metrics', category: 'Vehicle Metrics' },
+  { id: SPEC_ID.MAX_LATERAL_ACCEL, label: 'Max Lateral Accel', section: 'vehicle-metrics', category: 'Vehicle Metrics' },
+] as const
+
+// Group specs by category for navigation rendering (computed once at module load)
+const NAV_CATEGORIES = QUICK_NAV_SPECS.reduce((acc, spec) => {
+  if (!acc[spec.category]) acc[spec.category] = []
+  acc[spec.category].push(spec)
+  return acc
+}, {} as Record<string, typeof QUICK_NAV_SPECS[number][]>)
+
+// Helper: Get the section ID for a given spec ID
+const getSpecSection = (specId: string): string | undefined => {
+  return QUICK_NAV_SPECS.find(spec => spec.id === specId)?.section
+}
+
+// Helper: Get highlight classes for a spec element
+const getHighlightClasses = (specId: string, highlightedSpec: string | null): string => {
+  return highlightedSpec === specId
+    ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2'
+    : ''
+}
+
 type DetailedSpecs = Car & {
   parts?: Array<{
     name: string
@@ -90,7 +177,7 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
 function CarDetailContent() {
   const params = useParams()
   const toggle = useToggle()
-  const [highlightedMetric, setHighlightedMetric] = createSignal<string | null>(null)
+  const [highlightedSpec, setHighlightedSpec] = createSignal<string | null>(null)
   const [showUpArrow, setShowUpArrow] = createSignal(false)
   const [openDesc, setOpenDesc] = createSignal<string | null>(null)
 
@@ -146,59 +233,24 @@ function CarDetailContent() {
     setOpenDesc(prev => prev === detailId ? null : detailId)
   }
 
+  // Scroll to a specific spec, expanding its section if needed
+  const scrollToSpec = (specId: string) => {
+    const sectionId = getSpecSection(specId)
+    const needsExpansion = sectionId && !toggle.openSections().has(sectionId)
 
-  // Mapping of metric IDs to their parent sections
-  const metricToSection: Record<string, string> = {
-    // Technical Parameters
-    'metric-tire-stiffness-factor': 'technical',
-    'metric-tire-front-stiffness': 'technical',
-    'metric-tire-rear-stiffness': 'technical',
-    'metric-actuator-delay': 'technical',
-    'metric-limit-timer': 'technical',
-    'metric-control-type': 'technical',
-    'metric-stopping-speed': 'technical',
-    'metric-starting-speed': 'technical',
-    'metric-stop-accel': 'technical',
-    // System Configuration
-    'metric-network-location': 'system',
-    'metric-bus-lookup': 'system',
-    'metric-experimental-longitudinal': 'system',
-    'metric-dsu-enabled': 'system',
-    'metric-bsm-enabled': 'system',
-    'metric-pcm-cruise': 'system',
-    // Capabilities
-    'metric-min-steering-speed': 'capabilities',
-    'metric-fsr-longitudinal': 'capabilities',
-    'metric-fsr-steering': 'capabilities',
-    'metric-longitudinal-control': 'capabilities',
-    'metric-support-type': 'capabilities',
-    'metric-auto-resume': 'capabilities',
-    'metric-steering-torque': 'capabilities',
-    // Vehicle Metrics (always visible in sidebar)
-    'metric-curb-weight': 'sidebar',
-    'metric-wheelbase': 'sidebar',
-    'metric-steer-ratio': 'sidebar',
-    'metric-center-front-ratio': 'sidebar',
-    'metric-max-lateral-accel': 'sidebar'
-  }
-
-  const scrollToMetric = (metricId: string) => {
-    // First, expand the section if it's collapsed
-    const sectionId = metricToSection[metricId]
-    const needsExpansion = sectionId && sectionId !== 'sidebar' && !toggle.openSections().has(sectionId)
-
+    // Expand the section if it's currently collapsed
     if (needsExpansion) {
       toggle.toggleSection(sectionId)
     }
 
     // Small delay to allow section expansion animation to start
     setTimeout(() => {
-      const element = document.getElementById(metricId)
+      const element = document.getElementById(specId)
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' })
-        setHighlightedMetric(metricId)
+        setHighlightedSpec(specId)
         // Clear highlight after 3 seconds
-        setTimeout(() => setHighlightedMetric(null), 3000)
+        setTimeout(() => setHighlightedSpec(null), 3000)
       }
     }, needsExpansion ? 150 : 0)
   }
@@ -325,15 +377,15 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">TIRE CONFIGURATION:</h4>
                       <div class="space-y-3">
-                        <div id="metric-tire-stiffness-factor" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-tire-stiffness-factor' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.TIRE_STIFFNESS_FACTOR} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.TIRE_STIFFNESS_FACTOR, highlightedSpec())}`}>
                           <span class="text-gray-600">Stiffness Factor</span>
                           <span class="font-mono font-medium">{car()!.tire_stiffness_factor ?? 0.72}</span>
                         </div>
-                        <div id="metric-tire-front-stiffness" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-tire-front-stiffness' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.TIRE_FRONT_STIFFNESS} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.TIRE_FRONT_STIFFNESS, highlightedSpec())}`}>
                           <span class="text-gray-600">Front Stiffness</span>
                           <span class="font-mono font-medium">{car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '155,002'}</span>
                         </div>
-                        <div id="metric-tire-rear-stiffness" class={`flex justify-between items-center py-2 transition-all duration-300 ${highlightedMetric() === 'metric-tire-rear-stiffness' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.TIRE_REAR_STIFFNESS} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.TIRE_REAR_STIFFNESS, highlightedSpec())}`}>
                           <span class="text-gray-600">Rear Stiffness</span>
                           <span class="font-mono font-medium">{car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}</span>
                         </div>
@@ -342,15 +394,15 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">VEHICLE CONTROL:</h4>
                       <div class="space-y-3">
-                        <div id="metric-actuator-delay" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-actuator-delay' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.ACTUATOR_DELAY} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.ACTUATOR_DELAY, highlightedSpec())}`}>
                           <span class="text-gray-600">Actuator Delay</span>
                           <span class="font-mono font-medium">{car()!.steer_actuator_delay ? `${car()!.steer_actuator_delay}s` : '0.10s'}</span>
                         </div>
-                        <div id="metric-limit-timer" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-limit-timer' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.LIMIT_TIMER} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.LIMIT_TIMER, highlightedSpec())}`}>
                           <span class="text-gray-600">Limit Timer</span>
                           <span class="font-mono font-medium">{car()!.steer_limit_timer ? `${car()!.steer_limit_timer}s` : '0.80s'}</span>
                         </div>
-                        <div id="metric-control-type" class={`flex justify-between items-center py-2 transition-all duration-300 ${highlightedMetric() === 'metric-control-type' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.CONTROL_TYPE} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.CONTROL_TYPE, highlightedSpec())}`}>
                           <span class="text-gray-600">Control Type</span>
                           <span class="font-mono font-medium">{car()!.steer_control_type || 'torque'}</span>
                         </div>
@@ -359,15 +411,15 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">SPEED PARAMETERS:</h4>
                       <div class="space-y-3">
-                        <div id="metric-stopping-speed" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-stopping-speed' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.STOPPING_SPEED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.STOPPING_SPEED, highlightedSpec())}`}>
                           <span class="text-gray-600">Stopping Speed</span>
                           <span class="font-mono font-medium">{car()!.vEgo_stopping ? `${car()!.vEgo_stopping} m/s` : '0.50 m/s'}</span>
                         </div>
-                        <div id="metric-starting-speed" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-starting-speed' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.STARTING_SPEED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.STARTING_SPEED, highlightedSpec())}`}>
                           <span class="text-gray-600">Starting Speed</span>
                           <span class="font-mono font-medium">{car()!.vEgo_starting ? `${car()!.vEgo_starting} m/s` : '0.50 m/s'}</span>
                         </div>
-                        <div id="metric-stop-accel" class={`flex justify-between items-center py-2 transition-all duration-300 ${highlightedMetric() === 'metric-stop-accel' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.STOP_ACCEL} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.STOP_ACCEL, highlightedSpec())}`}>
                           <span class="text-gray-600">Stop Accel</span>
                           <span class="font-mono font-medium">{car()!.stop_accel || '–2.80'} m/s²</span>
                         </div>
@@ -387,11 +439,11 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">NETWORK SETTINGS:</h4>
                       <div class="space-y-4">
-                        <div id="metric-network-location" class={`transition-all duration-300 ${highlightedMetric() === 'metric-network-location' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2 py-2 -my-2' : ''}`}>
+                        <div id={SPEC_ID.NETWORK_LOCATION} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.NETWORK_LOCATION ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2 py-2 -my-2' : ''}`}>
                           <div class="mb-1 text-xs tracking-wide text-gray-600 uppercase">Network Location</div>
                           <div class="py-2 px-3 font-mono text-gray-900 bg-gray-50 rounded border">{car()!.network_location || 'fwdCamera'}</div>
                         </div>
-                        <div id="metric-bus-lookup" class={`transition-all duration-300 ${highlightedMetric() === 'metric-bus-lookup' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2 py-2 -my-2' : ''}`}>
+                        <div id={SPEC_ID.BUS_LOOKUP} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.BUS_LOOKUP ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2 py-2 -my-2' : ''}`}>
                           <div class="mb-1 text-xs tracking-wide text-gray-600 uppercase">Bus Lookup</div>
                           <div class="py-2 px-3 font-mono text-sm bg-gray-50 rounded border">
                             <div><strong>pt:</strong> {car()!.bus_lookup?.pt || 'acura_ilx_2016_can_generated'}</div>
@@ -403,25 +455,25 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">FEATURE FLAGS:</h4>
                       <div class="space-y-3">
-                        <div id="metric-experimental-longitudinal" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-experimental-longitudinal' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.EXPERIMENTAL_LONGITUDINAL, highlightedSpec())}`}>
                           <span class="text-gray-600">Experimental Longitudinal</span>
                           <span class={`font-medium ${car()!.experimental_longitudinal_available ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}
                           </span>
                         </div>
-                        <div id="metric-dsu-enabled" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-dsu-enabled' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.DSU_ENABLED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.DSU_ENABLED, highlightedSpec())}`}>
                           <span class="text-gray-600">DSU Enabled</span>
                           <span class={`font-medium ${car()!.enable_dsu ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.enable_dsu ? 'Yes' : 'No'}
                           </span>
                         </div>
-                        <div id="metric-bsm-enabled" class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${highlightedMetric() === 'metric-bsm-enabled' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.BSM_ENABLED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.BSM_ENABLED, highlightedSpec())}`}>
                           <span class="text-gray-600">BSM Enabled</span>
                           <span class={`font-medium ${car()!.enable_bsm ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.enable_bsm ? 'Yes' : 'No'}
                           </span>
                         </div>
-                        <div id="metric-pcm-cruise" class={`flex justify-between items-center py-2 transition-all duration-300 ${highlightedMetric() === 'metric-pcm-cruise' ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2' : ''}`}>
+                        <div id={SPEC_ID.PCM_CRUISE} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.PCM_CRUISE, highlightedSpec())}`}>
                           <span class="text-gray-600">PCM Cruise</span>
                           <span class={`font-medium ${car()!.pcm_cruise ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.pcm_cruise ? 'Yes' : 'No'}
@@ -439,8 +491,8 @@ function CarDetailContent() {
                   disableDefaultPadding={true}
                 >
                   <div
-                    id="metric-min-steering-speed"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-min-steering-speed' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.MIN_STEERING_SPEED}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.MIN_STEERING_SPEED ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="Min Steering Speed"
@@ -452,8 +504,8 @@ function CarDetailContent() {
                     />
                   </div>
                   <div
-                    id="metric-fsr-longitudinal"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-fsr-longitudinal' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.FSR_LONGITUDINAL}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.FSR_LONGITUDINAL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="FSR Longitudinal"
@@ -465,8 +517,8 @@ function CarDetailContent() {
                     />
                   </div>
                   <div
-                    id="metric-fsr-steering"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-fsr-steering' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.FSR_STEERING}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.FSR_STEERING ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="FSR Steering"
@@ -478,8 +530,8 @@ function CarDetailContent() {
                     />
                   </div>
                   <div
-                    id="metric-longitudinal-control"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-longitudinal-control' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.LONGITUDINAL_CONTROL}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.LONGITUDINAL_CONTROL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="Longitudinal Control"
@@ -491,8 +543,8 @@ function CarDetailContent() {
                     />
                   </div>
                   <div
-                    id="metric-support-type"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-support-type' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.SUPPORT_TYPE}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.SUPPORT_TYPE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="Support Type"
@@ -504,8 +556,8 @@ function CarDetailContent() {
                     />
                   </div>
                   <div
-                    id="metric-auto-resume"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-auto-resume' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.AUTO_RESUME}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.AUTO_RESUME ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="Auto Resume"
@@ -517,8 +569,8 @@ function CarDetailContent() {
                     />
                   </div>
                   <div
-                    id="metric-steering-torque"
-                    class={`transition-all duration-300 ${highlightedMetric() === 'metric-steering-torque' ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
+                    id={SPEC_ID.STEERING_TORQUE}
+                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.STEERING_TORQUE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
                   >
                     <ExpandableSpec
                       label="Steering Torque"
@@ -534,51 +586,32 @@ function CarDetailContent() {
 
               {/* Right Sidebar */}
               <div class="space-y-4 w-full lg:flex-shrink-0 lg:w-72">
-                {/* Metrics Navigation */}
+                {/* Quick Navigation */}
                 <AccordionContainer
                   title="Quick Navigation"
                   id="quick-nav"
                   contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
                   disableDefaultPadding={true}
                 >
-                    {/* Technical Parameters */}
-                    <div class="mt-2 mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Technical Parameters</div>
-                    <button onClick={() => scrollToMetric('metric-tire-stiffness-factor')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Tire Stiffness Factor</button>
-                    <button onClick={() => scrollToMetric('metric-tire-front-stiffness')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Front Stiffness</button>
-                    <button onClick={() => scrollToMetric('metric-tire-rear-stiffness')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Rear Stiffness</button>
-                    <button onClick={() => scrollToMetric('metric-actuator-delay')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Actuator Delay</button>
-                    <button onClick={() => scrollToMetric('metric-limit-timer')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Limit Timer</button>
-                    <button onClick={() => scrollToMetric('metric-control-type')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Control Type</button>
-                    <button onClick={() => scrollToMetric('metric-stopping-speed')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Stopping Speed</button>
-                    <button onClick={() => scrollToMetric('metric-starting-speed')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Starting Speed</button>
-                    <button onClick={() => scrollToMetric('metric-stop-accel')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Stop Accel</button>
-
-                    {/* System Configuration */}
-                    <div class="mt-4 mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">System Configuration</div>
-                    <button onClick={() => scrollToMetric('metric-network-location')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Network Location</button>
-                    <button onClick={() => scrollToMetric('metric-bus-lookup')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Bus Lookup</button>
-                    <button onClick={() => scrollToMetric('metric-experimental-longitudinal')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Experimental Longitudinal</button>
-                    <button onClick={() => scrollToMetric('metric-dsu-enabled')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">DSU Enabled</button>
-                    <button onClick={() => scrollToMetric('metric-bsm-enabled')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">BSM Enabled</button>
-                    <button onClick={() => scrollToMetric('metric-pcm-cruise')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">PCM Cruise</button>
-
-                    {/* Capabilities */}
-                    <div class="mt-4 mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Capabilities</div>
-                    <button onClick={() => scrollToMetric('metric-min-steering-speed')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Min Steering Speed</button>
-                    <button onClick={() => scrollToMetric('metric-fsr-longitudinal')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">FSR Longitudinal</button>
-                    <button onClick={() => scrollToMetric('metric-fsr-steering')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">FSR Steering</button>
-                    <button onClick={() => scrollToMetric('metric-longitudinal-control')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Longitudinal Control</button>
-                    <button onClick={() => scrollToMetric('metric-support-type')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Support Type</button>
-                    <button onClick={() => scrollToMetric('metric-auto-resume')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Auto Resume</button>
-                    <button onClick={() => scrollToMetric('metric-steering-torque')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Steering Torque</button>
-
-                    {/* Vehicle Metrics */}
-                    <div class="mt-4 mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase">Vehicle Metrics</div>
-                    <button onClick={() => scrollToMetric('metric-curb-weight')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Curb Weight</button>
-                    <button onClick={() => scrollToMetric('metric-wheelbase')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Wheelbase</button>
-                    <button onClick={() => scrollToMetric('metric-steer-ratio')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Steer Ratio</button>
-                    <button onClick={() => scrollToMetric('metric-center-front-ratio')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Center to Front Ratio</button>
-                    <button onClick={() => scrollToMetric('metric-max-lateral-accel')} class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300">Max Lateral Accel</button>
+                  <For each={Object.entries(NAV_CATEGORIES)}>
+                    {([category, specs], index) => (
+                      <>
+                        <div class={`${index() === 0 ? 'mt-2' : 'mt-4'} mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase`}>
+                          {category}
+                        </div>
+                        <For each={specs}>
+                          {(spec) => (
+                            <button
+                              onClick={() => scrollToSpec(spec.id)}
+                              class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300"
+                            >
+                              {spec.label}
+                            </button>
+                          )}
+                        </For>
+                      </>
+                    )}
+                  </For>
                 </AccordionContainer>
 
                 {/* Vehicle Metrics */}
@@ -587,46 +620,56 @@ function CarDetailContent() {
                   id="vehicle-metrics"
                   disableDefaultPadding={true}
                 >
-                  <ExpandableSpec
-                    label="Curb Weight"
-                    value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
-                    description="The weight of the vehicle without passengers or cargo, including all fluids and a full tank of fuel."
-                    isEven={false}
-                    isOpen={openDesc() === 'curb-weight'}
-                    onToggle={() => toggleDesc('curb-weight')}
-                  />
-                  <ExpandableSpec
-                    label="Wheelbase"
-                    value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
-                    description="The distance between the centers of the front and rear wheels. A longer wheelbase typically provides better stability at high speeds."
-                    isEven={true}
-                    isOpen={openDesc() === 'wheelbase'}
-                    onToggle={() => toggleDesc('wheelbase')}
-                  />
-                  <ExpandableSpec
-                    label="Steer Ratio"
-                    value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
-                    description="The ratio between the steering wheel angle and the front wheel angle. A higher ratio means more steering wheel turns are needed for the same wheel angle."
-                    isEven={false}
-                    isOpen={openDesc() === 'steer-ratio'}
-                    onToggle={() => toggleDesc('steer-ratio')}
-                  />
-                  <ExpandableSpec
-                    label="Center to Front Ratio"
-                    value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
-                    description="The ratio of the distance from the center of gravity to the front axle versus the total wheelbase. Affects weight distribution and handling characteristics."
-                    isEven={true}
-                    isOpen={openDesc() === 'center-front-ratio'}
-                    onToggle={() => toggleDesc('center-front-ratio')}
-                  />
-                  <ExpandableSpec
-                    label="Max Lateral Accel"
-                    value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}
-                    description="The maximum lateral acceleration the vehicle can sustain during cornering before losing traction. Higher values indicate better cornering capability."
-                    isEven={false}
-                    isOpen={openDesc() === 'max-lateral-accel'}
-                    onToggle={() => toggleDesc('max-lateral-accel')}
-                  />
+                  <div id={SPEC_ID.CURB_WEIGHT} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.CURB_WEIGHT ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                    <ExpandableSpec
+                      label="Curb Weight"
+                      value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
+                      description="The weight of the vehicle without passengers or cargo, including all fluids and a full tank of fuel."
+                      isEven={false}
+                      isOpen={openDesc() === 'curb-weight'}
+                      onToggle={() => toggleDesc('curb-weight')}
+                    />
+                  </div>
+                  <div id={SPEC_ID.WHEELBASE} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.WHEELBASE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                    <ExpandableSpec
+                      label="Wheelbase"
+                      value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
+                      description="The distance between the centers of the front and rear wheels. A longer wheelbase typically provides better stability at high speeds."
+                      isEven={true}
+                      isOpen={openDesc() === 'wheelbase'}
+                      onToggle={() => toggleDesc('wheelbase')}
+                    />
+                  </div>
+                  <div id={SPEC_ID.STEER_RATIO} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.STEER_RATIO ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                    <ExpandableSpec
+                      label="Steer Ratio"
+                      value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
+                      description="The ratio between the steering wheel angle and the front wheel angle. A higher ratio means more steering wheel turns are needed for the same wheel angle."
+                      isEven={false}
+                      isOpen={openDesc() === 'steer-ratio'}
+                      onToggle={() => toggleDesc('steer-ratio')}
+                    />
+                  </div>
+                  <div id={SPEC_ID.CENTER_FRONT_RATIO} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.CENTER_FRONT_RATIO ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                    <ExpandableSpec
+                      label="Center to Front Ratio"
+                      value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
+                      description="The ratio of the distance from the center of gravity to the front axle versus the total wheelbase. Affects weight distribution and handling characteristics."
+                      isEven={true}
+                      isOpen={openDesc() === 'center-front-ratio'}
+                      onToggle={() => toggleDesc('center-front-ratio')}
+                    />
+                  </div>
+                  <div id={SPEC_ID.MAX_LATERAL_ACCEL} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.MAX_LATERAL_ACCEL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                    <ExpandableSpec
+                      label="Max Lateral Accel"
+                      value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}
+                      description="The maximum lateral acceleration the vehicle can sustain during cornering before losing traction. Higher values indicate better cornering capability."
+                      isEven={false}
+                      isOpen={openDesc() === 'max-lateral-accel'}
+                      onToggle={() => toggleDesc('max-lateral-accel')}
+                    />
+                  </div>
                 </AccordionContainer>
               </div>
             </div>
