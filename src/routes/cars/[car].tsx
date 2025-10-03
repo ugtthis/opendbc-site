@@ -497,10 +497,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Min Steering Speed"
                       value={formatSpeed(car()!.min_steer_speed)}
-                      description="The minimum speed at which openpilot can provide steering assistance. Below this speed, the driver must steer manually."
                       isEven={false}
                       isOpen={openDesc() === 'min-steering-speed'}
                       onToggle={() => toggleDesc('min-steering-speed')}
+                      description={
+                        "The minimum speed at which openpilot can provide steering assistance. " +
+                        "Below this speed, the driver must steer manually."
+                      }
                     />
                   </div>
                   <div
@@ -510,10 +513,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="FSR Longitudinal"
                       value={car()!.fsr_longitudinal || '26 mph'}
-                      description="Full Self-Driving Capability longitudinal speed threshold. The minimum speed for longitudinal (acceleration/braking) control in FSR mode."
                       isEven={true}
                       isOpen={openDesc() === 'fsr-longitudinal'}
                       onToggle={() => toggleDesc('fsr-longitudinal')}
+                      description={
+                        "Full Self-Driving Capability longitudinal speed threshold. " +
+                        "The minimum speed for longitudinal (acceleration/braking) control in FSR mode."
+                      }
                     />
                   </div>
                   <div
@@ -523,10 +529,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="FSR Steering"
                       value={car()!.fsr_steering || '25 mph'}
-                      description="Full Self-Driving Capability steering speed threshold. The minimum speed for steering control in FSR mode."
                       isEven={false}
                       isOpen={openDesc() === 'fsr-steering'}
                       onToggle={() => toggleDesc('fsr-steering')}
+                      description={
+                        "Full Self-Driving Capability steering speed threshold. " +
+                        "The minimum speed for steering control in FSR mode."
+                      }
                     />
                   </div>
                   <div
@@ -536,10 +545,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Longitudinal Control"
                       value={car()!.longitudinal || 'openpilot'}
-                      description="The system responsible for acceleration and braking control. 'openpilot' means full longitudinal control, while other values may indicate limited or no longitudinal control."
                       isEven={true}
                       isOpen={openDesc() === 'longitudinal-control'}
                       onToggle={() => toggleDesc('longitudinal-control')}
+                      description={
+                        "The system responsible for acceleration and braking control. " +
+                        "'openpilot' means full longitudinal control, while other values may indicate limited or no longitudinal control."
+                      }
                     />
                   </div>
                   <div
@@ -549,10 +561,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Support Type"
                       value={car()!.support_type}
-                      description="The level of openpilot support for this vehicle. 'Upstream' indicates full official support, while other types may have varying levels of functionality."
                       isEven={false}
                       isOpen={openDesc() === 'support-type'}
                       onToggle={() => toggleDesc('support-type')}
+                      description={
+                        "The level of openpilot support for this vehicle. " +
+                        "'Upstream' indicates full official support, while other types may have varying levels of functionality."
+                      }
                     />
                   </div>
                   <div
@@ -562,10 +577,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Auto Resume"
                       value={car()!.auto_resume ? 'Yes' : 'No'}
-                      description="Whether openpilot can automatically resume driving after coming to a complete stop, without driver intervention."
                       isEven={true}
                       isOpen={openDesc() === 'auto-resume'}
                       onToggle={() => toggleDesc('auto-resume')}
+                      description={
+                        "Whether openpilot can automatically resume driving after coming to a complete stop, " +
+                        "without driver intervention."
+                      }
                     />
                   </div>
                   <div
@@ -575,10 +593,13 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Steering Torque"
                       value={car()!.steering_torque || 'empty'}
-                      description="Information about the steering torque characteristics or limitations for this vehicle. 'Empty' typically means no specific torque data is available."
                       isEven={false}
                       isOpen={openDesc() === 'steering-torque'}
                       onToggle={() => toggleDesc('steering-torque')}
+                      description={
+                        "Information about the steering torque characteristics or limitations for this vehicle. " +
+                        "'Empty' typically means no specific torque data is available."
+                      }
                     />
                   </div>
                 </AccordionContainer>
@@ -624,50 +645,65 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Curb Weight"
                       value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
-                      description="The weight of the vehicle without passengers or cargo, including all fluids and a full tank of fuel."
                       isEven={false}
                       isOpen={openDesc() === 'curb-weight'}
                       onToggle={() => toggleDesc('curb-weight')}
+                      description={
+                        "The weight of the vehicle without passengers or cargo, " +
+                        "including all fluids and a full tank of fuel."
+                      }
                     />
                   </div>
                   <div id={SPEC_ID.WHEELBASE} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.WHEELBASE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
                     <ExpandableSpec
                       label="Wheelbase"
                       value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
-                      description="The distance between the centers of the front and rear wheels. A longer wheelbase typically provides better stability at high speeds."
                       isEven={true}
                       isOpen={openDesc() === 'wheelbase'}
                       onToggle={() => toggleDesc('wheelbase')}
+                      description={
+                        "The distance between the centers of the front and rear wheels. " +
+                        "A longer wheelbase typically provides better stability at high speeds."
+                      }
                     />
                   </div>
                   <div id={SPEC_ID.STEER_RATIO} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.STEER_RATIO ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
                     <ExpandableSpec
                       label="Steer Ratio"
                       value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
-                      description="The ratio between the steering wheel angle and the front wheel angle. A higher ratio means more steering wheel turns are needed for the same wheel angle."
                       isEven={false}
                       isOpen={openDesc() === 'steer-ratio'}
                       onToggle={() => toggleDesc('steer-ratio')}
+                      description={
+                        "The ratio between the steering wheel angle and the front wheel angle. " +
+                        "A higher ratio means more steering wheel turns are needed for the same wheel angle."
+                      }
                     />
                   </div>
                   <div id={SPEC_ID.CENTER_FRONT_RATIO} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.CENTER_FRONT_RATIO ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
                     <ExpandableSpec
                       label="Center to Front Ratio"
                       value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
-                      description="The ratio of the distance from the center of gravity to the front axle versus the total wheelbase. Affects weight distribution and handling characteristics."
                       isEven={true}
                       isOpen={openDesc() === 'center-front-ratio'}
                       onToggle={() => toggleDesc('center-front-ratio')}
+                      description={
+                        "The ratio of the distance from the center of gravity to the front axle versus the total wheelbase. " +
+                        "Affects weight distribution and handling characteristics."
+                      }
                     />
                   </div>
                   <div id={SPEC_ID.MAX_LATERAL_ACCEL} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.MAX_LATERAL_ACCEL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
                     <ExpandableSpec
                       label="Max Lateral Accel"
                       value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}
-                      description="The maximum lateral acceleration the vehicle can sustain during cornering before losing traction. Higher values indicate better cornering capability."
                       isEven={false}
                       isOpen={openDesc() === 'max-lateral-accel'}
                       onToggle={() => toggleDesc('max-lateral-accel')}
+                      description={
+                        "The maximum lateral acceleration the vehicle can sustain during cornering before losing traction. " +
+                        "Higher values indicate better cornering capability."
+                      }
                     />
                   </div>
                 </AccordionContainer>
