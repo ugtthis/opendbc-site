@@ -1,17 +1,3 @@
-/**
- * Quick Navigation Configuration
- *
- * Defines all navigable specs in the car detail page.
- * This file is pure data and helper functions - no UI, no state, no side effects.
- *
- * Usage:
- * - SPEC_ID: Use for HTML element IDs throughout the car detail page
- * - QUICK_NAV_SPECS: Configuration for the navigation sidebar
- * - SPECS_GROUPED_BY_CATEGORY: Grouped specs for rendering navigation sections
- * - getAccordionIdForSpec: Lookup which accordion section contains a spec
- * - getHighlightClasses: Generate CSS classes for highlighting
- */
-
 export const SPEC_ID = {
   // Technical Parameters
   TIRE_STIFFNESS_FACTOR: 'tire-stiffness-factor',
@@ -80,19 +66,16 @@ export const QUICK_NAV_SPECS = [
   { id: SPEC_ID.MAX_LATERAL_ACCEL, buttonLabel: 'Max Lateral Accel', accordionId: 'vehicle-metrics', uiSectionHeader: 'Vehicle Metrics' },
 ] as const
 
-// Group specs by UI section header for navigation rendering (computed once at module load)
 export const SPECS_GROUPED_BY_CATEGORY = QUICK_NAV_SPECS.reduce((acc, spec) => {
   if (!acc[spec.uiSectionHeader]) acc[spec.uiSectionHeader] = []
   acc[spec.uiSectionHeader].push(spec)
   return acc
 }, {} as Record<string, typeof QUICK_NAV_SPECS[number][]>)
 
-// Helper: Get the accordion ID that contains a given spec
 export const getAccordionIdForSpec = (specId: string): string | undefined => {
   return QUICK_NAV_SPECS.find(spec => spec.id === specId)?.accordionId
 }
 
-// Helper: Get highlight classes for a spec element
 export const getHighlightClasses = (specId: string, highlightedSpec: string | null): string => {
   return highlightedSpec === specId
     ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2'

@@ -152,7 +152,6 @@ function CarDetailContent() {
     const accordionId = getAccordionIdForSpec(specId)
     const needsExpansion = accordionId && !toggle.openSections().has(accordionId)
 
-    // Expand the accordion if it's currently collapsed
     if (needsExpansion) {
       toggle.toggleSection(accordionId)
     }
