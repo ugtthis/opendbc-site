@@ -527,13 +527,13 @@ function CarDetailContent() {
                   contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
                   disableDefaultPadding={true}
                 >
-                  <For each={Object.entries(SPECS_GROUPED_BY_CATEGORY)}>
-                    {([sectionHeader, specs], index) => (
+                  <For each={SPECS_GROUPED_BY_CATEGORY}>
+                    {(category, index) => (
                       <>
                         <div class={`${index() === 0 ? 'mt-2' : 'mt-4'} mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase`}>
-                          {sectionHeader}
+                          {category.categoryName}
                         </div>
-                        <For each={specs}>
+                        <For each={category.specs}>
                           {(spec) => (
                             <button
                               onClick={() => scrollToSpec(spec.id)}

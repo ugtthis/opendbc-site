@@ -67,10 +67,14 @@ export const QUICK_NAV_SPECS = [
 ] as const
 
 export const SPECS_GROUPED_BY_CATEGORY = QUICK_NAV_SPECS.reduce((acc, spec) => {
-  if (!acc[spec.uiSectionHeader]) acc[spec.uiSectionHeader] = []
-  acc[spec.uiSectionHeader].push(spec)
+  let group = acc.find(g => g.categoryName === spec.uiSectionHeader)
+  if (!group) {
+    group = { categoryName: spec.uiSectionHeader, specs: [] }
+    acc.push(group)
+  }
+  group.specs.push(spec)
   return acc
-}, {} as Record<string, typeof QUICK_NAV_SPECS[number][]>)
+}, [] as Array<{ categoryName: string; specs: typeof QUICK_NAV_SPECS[number][] }>)
 
 export const getAccordionIdForSpec = (specId: string): string | undefined => {
   return QUICK_NAV_SPECS.find(spec => spec.id === specId)?.accordionId
