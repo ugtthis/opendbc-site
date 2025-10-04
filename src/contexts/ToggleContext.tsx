@@ -14,7 +14,7 @@ export function ToggleProvider(props: { children: JSX.Element }) {
   // Using section ids
   const DEFAULT_OPEN_SECTIONS = new Set<string>([
     'general', 'technical', 'system', 'capabilities',
-    'key-specs', 'quick-nav', 'vehicle-metrics'
+    'compatibility-info', 'quick-nav', 'vehicle-metrics'
   ])
 
   // All sections plus the closed ones

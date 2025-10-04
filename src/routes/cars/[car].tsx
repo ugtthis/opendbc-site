@@ -193,10 +193,10 @@ function CarDetailContent() {
                   </div>
                 </div>
 
-                {/* Key Specs */}
+                {/* Compatibility Info */}
                 <AccordionContainer
-                  title="Key Specs"
-                  id="key-specs"
+                  title="Compatibility Info"
+                  id="compatibility-info"
                   contentClass="p-4 space-y-4 text-sm"
                   disableDefaultPadding={true}
                 >
