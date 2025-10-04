@@ -8,7 +8,7 @@ import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
-import { SPEC_ID, NAV_CATEGORIES, getSpecSection, getHighlightClasses } from '~/data/quickNavSpecs'
+import { SPEC_ID, SPECS_GROUPED_BY_CATEGORY, getAccordionIdForSpec, getHighlightClasses } from '~/data/quickNavSpecs'
 
 import metadata from '~/data/metadata.json'
 
@@ -147,14 +147,14 @@ function CarDetailContent() {
     setOpenDesc(prev => prev === detailId ? null : detailId)
   }
 
-  // Scroll to a specific spec, expanding its section if needed
+  // Scroll to a specific spec, expanding its accordion if needed
   const scrollToSpec = (specId: string) => {
-    const sectionId = getSpecSection(specId)
-    const needsExpansion = sectionId && !toggle.openSections().has(sectionId)
+    const accordionId = getAccordionIdForSpec(specId)
+    const needsExpansion = accordionId && !toggle.openSections().has(accordionId)
 
-    // Expand the section if it's currently collapsed
+    // Expand the accordion if it's currently collapsed
     if (needsExpansion) {
-      toggle.toggleSection(sectionId)
+      toggle.toggleSection(accordionId)
     }
 
     // Small delay to allow section expansion animation to start
@@ -528,11 +528,11 @@ function CarDetailContent() {
                   contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
                   disableDefaultPadding={true}
                 >
-                  <For each={Object.entries(NAV_CATEGORIES)}>
-                    {([category, specs], index) => (
+                  <For each={Object.entries(SPECS_GROUPED_BY_CATEGORY)}>
+                    {([sectionHeader, specs], index) => (
                       <>
                         <div class={`${index() === 0 ? 'mt-2' : 'mt-4'} mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase`}>
-                          {category}
+                          {sectionHeader}
                         </div>
                         <For each={specs}>
                           {(spec) => (
@@ -540,7 +540,7 @@ function CarDetailContent() {
                               onClick={() => scrollToSpec(spec.id)}
                               class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300"
                             >
-                              {spec.label}
+                              {spec.buttonLabel}
                             </button>
                           )}
                         </For>
