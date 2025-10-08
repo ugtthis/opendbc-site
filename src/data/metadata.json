@@ -7022,7 +7022,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7236,7 +7235,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7343,7 +7341,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7451,7 +7448,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7558,7 +7554,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7664,7 +7659,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7771,7 +7765,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -7877,7 +7870,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -12879,7 +12871,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -12987,7 +12978,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -13095,7 +13085,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -13201,9 +13190,7 @@
     "package": "Highway Driving Assist II",
     "video": null,
     "setup_video": null,
-    "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>."
-    ],
+    "footnotes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14364,9 +14351,7 @@
     "package": "Smart Cruise Control (SCC)",
     "video": "https://www.youtube.com/watch?v=U2fOCmcQ8hw",
     "setup_video": null,
-    "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>."
-    ],
+    "footnotes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14861,7 +14846,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -15715,7 +15699,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -15926,7 +15909,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -16033,7 +16015,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -16246,7 +16227,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -16352,7 +16332,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -16881,7 +16860,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -16987,7 +16965,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -17200,7 +17177,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -17308,7 +17284,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -17416,7 +17391,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -17951,7 +17925,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -18481,7 +18454,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -18589,7 +18561,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -19009,7 +18980,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -20262,7 +20232,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -20370,7 +20339,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -20477,7 +20445,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -20584,7 +20551,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
@@ -20690,7 +20656,6 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Requires a <a href=\"https://comma.ai/shop/can-fd-panda-kit\" target=\"_blank\">CAN FD panda kit</a> if not using comma 3X for this <a href=\"https://en.wikipedia.org/wiki/CAN_FD\" target=\"_blank\">CAN FD car</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
     "min_steer_speed": 0.0,
