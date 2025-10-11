@@ -28,7 +28,7 @@ export default function AccordionContainer(props: AccordionContainerProps) {
     <div class="border border-black">
       {/* Header */}
       <div
-        class="flex justify-between items-center py-4 px-4 text-white bg-black transition-colors cursor-pointer hover:bg-gray-800 touch-manipulation"
+        class="flex justify-between items-center py-4 px-4 text-white bg-black transition-colors cursor-pointer touch-manipulation hover:bg-zinc-900"
         onClick={() => toggle.toggleSection(props.id)}
       >
         <h3 class="text-sm font-medium tracking-wide uppercase">{props.title}</h3>
