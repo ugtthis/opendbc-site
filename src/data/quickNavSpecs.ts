@@ -89,9 +89,3 @@ export const SPECS_GROUPED_BY_CATEGORY = QUICK_NAV_SPECS.reduce((acc, spec) => {
 export const getAccordionIdForSpec = (specId: string): string | undefined => {
   return QUICK_NAV_SPECS.find(spec => spec.id === specId)?.accordionId
 }
-
-export const getHighlightClasses = (specId: string, highlightedSpec: string | null): string => {
-  return highlightedSpec === specId
-    ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2'
-    : ''
-}

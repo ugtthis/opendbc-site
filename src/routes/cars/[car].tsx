@@ -7,8 +7,10 @@ import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
+import QuickNavWrapper from '~/components/QuickNavWrapper'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
-import { SPEC_ID, SPECS_GROUPED_BY_CATEGORY, getAccordionIdForSpec, getHighlightClasses } from '~/data/quickNavSpecs'
+import { QuickNavProvider } from '~/contexts/QuickNavContext'
+import { SPEC_ID, SPECS_GROUPED_BY_CATEGORY, getAccordionIdForSpec } from '~/data/quickNavSpecs'
 
 import metadata from '~/data/metadata.json'
 
@@ -167,14 +169,15 @@ function CarDetailContent() {
   }
 
   return (
-    <div class="min-h-screen bg-gray-100">
-      <GradientHeader car={car()} showUpArrow={showUpArrow()} onScrollToTop={scrollToTop} />
+    <QuickNavProvider activeSpec={highlightedSpec}>
+      <div class="min-h-screen bg-gray-100">
+        <GradientHeader car={car()} showUpArrow={showUpArrow()} onScrollToTop={scrollToTop} />
 
-      {(() => {
-        const currentCar = car()
-        if (!currentCar) return null
-        return (
-        <div class="p-4 pt-20 mx-auto md:p-6 md:pt-24 max-w-[1500px]">
+        {(() => {
+          const currentCar = car()
+          if (!currentCar) return null
+          return (
+          <div class="p-4 pt-20 mx-auto md:p-6 md:pt-24 max-w-[1500px]">
 
             <div class="flex flex-col gap-4 lg:flex-row lg:gap-6">
               {/* Left Sidebar */}
@@ -198,7 +201,7 @@ function CarDetailContent() {
                   contentClass="p-4 space-y-4 text-sm"
                   disableDefaultPadding={true}
                 >
-                  <div id={SPEC_ID.SUPPORT_TYPE_BADGE} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.SUPPORT_TYPE_BADGE, highlightedSpec())}`}>
+                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Support Type:</div>
                     <div class={cn(
                       'inline-block px-3 py-1 text-xs font-medium text-white rounded border border-black',
@@ -206,19 +209,19 @@ function CarDetailContent() {
                     )}>
                       {car()!.support_type}
                     </div>
-                  </div>
-                  <div id={SPEC_ID.ADAS_PACKAGE} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.ADAS_PACKAGE, highlightedSpec())}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">ADAS Package:</div>
                     <div class="text-sm leading-relaxed text-gray-900">{car()!.package}</div>
-                  </div>
-                  <div id={SPEC_ID.FINGERPRINT} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.FINGERPRINT, highlightedSpec())}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.FINGERPRINT}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Fingerprint:</div>
                     <div class="py-1 px-2 font-mono text-sm text-gray-800 bg-gray-50 rounded border">{car()!.car_fingerprint}</div>
-                  </div>
-                  <div id={SPEC_ID.HARNESS} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.HARNESS, highlightedSpec())}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.HARNESS}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Harness:</div>
                     <div class="text-sm text-gray-900">{car()!.harness || 'nidec'}</div>
-                  </div>
+                  </QuickNavWrapper>
                 </AccordionContainer>
               </div>
 
@@ -288,52 +291,52 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">TIRE CONFIGURATION:</h4>
                       <div class="space-y-3">
-                        <div id={SPEC_ID.TIRE_STIFFNESS_FACTOR} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.TIRE_STIFFNESS_FACTOR, highlightedSpec())}`}>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Stiffness Factor</span>
                           <span class="font-mono font-medium">{car()!.tire_stiffness_factor ?? 0.72}</span>
-                        </div>
-                        <div id={SPEC_ID.TIRE_FRONT_STIFFNESS} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.TIRE_FRONT_STIFFNESS, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Front Stiffness</span>
                           <span class="font-mono font-medium">{car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '155,002'}</span>
-                        </div>
-                        <div id={SPEC_ID.TIRE_REAR_STIFFNESS} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.TIRE_REAR_STIFFNESS, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS} class="flex justify-between items-center py-2">
                           <span class="text-gray-600">Rear Stiffness</span>
                           <span class="font-mono font-medium">{car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}</span>
-                        </div>
+                        </QuickNavWrapper>
                       </div>
                     </div>
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">VEHICLE CONTROL:</h4>
                       <div class="space-y-3">
-                        <div id={SPEC_ID.ACTUATOR_DELAY} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.ACTUATOR_DELAY, highlightedSpec())}`}>
+                        <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Actuator Delay</span>
                           <span class="font-mono font-medium">{car()!.steer_actuator_delay ? `${car()!.steer_actuator_delay}s` : '0.10s'}</span>
-                        </div>
-                        <div id={SPEC_ID.LIMIT_TIMER} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.LIMIT_TIMER, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Limit Timer</span>
                           <span class="font-mono font-medium">{car()!.steer_limit_timer ? `${car()!.steer_limit_timer}s` : '0.80s'}</span>
-                        </div>
-                        <div id={SPEC_ID.CONTROL_TYPE} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.CONTROL_TYPE, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE} class="flex justify-between items-center py-2">
                           <span class="text-gray-600">Control Type</span>
                           <span class="font-mono font-medium">{car()!.steer_control_type || 'torque'}</span>
-                        </div>
+                        </QuickNavWrapper>
                       </div>
                     </div>
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">SPEED PARAMETERS:</h4>
                       <div class="space-y-3">
-                        <div id={SPEC_ID.STOPPING_SPEED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.STOPPING_SPEED, highlightedSpec())}`}>
+                        <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Stopping Speed</span>
                           <span class="font-mono font-medium">{car()!.vEgo_stopping ? `${car()!.vEgo_stopping} m/s` : '0.50 m/s'}</span>
-                        </div>
-                        <div id={SPEC_ID.STARTING_SPEED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.STARTING_SPEED, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.STARTING_SPEED} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Starting Speed</span>
                           <span class="font-mono font-medium">{car()!.vEgo_starting ? `${car()!.vEgo_starting} m/s` : '0.50 m/s'}</span>
-                        </div>
-                        <div id={SPEC_ID.STOP_ACCEL} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.STOP_ACCEL, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.STOP_ACCEL} class="flex justify-between items-center py-2">
                           <span class="text-gray-600">Stop Accel</span>
                           <span class="font-mono font-medium">{car()!.stop_accel || '–2.80'} m/s²</span>
-                        </div>
+                        </QuickNavWrapper>
                       </div>
                     </div>
                   </div>
@@ -350,46 +353,46 @@ function CarDetailContent() {
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">NETWORK SETTINGS:</h4>
                       <div class="space-y-4">
-                        <div id={SPEC_ID.NETWORK_LOCATION} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.NETWORK_LOCATION ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2 py-2 -my-2' : ''}`}>
+                        <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION} class="py-2 -my-2">
                           <div class="mb-1 text-xs tracking-wide text-gray-600 uppercase">Network Location</div>
                           <div class="py-2 px-3 font-mono text-gray-900 bg-gray-50 rounded border">{car()!.network_location || 'fwdCamera'}</div>
-                        </div>
-                        <div id={SPEC_ID.BUS_LOOKUP} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.BUS_LOOKUP ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2 py-2 -my-2' : ''}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP} class="py-2 -my-2">
                           <div class="mb-1 text-xs tracking-wide text-gray-600 uppercase">Bus Lookup</div>
                           <div class="py-2 px-3 font-mono text-sm bg-gray-50 rounded border">
                             <div><strong>pt:</strong> {car()!.bus_lookup?.pt || 'acura_ilx_2016_can_generated'}</div>
                             <div><strong>radar:</strong> {car()!.bus_lookup?.radar || 'acura_ilx_2016_nidec'}</div>
                           </div>
-                        </div>
+                        </QuickNavWrapper>
                       </div>
                     </div>
                     <div>
                       <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">FEATURE FLAGS:</h4>
                       <div class="space-y-3">
-                        <div id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.EXPERIMENTAL_LONGITUDINAL, highlightedSpec())}`}>
+                        <QuickNavWrapper id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">Experimental Longitudinal</span>
                           <span class={`font-medium ${car()!.experimental_longitudinal_available ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}
                           </span>
-                        </div>
-                        <div id={SPEC_ID.DSU_ENABLED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.DSU_ENABLED, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.DSU_ENABLED} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">DSU Enabled</span>
                           <span class={`font-medium ${car()!.enable_dsu ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.enable_dsu ? 'Yes' : 'No'}
                           </span>
-                        </div>
-                        <div id={SPEC_ID.BSM_ENABLED} class={`flex justify-between items-center py-2 border-b border-gray-100 transition-all duration-300 ${getHighlightClasses(SPEC_ID.BSM_ENABLED, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.BSM_ENABLED} class="flex justify-between items-center py-2 border-b border-gray-100">
                           <span class="text-gray-600">BSM Enabled</span>
                           <span class={`font-medium ${car()!.enable_bsm ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.enable_bsm ? 'Yes' : 'No'}
                           </span>
-                        </div>
-                        <div id={SPEC_ID.PCM_CRUISE} class={`flex justify-between items-center py-2 transition-all duration-300 ${getHighlightClasses(SPEC_ID.PCM_CRUISE, highlightedSpec())}`}>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.PCM_CRUISE} class="flex justify-between items-center py-2">
                           <span class="text-gray-600">PCM Cruise</span>
                           <span class={`font-medium ${car()!.pcm_cruise ? 'text-green-600' : 'text-red-600'}`}>
                             {car()!.pcm_cruise ? 'Yes' : 'No'}
                           </span>
-                        </div>
+                        </QuickNavWrapper>
                       </div>
                     </div>
                   </div>
@@ -401,10 +404,7 @@ function CarDetailContent() {
                   id="capabilities"
                   disableDefaultPadding={true}
                 >
-                  <div
-                    id={SPEC_ID.MIN_STEERING_SPEED}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.MIN_STEERING_SPEED ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED} variant="ring">
                     <ExpandableSpec
                       label="Min Steering Speed"
                       value={formatSpeed(car()!.min_steer_speed)}
@@ -416,11 +416,8 @@ function CarDetailContent() {
                         "Below this speed, the driver must steer manually."
                       }
                     />
-                  </div>
-                  <div
-                    id={SPEC_ID.FSR_LONGITUDINAL}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.FSR_LONGITUDINAL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="ring">
                     <ExpandableSpec
                       label="FSR Longitudinal"
                       value={car()!.fsr_longitudinal || '26 mph'}
@@ -432,11 +429,8 @@ function CarDetailContent() {
                         "The minimum speed for longitudinal (acceleration/braking) control in FSR mode."
                       }
                     />
-                  </div>
-                  <div
-                    id={SPEC_ID.FSR_STEERING}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.FSR_STEERING ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="ring">
                     <ExpandableSpec
                       label="FSR Steering"
                       value={car()!.fsr_steering || '25 mph'}
@@ -448,11 +442,8 @@ function CarDetailContent() {
                         "The minimum speed for steering control in FSR mode."
                       }
                     />
-                  </div>
-                  <div
-                    id={SPEC_ID.LONGITUDINAL_CONTROL}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.LONGITUDINAL_CONTROL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="ring">
                     <ExpandableSpec
                       label="Longitudinal Control"
                       value={car()!.longitudinal || 'openpilot'}
@@ -464,11 +455,8 @@ function CarDetailContent() {
                         "'openpilot' means full longitudinal control, while other values may indicate limited or no longitudinal control."
                       }
                     />
-                  </div>
-                  <div
-                    id={SPEC_ID.SUPPORT_TYPE}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.SUPPORT_TYPE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="ring">
                     <ExpandableSpec
                       label="Support Type"
                       value={car()!.support_type}
@@ -480,11 +468,8 @@ function CarDetailContent() {
                         "'Upstream' indicates full official support, while other types may have varying levels of functionality."
                       }
                     />
-                  </div>
-                  <div
-                    id={SPEC_ID.AUTO_RESUME}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.AUTO_RESUME ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="ring">
                     <ExpandableSpec
                       label="Auto Resume"
                       value={car()!.auto_resume ? 'Yes' : 'No'}
@@ -496,11 +481,8 @@ function CarDetailContent() {
                         "without driver intervention."
                       }
                     />
-                  </div>
-                  <div
-                    id={SPEC_ID.STEERING_TORQUE}
-                    class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.STEERING_TORQUE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}
-                  >
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="ring">
                     <ExpandableSpec
                       label="Steering Torque"
                       value={car()!.steering_torque || 'empty'}
@@ -512,7 +494,7 @@ function CarDetailContent() {
                         "'Empty' typically means no specific torque data is available."
                       }
                     />
-                  </div>
+                  </QuickNavWrapper>
                 </AccordionContainer>
               </div>
 
@@ -552,7 +534,7 @@ function CarDetailContent() {
                   id="vehicle-metrics"
                   disableDefaultPadding={true}
                 >
-                  <div id={SPEC_ID.CURB_WEIGHT} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.CURB_WEIGHT ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                  <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT} variant="ring">
                     <ExpandableSpec
                       label="Curb Weight"
                       value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
@@ -564,8 +546,8 @@ function CarDetailContent() {
                         "including all fluids and a full tank of fuel."
                       }
                     />
-                  </div>
-                  <div id={SPEC_ID.WHEELBASE} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.WHEELBASE ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="ring">
                     <ExpandableSpec
                       label="Wheelbase"
                       value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
@@ -577,8 +559,8 @@ function CarDetailContent() {
                         "A longer wheelbase typically provides better stability at high speeds."
                       }
                     />
-                  </div>
-                  <div id={SPEC_ID.STEER_RATIO} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.STEER_RATIO ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="ring">
                     <ExpandableSpec
                       label="Steer Ratio"
                       value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
@@ -590,8 +572,8 @@ function CarDetailContent() {
                         "A higher ratio means more steering wheel turns are needed for the same wheel angle."
                       }
                     />
-                  </div>
-                  <div id={SPEC_ID.CENTER_FRONT_RATIO} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.CENTER_FRONT_RATIO ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="ring">
                     <ExpandableSpec
                       label="Center to Front Ratio"
                       value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
@@ -603,8 +585,8 @@ function CarDetailContent() {
                         "Affects weight distribution and handling characteristics."
                       }
                     />
-                  </div>
-                  <div id={SPEC_ID.MAX_LATERAL_ACCEL} class={`transition-all duration-300 ${highlightedSpec() === SPEC_ID.MAX_LATERAL_ACCEL ? 'ring-2 ring-blue-500 bg-blue-50' : ''}`}>
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="ring">
                     <ExpandableSpec
                       label="Max Lateral Accel"
                       value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}
@@ -616,7 +598,7 @@ function CarDetailContent() {
                         "Higher values indicate better cornering capability."
                       }
                     />
-                  </div>
+                  </QuickNavWrapper>
                 </AccordionContainer>
               </div>
             </div>
@@ -624,16 +606,17 @@ function CarDetailContent() {
         )
       })()}
 
-      {!car() && (
-        <div class="p-8 text-center">
-          <h1 class="mb-4 text-2xl font-bold text-gray-900">Car Not Found</h1>
-          <p class="mb-6 text-gray-600">The requested vehicle "{params.car}" could not be found in our database.</p>
-          <A href="/" class="inline-flex items-center py-2 px-4 text-white bg-blue-600 rounded-lg transition-colors hover:bg-blue-700">
-            ← Back to Car List
-          </A>
-        </div>
-      )}
-    </div>
+        {!car() && (
+          <div class="p-8 text-center">
+            <h1 class="mb-4 text-2xl font-bold text-gray-900">Car Not Found</h1>
+            <p class="mb-6 text-gray-600">The requested vehicle "{params.car}" could not be found in our database.</p>
+            <A href="/" class="inline-flex items-center py-2 px-4 text-white bg-blue-600 rounded-lg transition-colors hover:bg-blue-700">
+              ← Back to Car List
+            </A>
+          </div>
+        )}
+      </div>
+    </QuickNavProvider>
   )
 }
 
