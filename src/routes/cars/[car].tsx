@@ -537,7 +537,7 @@ function CarDetailContent() {
                           {(spec) => (
                             <button
                               onClick={() => scrollToSpec(spec.id)}
-                              class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors hover:bg-gray-100 hover:border-gray-300"
+                              class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors cursor-pointer hover:bg-gray-100 hover:border-gray-300"
                             >
                               {spec.buttonLabel}
                             </button>
