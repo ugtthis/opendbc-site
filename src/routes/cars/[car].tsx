@@ -138,7 +138,6 @@ function CarDetailContent() {
     onCleanup(() => window.removeEventListener('scroll', handleScroll))
   })
 
-  // Scroll to top function
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
@@ -147,7 +146,6 @@ function CarDetailContent() {
     setOpenDesc(prev => prev === detailId ? null : detailId)
   }
 
-  // Scroll to a specific spec, expanding its accordion if needed
   const scrollToSpec = (specId: string) => {
     const accordionId = getAccordionIdForSpec(specId)
     const needsExpansion = accordionId && !toggle.openSections().has(accordionId)
