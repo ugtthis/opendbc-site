@@ -1,4 +1,9 @@
 export const SPEC_ID = {
+  // Compatibility Info
+  SUPPORT_TYPE_BADGE: 'support-type-badge',
+  ADAS_PACKAGE: 'adas-package',
+  FINGERPRINT: 'fingerprint',
+  HARNESS: 'harness',
   // Technical Parameters
   TIRE_STIFFNESS_FACTOR: 'tire-stiffness-factor',
   TIRE_FRONT_STIFFNESS: 'tire-front-stiffness',
@@ -33,6 +38,11 @@ export const SPEC_ID = {
 } as const
 
 export const QUICK_NAV_SPECS = [
+  // Compatibility Info
+  { id: SPEC_ID.SUPPORT_TYPE_BADGE, buttonLabel: 'Support Type', accordionId: 'compatibility-info', uiSectionHeader: 'Compatibility Info' },
+  { id: SPEC_ID.ADAS_PACKAGE, buttonLabel: 'ADAS Package', accordionId: 'compatibility-info', uiSectionHeader: 'Compatibility Info' },
+  { id: SPEC_ID.FINGERPRINT, buttonLabel: 'Fingerprint', accordionId: 'compatibility-info', uiSectionHeader: 'Compatibility Info' },
+  { id: SPEC_ID.HARNESS, buttonLabel: 'Harness', accordionId: 'compatibility-info', uiSectionHeader: 'Compatibility Info' },
   // Technical Parameters
   { id: SPEC_ID.TIRE_STIFFNESS_FACTOR, buttonLabel: 'Tire Stiffness Factor', accordionId: 'technical', uiSectionHeader: 'Technical Parameters' },
   { id: SPEC_ID.TIRE_FRONT_STIFFNESS, buttonLabel: 'Front Stiffness', accordionId: 'technical', uiSectionHeader: 'Technical Parameters' },

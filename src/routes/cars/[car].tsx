@@ -200,7 +200,7 @@ function CarDetailContent() {
                   contentClass="p-4 space-y-4 text-sm"
                   disableDefaultPadding={true}
                 >
-                  <div>
+                  <div id={SPEC_ID.SUPPORT_TYPE_BADGE} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.SUPPORT_TYPE_BADGE, highlightedSpec())}`}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Support Type:</div>
                     <div class={cn(
                       'inline-block px-3 py-1 text-xs font-medium text-white rounded border border-black',
@@ -209,15 +209,15 @@ function CarDetailContent() {
                       {car()!.support_type}
                     </div>
                   </div>
-                  <div>
+                  <div id={SPEC_ID.ADAS_PACKAGE} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.ADAS_PACKAGE, highlightedSpec())}`}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">ADAS Package:</div>
                     <div class="text-sm leading-relaxed text-gray-900">{car()!.package}</div>
                   </div>
-                  <div>
+                  <div id={SPEC_ID.FINGERPRINT} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.FINGERPRINT, highlightedSpec())}`}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Fingerprint:</div>
                     <div class="py-1 px-2 font-mono text-sm text-gray-800 bg-gray-50 rounded border">{car()!.car_fingerprint}</div>
                   </div>
-                  <div>
+                  <div id={SPEC_ID.HARNESS} class={`transition-all duration-300 ${getHighlightClasses(SPEC_ID.HARNESS, highlightedSpec())}`}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Harness:</div>
                     <div class="text-sm text-gray-900">{car()!.harness || 'nidec'}</div>
                   </div>
