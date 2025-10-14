@@ -10,6 +10,7 @@ import * as Drawer from 'corvu/drawer'
 import * as Dialog from 'corvu/dialog'
 import { isServer } from 'solid-js/web'
 import createMediaQuery from '~/utils/createMediaQuery'
+import { BREAKPOINTS } from '~/utils/breakpoints'
 import CustomDropdown from '~/components/ui/CustomDropdown'
 import { useFilter, type SortField } from '~/contexts/FilterContext'
 import type { Car } from '~/types/CarDataTypes'
@@ -28,7 +29,7 @@ type FilterModalProps = {
 }
 
 const FilterModal: Component<FilterModalProps> = (props) => {
-  const isDesktop = createMediaQuery('(min-width: 768px)')
+  const isDesktop = createMediaQuery(BREAKPOINTS.desktop)
 
   const [openedAsDesktop, setOpenedAsDesktop] = createSignal<boolean | null>(null)
 

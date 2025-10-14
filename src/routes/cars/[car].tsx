@@ -1,5 +1,5 @@
 import { useParams, A } from '@solidjs/router'
-import { createMemo, For, createSignal, onMount, onCleanup, type Component } from 'solid-js'
+import { createMemo, For, createSignal, onMount, onCleanup, Show, type Component } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 import { getSupportTypeColor } from '~/types/supportType'
 import { cn } from '~/lib/utils'
@@ -7,10 +7,13 @@ import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
-import QuickNavWrapper from '~/components/QuickNavWrapper'
+import { QuickNavProvider, QuickNavWrapper } from '~/components/QuickNavHighlight'
+import QuickNavDrawer from '~/components/QuickNavDrawer'
+import QuickNavList from '~/components/QuickNavList'
+import { SPEC_ID, getAccordionIdForSpec } from '~/data/quickNavSpecs'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
-import { QuickNavProvider } from '~/contexts/QuickNavContext'
-import { SPEC_ID, SPECS_GROUPED_BY_CATEGORY, getAccordionIdForSpec } from '~/data/quickNavSpecs'
+import createMediaQuery from '~/utils/createMediaQuery'
+import { BREAKPOINTS } from '~/utils/breakpoints'
 
 import metadata from '~/data/metadata.json'
 
@@ -93,9 +96,11 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
 function CarDetailContent() {
   const params = useParams()
   const toggle = useToggle()
+  const isMobile = createMediaQuery(BREAKPOINTS.mobile)
   const [highlightedSpec, setHighlightedSpec] = createSignal<string | null>(null)
   const [showUpArrow, setShowUpArrow] = createSignal(false)
   const [openDesc, setOpenDesc] = createSignal<string | null>(null)
+  const [quickNavDrawerOpen, setQuickNavDrawerOpen] = createSignal(false)
 
   // Force scrollbar to show = prevents layout shift when using MasterToggle
   onMount(() => {
@@ -193,6 +198,23 @@ function CarDetailContent() {
                     <div class="font-medium">{car()!.years} {car()!.make} {car()!.model}</div>
                   </div>
                 </div>
+
+                {/* Mobile Quick Nav Drawer */}
+                <Show when={isMobile()}>
+                  <button
+                    onClick={() => setQuickNavDrawerOpen(true)}
+                    class="flex gap-2 justify-center items-center py-3 px-4 w-full font-medium text-white bg-black border border-black transition-colors cursor-pointer hover:bg-gray-800"
+                  >
+                    <span>Quick Navigation</span>
+                  </button>
+                </Show>
+
+                {/* Outside <Show> for smooth animations */}
+                <QuickNavDrawer
+                  open={quickNavDrawerOpen()}
+                  onOpenChange={setQuickNavDrawerOpen}
+                  onNavigate={scrollToSpec}
+                />
 
                 {/* Compatibility Info */}
                 <AccordionContainer
@@ -500,33 +522,17 @@ function CarDetailContent() {
 
               {/* Right Sidebar */}
               <div class="space-y-4 w-full lg:flex-shrink-0 lg:w-72">
-                {/* Quick Navigation */}
-                <AccordionContainer
-                  title="Quick Navigation"
-                  id="quick-nav"
-                  contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
-                  disableDefaultPadding={true}
-                >
-                  <For each={SPECS_GROUPED_BY_CATEGORY}>
-                    {(category, index) => (
-                      <>
-                        <div class={`${index() === 0 ? 'mt-2' : 'mt-4'} mb-2 text-xs font-semibold tracking-wide text-gray-500 uppercase`}>
-                          {category.categoryName}
-                        </div>
-                        <For each={category.specs}>
-                          {(spec) => (
-                            <button
-                              onClick={() => scrollToSpec(spec.id)}
-                              class="py-1.5 px-3 w-full text-xs text-left rounded border border-transparent transition-colors cursor-pointer hover:bg-gray-100 hover:border-gray-300"
-                            >
-                              {spec.buttonLabel}
-                            </button>
-                          )}
-                        </For>
-                      </>
-                    )}
-                  </For>
-                </AccordionContainer>
+                {/* Quick Navigation - Desktop Only */}
+                <Show when={!isMobile()}>
+                  <AccordionContainer
+                    title="Quick Navigation"
+                    id="quick-nav"
+                    contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
+                    disableDefaultPadding={true}
+                  >
+                    <QuickNavList onNavigate={scrollToSpec} variant="desktop" />
+                  </AccordionContainer>
+                </Show>
 
                 {/* Vehicle Metrics */}
                 <AccordionContainer
