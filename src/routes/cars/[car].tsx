@@ -9,7 +9,7 @@ import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
 import { QuickNavProvider, QuickNavWrapper } from '~/components/QuickNavHighlight'
 import QuickNavDrawer from '~/components/QuickNavDrawer'
-import QuickNavList from '~/components/QuickNavList'
+import QuickNavSpecLinks from '~/components/QuickNavSpecLinks'
 import { SPEC_ID, getAccordionIdForSpec } from '~/data/quickNavSpecs'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
@@ -530,7 +530,7 @@ function CarDetailContent() {
                     contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
                     disableDefaultPadding={true}
                   >
-                    <QuickNavList onNavigate={scrollToSpec} variant="desktop" />
+                    <QuickNavSpecLinks onNavigate={scrollToSpec} variant="desktop" />
                   </AccordionContainer>
                 </Show>
 

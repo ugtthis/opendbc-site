@@ -3,7 +3,7 @@ import * as Drawer from 'corvu/drawer'
 import { cn } from '~/lib/utils'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
-import QuickNavList from './QuickNavList'
+import QuickNavSpecLinks from './QuickNavSpecLinks'
 
 type QuickNavDrawerProps = {
   open: boolean
@@ -84,7 +84,7 @@ const QuickNavDrawer: Component<QuickNavDrawerProps> = (props) => {
 
             {/* Navigation content */}
             <div class="overflow-y-auto flex-1 px-6 pt-4 pb-6 space-y-1 text-sm">
-              <QuickNavList onNavigate={handleNavClick} variant="mobile" />
+              <QuickNavSpecLinks onNavigate={handleNavClick} variant="mobile" />
             </div>
           </Drawer.Content>
         </Drawer.Portal>

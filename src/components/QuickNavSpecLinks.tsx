@@ -1,13 +1,13 @@
 import { For, type Component } from 'solid-js'
 import { SPECS_GROUPED_BY_CATEGORY } from '~/data/quickNavSpecs'
 
-type QuickNavListProps = {
+type QuickNavSpecLinksProps = {
   onNavigate: (specId: string) => void
   variant?: 'desktop' | 'mobile'
 }
 
 // Shared Quick Navigation btn list component
-const QuickNavList: Component<QuickNavListProps> = (props) => {
+const QuickNavSpecLinks: Component<QuickNavSpecLinksProps> = (props) => {
   const variant = props.variant || 'desktop'
 
   const buttonClasses = () =>
@@ -38,4 +38,4 @@ const QuickNavList: Component<QuickNavListProps> = (props) => {
   )
 }
 
-export default QuickNavList
+export default QuickNavSpecLinks
