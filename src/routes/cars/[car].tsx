@@ -106,13 +106,12 @@ function CarDetailContent() {
   // Force scrollbar to show = prevents layout shift when using MasterToggle
   onMount(() => {
     document.documentElement.style.overflowY = 'scroll'
-  })
-
-  onCleanup(() => {
-    document.documentElement.style.overflowY = ''
-    if (highlightTimeoutId !== undefined) {
-      clearTimeout(highlightTimeoutId)
-    }
+    onCleanup(() => {
+      document.documentElement.style.overflowY = ''
+      if (highlightTimeoutId !== undefined) {
+        clearTimeout(highlightTimeoutId)
+      }
+    })
   })
 
   const car = createMemo((): DetailedSpecs | undefined => {
