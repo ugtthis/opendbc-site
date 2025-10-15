@@ -101,13 +101,18 @@ function CarDetailContent() {
   const [showUpArrow, setShowUpArrow] = createSignal(false)
   const [openDesc, setOpenDesc] = createSignal<string | null>(null)
   const [quickNavDrawerOpen, setQuickNavDrawerOpen] = createSignal(false)
+  let highlightTimeoutId: ReturnType<typeof setTimeout> | undefined
 
   // Force scrollbar to show = prevents layout shift when using MasterToggle
   onMount(() => {
     document.documentElement.style.overflowY = 'scroll'
-    onCleanup(() => {
-      document.documentElement.style.overflowY = ''
-    })
+  })
+
+  onCleanup(() => {
+    document.documentElement.style.overflowY = ''
+    if (highlightTimeoutId !== undefined) {
+      clearTimeout(highlightTimeoutId)
+    }
   })
 
   const car = createMemo((): DetailedSpecs | undefined => {
@@ -161,14 +166,17 @@ function CarDetailContent() {
       toggle.toggleSection(accordionId)
     }
 
+    if (highlightTimeoutId !== undefined) {
+      clearTimeout(highlightTimeoutId)
+    }
+
     // Small delay to allow section expansion animation to start
     setTimeout(() => {
       const element = document.getElementById(specId)
       if (element) {
         element.scrollIntoView({ behavior: 'smooth', block: 'center' })
         setHighlightedSpec(specId)
-        // Clear highlight after 3 seconds
-        setTimeout(() => setHighlightedSpec(null), 3000)
+        highlightTimeoutId = setTimeout(() => setHighlightedSpec(null), 3000)
       }
     }, needsExpansion ? 150 : 0)
   }
