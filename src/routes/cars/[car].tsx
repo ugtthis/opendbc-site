@@ -262,7 +262,7 @@ function CarDetailContent() {
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FINGERPRINT}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Fingerprint:</div>
-                    <div class="py-1 px-2 font-mono text-sm text-gray-800 bg-gray-50 rounded border">{car()!.car_fingerprint}</div>
+                    <div class="text-sm text-gray-800">{car()!.car_fingerprint}</div>
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.HARNESS}>
                     <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Harness:</div>
