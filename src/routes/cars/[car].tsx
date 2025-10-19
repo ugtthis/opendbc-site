@@ -437,7 +437,7 @@ function CarDetailContent() {
                   id="capabilities"
                   disableDefaultPadding={true}
                 >
-                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED} variant="outline">
                     <ExpandableSpec
                       label="Min Steering Speed"
                       value={formatSpeed(car()!.min_steer_speed)}
@@ -450,7 +450,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="outline">
                     <ExpandableSpec
                       label="FSR Longitudinal"
                       value={car()!.fsr_longitudinal || '26 mph'}
@@ -463,7 +463,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="outline">
                     <ExpandableSpec
                       label="FSR Steering"
                       value={car()!.fsr_steering || '25 mph'}
@@ -476,7 +476,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="outline">
                     <ExpandableSpec
                       label="Longitudinal Control"
                       value={car()!.longitudinal || 'openpilot'}
@@ -489,7 +489,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="outline">
                     <ExpandableSpec
                       label="Support Type"
                       value={car()!.support_type}
@@ -502,7 +502,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="outline">
                     <ExpandableSpec
                       label="Auto Resume"
                       value={car()!.auto_resume ? 'Yes' : 'No'}
@@ -515,7 +515,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="outline">
                     <ExpandableSpec
                       label="Steering Torque"
                       value={car()!.steering_torque || 'empty'}
@@ -551,7 +551,7 @@ function CarDetailContent() {
                   id="vehicle-metrics"
                   disableDefaultPadding={true}
                 >
-                  <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT} variant="outline">
                     <ExpandableSpec
                       label="Curb Weight"
                       value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
@@ -564,7 +564,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="outline">
                     <ExpandableSpec
                       label="Wheelbase"
                       value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
@@ -577,7 +577,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="outline">
                     <ExpandableSpec
                       label="Steer Ratio"
                       value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
@@ -590,7 +590,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="outline">
                     <ExpandableSpec
                       label="Center to Front Ratio"
                       value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
@@ -603,7 +603,7 @@ function CarDetailContent() {
                       }
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="ring">
+                  <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="outline">
                     <ExpandableSpec
                       label="Max Lateral Accel"
                       value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}

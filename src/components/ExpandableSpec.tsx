@@ -11,7 +11,7 @@ interface ExpandableSpecProps {
 
 export default function ExpandableSpec(props: ExpandableSpecProps) {
   return (
-    <>
+    <div>
       <div
         class={`flex justify-between items-center px-4 py-3 border-t border-gray-200 first:border-t-0 min-h-[48px]
                 cursor-pointer hover:bg-amber-50 transition-colors ${
@@ -32,6 +32,6 @@ export default function ExpandableSpec(props: ExpandableSpecProps) {
           <p class="text-xs leading-relaxed text-gray-600">{props.description}</p>
         </div>
       </Show>
-    </>
+    </div>
   );
 }

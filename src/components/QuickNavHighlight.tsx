@@ -34,7 +34,7 @@ const useQuickNav = () => {
 // Wrapper component that highlights when its id matches activeSpec
 type QuickNavWrapperProps = {
   id: string
-  variant?: 'border' | 'ring'
+  variant?: 'border' | 'outline'
   class?: string
   children: JSX.Element
 }
@@ -42,21 +42,25 @@ type QuickNavWrapperProps = {
 export function QuickNavWrapper(props: QuickNavWrapperProps) {
   const { activeSpec } = useQuickNav()
   const variant = props.variant || 'border'
-
   const isActive = () => activeSpec() === props.id
 
-  const highlightClasses = () => {
-    if (!isActive()) return ''
+  const getClasses = () => {
+    if (!isActive()) return props.class || ''
 
-    return variant === 'border'
-      ? 'border-2 border-blue-500 rounded px-2 -mx-2'
-      : 'ring-2 ring-blue-500'
+    const highlight =
+      variant === 'border'
+        ? 'border-2 border-blue-500 rounded px-2 -mx-2'
+        : 'outline outline-3 outline-blue-500 outline-offset-[-8px]'
+
+    const childOverrides = '[&_*]:!bg-[var(--color-highlight-bg)]'
+
+    return `${highlight} ${childOverrides} ${props.class || ''}`
   }
 
   return (
     <div
       id={props.id}
-      class={`transition-all duration-300 ${highlightClasses()} ${props.class || ''}`}
+      class={`transition-all duration-300 ${getClasses()}`}
       style={isActive() ? { 'background-color': 'var(--color-highlight-bg)' } : {}}
     >
       {props.children}
