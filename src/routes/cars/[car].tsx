@@ -23,6 +23,10 @@ const formatSpeed = (speedMs: number): string => {
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
+  const formatToTwoDecimals = (value: number | undefined): string => {
+    return value !== undefined ? `~${value.toFixed(2)}` : 'N/A'
+  }
+
 type DetailedSpecs = Car & {
   parts?: Array<{
     name: string
@@ -314,57 +318,58 @@ function CarDetailContent() {
                   title="Technical Parameters"
                   id="technical"
                   disableDefaultPadding={true}
-                  contentClass="p-4"
+                  contentClass="px-5 py-8 @container"
                 >
-                  <div class="grid grid-cols-1 gap-4 text-sm md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-                    <div>
-                      <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">TIRE CONFIGURATION:</h4>
-                      <div class="space-y-3">
-                        <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Stiffness Factor</span>
-                          <span class="font-mono font-medium">{car()!.tire_stiffness_factor ?? 0.72}</span>
+                  {/* Container query: Grid layout acts better when going big to small screen */}
+                  <div class="grid grid-cols-1 gap-4 @[730px]:grid-cols-3">
+                    <div class="flex flex-col bg-white border border-[#e5e7eb]">
+                      <h3 class="py-3 px-3 text-sm font-medium uppercase">Tire Configuration:</h3>
+                      <div class="flex flex-col flex-1">
+                        <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Stiffness Factor</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.tire_stiffness_factor)}</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Front Stiffness</span>
-                          <span class="font-mono font-medium">{car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '155,002'}</span>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS} class="flex flex-1 gap-3 justify-between items-center py-5 px-3">
+                          <span class="min-w-0 text-sm">Front Stiffness</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">~{car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '153,002'}</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS} class="flex justify-between items-center py-2">
-                          <span class="text-gray-600">Rear Stiffness</span>
-                          <span class="font-mono font-medium">{car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}</span>
-                        </QuickNavWrapper>
-                      </div>
-                    </div>
-                    <div>
-                      <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">VEHICLE CONTROL:</h4>
-                      <div class="space-y-3">
-                        <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Actuator Delay</span>
-                          <span class="font-mono font-medium">{car()!.steer_actuator_delay ? `${car()!.steer_actuator_delay}s` : '0.10s'}</span>
-                        </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Limit Timer</span>
-                          <span class="font-mono font-medium">{car()!.steer_limit_timer ? `${car()!.steer_limit_timer}s` : '0.80s'}</span>
-                        </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE} class="flex justify-between items-center py-2">
-                          <span class="text-gray-600">Control Type</span>
-                          <span class="font-mono font-medium">{car()!.steer_control_type || 'torque'}</span>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Rear Stiffness</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">~{car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}</span>
                         </QuickNavWrapper>
                       </div>
                     </div>
-                    <div>
-                      <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">SPEED PARAMETERS:</h4>
-                      <div class="space-y-3">
-                        <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Stopping Speed</span>
-                          <span class="font-mono font-medium">{car()!.vEgo_stopping ? `${car()!.vEgo_stopping} m/s` : '0.50 m/s'}</span>
+                    <div class="flex flex-col bg-white border border-[#e5e7eb]">
+                      <h3 class="py-3 px-3 text-sm font-medium uppercase">Vehicle Control:</h3>
+                      <div class="flex flex-col flex-1">
+                        <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Actuator Delay</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.steer_actuator_delay)}s</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.STARTING_SPEED} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Starting Speed</span>
-                          <span class="font-mono font-medium">{car()!.vEgo_starting ? `${car()!.vEgo_starting} m/s` : '0.50 m/s'}</span>
+                        <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER} class="flex flex-1 gap-3 justify-between items-center py-5 px-3">
+                          <span class="min-w-0 text-sm">Limit Timer</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.steer_limit_timer)}s</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.STOP_ACCEL} class="flex justify-between items-center py-2">
-                          <span class="text-gray-600">Stop Accel</span>
-                          <span class="font-mono font-medium">{car()!.stop_accel || '–2.80'} m/s²</span>
+                        <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Control Type</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.steer_control_type || 'torque'}</span>
+                        </QuickNavWrapper>
+                      </div>
+                    </div>
+                    <div class="flex flex-col bg-white border border-[#e5e7eb]">
+                      <h3 class="py-3 px-3 text-sm font-medium uppercase">Speed Parameters:</h3>
+                      <div class="flex flex-col flex-1">
+                        <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Stopping Speed</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.vEgo_stopping)} m/s</span>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.STARTING_SPEED} class="flex flex-1 gap-3 justify-between items-center py-5 px-3">
+                          <span class="min-w-0 text-sm">Starting Speed</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.vEgo_starting)} m/s</span>
+                        </QuickNavWrapper>
+                        <QuickNavWrapper id={SPEC_ID.STOP_ACCEL} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Stop Accel</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.stop_accel)} m/s²</span>
                         </QuickNavWrapper>
                       </div>
                     </div>
@@ -376,51 +381,50 @@ function CarDetailContent() {
                   title="System Configuration"
                   id="system"
                   disableDefaultPadding={true}
-                  contentClass="p-4"
+                  contentClass="p-6 @container"
                 >
-                  <div class="grid grid-cols-1 gap-4 text-sm md:grid-cols-2 lg:gap-8">
+                  <div class="grid grid-cols-1 gap-6 @[662px]:grid-cols-2">
                     <div>
-                      <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">NETWORK SETTINGS:</h4>
-                      <div class="space-y-4">
-                        <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION} class="py-2 -my-2">
-                          <div class="mb-1 text-xs tracking-wide text-gray-600 uppercase">Network Location</div>
-                          <div class="py-2 px-3 font-mono text-gray-900 bg-gray-50 rounded border">{car()!.network_location || 'fwdCamera'}</div>
+                      <h3 class="mb-3 text-sm font-medium uppercase">Network Settings:</h3>
+                      <div class="space-y-3">
+                        <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION} class="flex gap-3 justify-between items-center p-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">Network Location</span>
+                          <span class="font-mono text-sm whitespace-nowrap shrink-0">{car()!.network_location || 'fwdCamera'}</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP} class="py-2 -my-2">
-                          <div class="mb-1 text-xs tracking-wide text-gray-600 uppercase">Bus Lookup</div>
-                          <div class="py-2 px-3 font-mono text-sm bg-gray-50 rounded border">
-                            <div><strong>pt:</strong> {car()!.bus_lookup?.pt || 'acura_ilx_2016_can_generated'}</div>
-                            <div><strong>radar:</strong> {car()!.bus_lookup?.radar || 'acura_ilx_2016_nidec'}</div>
-                          </div>
+                        <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP} class="p-3 bg-gray-50">
+                          <span class="block mb-1 text-sm">Bus Lookup</span>
+                          <Show when={car()!.bus_lookup && Object.keys(car()!.bus_lookup || {}).length > 0}>
+                            <div class="text-sm">
+                              <For each={Object.entries(car()!.bus_lookup!)}>
+                                {([key, value]) => (
+                                  <div class="break-all">
+                                    <span class="font-medium">{key}:</span> {value}
+                                  </div>
+                                )}
+                              </For>
+                            </div>
+                          </Show>
                         </QuickNavWrapper>
                       </div>
                     </div>
                     <div>
-                      <h4 class="mb-4 font-semibold tracking-wide text-gray-900 uppercase">FEATURE FLAGS:</h4>
+                      <h3 class="mb-3 text-sm font-medium uppercase">Feature Flags:</h3>
                       <div class="space-y-3">
-                        <QuickNavWrapper id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">Experimental Longitudinal</span>
-                          <span class={`font-medium ${car()!.experimental_longitudinal_available ? 'text-green-600' : 'text-red-600'}`}>
-                            {car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}
-                          </span>
+                        <QuickNavWrapper id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL} class="flex gap-3 justify-between items-center p-3 border border-[#e5e7eb]">
+                          <span class="min-w-0 text-sm">Experimental Longitudinal</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.DSU_ENABLED} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">DSU Enabled</span>
-                          <span class={`font-medium ${car()!.enable_dsu ? 'text-green-600' : 'text-red-600'}`}>
-                            {car()!.enable_dsu ? 'Yes' : 'No'}
-                          </span>
+                        <QuickNavWrapper id={SPEC_ID.DSU_ENABLED} class="flex gap-3 justify-between items-center p-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">DSU Enabled</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.enable_dsu ? 'Yes' : 'No'}</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.BSM_ENABLED} class="flex justify-between items-center py-2 border-b border-gray-100">
-                          <span class="text-gray-600">BSM Enabled</span>
-                          <span class={`font-medium ${car()!.enable_bsm ? 'text-green-600' : 'text-red-600'}`}>
-                            {car()!.enable_bsm ? 'Yes' : 'No'}
-                          </span>
+                        <QuickNavWrapper id={SPEC_ID.BSM_ENABLED} class="flex gap-3 justify-between items-center p-3 border border-[#e5e7eb]">
+                          <span class="min-w-0 text-sm">BSM Enabled</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.enable_bsm ? 'Yes' : 'No'}</span>
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.PCM_CRUISE} class="flex justify-between items-center py-2">
-                          <span class="text-gray-600">PCM Cruise</span>
-                          <span class={`font-medium ${car()!.pcm_cruise ? 'text-green-600' : 'text-red-600'}`}>
-                            {car()!.pcm_cruise ? 'Yes' : 'No'}
-                          </span>
+                        <QuickNavWrapper id={SPEC_ID.PCM_CRUISE} class="flex gap-3 justify-between items-center p-3 bg-gray-50">
+                          <span class="min-w-0 text-sm">PCM Cruise</span>
+                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.pcm_cruise ? 'Yes' : 'No'}</span>
                         </QuickNavWrapper>
                       </div>
                     </div>
