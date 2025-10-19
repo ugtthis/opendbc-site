@@ -53,10 +53,23 @@ body {
   }
 }
 
+@keyframes subtle-bounce {
+  0%, 100% {
+    transform: translateY(1px);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
 .shine-border-overlay {
   animation: shine 30s infinite linear;
   background: linear-gradient(90deg, transparent, #00b925, #002a08, transparent);
   background-size: 200% 100%;
+}
+
+.bouncy-arrow {
+  animation: subtle-bounce 1.5s ease-in-out infinite;
 }
 
 .gradient-dark-forrest {

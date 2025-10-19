@@ -84,7 +84,7 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
               {props.car ? `${props.car.make} ${props.car.model} ${props.car.years}` : 'Loading...'}
               {props.showUpArrow && (
                 <div
-                  class="w-4 h-4 transition-opacity duration-300"
+                  class="w-4 h-4 transition-opacity duration-300 bouncy-arrow"
                   innerHTML={UpArrowSvg}
                 />
               )}
