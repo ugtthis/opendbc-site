@@ -448,50 +448,119 @@ function CarDetailContent() {
                   title="System Configuration"
                   id="system"
                   disableDefaultPadding={true}
-                  contentClass="p-6 @container"
+                  contentClass="px-5 py-8 @container"
                 >
-                  <div class="grid grid-cols-1 gap-6 @[662px]:grid-cols-2">
-                    <div>
-                      <h3 class="mb-3 text-sm font-medium uppercase">Network Settings:</h3>
-                      <div class="space-y-3">
-                        <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION} class="flex gap-3 justify-between items-center p-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Network Location</span>
-                          <span class="font-mono text-sm whitespace-nowrap shrink-0">{car()!.network_location || 'fwdCamera'}</span>
+                  {/* Container query: Grid layout acts better when going big to small screen */}
+                  <div class="grid grid-cols-1 gap-4 @[730px]:grid-cols-2 items-start">
+                    <div class="flex flex-col bg-white border border-[#e5e7eb]">
+                      <h3 class="py-3 px-3 text-sm font-medium uppercase">Network Settings:</h3>
+                      <div class="flex flex-col flex-1">
+                        <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION}>
+                          <ExpandableSpec
+                            label="Network Location"
+                            value={car()!.network_location || 'fwdCamera'}
+                            isEven={true}
+                            isOpen={openDesc() === 'network-location'}
+                            onToggle={() => toggleDesc('network-location')}
+                            description={
+                              "Specifies which CAN gateway the comma device connects to."
+                            }
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP} class="p-3 bg-gray-50">
-                          <span class="block mb-1 text-sm">Bus Lookup</span>
-                          <Show when={car()!.bus_lookup && Object.keys(car()!.bus_lookup || {}).length > 0}>
-                            <div class="text-sm">
-                              <For each={Object.entries(car()!.bus_lookup!)}>
-                                {([key, value]) => (
-                                  <div class="break-all">
-                                    <span class="font-medium">{key}:</span> {value}
-                                  </div>
-                                )}
-                              </For>
+
+                        {/* Bus Lookup: Custom layout for displaying multiple key-value pairs */}
+                        <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP}>
+                          <div>
+                            <div
+                              class={`flex flex-col px-3 py-3 min-h-[48px] cursor-pointer hover:bg-amber-50 transition-colors ${
+                                openDesc() === 'bus-lookup' ? 'bg-amber-50' : ''
+                              }`}
+                              onClick={() => toggleDesc('bus-lookup')}
+                            >
+                              <span class={`text-xs mb-1 ${openDesc() === 'bus-lookup' ? 'text-amber-600 font-medium' : ''}`}>
+                                Bus Lookup
+                              </span>
+                              <Show
+                                when={car()!.bus_lookup && Object.keys(car()!.bus_lookup || {}).length > 0}
+                                fallback={<span class="text-sm text-gray-500">N/A</span>}
+                              >
+                                <div class="text-xs">
+                                  <For each={Object.entries(car()!.bus_lookup!)}>
+                                    {([key, value]) => (
+                                      <div class="py-0.5 break-words">
+                                        <span class="font-medium">{key}:</span> {value}
+                                      </div>
+                                    )}
+                                  </For>
+                                </div>
+                              </Show>
                             </div>
-                          </Show>
+                            <Show when={openDesc() === 'bus-lookup'}>
+                              <div class="overflow-hidden px-3 pt-1 pb-3 bg-amber-50 border-l-4 border-amber-400">
+                                <p class="text-xs leading-relaxed text-gray-600">
+                                  Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, 'radar' messages on bus 1.
+                                  This tells openpilot which physical CAN bus carries each type of vehicle data.
+                                </p>
+                              </div>
+                            </Show>
+                          </div>
                         </QuickNavWrapper>
                       </div>
                     </div>
-                    <div>
-                      <h3 class="mb-3 text-sm font-medium uppercase">Feature Flags:</h3>
-                      <div class="space-y-3">
-                        <QuickNavWrapper id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL} class="flex gap-3 justify-between items-center p-3 border border-[#e5e7eb]">
-                          <span class="min-w-0 text-sm">Experimental Longitudinal</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}</span>
+                    <div class="flex flex-col bg-white border border-[#e5e7eb]">
+                      <h3 class="py-3 px-3 text-sm font-medium uppercase">Feature Flags:</h3>
+                      <div class="flex flex-col flex-1">
+                        <QuickNavWrapper id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL}>
+                          <ExpandableSpec
+                            label="Experimental Longitudinal"
+                            value={car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}
+                            isEven={true}
+                            isOpen={openDesc() === 'experimental-longitudinal'}
+                            onToggle={() => toggleDesc('experimental-longitudinal')}
+                            description={
+                              "If vehicle supports experimental mode's longitudinal control and is enabled, " +
+                              "openpilot will drive the speed that the model thinks a human would drive." +
+                              "This includes slowing down for turns, stopping at stop signs and traffic lights, etc."
+                            }
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.DSU_ENABLED} class="flex gap-3 justify-between items-center p-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">DSU Enabled</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.enable_dsu ? 'Yes' : 'No'}</span>
+                        <QuickNavWrapper id={SPEC_ID.DSU_ENABLED}>
+                          <ExpandableSpec
+                            label="DSU Enabled"
+                            value={car()!.enable_dsu ? 'Yes' : 'No'}
+                            isEven={false}
+                            isOpen={openDesc() === 'dsu-enabled'}
+                            onToggle={() => toggleDesc('dsu-enabled')}
+                            description={
+                              "Toyota-specific: The DSU (Driving Support Unit) is the radar/ACC module on pre-TSS2 Toyotas. " +
+                              "When enabled, openpilot sends longitudinal control commands through the DSU instead of directly to the PCM. Only relevant for certain Toyota models."
+                            }
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.BSM_ENABLED} class="flex gap-3 justify-between items-center p-3 border border-[#e5e7eb]">
-                          <span class="min-w-0 text-sm">BSM Enabled</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.enable_bsm ? 'Yes' : 'No'}</span>
+                        <QuickNavWrapper id={SPEC_ID.BSM_ENABLED}>
+                          <ExpandableSpec
+                            label="BSM Enabled"
+                            value={car()!.enable_bsm ? 'Yes' : 'No'}
+                            isEven={true}
+                            isOpen={openDesc() === 'bsm-enabled'}
+                            onToggle={() => toggleDesc('bsm-enabled')}
+                            description={
+                              "Indicates if the vehicle has BSM (Blind Spot Monitoring) capability that openpilot can read from the CAN bus. "
+                            }
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.PCM_CRUISE} class="flex gap-3 justify-between items-center p-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">PCM Cruise</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.pcm_cruise ? 'Yes' : 'No'}</span>
+                        <QuickNavWrapper id={SPEC_ID.PCM_CRUISE}>
+                          <ExpandableSpec
+                            label="PCM Cruise"
+                            value={car()!.pcm_cruise ? 'Yes' : 'No'}
+                            isEven={false}
+                            isOpen={openDesc() === 'pcm-cruise'}
+                            onToggle={() => toggleDesc('pcm-cruise')}
+                            description={
+                              "Indicates if the vehicle uses PCM (Powertrain Control Module) cruise control vs camera-based cruise. " +
+                              "PCM cruise is the traditional setup where the engine computer handles cruise control. This affects which CAN messages openpilot uses for longitudinal control."
+                            }
+                          />
                         </QuickNavWrapper>
                       </div>
                     </div>
