@@ -302,7 +302,7 @@ function CarDetailContent() {
                         {currentCar.parts && Array.isArray(currentCar.parts) && currentCar.parts.length > 0 ? (
                           <For each={currentCar.parts}>
                             {(part) => (
-                              <tr class="border-b border-gray-100 hover:bg-gray-50">
+                              <tr class="border-b border-gray-100">
                                 <td class="p-3 font-medium">{part.count}</td>
                                 <td class="p-3">{part.name}</td>
                                 <td class="p-3 text-lg text-center">
