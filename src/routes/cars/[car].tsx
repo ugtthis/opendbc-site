@@ -321,55 +321,109 @@ function CarDetailContent() {
                   contentClass="px-5 py-8 @container"
                 >
                   {/* Container query: Grid layout acts better when going big to small screen */}
-                  <div class="grid grid-cols-1 gap-4 @[730px]:grid-cols-3">
+                  <div class="grid grid-cols-1 gap-4 @[730px]:grid-cols-3 items-start">
                     <div class="flex flex-col bg-white border border-[#e5e7eb]">
                       <h3 class="py-3 px-3 text-sm font-medium uppercase">Tire Configuration:</h3>
                       <div class="flex flex-col flex-1">
-                        <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Stiffness Factor</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.tire_stiffness_factor)}</span>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR}>
+                          <ExpandableSpec
+                            label="Stiffness Factor"
+                            value={formatToTwoDecimals(car()!.tire_stiffness_factor)}
+                            isEven={true}
+                            isOpen={openDesc() === 'tire-stiffness-factor'}
+                            onToggle={() => toggleDesc('tire-stiffness-factor')}
+                            description="A multiplier applied to the tire stiffness values to adjust handling characteristics. This factor fine-tunes how the vehicle's tires respond to steering inputs and road conditions."
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS} class="flex flex-1 gap-3 justify-between items-center py-5 px-3">
-                          <span class="min-w-0 text-sm">Front Stiffness</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">~{car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '153,002'}</span>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS}>
+                          <ExpandableSpec
+                            label="Front Stiffness"
+                            value={`~${car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '153,002'}`}
+                            isEven={false}
+                            isOpen={openDesc() === 'tire-front-stiffness'}
+                            onToggle={() => toggleDesc('tire-front-stiffness')}
+                            description="The cornering stiffness of the front tires measured in N/rad. Higher values indicate stiffer tires that resist lateral deformation more, affecting steering response and front-end grip."
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Rear Stiffness</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">~{car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}</span>
+                        <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS}>
+                          <ExpandableSpec
+                            label="Rear Stiffness"
+                            value={`~${car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}`}
+                            isEven={true}
+                            isOpen={openDesc() === 'tire-rear-stiffness'}
+                            onToggle={() => toggleDesc('tire-rear-stiffness')}
+                            description="The cornering stiffness of the rear tires measured in N/rad. This value affects rear-end stability and the vehicle's tendency to understeer or oversteer during cornering."
+                          />
                         </QuickNavWrapper>
                       </div>
                     </div>
                     <div class="flex flex-col bg-white border border-[#e5e7eb]">
                       <h3 class="py-3 px-3 text-sm font-medium uppercase">Vehicle Control:</h3>
                       <div class="flex flex-col flex-1">
-                        <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Actuator Delay</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.steer_actuator_delay)}s</span>
+                        <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY}>
+                          <ExpandableSpec
+                            label="Actuator Delay"
+                            value={`${formatToTwoDecimals(car()!.steer_actuator_delay)}s`}
+                            isEven={true}
+                            isOpen={openDesc() === 'actuator-delay'}
+                            onToggle={() => toggleDesc('actuator-delay')}
+                            description="The time delay between when openpilot sends a steering command and when the vehicle's steering actuator responds. This accounts for mechanical and electrical latency in the steering system."
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER} class="flex flex-1 gap-3 justify-between items-center py-5 px-3">
-                          <span class="min-w-0 text-sm">Limit Timer</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.steer_limit_timer)}s</span>
+                        <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER}>
+                          <ExpandableSpec
+                            label="Limit Timer"
+                            value={`${formatToTwoDecimals(car()!.steer_limit_timer)}s`}
+                            isEven={false}
+                            isOpen={openDesc() === 'limit-timer'}
+                            onToggle={() => toggleDesc('limit-timer')}
+                            description="The duration for which steering torque limits are enforced before the system may request reduced steering authority. This prevents sustained excessive steering commands that could trigger safety interventions."
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Control Type</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{car()!.steer_control_type || 'torque'}</span>
+                        <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE}>
+                          <ExpandableSpec
+                            label="Control Type"
+                            value={car()!.steer_control_type || 'torque'}
+                            isEven={true}
+                            isOpen={openDesc() === 'control-type'}
+                            onToggle={() => toggleDesc('control-type')}
+                            description="The method openpilot uses to control steering. 'Torque' control commands steering wheel torque directly, while 'angle' control commands specific steering angles. Most vehicles use torque-based control."
+                          />
                         </QuickNavWrapper>
                       </div>
                     </div>
                     <div class="flex flex-col bg-white border border-[#e5e7eb]">
                       <h3 class="py-3 px-3 text-sm font-medium uppercase">Speed Parameters:</h3>
                       <div class="flex flex-col flex-1">
-                        <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Stopping Speed</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.vEgo_stopping)} m/s</span>
+                        <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED}>
+                          <ExpandableSpec
+                            label="Stopping Speed"
+                            value={`${formatToTwoDecimals(car()!.vEgo_stopping)} m/s`}
+                            isEven={true}
+                            isOpen={openDesc() === 'stopping-speed'}
+                            onToggle={() => toggleDesc('stopping-speed')}
+                            description="The speed threshold below which the vehicle is considered stopped. This is used to determine when to apply different control strategies, such as holding the vehicle at a complete stop."
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.STARTING_SPEED} class="flex flex-1 gap-3 justify-between items-center py-5 px-3">
-                          <span class="min-w-0 text-sm">Starting Speed</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.vEgo_starting)} m/s</span>
+                        <QuickNavWrapper id={SPEC_ID.STARTING_SPEED}>
+                          <ExpandableSpec
+                            label="Starting Speed"
+                            value={`${formatToTwoDecimals(car()!.vEgo_starting)} m/s`}
+                            isEven={false}
+                            isOpen={openDesc() === 'starting-speed'}
+                            onToggle={() => toggleDesc('starting-speed')}
+                            description="The speed threshold above which the vehicle is considered moving after a stop. This hysteresis prevents rapid toggling between stopped and moving states when the vehicle is barely moving."
+                          />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.STOP_ACCEL} class="flex flex-1 gap-3 justify-between items-center py-5 px-3 bg-gray-50">
-                          <span class="min-w-0 text-sm">Stop Accel</span>
-                          <span class="text-sm whitespace-nowrap shrink-0">{formatToTwoDecimals(car()!.stop_accel)} m/s²</span>
+                        <QuickNavWrapper id={SPEC_ID.STOP_ACCEL}>
+                          <ExpandableSpec
+                            label="Stop Accel"
+                            value={`${formatToTwoDecimals(car()!.stop_accel)} m/s²`}
+                            isEven={true}
+                            isOpen={openDesc() === 'stop-accel'}
+                            onToggle={() => toggleDesc('stop-accel')}
+                            description="The deceleration rate applied when bringing the vehicle to a stop. This negative acceleration value determines how aggressively the vehicle brakes when coming to a complete stop."
+                          />
                         </QuickNavWrapper>
                       </div>
                     </div>
