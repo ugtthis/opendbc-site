@@ -49,8 +49,8 @@ export function QuickNavWrapper(props: QuickNavWrapperProps) {
 
     const highlight =
       variant === 'border'
-        ? 'border-2 border-blue-500 rounded px-2 -mx-2'
-        : 'outline outline-3 outline-blue-500 outline-offset-[-8px]'
+        ? 'border-2 border-blue-500 px-2 -mx-2'
+        : 'outline outline-3 outline-blue-500 outline-offset-[-8px] px-2'
 
     const childOverrides = '[&_*]:!bg-[var(--color-highlight-bg)]'
 
