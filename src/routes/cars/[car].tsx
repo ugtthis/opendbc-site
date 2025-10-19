@@ -18,14 +18,27 @@ import { BREAKPOINTS } from '~/utils/breakpoints'
 import metadata from '~/data/metadata.json'
 
 const MS_TO_MPH = 2.237
+const KG_TO_LBS = 2.20462
 
 const formatSpeed = (speedMs: number): string => {
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
-  const formatToTwoDecimals = (value: number | undefined): string => {
-    return value !== undefined ? `~${value.toFixed(2)}` : 'N/A'
+const formatValue = (value: number | undefined, unit: string = ''): string => {
+  if (value === undefined) return 'N/A'
+
+  if (Math.abs(value) >= 1000) {
+    return `~${Math.round(value).toLocaleString()}${unit}`
   }
+
+  return `~${value.toFixed(2)}${unit}`
+}
+
+const formatWeight = (kg: number | undefined): string => {
+  if (kg === undefined) return 'N/A'
+  const lbs = Math.round(kg * KG_TO_LBS)
+  return `${lbs.toLocaleString()} lbs`
+}
 
 type DetailedSpecs = Car & {
   parts?: Array<{
@@ -328,7 +341,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR}>
                           <ExpandableSpec
                             label="Stiffness Factor"
-                            value={formatToTwoDecimals(car()!.tire_stiffness_factor)}
+                            value={formatValue(car()!.tire_stiffness_factor)}
                             isEven={true}
                             isOpen={openDesc() === 'tire-stiffness-factor'}
                             onToggle={() => toggleDesc('tire-stiffness-factor')}
@@ -338,7 +351,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS}>
                           <ExpandableSpec
                             label="Front Stiffness"
-                            value={`~${car()!.tire_stiffness_front ? Math.round(car()!.tire_stiffness_front as number).toLocaleString() : '153,002'}`}
+                            value={formatValue(car()!.tire_stiffness_front)}
                             isEven={false}
                             isOpen={openDesc() === 'tire-front-stiffness'}
                             onToggle={() => toggleDesc('tire-front-stiffness')}
@@ -348,7 +361,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS}>
                           <ExpandableSpec
                             label="Rear Stiffness"
-                            value={`~${car()!.tire_stiffness_rear ? Math.round(car()!.tire_stiffness_rear as number).toLocaleString() : '142,048'}`}
+                            value={formatValue(car()!.tire_stiffness_rear)}
                             isEven={true}
                             isOpen={openDesc() === 'tire-rear-stiffness'}
                             onToggle={() => toggleDesc('tire-rear-stiffness')}
@@ -363,7 +376,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY}>
                           <ExpandableSpec
                             label="Actuator Delay"
-                            value={`${formatToTwoDecimals(car()!.steer_actuator_delay)}s`}
+                            value={formatValue(car()!.steer_actuator_delay, 's')}
                             isEven={true}
                             isOpen={openDesc() === 'actuator-delay'}
                             onToggle={() => toggleDesc('actuator-delay')}
@@ -373,7 +386,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER}>
                           <ExpandableSpec
                             label="Limit Timer"
-                            value={`${formatToTwoDecimals(car()!.steer_limit_timer)}s`}
+                            value={formatValue(car()!.steer_limit_timer, 's')}
                             isEven={false}
                             isOpen={openDesc() === 'limit-timer'}
                             onToggle={() => toggleDesc('limit-timer')}
@@ -398,7 +411,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED}>
                           <ExpandableSpec
                             label="Stopping Speed"
-                            value={`${formatToTwoDecimals(car()!.vEgo_stopping)} m/s`}
+                            value={formatValue(car()!.vEgo_stopping, ' m/s')}
                             isEven={true}
                             isOpen={openDesc() === 'stopping-speed'}
                             onToggle={() => toggleDesc('stopping-speed')}
@@ -408,7 +421,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.STARTING_SPEED}>
                           <ExpandableSpec
                             label="Starting Speed"
-                            value={`${formatToTwoDecimals(car()!.vEgo_starting)} m/s`}
+                            value={formatValue(car()!.vEgo_starting, ' m/s')}
                             isEven={false}
                             isOpen={openDesc() === 'starting-speed'}
                             onToggle={() => toggleDesc('starting-speed')}
@@ -418,7 +431,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.STOP_ACCEL}>
                           <ExpandableSpec
                             label="Stop Accel"
-                            value={`${formatToTwoDecimals(car()!.stop_accel)} m/s²`}
+                            value={formatValue(car()!.stop_accel, ' m/s²')}
                             isEven={true}
                             isOpen={openDesc() === 'stop-accel'}
                             onToggle={() => toggleDesc('stop-accel')}
@@ -608,7 +621,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT} variant="outline">
                     <ExpandableSpec
                       label="Curb Weight"
-                      value={`${Math.round(car()!.mass_curb_weight * 2.20462).toLocaleString()} lbs`}
+                      value={formatWeight(car()!.mass_curb_weight)}
                       isEven={false}
                       isOpen={openDesc() === 'curb-weight'}
                       onToggle={() => toggleDesc('curb-weight')}
@@ -621,7 +634,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="outline">
                     <ExpandableSpec
                       label="Wheelbase"
-                      value={car()!.wheelbase ? `${(car()!.wheelbase as number).toFixed(2)} m` : '~2.67 m'}
+                      value={formatValue(car()!.wheelbase, ' m')}
                       isEven={true}
                       isOpen={openDesc() === 'wheelbase'}
                       onToggle={() => toggleDesc('wheelbase')}
@@ -634,7 +647,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="outline">
                     <ExpandableSpec
                       label="Steer Ratio"
-                      value={car()!.steer_ratio ? `~${(car()!.steer_ratio as number).toFixed(1)}` : '~18.61'}
+                      value={formatValue(car()!.steer_ratio)}
                       isEven={false}
                       isOpen={openDesc() === 'steer-ratio'}
                       onToggle={() => toggleDesc('steer-ratio')}
@@ -647,7 +660,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="outline">
                     <ExpandableSpec
                       label="Center to Front Ratio"
-                      value={car()!.center_to_front_ratio ? `~${(car()!.center_to_front_ratio as number).toFixed(2)}` : '~0.37'}
+                      value={formatValue(car()!.center_to_front_ratio)}
                       isEven={true}
                       isOpen={openDesc() === 'center-front-ratio'}
                       onToggle={() => toggleDesc('center-front-ratio')}
@@ -660,7 +673,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="outline">
                     <ExpandableSpec
                       label="Max Lateral Accel"
-                      value={car()!.max_lateral_accel ? `~${(car()!.max_lateral_accel as number).toFixed(2)} m/s²` : '~0.52 m/s²'}
+                      value={formatValue(car()!.max_lateral_accel, ' m/s²')}
                       isEven={false}
                       isOpen={openDesc() === 'max-lateral-accel'}
                       onToggle={() => toggleDesc('max-lateral-accel')}
