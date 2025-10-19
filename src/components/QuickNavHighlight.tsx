@@ -49,14 +49,15 @@ export function QuickNavWrapper(props: QuickNavWrapperProps) {
     if (!isActive()) return ''
 
     return variant === 'border'
-      ? 'bg-blue-50 border-2 border-blue-500 rounded px-2 -mx-2'
-      : 'ring-2 ring-blue-500 bg-blue-50'
+      ? 'border-2 border-blue-500 rounded px-2 -mx-2'
+      : 'ring-2 ring-blue-500'
   }
 
   return (
     <div
       id={props.id}
       class={`transition-all duration-300 ${highlightClasses()} ${props.class || ''}`}
+      style={isActive() ? { 'background-color': 'var(--color-highlight-bg)' } : {}}
     >
       {props.children}
     </div>
