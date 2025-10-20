@@ -505,21 +505,26 @@ function CarDetailContent() {
                             label="Bus Lookup"
                             isOpen={openDesc() === 'bus-lookup'}
                             onToggle={() => toggleDesc('bus-lookup')}
-                            description="Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, 'radar' messages on bus 1. This tells openpilot which physical CAN bus carries each type of vehicle data."
+                            description={
+                              "Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, " +
+                              "'radar' messages on bus 1. This tells openpilot which physical CAN bus carries each type of vehicle data."
+                            }
                           >
                             <Show
-                              when={currentCar().bus_lookup && Object.keys(currentCar().bus_lookup || {}).length > 0}
+                              when={currentCar().bus_lookup}
                               fallback={<span class="text-xs">N/A</span>}
                             >
-                              <div class="text-xs break-words">
-                                <For each={Object.entries(currentCar().bus_lookup!)}>
-                                  {([key, value]) => (
-                                    <div class="py-0.5">
-                                      <span class="font-semibold">{key}:</span> {value}
-                                    </div>
-                                  )}
-                                </For>
-                              </div>
+                              {(busLookup) => (
+                                <div class="text-xs break-words">
+                                  <For each={Object.entries(busLookup())}>
+                                    {([key, value]) => (
+                                      <div class="py-0.5">
+                                        <span class="font-semibold">{key}:</span> {value}
+                                      </div>
+                                    )}
+                                  </For>
+                                </div>
+                              )}
                             </Show>
                           </ExpandableSpec>
                         </QuickNavWrapper>
