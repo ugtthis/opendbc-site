@@ -1,8 +1,6 @@
 import { useParams, A } from '@solidjs/router'
 import { createMemo, For, createSignal, onMount, onCleanup, Show, type Component } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
-import { getSupportTypeColor } from '~/types/supportType'
-import { cn } from '~/lib/utils'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
@@ -244,29 +242,50 @@ function CarDetailContent() {
                 <AccordionContainer
                   title="Compatibility Info"
                   id="compatibility-info"
-                  contentClass="p-4 space-y-4 text-sm"
+                  contentClass="bg-white border border-[#e5e7eb]"
                   disableDefaultPadding={true}
                 >
-                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE}>
-                    <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Support Type:</div>
-                    <div class={cn(
-                      'inline-block px-3 py-1 text-xs font-medium text-white rounded border border-black',
-                      getSupportTypeColor(car()!.support_type)
-                    )}>
-                      {car()!.support_type}
-                    </div>
+                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE} variant="outline">
+                    <ExpandableSpec
+                      layout="vertical"
+                      label="Support Type"
+                      value={car()!.support_type}
+                      isOpen={openDesc() === 'support-type-badge'}
+                      onToggle={() => toggleDesc('support-type-badge')}
+                      description="The level of openpilot support for this vehicle. 'Upstream' indicates full official support with active maintenance, while other types may have varying levels of functionality and community support."
+                    />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE}>
-                    <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">ADAS Package:</div>
-                    <div class="text-sm leading-relaxed text-gray-900">{car()!.package}</div>
+                  <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE} variant="outline">
+                    <ExpandableSpec
+                      layout="vertical"
+                      label="ADAS Package"
+                      value={car()!.package}
+                      isEven={true}
+                      isOpen={openDesc() === 'adas-package'}
+                      onToggle={() => toggleDesc('adas-package')}
+                      description="The required ADAS package/trim that needs to comes with this vehicle to be compatible with openpilot."
+                    />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FINGERPRINT}>
-                    <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Fingerprint:</div>
-                    <div class="text-sm text-gray-800">{car()!.car_fingerprint}</div>
+                  <QuickNavWrapper id={SPEC_ID.FINGERPRINT} variant="outline">
+                    <ExpandableSpec
+                      layout="vertical"
+                      label="Fingerprint"
+                      value={car()!.car_fingerprint}
+                      isOpen={openDesc() === 'fingerprint'}
+                      onToggle={() => toggleDesc('fingerprint')}
+                      description="The unique identifier openpilot uses to detect and configure itself for this specific vehicle model. This fingerprint is based on CAN message patterns and ensures proper compatibility."
+                    />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.HARNESS}>
-                    <div class="mb-2 text-xs tracking-wide text-gray-500 uppercase">Harness:</div>
-                    <div class="text-sm text-gray-900">{car()!.harness || 'nidec'}</div>
+                  <QuickNavWrapper id={SPEC_ID.HARNESS} variant="outline">
+                    <ExpandableSpec
+                      layout="vertical"
+                      label="Harness"
+                      value={car()!.harness || 'N/A'}
+                      isEven={true}
+                      isOpen={openDesc() === 'harness'}
+                      onToggle={() => toggleDesc('harness')}
+                      description="Type of car harness that is compatible with this vehicle. comma's car harness is a universal interface to your car. Use the car harness to connect your comma device to your vehicle."
+                    />
                   </QuickNavWrapper>
                 </AccordionContainer>
               </div>
