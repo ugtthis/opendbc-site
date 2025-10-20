@@ -326,36 +326,33 @@ function CarDetailContent() {
                         </tr>
                       </thead>
                       <tbody>
-                        <Show
-                          when={currentCar().parts}
+                        <For
+                          each={currentCar().parts || []}
                           fallback={<tr><td colspan="4" class="p-6 text-center text-gray-500">No parts data available</td></tr>}
                         >
-                          {(parts) => (
-                            <Show
-                              when={parts().length > 0}
-                              fallback={<tr><td colspan="4" class="p-6 text-center text-gray-500">No parts data available</td></tr>}
-                            >
-                              <For each={parts()}>
-                                {(part) => (
-                                  <tr class="border-b border-gray-100">
-                                    <td class="p-3 font-medium">{part.count}</td>
-                                    <td class="p-3">{part.name}</td>
-                                    <td class="p-3 text-lg text-center">
-                                      <span class={part.type === 'connector' || part.type === 'accessory' ? 'text-green-600' : 'text-gray-400'}>
-                                        {part.type === 'connector' || part.type === 'accessory' ? '✓' : '–'}
-                                      </span>
-                                    </td>
-                                    <td class="p-3 text-lg text-center">
-                                      <span class={part.type === 'device' ? 'text-green-600' : 'text-gray-400'}>
-                                        {part.type === 'device' ? '✓' : '–'}
-                                      </span>
-                                    </td>
-                                  </tr>
-                                )}
-                              </For>
-                            </Show>
+                          {(part) => (
+                            <tr class="border-b border-gray-100">
+                              <td class="p-3 font-medium">{part.count}</td>
+                              <td class="p-3">{part.name}</td>
+                              <td class="p-3 text-lg text-center">
+                                <Show
+                                  when={part.type === 'connector' || part.type === 'accessory'}
+                                  fallback={<span class="text-gray-400">–</span>}
+                                >
+                                  <span class="text-green-600">✓</span>
+                                </Show>
+                              </td>
+                              <td class="p-3 text-lg text-center">
+                                <Show
+                                  when={part.type === 'device'}
+                                  fallback={<span class="text-gray-400">–</span>}
+                                >
+                                  <span class="text-green-600">✓</span>
+                                </Show>
+                              </td>
+                            </tr>
                           )}
-                        </Show>
+                        </For>
                       </tbody>
                     </table>
                   </div>
