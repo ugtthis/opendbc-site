@@ -280,7 +280,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="Harness"
-                      value={car()!.harness || 'N/A'}
+                      value={car()!.harness}
                       isEven={true}
                       isOpen={openDesc() === 'harness'}
                       onToggle={() => toggleDesc('harness')}
@@ -415,7 +415,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE}>
                           <ExpandableSpec
                             label="Control Type"
-                            value={car()!.steer_control_type || 'torque'}
+                            value={car()!.steer_control_type}
                             isEven={true}
                             isOpen={openDesc() === 'control-type'}
                             onToggle={() => toggleDesc('control-type')}
@@ -477,7 +477,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION}>
                           <ExpandableSpec
                             label="Network Location"
-                            value={car()!.network_location || 'fwdCamera'}
+                            value={car()!.network_location}
                             isEven={true}
                             isOpen={openDesc() === 'network-location'}
                             onToggle={() => toggleDesc('network-location')}
@@ -594,7 +594,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="outline">
                     <ExpandableSpec
                       label="FSR Longitudinal"
-                      value={car()!.fsr_longitudinal || '26 mph'}
+                      value={car()!.fsr_longitudinal}
                       isEven={true}
                       isOpen={openDesc() === 'fsr-longitudinal'}
                       onToggle={() => toggleDesc('fsr-longitudinal')}
@@ -607,7 +607,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="outline">
                     <ExpandableSpec
                       label="FSR Steering"
-                      value={car()!.fsr_steering || '25 mph'}
+                      value={car()!.fsr_steering}
                       isEven={false}
                       isOpen={openDesc() === 'fsr-steering'}
                       onToggle={() => toggleDesc('fsr-steering')}
@@ -620,7 +620,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="outline">
                     <ExpandableSpec
                       label="Longitudinal Control"
-                      value={car()!.longitudinal || 'openpilot'}
+                      value={car()!.longitudinal}
                       isEven={true}
                       isOpen={openDesc() === 'longitudinal-control'}
                       onToggle={() => toggleDesc('longitudinal-control')}
@@ -659,7 +659,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="outline">
                     <ExpandableSpec
                       label="Steering Torque"
-                      value={car()!.steering_torque || 'empty'}
+                      value={car()!.steering_torque}
                       isEven={false}
                       isOpen={openDesc() === 'steering-torque'}
                       onToggle={() => toggleDesc('steering-torque')}

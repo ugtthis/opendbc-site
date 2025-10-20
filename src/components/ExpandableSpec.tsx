@@ -2,7 +2,7 @@ import { Show, type JSX } from 'solid-js';
 
 interface ExpandableSpecProps {
   label: string;
-  value?: string | number;
+  value?: string | number | null;
   description: string;
   isEven?: boolean;
   isOpen?: boolean;
@@ -13,6 +13,7 @@ interface ExpandableSpecProps {
 
 export default function ExpandableSpec(props: ExpandableSpecProps) {
   const isVertical = () => props.layout === 'vertical';
+  const displayValue = () => props.value ?? 'N/A';
 
   return (
     <div>
@@ -35,7 +36,7 @@ export default function ExpandableSpec(props: ExpandableSpecProps) {
           <span class={`text-xs ${
             isVertical() ? 'whitespace-pre-line break-words' : 'whitespace-nowrap shrink-0'
           }`}>
-            {props.value}
+            {displayValue()}
           </span>
         )}
       </div>
