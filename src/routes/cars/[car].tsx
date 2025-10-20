@@ -107,7 +107,6 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
   )
 }
 
-// Inner component that uses the toggle context
 function CarDetailContent() {
   const params = useParams()
   const toggle = useToggle()
