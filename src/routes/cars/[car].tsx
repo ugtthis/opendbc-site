@@ -199,10 +199,19 @@ function CarDetailContent() {
       <div class="min-h-screen bg-gray-100">
         <GradientHeader car={car()} showUpArrow={showUpArrow()} onScrollToTop={scrollToTop} />
 
-        {(() => {
-          const currentCar = car()
-          if (!currentCar) return null
-          return (
+        <Show
+          when={car()}
+          fallback={
+            <div class="p-8 text-center">
+              <h1 class="mb-4 text-2xl font-bold text-gray-900">Car Not Found</h1>
+              <p class="mb-6 text-gray-600">The requested vehicle "{params.car}" could not be found in our database.</p>
+              <A href="/" class="inline-flex items-center py-2 px-4 text-white bg-blue-600 rounded-lg transition-colors hover:bg-blue-700">
+                ← Back to Car List
+              </A>
+            </div>
+          }
+        >
+          {(currentCar) => (
           <div class="p-4 pt-20 mx-auto md:p-6 md:pt-24 max-w-[1500px]">
 
             <div class="flex flex-col gap-4 lg:flex-row lg:gap-6">
@@ -212,11 +221,11 @@ function CarDetailContent() {
                 {/* Sidebar Header */}
                 <div class="border border-black shadow-sm">
                   <div class="flex justify-between items-stretch pl-4 text-white bg-black">
-                    <h1 class="py-3 text-xl font-bold">{car()!.make}</h1>
+                    <h1 class="py-3 text-xl font-bold">{currentCar().make}</h1>
                     <MasterToggle />
                   </div>
                   <div class="py-3 pl-4 bg-white">
-                    <div class="font-medium">{car()!.years} {car()!.make} {car()!.model}</div>
+                    <div class="font-medium">{currentCar().years} {currentCar().make} {currentCar().model}</div>
                   </div>
                 </div>
 
@@ -248,7 +257,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="Support Type"
-                      value={car()!.support_type}
+                      value={currentCar().support_type}
                       isOpen={openDesc() === 'support-type-badge'}
                       onToggle={() => toggleDesc('support-type-badge')}
                       description="The level of openpilot support for this vehicle. 'Upstream' indicates full official support with active maintenance, while other types may have varying levels of functionality and community support."
@@ -258,7 +267,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="ADAS Package"
-                      value={car()!.package}
+                      value={currentCar().package}
                       isEven={true}
                       isOpen={openDesc() === 'adas-package'}
                       onToggle={() => toggleDesc('adas-package')}
@@ -269,7 +278,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="Fingerprint"
-                      value={car()!.car_fingerprint}
+                      value={currentCar().car_fingerprint}
                       isOpen={openDesc() === 'fingerprint'}
                       onToggle={() => toggleDesc('fingerprint')}
                       description="The unique identifier openpilot uses to detect and configure itself for this specific vehicle model. This fingerprint is based on CAN message patterns and ensures proper compatibility."
@@ -279,7 +288,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="Harness"
-                      value={car()!.harness}
+                      value={currentCar().harness}
                       isEven={true}
                       isOpen={openDesc() === 'harness'}
                       onToggle={() => toggleDesc('harness')}
@@ -297,7 +306,7 @@ function CarDetailContent() {
                   id="general"
                 >
                   <div class="max-w-none prose prose-sm">
-                    <div class="text-sm leading-relaxed text-gray-700" innerHTML={String(car()!.detail_sentence || '')} />
+                    <div class="text-sm leading-relaxed text-gray-700" innerHTML={String(currentCar().detail_sentence || '')} />
                   </div>
                 </AccordionContainer>
 
@@ -317,28 +326,36 @@ function CarDetailContent() {
                         </tr>
                       </thead>
                       <tbody>
-                        {currentCar.parts && Array.isArray(currentCar.parts) && currentCar.parts.length > 0 ? (
-                          <For each={currentCar.parts}>
-                            {(part) => (
-                              <tr class="border-b border-gray-100">
-                                <td class="p-3 font-medium">{part.count}</td>
-                                <td class="p-3">{part.name}</td>
-                                <td class="p-3 text-lg text-center">
-                                  <span class={part.type === 'connector' || part.type === 'accessory' ? 'text-green-600' : 'text-gray-400'}>
-                                    {part.type === 'connector' || part.type === 'accessory' ? '✓' : '–'}
-                                  </span>
-                                </td>
-                                <td class="p-3 text-lg text-center">
-                                  <span class={part.type === 'device' ? 'text-green-600' : 'text-gray-400'}>
-                                    {part.type === 'device' ? '✓' : '–'}
-                                  </span>
-                                </td>
-                              </tr>
-                            )}
-                          </For>
-                        ) : (
-                          <tr><td colspan="4" class="p-6 text-center text-gray-500">No parts data available</td></tr>
-                        )}
+                        <Show
+                          when={currentCar().parts}
+                          fallback={<tr><td colspan="4" class="p-6 text-center text-gray-500">No parts data available</td></tr>}
+                        >
+                          {(parts) => (
+                            <Show
+                              when={parts().length > 0}
+                              fallback={<tr><td colspan="4" class="p-6 text-center text-gray-500">No parts data available</td></tr>}
+                            >
+                              <For each={parts()}>
+                                {(part) => (
+                                  <tr class="border-b border-gray-100">
+                                    <td class="p-3 font-medium">{part.count}</td>
+                                    <td class="p-3">{part.name}</td>
+                                    <td class="p-3 text-lg text-center">
+                                      <span class={part.type === 'connector' || part.type === 'accessory' ? 'text-green-600' : 'text-gray-400'}>
+                                        {part.type === 'connector' || part.type === 'accessory' ? '✓' : '–'}
+                                      </span>
+                                    </td>
+                                    <td class="p-3 text-lg text-center">
+                                      <span class={part.type === 'device' ? 'text-green-600' : 'text-gray-400'}>
+                                        {part.type === 'device' ? '✓' : '–'}
+                                      </span>
+                                    </td>
+                                  </tr>
+                                )}
+                              </For>
+                            </Show>
+                          )}
+                        </Show>
                       </tbody>
                     </table>
                   </div>
@@ -359,7 +376,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_STIFFNESS_FACTOR}>
                           <ExpandableSpec
                             label="Stiffness Factor"
-                            value={formatValue(car()!.tire_stiffness_factor)}
+                            value={formatValue(currentCar().tire_stiffness_factor)}
                             isEven={true}
                             isOpen={openDesc() === 'tire-stiffness-factor'}
                             onToggle={() => toggleDesc('tire-stiffness-factor')}
@@ -369,7 +386,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS}>
                           <ExpandableSpec
                             label="Front Stiffness"
-                            value={formatValue(car()!.tire_stiffness_front)}
+                            value={formatValue(currentCar().tire_stiffness_front)}
                             isEven={false}
                             isOpen={openDesc() === 'tire-front-stiffness'}
                             onToggle={() => toggleDesc('tire-front-stiffness')}
@@ -379,7 +396,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS}>
                           <ExpandableSpec
                             label="Rear Stiffness"
-                            value={formatValue(car()!.tire_stiffness_rear)}
+                            value={formatValue(currentCar().tire_stiffness_rear)}
                             isEven={true}
                             isOpen={openDesc() === 'tire-rear-stiffness'}
                             onToggle={() => toggleDesc('tire-rear-stiffness')}
@@ -394,7 +411,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.ACTUATOR_DELAY}>
                           <ExpandableSpec
                             label="Actuator Delay"
-                            value={formatValue(car()!.steer_actuator_delay, 's')}
+                            value={formatValue(currentCar().steer_actuator_delay, 's')}
                             isEven={true}
                             isOpen={openDesc() === 'actuator-delay'}
                             onToggle={() => toggleDesc('actuator-delay')}
@@ -404,7 +421,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER}>
                           <ExpandableSpec
                             label="Limit Timer"
-                            value={formatValue(car()!.steer_limit_timer, 's')}
+                            value={formatValue(currentCar().steer_limit_timer, 's')}
                             isEven={false}
                             isOpen={openDesc() === 'limit-timer'}
                             onToggle={() => toggleDesc('limit-timer')}
@@ -414,7 +431,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE}>
                           <ExpandableSpec
                             label="Control Type"
-                            value={car()!.steer_control_type}
+                            value={currentCar().steer_control_type}
                             isEven={true}
                             isOpen={openDesc() === 'control-type'}
                             onToggle={() => toggleDesc('control-type')}
@@ -429,7 +446,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED}>
                           <ExpandableSpec
                             label="Stopping Speed"
-                            value={formatValue(car()!.vEgo_stopping, ' m/s')}
+                            value={formatValue(currentCar().vEgo_stopping, ' m/s')}
                             isEven={true}
                             isOpen={openDesc() === 'stopping-speed'}
                             onToggle={() => toggleDesc('stopping-speed')}
@@ -439,7 +456,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.STARTING_SPEED}>
                           <ExpandableSpec
                             label="Starting Speed"
-                            value={formatValue(car()!.vEgo_starting, ' m/s')}
+                            value={formatValue(currentCar().vEgo_starting, ' m/s')}
                             isEven={false}
                             isOpen={openDesc() === 'starting-speed'}
                             onToggle={() => toggleDesc('starting-speed')}
@@ -449,7 +466,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.STOP_ACCEL}>
                           <ExpandableSpec
                             label="Stop Accel"
-                            value={formatValue(car()!.stop_accel, ' m/s²')}
+                            value={formatValue(currentCar().stop_accel, ' m/s²')}
                             isEven={true}
                             isOpen={openDesc() === 'stop-accel'}
                             onToggle={() => toggleDesc('stop-accel')}
@@ -476,7 +493,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.NETWORK_LOCATION}>
                           <ExpandableSpec
                             label="Network Location"
-                            value={car()!.network_location}
+                            value={currentCar().network_location}
                             isEven={true}
                             isOpen={openDesc() === 'network-location'}
                             onToggle={() => toggleDesc('network-location')}
@@ -494,11 +511,11 @@ function CarDetailContent() {
                             description="Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, 'radar' messages on bus 1. This tells openpilot which physical CAN bus carries each type of vehicle data."
                           >
                             <Show
-                              when={car()!.bus_lookup && Object.keys(car()!.bus_lookup || {}).length > 0}
+                              when={currentCar().bus_lookup && Object.keys(currentCar().bus_lookup || {}).length > 0}
                               fallback={<span class="text-xs">N/A</span>}
                             >
                               <div class="text-xs break-words">
-                                <For each={Object.entries(car()!.bus_lookup!)}>
+                                <For each={Object.entries(currentCar().bus_lookup!)}>
                                   {([key, value]) => (
                                     <div class="py-0.5">
                                       <span class="font-semibold">{key}:</span> {value}
@@ -517,7 +534,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.EXPERIMENTAL_LONGITUDINAL}>
                           <ExpandableSpec
                             label="Experimental Longitudinal"
-                            value={car()!.experimental_longitudinal_available ? 'Enabled' : 'Disabled'}
+                            value={currentCar().experimental_longitudinal_available ? 'Enabled' : 'Disabled'}
                             isEven={true}
                             isOpen={openDesc() === 'experimental-longitudinal'}
                             onToggle={() => toggleDesc('experimental-longitudinal')}
@@ -531,7 +548,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.DSU_ENABLED}>
                           <ExpandableSpec
                             label="DSU Enabled"
-                            value={car()!.enable_dsu ? 'Yes' : 'No'}
+                            value={currentCar().enable_dsu ? 'Yes' : 'No'}
                             isEven={false}
                             isOpen={openDesc() === 'dsu-enabled'}
                             onToggle={() => toggleDesc('dsu-enabled')}
@@ -544,7 +561,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.BSM_ENABLED}>
                           <ExpandableSpec
                             label="BSM Enabled"
-                            value={car()!.enable_bsm ? 'Yes' : 'No'}
+                            value={currentCar().enable_bsm ? 'Yes' : 'No'}
                             isEven={true}
                             isOpen={openDesc() === 'bsm-enabled'}
                             onToggle={() => toggleDesc('bsm-enabled')}
@@ -556,7 +573,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.PCM_CRUISE}>
                           <ExpandableSpec
                             label="PCM Cruise"
-                            value={car()!.pcm_cruise ? 'Yes' : 'No'}
+                            value={currentCar().pcm_cruise ? 'Yes' : 'No'}
                             isEven={false}
                             isOpen={openDesc() === 'pcm-cruise'}
                             onToggle={() => toggleDesc('pcm-cruise')}
@@ -580,7 +597,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED} variant="outline">
                     <ExpandableSpec
                       label="Min Steering Speed"
-                      value={formatSpeed(car()!.min_steer_speed)}
+                      value={formatSpeed(currentCar().min_steer_speed)}
                       isEven={false}
                       isOpen={openDesc() === 'min-steering-speed'}
                       onToggle={() => toggleDesc('min-steering-speed')}
@@ -593,7 +610,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="outline">
                     <ExpandableSpec
                       label="FSR Longitudinal"
-                      value={car()!.fsr_longitudinal}
+                      value={currentCar().fsr_longitudinal}
                       isEven={true}
                       isOpen={openDesc() === 'fsr-longitudinal'}
                       onToggle={() => toggleDesc('fsr-longitudinal')}
@@ -606,7 +623,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="outline">
                     <ExpandableSpec
                       label="FSR Steering"
-                      value={car()!.fsr_steering}
+                      value={currentCar().fsr_steering}
                       isEven={false}
                       isOpen={openDesc() === 'fsr-steering'}
                       onToggle={() => toggleDesc('fsr-steering')}
@@ -619,7 +636,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="outline">
                     <ExpandableSpec
                       label="Longitudinal Control"
-                      value={car()!.longitudinal}
+                      value={currentCar().longitudinal}
                       isEven={true}
                       isOpen={openDesc() === 'longitudinal-control'}
                       onToggle={() => toggleDesc('longitudinal-control')}
@@ -632,7 +649,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="outline">
                     <ExpandableSpec
                       label="Support Type"
-                      value={car()!.support_type}
+                      value={currentCar().support_type}
                       isEven={false}
                       isOpen={openDesc() === 'support-type'}
                       onToggle={() => toggleDesc('support-type')}
@@ -645,7 +662,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="outline">
                     <ExpandableSpec
                       label="Auto Resume"
-                      value={car()!.auto_resume ? 'Yes' : 'No'}
+                      value={currentCar().auto_resume ? 'Yes' : 'No'}
                       isEven={true}
                       isOpen={openDesc() === 'auto-resume'}
                       onToggle={() => toggleDesc('auto-resume')}
@@ -658,7 +675,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="outline">
                     <ExpandableSpec
                       label="Steering Torque"
-                      value={car()!.steering_torque}
+                      value={currentCar().steering_torque}
                       isEven={false}
                       isOpen={openDesc() === 'steering-torque'}
                       onToggle={() => toggleDesc('steering-torque')}
@@ -694,7 +711,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT} variant="outline">
                     <ExpandableSpec
                       label="Curb Weight"
-                      value={formatWeight(car()!.mass_curb_weight)}
+                      value={formatWeight(currentCar().mass_curb_weight)}
                       isEven={false}
                       isOpen={openDesc() === 'curb-weight'}
                       onToggle={() => toggleDesc('curb-weight')}
@@ -707,7 +724,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="outline">
                     <ExpandableSpec
                       label="Wheelbase"
-                      value={formatValue(car()!.wheelbase, ' m')}
+                      value={formatValue(currentCar().wheelbase, ' m')}
                       isEven={true}
                       isOpen={openDesc() === 'wheelbase'}
                       onToggle={() => toggleDesc('wheelbase')}
@@ -720,7 +737,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="outline">
                     <ExpandableSpec
                       label="Steer Ratio"
-                      value={formatValue(car()!.steer_ratio)}
+                      value={formatValue(currentCar().steer_ratio)}
                       isEven={false}
                       isOpen={openDesc() === 'steer-ratio'}
                       onToggle={() => toggleDesc('steer-ratio')}
@@ -733,7 +750,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="outline">
                     <ExpandableSpec
                       label="Center to Front Ratio"
-                      value={formatValue(car()!.center_to_front_ratio)}
+                      value={formatValue(currentCar().center_to_front_ratio)}
                       isEven={true}
                       isOpen={openDesc() === 'center-front-ratio'}
                       onToggle={() => toggleDesc('center-front-ratio')}
@@ -746,7 +763,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="outline">
                     <ExpandableSpec
                       label="Max Lateral Accel"
-                      value={formatValue(car()!.max_lateral_accel, ' m/s²')}
+                      value={formatValue(currentCar().max_lateral_accel, ' m/s²')}
                       isEven={false}
                       isOpen={openDesc() === 'max-lateral-accel'}
                       onToggle={() => toggleDesc('max-lateral-accel')}
@@ -759,19 +776,9 @@ function CarDetailContent() {
                 </AccordionContainer>
               </div>
             </div>
-        </div>
-        )
-      })()}
-
-        {!car() && (
-          <div class="p-8 text-center">
-            <h1 class="mb-4 text-2xl font-bold text-gray-900">Car Not Found</h1>
-            <p class="mb-6 text-gray-600">The requested vehicle "{params.car}" could not be found in our database.</p>
-            <A href="/" class="inline-flex items-center py-2 px-4 text-white bg-blue-600 rounded-lg transition-colors hover:bg-blue-700">
-              ← Back to Car List
-            </A>
           </div>
-        )}
+          )}
+        </Show>
       </div>
     </QuickNavProvider>
   )
