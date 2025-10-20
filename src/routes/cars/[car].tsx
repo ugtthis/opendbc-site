@@ -486,43 +486,29 @@ function CarDetailContent() {
                             }
                           />
                         </QuickNavWrapper>
-
-                        {/* Bus Lookup: Custom layout for displaying multiple key-value pairs */}
                         <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP}>
-                          <div>
-                            <div
-                              class={`flex flex-col px-3 py-3 min-h-[48px] cursor-pointer hover:bg-amber-50 transition-colors ${
-                                openDesc() === 'bus-lookup' ? 'bg-amber-50' : ''
-                              }`}
-                              onClick={() => toggleDesc('bus-lookup')}
+                          <ExpandableSpec
+                            layout="vertical"
+                            label="Bus Lookup"
+                            isOpen={openDesc() === 'bus-lookup'}
+                            onToggle={() => toggleDesc('bus-lookup')}
+                            description="Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, 'radar' messages on bus 1. This tells openpilot which physical CAN bus carries each type of vehicle data."
+                          >
+                            <Show
+                              when={car()!.bus_lookup && Object.keys(car()!.bus_lookup || {}).length > 0}
+                              fallback={<span class="text-xs">N/A</span>}
                             >
-                              <span class={`text-xs mb-1 ${openDesc() === 'bus-lookup' ? 'text-amber-600 font-medium' : ''}`}>
-                                Bus Lookup
-                              </span>
-                              <Show
-                                when={car()!.bus_lookup && Object.keys(car()!.bus_lookup || {}).length > 0}
-                                fallback={<span class="text-sm text-gray-500">N/A</span>}
-                              >
-                                <div class="text-xs">
-                                  <For each={Object.entries(car()!.bus_lookup!)}>
-                                    {([key, value]) => (
-                                      <div class="py-0.5 break-words">
-                                        <span class="font-medium">{key}:</span> {value}
-                                      </div>
-                                    )}
-                                  </For>
-                                </div>
-                              </Show>
-                            </div>
-                            <Show when={openDesc() === 'bus-lookup'}>
-                              <div class="overflow-hidden px-3 pt-1 pb-3 bg-amber-50 border-l-4 border-amber-400">
-                                <p class="text-xs leading-relaxed text-gray-600">
-                                  Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, 'radar' messages on bus 1.
-                                  This tells openpilot which physical CAN bus carries each type of vehicle data.
-                                </p>
+                              <div class="text-xs break-words">
+                                <For each={Object.entries(car()!.bus_lookup!)}>
+                                  {([key, value]) => (
+                                    <div class="py-0.5">
+                                      <span class="font-semibold">{key}:</span> {value}
+                                    </div>
+                                  )}
+                                </For>
                               </div>
                             </Show>
-                          </div>
+                          </ExpandableSpec>
                         </QuickNavWrapper>
                       </div>
                     </div>

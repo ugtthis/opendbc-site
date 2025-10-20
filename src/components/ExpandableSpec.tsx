@@ -1,13 +1,14 @@
-import { Show } from 'solid-js';
+import { Show, type JSX } from 'solid-js';
 
 interface ExpandableSpecProps {
   label: string;
-  value: string | number;
+  value?: string | number;
   description: string;
   isEven?: boolean;
   isOpen?: boolean;
   onToggle: () => void;
   layout?: 'horizontal' | 'vertical';
+  children?: JSX.Element;
 }
 
 export default function ExpandableSpec(props: ExpandableSpecProps) {
@@ -30,9 +31,13 @@ export default function ExpandableSpec(props: ExpandableSpecProps) {
         }`}>
           {props.label}
         </span>
-        <span class={`text-sm ${isVertical() ? '' : 'whitespace-nowrap shrink-0'}`}>
-          {props.value}
-        </span>
+        {props.children || (
+          <span class={`text-xs ${
+            isVertical() ? 'whitespace-pre-line break-words' : 'whitespace-nowrap shrink-0'
+          }`}>
+            {props.value}
+          </span>
+        )}
       </div>
 
       <Show when={props.isOpen}>
