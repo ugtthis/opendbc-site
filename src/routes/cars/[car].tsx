@@ -13,6 +13,7 @@ import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import { slugify } from '~/lib/utils'
+import { getSupportTypeColor } from '~/types/supportType'
 
 import metadata from '~/data/metadata.json'
 
@@ -233,9 +234,9 @@ function CarDetailContent() {
                 <AccordionContainer
                   title="Compatibility Info"
                   id="compatibility-info"
-                  contentClass="bg-white border border-[#e5e7eb]"
                   disableDefaultPadding={true}
                 >
+                  <div class={`h-4 w-full -mb-1.5 ${getSupportTypeColor(currentCar().support_type)}`} />
                   <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE} variant="outline">
                     <ExpandableSpec
                       layout="vertical"
