@@ -5,7 +5,7 @@ import type { Car } from '~/types/CarDataTypes'
 import GradientButton from '~/components/ui/GradientButton'
 import HighlightText from '~/components/ui/HighlightText'
 import { getSupportTypeColor } from '~/types/supportType'
-import { cn } from '~/lib/utils'
+import { cn, slugify } from '~/lib/utils'
 
 import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
 import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
@@ -282,7 +282,7 @@ const Card: Component<CardProps> = (props) => {
 
             {/* Gradient Button */}
             <div class="mt-4">
-              <GradientButton href={`/cars/${encodeURIComponent(props.car.name)}`}>
+              <GradientButton href={`/cars/${slugify(props.car.name)}`}>
                 <div
                   class={`
                     text-black transition-all duration-200 ease-in w-[28px] h-[24px]

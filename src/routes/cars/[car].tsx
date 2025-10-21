@@ -12,6 +12,7 @@ import { SPEC_ID, getAccordionIdForSpec } from '~/data/quickNavSpecs'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
+import { slugify } from '~/lib/utils'
 
 import metadata from '~/data/metadata.json'
 
@@ -128,27 +129,9 @@ function CarDetailContent() {
     })
   })
 
-  const car = createMemo((): DetailedSpecs | undefined => {
-    const carData = metadata as DetailedSpecs[]
-    const carName = params.car ? decodeURIComponent(params.car) : undefined
-
-    if (!carName) return undefined
-
-    // Try exact match first
-    let found = carData.find(c => c.name === carName)
-
-    // If not found, try case-insensitive
-    if (!found) {
-      found = carData.find(c => c.name.toLowerCase() === carName.toLowerCase())
-    }
-
-    // If still not found, try partial matching (fallback for old URLs)
-    if (!found) {
-      const fallbackName = carName.replace(/-/g, ' ')
-      found = carData.find(c => c.name === fallbackName || c.name.toLowerCase() === fallbackName.toLowerCase())
-    }
-
-    return found
+  const car = createMemo(() => {
+    if (!params.car) return undefined
+    return (metadata as DetailedSpecs[]).find(c => slugify(c.name) === params.car)
   })
 
 
