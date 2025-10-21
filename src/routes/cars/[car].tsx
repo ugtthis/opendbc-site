@@ -605,17 +605,6 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="outline">
-                    <ExpandableSpec
-                      label="Support Type"
-                      isEven={false}
-                      isOpen={openDesc() === 'support-type'}
-                      onToggle={() => toggleDesc('support-type')}
-                      description={DESCRIPTIONS[SPEC_ID.SUPPORT_TYPE]}
-                    >
-                      <span class="font-semibold uppercase">{currentCar().support_type}</span>
-                    </ExpandableSpec>
-                  </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="outline">
                     <ExpandableSpec
                       label="Auto Resume"
