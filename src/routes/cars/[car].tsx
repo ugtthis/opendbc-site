@@ -9,6 +9,7 @@ import { QuickNavProvider, QuickNavWrapper } from '~/components/QuickNavHighligh
 import QuickNavDrawer from '~/components/QuickNavDrawer'
 import QuickNavSpecLinks from '~/components/QuickNavSpecLinks'
 import { SPEC_ID, getAccordionIdForSpec } from '~/data/quickNavSpecs'
+import { DESCRIPTIONS } from '~/data/specDescriptions'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
@@ -243,7 +244,7 @@ function CarDetailContent() {
                       label="Support Type"
                       isOpen={openDesc() === 'support-type-badge'}
                       onToggle={() => toggleDesc('support-type-badge')}
-                      description="The level of openpilot support for this vehicle. 'Upstream' indicates full official support with active maintenance, while other types may have varying levels of functionality and community support."
+                      description={DESCRIPTIONS[SPEC_ID.SUPPORT_TYPE_BADGE]}
                     >
                       <span class="text-sm font-semibold uppercase">{currentCar().support_type}</span>
                     </ExpandableSpec>
@@ -256,7 +257,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'adas-package'}
                       onToggle={() => toggleDesc('adas-package')}
-                      description="The required ADAS package/trim that needs to comes with this vehicle to be compatible with openpilot."
+                      description={DESCRIPTIONS[SPEC_ID.ADAS_PACKAGE]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FINGERPRINT} variant="outline">
@@ -266,7 +267,7 @@ function CarDetailContent() {
                       value={currentCar().car_fingerprint}
                       isOpen={openDesc() === 'fingerprint'}
                       onToggle={() => toggleDesc('fingerprint')}
-                      description="The unique identifier openpilot uses to detect and configure itself for this specific vehicle model. This fingerprint is based on CAN message patterns and ensures proper compatibility."
+                      description={DESCRIPTIONS[SPEC_ID.FINGERPRINT]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.HARNESS} variant="outline">
@@ -277,7 +278,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'harness'}
                       onToggle={() => toggleDesc('harness')}
-                      description="Type of car harness that is compatible with this vehicle. comma's car harness is a universal interface to your car. Use the car harness to connect your comma device to your vehicle."
+                      description={DESCRIPTIONS[SPEC_ID.HARNESS]}
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
@@ -362,7 +363,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'tire-stiffness-factor'}
                             onToggle={() => toggleDesc('tire-stiffness-factor')}
-                            description="A multiplier applied to the tire stiffness values to adjust handling characteristics. This factor fine-tunes how the vehicle's tires respond to steering inputs and road conditions."
+                            description={DESCRIPTIONS[SPEC_ID.TIRE_STIFFNESS_FACTOR]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS}>
@@ -372,7 +373,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'tire-front-stiffness'}
                             onToggle={() => toggleDesc('tire-front-stiffness')}
-                            description="The cornering stiffness of the front tires measured in N/rad. Higher values indicate stiffer tires that resist lateral deformation more, affecting steering response and front-end grip."
+                            description={DESCRIPTIONS[SPEC_ID.TIRE_FRONT_STIFFNESS]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS}>
@@ -382,7 +383,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'tire-rear-stiffness'}
                             onToggle={() => toggleDesc('tire-rear-stiffness')}
-                            description="The cornering stiffness of the rear tires measured in N/rad. This value affects rear-end stability and the vehicle's tendency to understeer or oversteer during cornering."
+                            description={DESCRIPTIONS[SPEC_ID.TIRE_REAR_STIFFNESS]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -397,7 +398,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'actuator-delay'}
                             onToggle={() => toggleDesc('actuator-delay')}
-                            description="The time delay between when openpilot sends a steering command and when the vehicle's steering actuator responds. This accounts for mechanical and electrical latency in the steering system."
+                            description={DESCRIPTIONS[SPEC_ID.ACTUATOR_DELAY]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER}>
@@ -407,7 +408,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'limit-timer'}
                             onToggle={() => toggleDesc('limit-timer')}
-                            description="The duration for which steering torque limits are enforced before the system may request reduced steering authority. This prevents sustained excessive steering commands that could trigger safety interventions."
+                            description={DESCRIPTIONS[SPEC_ID.LIMIT_TIMER]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE}>
@@ -417,7 +418,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'control-type'}
                             onToggle={() => toggleDesc('control-type')}
-                            description="The method openpilot uses to control steering. 'Torque' control commands steering wheel torque directly, while 'angle' control commands specific steering angles. Most vehicles use torque-based control."
+                            description={DESCRIPTIONS[SPEC_ID.CONTROL_TYPE]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -432,7 +433,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'stopping-speed'}
                             onToggle={() => toggleDesc('stopping-speed')}
-                            description="The speed threshold below which the vehicle is considered stopped. This is used to determine when to apply different control strategies, such as holding the vehicle at a complete stop."
+                            description={DESCRIPTIONS[SPEC_ID.STOPPING_SPEED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.STARTING_SPEED}>
@@ -442,7 +443,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'starting-speed'}
                             onToggle={() => toggleDesc('starting-speed')}
-                            description="The speed threshold above which the vehicle is considered moving after a stop. This hysteresis prevents rapid toggling between stopped and moving states when the vehicle is barely moving."
+                            description={DESCRIPTIONS[SPEC_ID.STARTING_SPEED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.STOP_ACCEL}>
@@ -452,7 +453,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'stop-accel'}
                             onToggle={() => toggleDesc('stop-accel')}
-                            description="The deceleration rate applied when bringing the vehicle to a stop. This negative acceleration value determines how aggressively the vehicle brakes when coming to a complete stop."
+                            description={DESCRIPTIONS[SPEC_ID.STOP_ACCEL]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -479,9 +480,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'network-location'}
                             onToggle={() => toggleDesc('network-location')}
-                            description={
-                              "Specifies which CAN gateway the comma device connects to."
-                            }
+                            description={DESCRIPTIONS[SPEC_ID.NETWORK_LOCATION]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP}>
@@ -490,10 +489,7 @@ function CarDetailContent() {
                             label="Bus Lookup"
                             isOpen={openDesc() === 'bus-lookup'}
                             onToggle={() => toggleDesc('bus-lookup')}
-                            description={
-                              "Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, " +
-                              "'radar' messages on bus 1. This tells openpilot which physical CAN bus carries each type of vehicle data."
-                            }
+                            description={DESCRIPTIONS[SPEC_ID.BUS_LOOKUP]}
                           >
                             <Show
                               when={currentCar().bus_lookup}
@@ -525,11 +521,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'experimental-longitudinal'}
                             onToggle={() => toggleDesc('experimental-longitudinal')}
-                            description={
-                              "If vehicle supports experimental mode's longitudinal control and is enabled, " +
-                              "openpilot will drive the speed that the model thinks a human would drive." +
-                              "This includes slowing down for turns, stopping at stop signs and traffic lights, etc."
-                            }
+                            description={DESCRIPTIONS[SPEC_ID.EXPERIMENTAL_LONGITUDINAL]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.DSU_ENABLED}>
@@ -539,10 +531,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'dsu-enabled'}
                             onToggle={() => toggleDesc('dsu-enabled')}
-                            description={
-                              "Toyota-specific: The DSU (Driving Support Unit) is the radar/ACC module on pre-TSS2 Toyotas. " +
-                              "When enabled, openpilot sends longitudinal control commands through the DSU instead of directly to the PCM. Only relevant for certain Toyota models."
-                            }
+                            description={DESCRIPTIONS[SPEC_ID.DSU_ENABLED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.BSM_ENABLED}>
@@ -552,9 +541,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'bsm-enabled'}
                             onToggle={() => toggleDesc('bsm-enabled')}
-                            description={
-                              "Indicates if the vehicle has BSM (Blind Spot Monitoring) capability that openpilot can read from the CAN bus. "
-                            }
+                            description={DESCRIPTIONS[SPEC_ID.BSM_ENABLED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.PCM_CRUISE}>
@@ -564,10 +551,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'pcm-cruise'}
                             onToggle={() => toggleDesc('pcm-cruise')}
-                            description={
-                              "Indicates if the vehicle uses PCM (Powertrain Control Module) cruise control vs camera-based cruise. " +
-                              "PCM cruise is the traditional setup where the engine computer handles cruise control. This affects which CAN messages openpilot uses for longitudinal control."
-                            }
+                            description={DESCRIPTIONS[SPEC_ID.PCM_CRUISE]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -588,10 +572,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'min-steering-speed'}
                       onToggle={() => toggleDesc('min-steering-speed')}
-                      description={
-                        "The minimum speed at which openpilot can provide steering assistance. " +
-                        "Below this speed, the driver must steer manually."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="outline">
@@ -601,10 +582,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'fsr-longitudinal'}
                       onToggle={() => toggleDesc('fsr-longitudinal')}
-                      description={
-                        "Full Self-Driving Capability longitudinal speed threshold. " +
-                        "The minimum speed for longitudinal (acceleration/braking) control in FSR mode."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="outline">
@@ -614,10 +592,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'fsr-steering'}
                       onToggle={() => toggleDesc('fsr-steering')}
-                      description={
-                        "Full Self-Driving Capability steering speed threshold. " +
-                        "The minimum speed for steering control in FSR mode."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="outline">
@@ -627,10 +602,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'longitudinal-control'}
                       onToggle={() => toggleDesc('longitudinal-control')}
-                      description={
-                        "The system responsible for acceleration and braking control. " +
-                        "'openpilot' means full longitudinal control, while other values may indicate limited or no longitudinal control."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="outline">
@@ -639,10 +611,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'support-type'}
                       onToggle={() => toggleDesc('support-type')}
-                      description={
-                        "The level of openpilot support for this vehicle. " +
-                        "'Upstream' indicates full official support, while other types may have varying levels of functionality."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.SUPPORT_TYPE]}
                     >
                       <span class="font-semibold uppercase">{currentCar().support_type}</span>
                     </ExpandableSpec>
@@ -654,10 +623,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'auto-resume'}
                       onToggle={() => toggleDesc('auto-resume')}
-                      description={
-                        "Whether openpilot can automatically resume driving after coming to a complete stop, " +
-                        "without driver intervention."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="outline">
@@ -667,10 +633,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'steering-torque'}
                       onToggle={() => toggleDesc('steering-torque')}
-                      description={
-                        "Information about the steering torque characteristics or limitations for this vehicle. " +
-                        "'Empty' typically means no specific torque data is available."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.STEERING_TORQUE]}
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
@@ -703,10 +666,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'curb-weight'}
                       onToggle={() => toggleDesc('curb-weight')}
-                      description={
-                        "The weight of the vehicle without passengers or cargo, " +
-                        "including all fluids and a full tank of fuel."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.CURB_WEIGHT]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="outline">
@@ -716,10 +676,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'wheelbase'}
                       onToggle={() => toggleDesc('wheelbase')}
-                      description={
-                        "The distance between the centers of the front and rear wheels. " +
-                        "A longer wheelbase typically provides better stability at high speeds."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.WHEELBASE]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="outline">
@@ -729,10 +686,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'steer-ratio'}
                       onToggle={() => toggleDesc('steer-ratio')}
-                      description={
-                        "The ratio between the steering wheel angle and the front wheel angle. " +
-                        "A higher ratio means more steering wheel turns are needed for the same wheel angle."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.STEER_RATIO]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="outline">
@@ -742,10 +696,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'center-front-ratio'}
                       onToggle={() => toggleDesc('center-front-ratio')}
-                      description={
-                        "The ratio of the distance from the center of gravity to the front axle versus the total wheelbase. " +
-                        "Affects weight distribution and handling characteristics."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.CENTER_FRONT_RATIO]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="outline">
@@ -755,10 +706,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'max-lateral-accel'}
                       onToggle={() => toggleDesc('max-lateral-accel')}
-                      description={
-                        "The maximum lateral acceleration the vehicle can sustain during cornering before losing traction. " +
-                        "Higher values indicate better cornering capability."
-                      }
+                      description={DESCRIPTIONS[SPEC_ID.MAX_LATERAL_ACCEL]}
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
