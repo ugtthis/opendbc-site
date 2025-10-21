@@ -1,6 +1,7 @@
 import { createContext, useContext, type ParentProps } from 'solid-js'
 import { createSignal, type Accessor, type Setter, createMemo } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
+import { normalize } from '~/lib/utils'
 import carData from '~/data/metadata.json'
 
 const searchAttributes = (car: Car, query: string): boolean => {
@@ -13,8 +14,8 @@ const searchAttributes = (car: Car, query: string): boolean => {
     ...(car.year_list as string[])
   ]
 
-  const searchText = searchFields.join(' ').toLowerCase()
-  const queryWords = query.toLowerCase().trim().split(/\s+/)
+  const searchText = normalize(searchFields.join(' '))
+  const queryWords = normalize(query).trim().split(/\s+/)
 
   return queryWords.every(word => searchText.includes(word))
 }
@@ -98,7 +99,7 @@ export const FilterProvider = (props: ParentProps) => {
       }
     }
 
-    const query = searchQuery().toLowerCase().trim()
+    const query = searchQuery().trim()
     if (query) {
       result = result.filter((car) => searchAttributes(car, query))
     }
@@ -106,14 +107,15 @@ export const FilterProvider = (props: ParentProps) => {
     const sort = sortConfig()
     result.sort((a, b) => {
       if (query) {
+        const normalizedQuery = normalize(query)
         // Sort priority: make prefix > make contains > model prefix > model contains
         const getScore = (car: Car) => {
-          const make = car.make.toLowerCase()
-          const model = car.model.toLowerCase()
-          if (make.startsWith(query)) return 4
-          if (make.includes(query)) return 3
-          if (model.startsWith(query)) return 2
-          if (model.includes(query)) return 1
+          const make = normalize(car.make)
+          const model = normalize(car.model)
+          if (make.startsWith(normalizedQuery)) return 4
+          if (make.includes(normalizedQuery)) return 3
+          if (model.startsWith(normalizedQuery)) return 2
+          if (model.includes(normalizedQuery)) return 1
           return 0
         }
 
