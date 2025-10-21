@@ -241,11 +241,12 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="Support Type"
-                      value={currentCar().support_type}
                       isOpen={openDesc() === 'support-type-badge'}
                       onToggle={() => toggleDesc('support-type-badge')}
                       description="The level of openpilot support for this vehicle. 'Upstream' indicates full official support with active maintenance, while other types may have varying levels of functionality and community support."
-                    />
+                    >
+                      <span class="text-sm font-semibold uppercase">{currentCar().support_type}</span>
+                    </ExpandableSpec>
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE} variant="outline">
                     <ExpandableSpec
@@ -635,7 +636,6 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE} variant="outline">
                     <ExpandableSpec
                       label="Support Type"
-                      value={currentCar().support_type}
                       isEven={false}
                       isOpen={openDesc() === 'support-type'}
                       onToggle={() => toggleDesc('support-type')}
@@ -643,7 +643,9 @@ function CarDetailContent() {
                         "The level of openpilot support for this vehicle. " +
                         "'Upstream' indicates full official support, while other types may have varying levels of functionality."
                       }
-                    />
+                    >
+                      <span class="font-semibold uppercase">{currentCar().support_type}</span>
+                    </ExpandableSpec>
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="outline">
                     <ExpandableSpec
