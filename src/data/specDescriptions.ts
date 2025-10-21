@@ -73,9 +73,6 @@ steer manually.`,
   [SPEC_ID.LONGITUDINAL_CONTROL]: `The system responsible for acceleration and braking control. 'openpilot' means full longitudinal
 control, while other values may indicate limited or no longitudinal control.`,
 
-  [SPEC_ID.SUPPORT_TYPE]: `The level of openpilot support for this vehicle. 'Upstream' indicates full official support, while other types
-may have varying levels of functionality.`,
-
   [SPEC_ID.AUTO_RESUME]: `Whether openpilot can automatically resume driving after coming to a complete stop, without driver intervention.`,
 
   [SPEC_ID.STEERING_TORQUE]: `Information about the steering torque characteristics or limitations for this vehicle. 'Empty' typically

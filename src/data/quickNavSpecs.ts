@@ -26,7 +26,6 @@ export const SPEC_ID = {
   FSR_LONGITUDINAL: 'fsr-longitudinal',
   FSR_STEERING: 'fsr-steering',
   LONGITUDINAL_CONTROL: 'longitudinal-control',
-  SUPPORT_TYPE: 'support-type',
   AUTO_RESUME: 'auto-resume',
   STEERING_TORQUE: 'steering-torque',
   // Vehicle Metrics
@@ -65,7 +64,6 @@ export const QUICK_NAV_SPECS = [
   { id: SPEC_ID.FSR_LONGITUDINAL, buttonLabel: 'FSR Longitudinal', accordionId: 'capabilities', uiSectionHeader: 'Capabilities' },
   { id: SPEC_ID.FSR_STEERING, buttonLabel: 'FSR Steering', accordionId: 'capabilities', uiSectionHeader: 'Capabilities' },
   { id: SPEC_ID.LONGITUDINAL_CONTROL, buttonLabel: 'Longitudinal Control', accordionId: 'capabilities', uiSectionHeader: 'Capabilities' },
-  { id: SPEC_ID.SUPPORT_TYPE, buttonLabel: 'Support Type', accordionId: 'capabilities', uiSectionHeader: 'Capabilities' },
   { id: SPEC_ID.AUTO_RESUME, buttonLabel: 'Auto Resume', accordionId: 'capabilities', uiSectionHeader: 'Capabilities' },
   { id: SPEC_ID.STEERING_TORQUE, buttonLabel: 'Steering Torque', accordionId: 'capabilities', uiSectionHeader: 'Capabilities' },
   // Vehicle Metrics
