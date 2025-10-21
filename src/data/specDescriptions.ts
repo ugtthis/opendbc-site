@@ -3,6 +3,7 @@ import { SPEC_ID } from './quickNavSpecs'
 type SpecIdValue = typeof SPEC_ID[keyof typeof SPEC_ID]
 
 export const DESCRIPTIONS: Record<SpecIdValue, string> = {
+  // Compatibility Info
   [SPEC_ID.SUPPORT_TYPE_BADGE]: `The level of openpilot support for this vehicle. 'Upstream' indicates full official support with active
 maintenance, while other types may have varying levels of functionality and community support.`,
 
@@ -14,6 +15,7 @@ vehicle model. This fingerprint is based on CAN message patterns and ensures pro
   [SPEC_ID.HARNESS]: `Type of car harness that is compatible with this vehicle. comma's car harness is a universal interface to your car.
 Use the car harness to connect your comma device to your vehicle.`,
 
+  // Technical Parameters
   [SPEC_ID.TIRE_STIFFNESS_FACTOR]: `A multiplier applied to the tire stiffness values to adjust handling characteristics. This factor
 fine-tunes how the vehicle's tires respond to steering inputs and road conditions.`,
 
@@ -41,6 +43,7 @@ toggling between stopped and moving states when the vehicle is barely moving.`,
   [SPEC_ID.STOP_ACCEL]: `The deceleration rate applied when bringing the vehicle to a stop. This negative acceleration value determines
 how aggressively the vehicle brakes when coming to a complete stop.`,
 
+  // System Configuration
   [SPEC_ID.NETWORK_LOCATION]: `Specifies which CAN gateway the comma device connects to.`,
 
   [SPEC_ID.BUS_LOOKUP]: `Maps message types to physical CAN bus numbers. For example, 'pt' (powertrain) messages on bus 0, 'radar' messages
@@ -58,6 +61,7 @@ openpilot sends longitudinal control commands through the DSU instead of directl
 is the traditional setup where the engine computer handles cruise control. This affects which CAN messages openpilot uses for
 longitudinal control.`,
 
+  // Capabilities
   [SPEC_ID.MIN_STEERING_SPEED]: `The minimum speed at which openpilot can provide steering assistance. Below this speed, the driver must
 steer manually.`,
 
@@ -77,6 +81,7 @@ may have varying levels of functionality.`,
   [SPEC_ID.STEERING_TORQUE]: `Information about the steering torque characteristics or limitations for this vehicle. 'Empty' typically
 means no specific torque data is available.`,
 
+  // Vehicle Metrics
   [SPEC_ID.CURB_WEIGHT]: `The weight of the vehicle without passengers or cargo, including all fluids and a full tank of fuel.`,
 
   [SPEC_ID.WHEELBASE]: `The distance between the centers of the front and rear wheels. A longer wheelbase typically provides better
