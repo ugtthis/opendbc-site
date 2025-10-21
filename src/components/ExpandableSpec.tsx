@@ -18,7 +18,7 @@ export default function ExpandableSpec(props: ExpandableSpecProps) {
   return (
     <div>
       <div
-        class={`flex px-3 py-3 min-h-[48px] cursor-pointer hover:bg-amber-50 transition-colors ${
+        class={`flex px-3 py-3 min-h-[48px] cursor-pointer hover:bg-amber-50 ${
           isVertical() ? 'flex-col' : 'justify-between items-center'
         } ${
           props.isOpen ? 'bg-amber-50' : props.isEven ? 'bg-gray-50' : ''
