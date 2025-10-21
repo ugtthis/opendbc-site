@@ -251,7 +251,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       layout="vertical"
                       label="ADAS Package"
-                      value={currentCar().package}
+                      value={currentCar().support_type === 'Not compatible' ? 'N/A' : currentCar().package}
                       isEven={true}
                       isOpen={openDesc() === 'adas-package'}
                       onToggle={() => toggleDesc('adas-package')}
