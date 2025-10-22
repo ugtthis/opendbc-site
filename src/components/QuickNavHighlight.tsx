@@ -1,13 +1,15 @@
 import { createContext, useContext, createSignal, createEffect, type Accessor, type JSX } from 'solid-js'
 
-/*
- * Quick Navigation Highlighting System
- * Provides context for sharing the currently active spec across the page
- * and a wrapper component that automatically highlights when active.
- */
+export const HIGHLIGHT_STYLES = {
+  bg: 'bg-blue-50',
+  border: 'outline outline-4 outline-blue-500 outline-offset-[-8px] px-2',
+  borderColor: 'border-blue-400',
+  transition: 'transition-all duration-300',
+} as const
 
 type QuickNavContextType = {
   activeSpec: Accessor<string | null>
+  isHighlighted: Accessor<boolean>
 }
 
 const QuickNavContext = createContext<QuickNavContextType>()
@@ -17,65 +19,61 @@ export function QuickNavProvider(props: {
   children: JSX.Element
 }) {
   return (
-    <QuickNavContext.Provider value={{ activeSpec: props.activeSpec }}>
+    <QuickNavContext.Provider
+      value={{
+        activeSpec: props.activeSpec,
+        isHighlighted: () => false
+      }}
+    >
       {props.children}
     </QuickNavContext.Provider>
   )
 }
 
-const useQuickNav = () => {
+export const useQuickNavScrollTarget = () => {
   const context = useContext(QuickNavContext)
-  if (!context) {
-    throw new Error('useQuickNav must be used within QuickNavProvider')
-  }
-  return context
+  if (!context) return { isActive: () => false }
+
+  return { isActive: context.isHighlighted }
 }
 
-const HIGHLIGHT_STYLES = {
-  border: 'outline outline-3 outline-[color-mix(in_srgb,var(--color-highlight-bg)_5%,#3b82f6_95%)] outline-offset-[-8px] px-2',
-  transition: 'transition-all duration-300',
-  childBg: '[&_*]:!bg-[var(--color-highlight-bg)]',
-} as const
-
-// Wrapper component that highlights when its id matches activeSpec
-type QuickNavWrapperProps = {
+// Wraps an element to track when it's the scroll target
+export function QuickNavWrapper(props: {
   id: string
   class?: string
   children: JSX.Element
-}
-
-export function QuickNavWrapper(props: QuickNavWrapperProps) {
-  const { activeSpec } = useQuickNav()
+}) {
+  const parentContext = useContext(QuickNavContext)
   const [foundByUser, setFoundByUser] = createSignal(false)
 
+  // Reset highlight when this becomes the new target
   createEffect((prev) => {
-    const current = activeSpec()
+    const current = parentContext?.activeSpec()
     if (current === props.id && current !== prev) {
       setFoundByUser(false)
     }
     return current
   })
 
-  const shouldHighlight = () => activeSpec() === props.id && !foundByUser()
-
-  const classes = () => {
-    if (!shouldHighlight()) {
-      return props.class || ''
-    }
-
-    const { border, transition, childBg } = HIGHLIGHT_STYLES
-    return `${transition} ${border} ${childBg} ${props.class || ''}`
+  const shouldHighlight = () => {
+    return parentContext?.activeSpec() === props.id && !foundByUser()
   }
 
   return (
-    <div
-      id={props.id}
-      class={classes()}
-      style={shouldHighlight() ? { 'background-color': 'var(--color-highlight-bg)' } : {}}
-      onMouseEnter={() => setFoundByUser(true)}
-      onClick={() => setFoundByUser(true)}
+    <QuickNavContext.Provider
+      value={{
+        activeSpec: parentContext?.activeSpec || (() => null),
+        isHighlighted: shouldHighlight
+      }}
     >
-      {props.children}
-    </div>
+      <div
+        id={props.id}
+        class={props.class}
+        onMouseEnter={() => setFoundByUser(true)}
+        onClick={() => setFoundByUser(true)}
+      >
+        {props.children}
+      </div>
+    </QuickNavContext.Provider>
   )
 }
