@@ -160,6 +160,10 @@ function CarDetailContent() {
     const accordionId = getAccordionIdForSpec(specId)
     const needsExpansion = accordionId && !toggle.openSections().has(accordionId)
 
+    if (openDesc() === specId) {
+      setOpenDesc(null)
+    }
+
     if (needsExpansion) {
       toggle.toggleSection(accordionId)
     }
@@ -167,6 +171,9 @@ function CarDetailContent() {
     if (highlightTimeoutId !== undefined) {
       clearTimeout(highlightTimeoutId)
     }
+
+    // Ensures signal always changes for re-clicks of same spec
+    setHighlightedSpec(null)
 
     // Small delay to allow section expansion animation to start
     setTimeout(() => {

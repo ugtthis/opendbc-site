@@ -1,4 +1,4 @@
-import { createContext, useContext, type Accessor, type JSX } from 'solid-js'
+import { createContext, useContext, createSignal, createEffect, type Accessor, type JSX } from 'solid-js'
 
 /*
  * Quick Navigation Highlighting System
@@ -42,26 +42,41 @@ type QuickNavWrapperProps = {
 export function QuickNavWrapper(props: QuickNavWrapperProps) {
   const { activeSpec } = useQuickNav()
   const variant = props.variant || 'border'
-  const isActive = () => activeSpec() === props.id
+  const [foundByUser, setFoundByUser] = createSignal(false)
 
-  const getClasses = () => {
-    if (!isActive()) return props.class || ''
+  createEffect((prev) => {
+    const current = activeSpec()
+    if (current === props.id && current !== prev) {
+      setFoundByUser(false)
+    }
+    return current
+  })
 
-    const highlight =
-      variant === 'border'
-        ? 'border-2 border-blue-500 px-2 -mx-2'
-        : 'outline outline-3 outline-blue-500 outline-offset-[-8px] px-2'
+  const shouldHighlight = () => activeSpec() === props.id && !foundByUser()
 
-    const childOverrides = '[&_*]:!bg-[var(--color-highlight-bg)]'
+  const blueHighlight = variant === 'border'
+    ? 'border-2 border-blue-500 px-2 -mx-2'
+    : 'outline outline-3 outline-blue-500 outline-offset-[-8px] px-2'
 
-    return `${highlight} ${childOverrides} ${props.class || ''}`
+  const classes = () => {
+    if (!shouldHighlight()) {
+      return props.class || ''
+    }
+
+    const transition = 'transition-all duration-300'
+    // Override child backgrounds to match highlight background
+    const childBg = '[&_*]:!bg-[var(--color-highlight-bg)]'
+
+    return `${transition} ${blueHighlight} ${childBg} ${props.class || ''}`
   }
 
   return (
     <div
       id={props.id}
-      class={`transition-all duration-300 ${getClasses()}`}
-      style={isActive() ? { 'background-color': 'var(--color-highlight-bg)' } : {}}
+      class={classes()}
+      style={shouldHighlight() ? { 'background-color': 'var(--color-highlight-bg)' } : {}}
+      onMouseEnter={() => setFoundByUser(true)}
+      onClick={() => setFoundByUser(true)}
     >
       {props.children}
     </div>
