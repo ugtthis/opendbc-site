@@ -31,17 +31,21 @@ const useQuickNav = () => {
   return context
 }
 
+const HIGHLIGHT_STYLES = {
+  border: 'outline outline-3 outline-[color-mix(in_srgb,var(--color-highlight-bg)_5%,#3b82f6_95%)] outline-offset-[-8px] px-2',
+  transition: 'transition-all duration-300',
+  childBg: '[&_*]:!bg-[var(--color-highlight-bg)]',
+} as const
+
 // Wrapper component that highlights when its id matches activeSpec
 type QuickNavWrapperProps = {
   id: string
-  variant?: 'border' | 'outline'
   class?: string
   children: JSX.Element
 }
 
 export function QuickNavWrapper(props: QuickNavWrapperProps) {
   const { activeSpec } = useQuickNav()
-  const variant = props.variant || 'border'
   const [foundByUser, setFoundByUser] = createSignal(false)
 
   createEffect((prev) => {
@@ -54,20 +58,13 @@ export function QuickNavWrapper(props: QuickNavWrapperProps) {
 
   const shouldHighlight = () => activeSpec() === props.id && !foundByUser()
 
-  const blueHighlight = variant === 'border'
-    ? 'border-2 border-blue-500 px-2 -mx-2'
-    : 'outline outline-3 outline-blue-500 outline-offset-[-8px] px-2'
-
   const classes = () => {
     if (!shouldHighlight()) {
       return props.class || ''
     }
 
-    const transition = 'transition-all duration-300'
-    // Override child backgrounds to match highlight background
-    const childBg = '[&_*]:!bg-[var(--color-highlight-bg)]'
-
-    return `${transition} ${blueHighlight} ${childBg} ${props.class || ''}`
+    const { border, transition, childBg } = HIGHLIGHT_STYLES
+    return `${transition} ${border} ${childBg} ${props.class || ''}`
   }
 
   return (

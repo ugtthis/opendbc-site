@@ -245,7 +245,7 @@ function CarDetailContent() {
                   disableDefaultPadding={true}
                 >
                   <div class={`h-4 w-full -mb-1.5 ${getSupportTypeColor(currentCar().support_type)}`} />
-                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE}>
                     <ExpandableSpec
                       layout="vertical"
                       label="Support Type"
@@ -256,7 +256,7 @@ function CarDetailContent() {
                       <span class="text-sm font-semibold uppercase">{currentCar().support_type}</span>
                     </ExpandableSpec>
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE}>
                     <ExpandableSpec
                       layout="vertical"
                       label="ADAS Package"
@@ -267,7 +267,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.ADAS_PACKAGE]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FINGERPRINT} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.FINGERPRINT}>
                     <ExpandableSpec
                       layout="vertical"
                       label="Fingerprint"
@@ -277,7 +277,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.FINGERPRINT]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.HARNESS} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.HARNESS}>
                     <ExpandableSpec
                       layout="vertical"
                       label="Harness"
@@ -572,7 +572,7 @@ function CarDetailContent() {
                   id="capabilities"
                   disableDefaultPadding={true}
                 >
-                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED}>
                     <ExpandableSpec
                       label="Min Steering Speed"
                       value={formatSpeed(currentCar().min_steer_speed)}
@@ -582,7 +582,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL}>
                     <ExpandableSpec
                       label="FSR Longitudinal"
                       value={currentCar().fsr_longitudinal}
@@ -592,7 +592,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING}>
                     <ExpandableSpec
                       label="FSR Steering"
                       value={currentCar().fsr_steering}
@@ -602,7 +602,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL}>
                     <ExpandableSpec
                       label="Longitudinal Control"
                       value={currentCar().longitudinal}
@@ -612,7 +612,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME}>
                     <ExpandableSpec
                       label="Auto Resume"
                       value={currentCar().auto_resume ? 'Yes' : 'No'}
@@ -622,7 +622,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE}>
                     <ExpandableSpec
                       label="Steering Torque"
                       value={currentCar().steering_torque}
@@ -655,7 +655,7 @@ function CarDetailContent() {
                   id="vehicle-metrics"
                   disableDefaultPadding={true}
                 >
-                  <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT}>
                     <ExpandableSpec
                       label="Curb Weight"
                       value={formatWeight(currentCar().mass_curb_weight)}
@@ -665,7 +665,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.CURB_WEIGHT]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.WHEELBASE} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.WHEELBASE}>
                     <ExpandableSpec
                       label="Wheelbase"
                       value={formatValue(currentCar().wheelbase, ' m')}
@@ -675,7 +675,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.WHEELBASE]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.STEER_RATIO} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.STEER_RATIO}>
                     <ExpandableSpec
                       label="Steer Ratio"
                       value={formatValue(currentCar().steer_ratio)}
@@ -685,7 +685,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.STEER_RATIO]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO}>
                     <ExpandableSpec
                       label="Center to Front Ratio"
                       value={formatValue(currentCar().center_to_front_ratio)}
@@ -695,7 +695,7 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.CENTER_FRONT_RATIO]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL} variant="outline">
+                  <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL}>
                     <ExpandableSpec
                       label="Max Lateral Accel"
                       value={formatValue(currentCar().max_lateral_accel, ' m/s²')}
