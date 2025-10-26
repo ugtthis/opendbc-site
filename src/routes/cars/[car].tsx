@@ -1,4 +1,4 @@
-import { useParams, A } from '@solidjs/router'
+import { useParams, useNavigate } from '@solidjs/router'
 import { createMemo, For, createSignal, onMount, onCleanup, Show, type Component } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
@@ -82,28 +82,36 @@ type GradientHeaderProps = {
 }
 
 const GradientHeader: Component<GradientHeaderProps> = (props) => {
+  const navigate = useNavigate()
+
   return (
     <div class="fixed top-0 right-0 left-0 z-50 py-3 border-black md:py-4 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
       <div class="px-4 mx-auto md:px-6 max-w-[1500px]">
         <nav class="flex items-center text-sm font-medium text-white">
-          <A href="/" class="transition-colors hover:text-gray-200">
-            Home
-          </A>
-          <span class="mx-2 text-gray-300">{'>'}</span>
-          <div class="flex gap-2 items-center">
-            <button
-              onClick={props.onScrollToTop}
-              class="flex gap-1 items-center text-gray-200 transition-colors cursor-pointer hover:text-white"
-            >
-              {props.car ? `${props.car.make} ${props.car.model} ${props.car.years}` : 'Loading...'}
-              {props.showUpArrow && (
-                <div
-                  class="w-4 h-4 transition-opacity duration-300 bouncy-arrow"
-                  innerHTML={UpArrowSvg}
-                />
-              )}
-            </button>
-          </div>
+          <button onClick={() => navigate('/')} class="transition-colors hover:text-gray-200 hover:cursor-pointer">
+            {!props.car && '← '}Home
+          </button>
+          <Show when={props.car}>
+            {(currentCar) => (
+              <>
+                <span class="mx-2 text-gray-300">{'>'}</span>
+                <div class="flex gap-2 items-center">
+                  <button
+                    onClick={props.onScrollToTop}
+                    class="flex gap-1 items-center text-gray-200 transition-colors cursor-pointer hover:text-white"
+                  >
+                    {`${currentCar().make} ${currentCar().model} ${currentCar().years}`}
+                    {props.showUpArrow && (
+                      <div
+                        class="w-4 h-4 transition-opacity duration-300 bouncy-arrow"
+                        innerHTML={UpArrowSvg}
+                      />
+                    )}
+                  </button>
+                </div>
+              </>
+            )}
+          </Show>
         </nav>
       </div>
     </div>
@@ -112,6 +120,7 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
 
 function CarDetailContent() {
   const params = useParams()
+  const navigate = useNavigate()
   const toggle = useToggle()
   const isMobile = createMediaQuery(BREAKPOINTS.mobile)
   const [highlightedSpec, setHighlightedSpec] = createSignal<string | null>(null)
@@ -194,13 +203,20 @@ function CarDetailContent() {
         <Show
           when={car()}
           fallback={
-            <div class="p-8 text-center">
-              <h1 class="mb-4 text-2xl font-bold text-gray-900">Car Not Found</h1>
-              <p class="mb-6 text-gray-600">The requested vehicle "{params.car}" could not be found in our database.</p>
-              <A href="/" class="inline-flex items-center py-2 px-4 text-white bg-blue-600 rounded-lg transition-colors hover:bg-blue-700">
-                ← Back to Car List
-              </A>
-            </div>
+            <main class="flex justify-center items-center p-8 pt-24 min-h-[calc(100vh-80px)]">
+              <div class="max-w-2xl text-center">
+                <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Car Not Found</h1>
+                <p class="mb-8 text-lg text-gray-600">
+                  The requested vehicle "{params.car}" could not be found.
+                </p>
+                <button
+                  onClick={() => navigate('/')}
+                  class="inline-block py-3 px-8 text-white border-2 border-black transition-colors hover:cursor-pointer bg-accent hover:bg-[#727272]"
+                >
+                  Go Back Home
+                </button>
+              </div>
+            </main>
           }
         >
           {(currentCar) => (

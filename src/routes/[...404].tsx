@@ -1,32 +1,34 @@
-import { A } from '@solidjs/router'
+import { useNavigate } from '@solidjs/router'
 
 export default function NotFound() {
+  const navigate = useNavigate()
+
   return (
-    <main class="p-4 mx-auto text-center text-gray-700">
-      <h1 class="my-16 text-6xl font-thin uppercase max-6-xs text-sky-700">
-        Not Found
-      </h1>
-      <p class="mt-8">
-        Visit{' '}
-        <a
-          href="https://solidjs.com"
-          target="_blank"
-          class="hover:underline text-sky-600"
-          rel="noopener"
-        >
-          solidjs.com
-        </a>{' '}
-        to learn how to build Solid apps.
-      </p>
-      <p class="my-4">
-        <A href="/" class="hover:underline text-sky-600">
-          Home
-        </A>
-        {' - '}
-        <A href="/about" class="hover:underline text-sky-600">
-          About Page
-        </A>
-      </p>
-    </main>
+    <div class="min-h-screen bg-gray-100">
+      <header class="py-4 border-black md:py-6 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
+        <div class="px-4 mx-auto md:px-6 max-w-[2200px]">
+          <nav class="flex items-center text-sm font-medium text-white">
+            <button onClick={() => navigate('/')} class="transition-colors hover:text-gray-200 hover:cursor-pointer">
+              ← Home
+            </button>
+          </nav>
+        </div>
+      </header>
+
+      <main class="flex justify-center items-center p-8 min-h-[calc(100vh-80px)]">
+        <div class="max-w-2xl text-center">
+          <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">404 - Page Not Found</h1>
+          <p class="mb-8 text-lg text-gray-600">
+            The page you're looking for doesn't exist or may have been moved.
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            class="inline-block py-3 px-8 text-white border-2 border-black transition-colors hover:cursor-pointer bg-accent hover:bg-[#727272]"
+          >
+            Go Back Home
+          </button>
+        </div>
+      </main>
+    </div>
   )
 }
