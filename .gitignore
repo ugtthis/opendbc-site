@@ -3,6 +3,7 @@ dist
 .output
 .wrangler
 .vinxi
+tsconfig.tsbuildinfo
 
 # Environment
 .env

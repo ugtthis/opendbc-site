@@ -8,12 +8,12 @@ import ExpandableSpec from '~/components/ExpandableSpec'
 import { QuickNavProvider, QuickNavWrapper } from '~/components/QuickNavHighlight'
 import QuickNavDrawer from '~/components/QuickNavDrawer'
 import QuickNavSpecLinks from '~/components/QuickNavSpecLinks'
-import { SPEC_ID, getAccordionIdForSpec } from '~/data/quickNavSpecs'
+import { SPEC_ID, getAccordionIdForSpec } from '~/data/specs'
 import { DESCRIPTIONS } from '~/data/specDescriptions'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
-import { slugify } from '~/lib/utils'
+import { slugify, hasObjectEntries } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 
 import metadata from '~/data/metadata.json'
@@ -65,6 +65,7 @@ type DetailedSpecs = Car & {
   enable_dsu?: boolean
   enable_bsm?: boolean
   pcm_cruise?: boolean
+  min_enable_speed?: number
   fsr_longitudinal?: string
   fsr_steering?: string
   longitudinal?: string
@@ -252,6 +253,7 @@ function CarDetailContent() {
                   open={quickNavDrawerOpen()}
                   onOpenChange={setQuickNavDrawerOpen}
                   onNavigate={scrollToSpec}
+                  excludeSpecs={[SPEC_ID.YEARS]}
                 />
 
                 {/* Compatibility Info */}
@@ -514,22 +516,26 @@ function CarDetailContent() {
                             onToggle={() => toggleDesc('bus-lookup')}
                             description={DESCRIPTIONS[SPEC_ID.BUS_LOOKUP]}
                           >
-                            <Show
-                              when={currentCar().bus_lookup}
-                              fallback={<span class="text-xs">N/A</span>}
-                            >
-                              {(busLookup) => (
-                                <div class="text-xs break-words">
-                                  <For each={Object.entries(busLookup())}>
-                                    {([key, value]) => (
-                                      <div class="py-0.5">
-                                        <span class="font-semibold">{key}:</span> {value}
-                                      </div>
-                                    )}
-                                  </For>
-                                </div>
-                              )}
-                            </Show>
+                            {(() => {
+                              const busLookup = currentCar().bus_lookup
+
+                              return (
+                                <Show
+                                  when={hasObjectEntries(busLookup)}
+                                  fallback={<span class="text-xs">N/A</span>}
+                                >
+                                  <div class="text-xs break-words">
+                                    <For each={Object.entries(busLookup!)}>
+                                      {([key, value]) => (
+                                        <div class="py-0.5">
+                                          <span class="font-semibold">{key}:</span> {value}
+                                        </div>
+                                      )}
+                                    </For>
+                                  </div>
+                                </Show>
+                              )
+                            })()}
                           </ExpandableSpec>
                         </QuickNavWrapper>
                       </div>
@@ -598,31 +604,21 @@ function CarDetailContent() {
                       description={DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
                     />
                   </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL}>
+                  <QuickNavWrapper id={SPEC_ID.MIN_ENABLE_SPEED}>
                     <ExpandableSpec
-                      label="FSR Longitudinal"
-                      value={currentCar().fsr_longitudinal}
+                      label="Min Enable Speed"
+                      value={formatSpeed(currentCar().min_enable_speed ?? 0)}
                       isEven={true}
-                      isOpen={openDesc() === 'fsr-longitudinal'}
-                      onToggle={() => toggleDesc('fsr-longitudinal')}
-                      description={DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING}>
-                    <ExpandableSpec
-                      label="FSR Steering"
-                      value={currentCar().fsr_steering}
-                      isEven={false}
-                      isOpen={openDesc() === 'fsr-steering'}
-                      onToggle={() => toggleDesc('fsr-steering')}
-                      description={DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
+                      isOpen={openDesc() === 'min-enable-speed'}
+                      onToggle={() => toggleDesc('min-enable-speed')}
+                      description={DESCRIPTIONS[SPEC_ID.MIN_ENABLE_SPEED]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL}>
                     <ExpandableSpec
                       label="Longitudinal Control"
                       value={currentCar().longitudinal}
-                      isEven={true}
+                      isEven={false}
                       isOpen={openDesc() === 'longitudinal-control'}
                       onToggle={() => toggleDesc('longitudinal-control')}
                       description={DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
@@ -636,6 +632,26 @@ function CarDetailContent() {
                       isOpen={openDesc() === 'auto-resume'}
                       onToggle={() => toggleDesc('auto-resume')}
                       description={DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
+                    />
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL}>
+                    <ExpandableSpec
+                      label="FSR Longitudinal"
+                      value={currentCar().fsr_longitudinal}
+                      isEven={false}
+                      isOpen={openDesc() === 'fsr-longitudinal'}
+                      onToggle={() => toggleDesc('fsr-longitudinal')}
+                      description={DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
+                    />
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING}>
+                    <ExpandableSpec
+                      label="FSR Steering"
+                      value={currentCar().fsr_steering}
+                      isEven={true}
+                      isOpen={openDesc() === 'fsr-steering'}
+                      onToggle={() => toggleDesc('fsr-steering')}
+                      description={DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE}>
@@ -661,7 +677,11 @@ function CarDetailContent() {
                     contentClass="p-4 space-y-1 text-sm max-h-96 overflow-y-auto"
                     disableDefaultPadding={true}
                   >
-                    <QuickNavSpecLinks onNavigate={scrollToSpec} variant="desktop" />
+                    <QuickNavSpecLinks
+                      onNavigate={scrollToSpec}
+                      variant="desktop"
+                      excludeSpecs={[SPEC_ID.YEARS]}
+                    />
                   </AccordionContainer>
                 </Show>
 

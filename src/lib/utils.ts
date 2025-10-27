@@ -17,3 +17,13 @@ export function slugify(text: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '')
 }
+
+// Used for `bus_lookup` cause data doesn’t render well as a string)
+export function hasObjectEntries(value: unknown): boolean {
+  return !!(
+    value &&
+    typeof value === 'object' &&
+    !Array.isArray(value) &&
+    Object.keys(value).length > 0
+  )
+}

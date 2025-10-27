@@ -6,12 +6,14 @@ import GradientButton from '~/components/ui/GradientButton'
 import HighlightText from '~/components/ui/HighlightText'
 import { getSupportTypeColor } from '~/types/supportType'
 import { cn, slugify } from '~/lib/utils'
+import { useModelComparison } from '~/contexts/ModelComparisonContext'
 
 import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
 import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
 import VideoCameraSvg from '~/lib/icons/video-camera.svg?raw'
 import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
 import CheckSvg from '~/lib/icons/checkmark.svg?raw'
+import Checkmark2Svg from '~/lib/icons/checkmark-2.svg?raw'
 
 const MS_TO_MPH = 2.237
 
@@ -45,6 +47,7 @@ const getAutoResumeDescription = (autoResume: boolean): string => {
 type CardProps = {
   car: Car
   searchQuery: string
+  compareMode?: boolean
 }
 
 type InfoBoxProps = {
@@ -132,6 +135,7 @@ const ExpandableRow = (props: ExpandableRowProps) => {
 
 const Card: Component<CardProps> = (props) => {
   const [expandedRow, setExpandedRow] = createSignal<string | null>(null)
+  const { selectedCars, toggleCarSelection } = useModelComparison()
 
   const resumeRowProps = {
     label: "Resume from stop",
@@ -166,7 +170,85 @@ const Card: Component<CardProps> = (props) => {
 
   return (
     <>
-      {/* Support label */}
+      {/* Thin card for compare mode */}
+      {props.compareMode ? (
+        <div class="flex w-full border border-black bg-surface shadow-elev-1">
+          {/* Checkbox */}
+          <div class="flex justify-center items-center px-2 md:px-3">
+            <label class="inline-block relative cursor-pointer select-none size-7">
+              <input
+                type="checkbox"
+                checked={selectedCars().includes(props.car.name)}
+                onChange={() => toggleCarSelection(props.car.name)}
+                disabled={!selectedCars().includes(props.car.name) && selectedCars().length >= 6}
+                class="relative appearance-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed size-7 border-3 border-black/70 peer checked:bg-[#2e5232] checked:border-[#102f0c] checked:shadow-elev-1 hover:bg-[#2e5232]"
+                aria-label={`Select ${props.car.make} ${props.car.model}`}
+              />
+              <div class="absolute inset-0 opacity-0 transition-opacity duration-75 pointer-events-none peer-checked:opacity-100">
+                <div class="flex justify-center items-center size-7 text-[#65e063]" innerHTML={Checkmark2Svg} />
+              </div>
+            </label>
+          </div>
+
+          {/* Mobile wrapper - stacks vertically below 370px, horizontal at 370px+ */}
+          <div class="flex flex-col flex-1 border-r border-l border-black md:hidden min-[370px]:flex-row">
+            {/* Year and Model - Mobile only */}
+            <div class="flex flex-1 items-center py-2.5 px-2 border-b border-black min-[370px]:border-b-0 min-[370px]:border-r">
+              <h1 class="text-xs font-semibold leading-tight">
+                <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
+                {' '}
+                <HighlightText text={`${props.car.make} ${props.car.model}`} query={props.searchQuery} />
+              </h1>
+            </div>
+
+            {/* Support type - Mobile only */}
+            <div class={cn(
+              'flex items-center justify-center py-1.5 min-[370px]:py-2.5 px-2 w-full min-[370px]:w-[100px] text-center',
+              getSupportTypeColor(props.car.support_type),
+            )}>
+              <span class="text-xs font-semibold leading-tight uppercase">
+                <HighlightText text={props.car.support_type} query={props.searchQuery} />
+              </span>
+            </div>
+          </div>
+
+          {/* Year - Desktop only */}
+          <div class="hidden items-center py-2.5 px-3 border-r border-l border-black md:flex w-[110px]">
+            <h2 class="text-base font-medium leading-tight">
+              <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
+            </h2>
+          </div>
+
+          {/* Model name - Desktop only */}
+          <div class="hidden flex-1 items-center py-2.5 px-3 border-r border-black md:flex">
+            <h1 class="text-lg font-semibold">
+              <HighlightText text={`${props.car.make} ${props.car.model}`} query={props.searchQuery} />
+            </h1>
+          </div>
+
+          {/* Support type - Desktop only */}
+          <div class={cn(
+            'hidden md:flex items-center justify-center py-2.5 px-3 w-[160px] text-center border-r border-black',
+            getSupportTypeColor(props.car.support_type),
+          )}>
+            <span class="text-sm font-semibold leading-tight uppercase whitespace-nowrap">
+              <HighlightText text={props.car.support_type} query={props.searchQuery} />
+            </span>
+          </div>
+
+          {/* Arrow button to detailed page */}
+          <a
+            href={`/cars/${slugify(props.car.name)}`}
+            class="flex justify-center items-center py-2.5 px-3 transition-colors md:px-4 bg-accent min-w-[48px] hover:bg-[#727272] hover:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]"
+            title="View details"
+          >
+            <div class="w-5 h-5 text-white md:w-6 md:h-6" innerHTML={OpenFolderSvg} />
+          </a>
+        </div>
+      ) : (
+        // Regular card (non-compare mode)
+        <>
+          {/* Support label */}
       <div class={supportLabelClass}>
         <p class="uppercase text-[16px]">
           <HighlightText text={props.car.support_type} query={props.searchQuery} />
@@ -310,6 +392,8 @@ const Card: Component<CardProps> = (props) => {
           <div class="w-5 h-5" innerHTML={DownChevronSvg} />
         </label>
       </div>
+        </>
+      )}
     </>
   )
 }

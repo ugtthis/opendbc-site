@@ -61,6 +61,15 @@ body {
   }
 }
 
+@keyframes subtle-slide {
+  0%, 100% {
+    transform: translateX(-1px);
+  }
+  50% {
+    transform: translateX(2px);
+  }
+}
+
 .shine-border-overlay {
   animation: shine 30s infinite linear;
   background: linear-gradient(90deg, transparent, #00b925, #002a08, transparent);
@@ -69,6 +78,10 @@ body {
 
 .bouncy-arrow {
   animation: subtle-bounce 1.5s ease-in-out infinite;
+}
+
+.sliding-arrow {
+  animation: subtle-slide 3s linear infinite;
 }
 
 .gradient-dark-forrest {

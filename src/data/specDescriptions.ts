@@ -1,4 +1,4 @@
-import { SPEC_ID } from './quickNavSpecs'
+import { SPEC_ID } from './specs'
 
 type SpecIdValue = typeof SPEC_ID[keyof typeof SPEC_ID]
 
@@ -8,6 +8,8 @@ export const DESCRIPTIONS: Record<SpecIdValue, string> = {
 maintenance, while other types may have varying levels of functionality and community support.`,
 
   [SPEC_ID.ADAS_PACKAGE]: `The required ADAS package/trim that needs to comes with this vehicle to be compatible with openpilot.`,
+
+  [SPEC_ID.YEARS]: `The model years of the vehicle. Some model years may have different CAN bus configurations or safety systems.`,
 
   [SPEC_ID.FINGERPRINT]: `The unique identifier openpilot uses to detect and configure itself for this specific
 vehicle model. This fingerprint is based on CAN message patterns and ensures proper compatibility.`,
@@ -64,6 +66,8 @@ longitudinal control.`,
   // Capabilities
   [SPEC_ID.MIN_STEERING_SPEED]: `The minimum speed at which openpilot can provide steering assistance. Below this speed, the driver must
 steer manually.`,
+
+  [SPEC_ID.MIN_ENABLE_SPEED]: `The minimum speed at which openpilot can be enabled. Below this speed, the system will not activate.`,
 
   [SPEC_ID.FSR_LONGITUDINAL]: `Full Self-Driving Capability longitudinal speed threshold. The minimum speed for longitudinal
 (acceleration/braking) control in FSR mode.`,

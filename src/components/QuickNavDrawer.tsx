@@ -5,10 +5,11 @@ import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import QuickNavSpecLinks from './QuickNavSpecLinks'
 
-type QuickNavDrawerProps = {
+export type QuickNavDrawerProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
   onNavigate: (specId: string) => void
+  excludeSpecs?: string[]
 }
 
 const QuickNavDrawer: Component<QuickNavDrawerProps> = (props) => {
@@ -84,7 +85,11 @@ const QuickNavDrawer: Component<QuickNavDrawerProps> = (props) => {
 
             {/* Navigation content */}
             <div class="overflow-y-auto flex-1 px-6 pt-4 pb-6 space-y-1 text-sm">
-              <QuickNavSpecLinks onNavigate={handleNavClick} variant="mobile" />
+              <QuickNavSpecLinks
+                onNavigate={handleNavClick}
+                variant="mobile"
+                excludeSpecs={props.excludeSpecs}
+              />
             </div>
           </Drawer.Content>
         </Drawer.Portal>
