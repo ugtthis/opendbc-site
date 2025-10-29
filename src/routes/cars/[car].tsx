@@ -109,7 +109,7 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
   const navigate = useNavigate()
 
   return (
-    <div class="fixed top-0 right-0 left-0 z-50 py-3 border-black md:py-4 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
+    <div class="fixed top-0 right-0 left-0 z-50 py-4 border-black md:py-5 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
       <div class="px-4 mx-auto md:px-6 max-w-[1500px]">
         <nav class="flex items-center text-sm font-medium text-white">
           <button onClick={() => navigate('/')} class="flex gap-1.5 items-center transition-colors hover:text-gray-200 hover:cursor-pointer">
@@ -122,20 +122,18 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
             {(currentCar) => (
               <>
                 <span class="mx-2 text-gray-300">{'>'}</span>
-                <div class="flex gap-2 items-center">
-                  <button
-                    onClick={props.onScrollToTop}
-                    class="flex gap-1 items-center text-gray-200 transition-colors cursor-pointer hover:text-white"
-                  >
-                    {`${currentCar().make} ${currentCar().model} ${currentCar().years}`}
-                    {props.showUpArrow && (
-                      <div
-                        class="w-4 h-4 transition-opacity duration-300 bouncy-arrow"
-                        innerHTML={UpArrowSvg}
-                      />
-                    )}
-                  </button>
-                </div>
+                <button
+                  onClick={props.onScrollToTop}
+                  class="flex flex-1 gap-4 justify-between items-center text-gray-200 transition-colors cursor-pointer hover:text-white"
+                >
+                  {`${currentCar().make} ${currentCar().model} ${currentCar().years}`}
+                  {props.showUpArrow && (
+                    <div
+                      class="flex-shrink-0 w-5 h-5 duration-300 bouncy-arrow"
+                      innerHTML={UpArrowSvg}
+                    />
+                  )}
+                </button>
               </>
             )}
           </Show>
