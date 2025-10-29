@@ -9,6 +9,7 @@ import { SPECS_BY_CATEGORY } from '~/data/specs'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
+import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
 
 const MIN_CARS_FOR_COMPARISON = 2
 
@@ -285,8 +286,9 @@ export default function ComparePage() {
       <header class="py-4 border-black md:py-6 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
         <div class="px-4 mx-auto md:px-6 max-w-[2200px]">
           <nav class="flex items-center text-sm font-medium text-white">
-            <button onClick={navigateToCompareMode} class="transition-colors hover:text-gray-200 hover:cursor-pointer">
-              ← Car List
+            <button onClick={navigateToCompareMode} class="flex gap-1.5 items-center transition-colors hover:text-gray-200 hover:cursor-pointer">
+              <div class="flex-shrink-0 w-3 h-3 rotate-180" innerHTML={RightArrowSvg} />
+              <span>Car List</span>
             </button>
           </nav>
         </div>

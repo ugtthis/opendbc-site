@@ -2,6 +2,7 @@ import { useParams, useNavigate } from '@solidjs/router'
 import { createMemo, For, createSignal, onMount, onCleanup, Show, type Component } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
+import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
@@ -111,8 +112,11 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
     <div class="fixed top-0 right-0 left-0 z-50 py-3 border-black md:py-4 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
       <div class="px-4 mx-auto md:px-6 max-w-[1500px]">
         <nav class="flex items-center text-sm font-medium text-white">
-          <button onClick={() => navigate('/')} class="transition-colors hover:text-gray-200 hover:cursor-pointer">
-            {!props.car && '← '}Home
+          <button onClick={() => navigate('/')} class="flex gap-1.5 items-center transition-colors hover:text-gray-200 hover:cursor-pointer">
+            <Show when={!props.car}>
+              <div class="flex-shrink-0 w-3 h-3 rotate-180" innerHTML={RightArrowSvg} />
+            </Show>
+            <span>Home</span>
           </button>
           <Show when={props.car}>
             {(currentCar) => (

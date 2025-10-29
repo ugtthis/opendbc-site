@@ -1,4 +1,5 @@
 import { useNavigate } from '@solidjs/router'
+import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
 
 export default function NotFound() {
   const navigate = useNavigate()
@@ -8,8 +9,9 @@ export default function NotFound() {
       <header class="py-4 border-black md:py-6 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
         <div class="px-4 mx-auto md:px-6 max-w-[2200px]">
           <nav class="flex items-center text-sm font-medium text-white">
-            <button onClick={() => navigate('/')} class="transition-colors hover:text-gray-200 hover:cursor-pointer">
-              ← Home
+            <button onClick={() => navigate('/')} class="flex gap-1.5 items-center transition-colors hover:text-gray-200 hover:cursor-pointer">
+              <div class="flex-shrink-0 w-3 h-3 rotate-180" innerHTML={RightArrowSvg} />
+              <span>Home</span>
             </button>
           </nav>
         </div>

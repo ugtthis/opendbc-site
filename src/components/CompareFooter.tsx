@@ -66,7 +66,7 @@ const CompareFooter: Component = () => {
               disabled={selectedCars().length < 2}
               class="flex items-center p-2 text-white border-4 transition-colors hover:cursor-pointer disabled:cursor-not-allowed max-[370px]:p-1 shadow-sm/40 shadow-[#4aff4a] bg-[#336233] border-[#6AFF72] hover:bg-[#0e1c0e] hover:border-[#22FF00] hover:shadow-[inset_0_2px_8px_rgba(34,255,0,0.9)] disabled:opacity-35"
             >
-              <div class="sliding-arrow" innerHTML={RightArrowSvg} />
+              <div class="w-6 h-6 sliding-arrow" innerHTML={RightArrowSvg} />
             </button>
           </div>
         </div>
