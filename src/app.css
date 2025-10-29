@@ -99,3 +99,26 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;  /* Chrome, Safari and Opera */
 }
+
+/* Isolate layout calculations for vehicle cards */
+@layer utilities {
+  .vehicle-card {
+    contain: layout style;
+  }
+}
+
+.card-compare-mode {
+  display: none;
+}
+
+.card-grid-mode {
+  display: block;
+}
+
+.compare-mode-active .card-grid-mode {
+  display: none;
+}
+
+.compare-mode-active .card-compare-mode {
+  display: block;
+}

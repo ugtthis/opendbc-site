@@ -1,4 +1,4 @@
-import { type Component, createSignal, createEffect } from 'solid-js'
+import { type Component, createSignal, createEffect, createMemo } from 'solid-js'
 
 import type { Car } from '~/types/CarDataTypes'
 
@@ -48,7 +48,6 @@ const getAutoResumeDescription = (autoResume: boolean): string => {
 type CardProps = {
   car: Car
   searchQuery: string
-  compareMode?: boolean
 }
 
 type InfoBoxProps = {
@@ -138,6 +137,10 @@ const Card: Component<CardProps> = (props) => {
   const [expandedRow, setExpandedRow] = createSignal<string | null>(null)
   const { selectedCars, toggleCarSelection } = useModelComparison()
 
+  // Memoize the selected state to avoid unnecessary reactive dependencies
+  const isSelected = createMemo(() => selectedCars().includes(props.car.name))
+  const isDisabled = createMemo(() => !isSelected() && selectedCars().length >= 6)
+
   const handleSupportTypeClick = (e: MouseEvent) => {
     e.preventDefault()
     e.stopPropagation()
@@ -177,17 +180,17 @@ const Card: Component<CardProps> = (props) => {
 
   return (
     <>
-      {/* Thin card for compare mode */}
-      {props.compareMode ? (
+      {/* Compare mode card */}
+      <div class="card-compare-mode">
         <div class="flex w-full border border-black bg-surface shadow-elev-1">
           {/* Checkbox */}
           <div class="flex justify-center items-center px-2 md:px-3">
             <label class="inline-block relative cursor-pointer select-none size-7">
               <input
                 type="checkbox"
-                checked={selectedCars().includes(props.car.name)}
+                checked={isSelected()}
                 onChange={() => toggleCarSelection(props.car.name)}
-                disabled={!selectedCars().includes(props.car.name) && selectedCars().length >= 6}
+                disabled={isDisabled()}
                 class="relative appearance-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed size-7 border-3 border-black/70 peer checked:bg-[#2e5232] checked:border-[#102f0c] checked:shadow-elev-1 hover:bg-[#2e5232]"
                 aria-label={`Select ${props.car.make} ${props.car.model}`}
               />
@@ -258,10 +261,11 @@ const Card: Component<CardProps> = (props) => {
             <div class="w-5 h-5 text-white md:w-6 md:h-6" innerHTML={OpenFolderSvg} />
           </a>
         </div>
-      ) : (
-        // Regular card (non-compare mode)
-        <>
-          {/* Support label */}
+      </div>
+
+      {/* Regular card (grid mode) */}
+      <div class="card-grid-mode">
+        {/* Support label */}
       <button onClick={handleSupportTypeClick} class={supportLabelClass}>
         <p class="uppercase text-[16px]">
           <HighlightText text={props.car.support_type} query={props.searchQuery} />
@@ -405,8 +409,7 @@ const Card: Component<CardProps> = (props) => {
           <div class="w-5 h-5" innerHTML={DownChevronSvg} />
         </label>
       </div>
-        </>
-      )}
+      </div>
     </>
   )
 }

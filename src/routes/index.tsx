@@ -57,14 +57,17 @@ export default function Home() {
         </div>
         <FilterChips />
 
-        <div class={compareMode()
-          ? "flex flex-col gap-2 mt-8"
-          : "grid grid-cols-1 gap-6 mt-8 md:grid-cols-2 lg:grid-cols-3"
-        }>
+        <div
+          class="grid grid-cols-1 mt-8"
+          classList={{
+            "md:grid-cols-2 lg:grid-cols-3 gap-6": !compareMode(),
+            "gap-2 compare-mode-active": compareMode(),
+          }}
+        >
           <For each={filteredResults()}>
             {(vehicle) => (
-              <div class="vehicle-card">
-                <FileCard car={vehicle} searchQuery={searchQuery()} compareMode={compareMode()} />
+              <div class="vehicle-card" data-car-id={vehicle.name}>
+                <FileCard car={vehicle} searchQuery={searchQuery()} />
               </div>
             )}
           </For>
