@@ -1,6 +1,5 @@
 import type { Component } from 'solid-js'
 import { createSignal } from 'solid-js'
-import { A } from '@solidjs/router'
 
 import FilterSvg from '~/lib/icons/filter.svg?raw'
 import SearchGlassSvg from '~/lib/icons/search-glass.svg?raw'
@@ -21,15 +20,13 @@ const Header: Component = () => {
           gradient-dark-forrest border-black border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]
         `}
       >
-        <A href="/">
-          <img
-            src="/opendbc-logo.png"
-            alt="opendbc logo"
-            width="200"
-            height="59"
-            class="h-auto w-[200px]"
-          />
-        </A>
+        <img
+          src="/opendbc-logo.png"
+          alt="opendbc logo"
+          width="200"
+          height="59"
+          class="h-auto w-[200px]"
+        />
 
         <div class="flex justify-center px-14 w-full max-[410px]:px-8">
           <div class="flex gap-2 items-center max-w-full md:gap-3.5">
