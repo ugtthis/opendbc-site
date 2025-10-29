@@ -89,3 +89,13 @@ body {
     radial-gradient(ellipse at center, #2d4a35 20%, #1e3a28 35%, #0a0f0e 80%),
     linear-gradient(135deg, #0a0f0e 0%, #1a2f1e 25%, #2d4a35 50%, #1e3a28 75%, #0a0f0e 100%);
 }
+
+/* Hide scrollbar while allowing scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;  /* Chrome, Safari and Opera */
+}

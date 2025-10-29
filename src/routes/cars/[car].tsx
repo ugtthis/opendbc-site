@@ -5,7 +5,7 @@ import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
-import { QuickNavProvider, QuickNavWrapper } from '~/components/QuickNavHighlight'
+import { QuickNavProvider, QuickNavWrapper, useQuickNavScrollTarget, HIGHLIGHT_STYLES } from '~/components/QuickNavHighlight'
 import QuickNavDrawer from '~/components/QuickNavDrawer'
 import QuickNavSpecLinks from '~/components/QuickNavSpecLinks'
 import { SPEC_ID, getAccordionIdForSpec } from '~/data/specs'
@@ -15,6 +15,7 @@ import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import { slugify, hasObjectEntries } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
+import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 
 import metadata from '~/data/metadata.json'
 
@@ -75,6 +76,27 @@ type DetailedSpecs = Car & {
   max_lateral_accel?: number
 }
 
+
+type SupportTypeButtonProps = {
+  supportType: string
+  onClick: () => void
+}
+
+const SupportTypeButton: Component<SupportTypeButtonProps> = (props) => {
+  const { isActive } = useQuickNavScrollTarget()
+
+  return (
+    <button
+      onClick={props.onClick}
+      class={`w-full py-4 px-6 text-left cursor-pointer border-b border-gray-200
+        ${isActive() ? HIGHLIGHT_STYLES.bg : ' hover:bg-amber-50'}
+        ${isActive() ? `${HIGHLIGHT_STYLES.border} ${HIGHLIGHT_STYLES.transition}` : ''}`}
+    >
+      <div class="mb-1 text-sm font-medium text-gray-700">Support Type</div>
+      <div class="text-sm font-semibold uppercase">{props.supportType}</div>
+    </button>
+  )
+}
 
 type GradientHeaderProps = {
   car: DetailedSpecs | undefined
@@ -170,7 +192,8 @@ function CarDetailContent() {
     const accordionId = getAccordionIdForSpec(specId)
     const needsExpansion = accordionId && !toggle.openSections().has(accordionId)
 
-    if (openDesc() === specId) {
+    // Support Type uses modal instead of inline expansion, so skip toggle logic
+    if (specId !== SPEC_ID.SUPPORT_TYPE_BADGE && openDesc() === specId) {
       setOpenDesc(null)
     }
 
@@ -264,15 +287,10 @@ function CarDetailContent() {
                 >
                   <div class={`h-4 w-full -mb-1.5 ${getSupportTypeColor(currentCar().support_type)}`} />
                   <QuickNavWrapper id={SPEC_ID.SUPPORT_TYPE_BADGE}>
-                    <ExpandableSpec
-                      layout="vertical"
-                      label="Support Type"
-                      isOpen={openDesc() === 'support-type-badge'}
-                      onToggle={() => toggleDesc('support-type-badge')}
-                      description={DESCRIPTIONS[SPEC_ID.SUPPORT_TYPE_BADGE]}
-                    >
-                      <span class="text-sm font-semibold uppercase">{currentCar().support_type}</span>
-                    </ExpandableSpec>
+                    <SupportTypeButton
+                      supportType={currentCar().support_type}
+                      onClick={() => openSupportTypeModal(currentCar().support_type)}
+                    />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.ADAS_PACKAGE}>
                     <ExpandableSpec

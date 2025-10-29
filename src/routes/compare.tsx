@@ -6,6 +6,7 @@ import { slugify, hasObjectEntries } from '~/lib/utils'
 import metadata from '~/data/metadata.json'
 import { useModelComparison } from '~/contexts/ModelComparisonContext'
 import { SPECS_BY_CATEGORY } from '~/data/specs'
+import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
 
@@ -356,9 +357,12 @@ export default function ComparePage() {
                   {(car, columnIndex) => (
                     <div class="flex relative flex-col px-4 w-full h-full">
                         {/* Support Type Badge - Tab Style */}
-                        <div class={`relative z-10 py-0.5 px-2 block w-fit border-2 border-black border-b-0 text-center ${getSupportTypeColor(car.support_type)}`}>
+                        <button
+                          onClick={() => openSupportTypeModal(car.support_type)}
+                          class={`relative z-10 py-0.5 px-2 block w-fit border-2 border-black border-b-0 text-center cursor-pointer transition-opacity hover:opacity-80 ${getSupportTypeColor(car.support_type)}`}
+                        >
                           <p class="text-xs font-bold uppercase">{car.support_type}</p>
-                        </div>
+                        </button>
 
                         {/* Card */}
                         <div
