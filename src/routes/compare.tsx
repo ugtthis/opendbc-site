@@ -316,7 +316,7 @@ export default function ComparePage() {
                     </span>
                   </div>
                 </div>
-                <div class="w-4 h-4 text-white bouncy-arrow" innerHTML={UpArrowSvg} />
+                <div class="w-5 h-5 text-white bouncy-arrow" innerHTML={UpArrowSvg} />
               </div>
             </div>
           </Show>
