@@ -358,8 +358,8 @@ const Card: Component<CardProps> = (props) => {
                   class="flex-1 border-2 border-border-soft"
                 />
                 <InfoBox
-                  label="Install video"
-                  value="NA"
+                  label="wheelbase"
+                  value={`${props.car.wheelbase.toFixed(2)} m`}
                   class="flex-1 border-2 border-border-soft"
                 />
               </div>
