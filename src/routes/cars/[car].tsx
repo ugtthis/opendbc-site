@@ -17,6 +17,7 @@ import { BREAKPOINTS } from '~/utils/breakpoints'
 import { slugify, hasObjectEntries } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
+import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
 
 import metadata from '~/data/metadata.json'
 
@@ -327,6 +328,11 @@ function CarDetailContent() {
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
+
+                {/* User Video */}
+                <Show when={currentCar().video}>
+                  {(videoUrl) => <YoutubeVidPlayer videoUrl={videoUrl()} />}
+                </Show>
               </div>
 
               {/* Main Content */}
