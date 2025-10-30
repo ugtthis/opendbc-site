@@ -1,4 +1,5 @@
-import { createContext, useContext, createSignal, type JSX } from 'solid-js'
+import { createContext, useContext, createSignal, onMount, type JSX } from 'solid-js'
+import createMediaQuery from '~/utils/createMediaQuery'
 
 type ToggleContextType = {
   openSections: () => Set<string>
@@ -11,7 +12,8 @@ type ToggleContextType = {
 const ToggleContext = createContext<ToggleContextType>()
 
 export function ToggleProvider(props: { children: JSX.Element }) {
-  // Using section ids
+  const isDesktop = createMediaQuery('(min-width: 1024px)')
+
   const DEFAULT_OPEN_SECTIONS = new Set<string>([
     'general', 'technical', 'system', 'capabilities',
     'compatibility-info', 'quick-nav', 'vehicle-metrics'
@@ -20,10 +22,17 @@ export function ToggleProvider(props: { children: JSX.Element }) {
   // All sections plus the closed ones
   const ALL_SECTIONS = new Set<string>([
     ...DEFAULT_OPEN_SECTIONS,
-    'parts'
+    'parts',
+    'user-video'
   ])
 
   const [openSections, setOpenSections] = createSignal<Set<string>>(DEFAULT_OPEN_SECTIONS)
+
+  onMount(() => {
+    if (isDesktop()) {
+      setOpenSections(prev => new Set([...prev, 'user-video']))
+    }
+  })
 
   // Toggle individual section
   const toggleSection = (id: string) => {
