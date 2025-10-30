@@ -12,29 +12,37 @@ type YoutubeVidPlayerProps = {
   sectionId?: string
 }
 
-const getYouTubeVideoId = (url: string | null): string | null => {
+const parseYouTubeUrl = (url: string | null): { videoId: string; timestamp?: number } | null => {
   if (!url) return null
-  const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=))([\w-]+)/)
-  return match ? match[1] : null
+
+  const idMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|watch\?v=))([\w-]+)/)
+  if (!idMatch) return null
+
+  const timeMatch = url.match(/[?&](?:t|start)=(\d+)/)
+  const timestamp = timeMatch ? Number(timeMatch[1]) : undefined
+
+  return { videoId: idMatch[1], timestamp }
 }
 
-const getYouTubeEmbedUrl = (videoId: string): string => {
+const getYouTubeEmbedUrl = (videoId: string, timestamp?: number): string => {
   const params = new URLSearchParams({
-    enablejsapi: '1',      // Enable JS API for postMessage control
-    controls: '1',         // Show native controls
-    modestbranding: '1',   // Minimize YouTube branding
-    rel: '0',              // No related videos from other channels
-    iv_load_policy: '3',   // Disable annotations
-    playsinline: '1',      // Play inline on mobile
-    fs: '0',               // Hide fullscreen button
-    mute: '1',             // Start muted by default
+    enablejsapi: '1',
+    controls: '1',
+    modestbranding: '1',
+    rel: '0',
+    iv_load_policy: '3',
+    playsinline: '1',
+    fs: '0',
+    mute: '1',
   })
 
-  return `https://www.youtube.com/embed/${videoId}?${params.toString()}`
+  if (timestamp) params.set('start', String(timestamp))
+
+  return `https://www.youtube.com/embed/${videoId}?${params}`
 }
 
 const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
-  const videoId = createMemo(() => getYouTubeVideoId(props.videoUrl))
+  const videoData = createMemo(() => parseYouTubeUrl(props.videoUrl))
   const [isPlaying, setIsPlaying] = createSignal(false)
   const [isMuted, setIsMuted] = createSignal(true) // Start muted
   let iframeRef: HTMLIFrameElement | undefined
@@ -59,8 +67,8 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
   }
 
   return (
-    <Show when={videoId()}>
-      {(id) => (
+    <Show when={videoData()}>
+      {(data) => (
         <AccordionContainer
           title={props.title ?? 'User Video'}
           id={props.sectionId ?? 'user-video'}
@@ -69,8 +77,8 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
           <div class="relative w-full aspect-video">
             <iframe
               ref={iframeRef}
-              id={`youtube-player-${id()}`}
-              src={getYouTubeEmbedUrl(id())}
+              id={`youtube-player-${data().videoId}`}
+              src={getYouTubeEmbedUrl(data().videoId, data().timestamp)}
               class="w-full h-full"
               title="YouTube video player"
             />
