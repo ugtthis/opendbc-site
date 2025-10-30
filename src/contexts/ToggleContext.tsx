@@ -23,14 +23,15 @@ export function ToggleProvider(props: { children: JSX.Element }) {
   const ALL_SECTIONS = new Set<string>([
     ...DEFAULT_OPEN_SECTIONS,
     'parts',
-    'user-video'
+    'user-video',
+    'user-install-video'
   ])
 
   const [openSections, setOpenSections] = createSignal<Set<string>>(DEFAULT_OPEN_SECTIONS)
 
   onMount(() => {
     if (isDesktop()) {
-      setOpenSections(prev => new Set([...prev, 'user-video']))
+      setOpenSections(prev => new Set([...prev, 'user-video', 'user-install-video']))
     }
   })
 

@@ -8,6 +8,8 @@ import { cn } from '~/lib/utils'
 
 type YoutubeVidPlayerProps = {
   videoUrl: string
+  title?: string
+  sectionId?: string
 }
 
 const getYouTubeVideoId = (url: string | null): string | null => {
@@ -60,8 +62,8 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
     <Show when={videoId()}>
       {(id) => (
         <AccordionContainer
-          title="User Video"
-          id="user-video"
+          title={props.title ?? 'User Video'}
+          id={props.sectionId ?? 'user-video'}
           disableDefaultPadding={true}
         >
           <div class="relative w-full aspect-video">

@@ -333,6 +333,17 @@ function CarDetailContent() {
                 <Show when={currentCar().video}>
                   {(videoUrl) => <YoutubeVidPlayer videoUrl={videoUrl()} />}
                 </Show>
+
+                {/* User Install Video */}
+                <Show when={currentCar().setup_video}>
+                  {(videoUrl) => (
+                    <YoutubeVidPlayer
+                      videoUrl={videoUrl()}
+                      title="User Install Video"
+                      sectionId="user-install-video"
+                    />
+                  )}
+                </Show>
               </div>
 
               {/* Main Content */}
