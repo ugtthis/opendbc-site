@@ -25,13 +25,15 @@ export type FilterState = {
   make: string
   year: string
   hasUserVideo: string
+  hasSetupVideo: string
 }
 
 export const filterLabels = {
   year: 'Year',
   make: 'Make',
   supportLevel: 'Support',
-  hasUserVideo: 'Has Video'
+  hasUserVideo: 'Has Video',
+  hasSetupVideo: 'Has Install Video'
 } as const
 
 export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>
@@ -63,6 +65,7 @@ export const FilterProvider = (props: ParentProps) => {
     make: '',
     year: '',
     hasUserVideo: '',
+    hasSetupVideo: '',
   })
 
   const [searchQuery, setSearchQuery] = createSignal('')
@@ -96,6 +99,13 @@ export const FilterProvider = (props: ParentProps) => {
         result = result.filter((car) => car.video !== null && car.video !== '')
       } else if (currentFilters.hasUserVideo === 'No') {
         result = result.filter((car) => car.video === null || car.video === '')
+      }
+    }
+    if (currentFilters.hasSetupVideo) {
+      if (currentFilters.hasSetupVideo === 'Yes') {
+        result = result.filter((car) => car.setup_video !== null && car.setup_video !== '')
+      } else if (currentFilters.hasSetupVideo === 'No') {
+        result = result.filter((car) => car.setup_video === null || car.setup_video === '')
       }
     }
 
@@ -167,6 +177,7 @@ export const FilterProvider = (props: ParentProps) => {
       make: '',
       year: '',
       hasUserVideo: '',
+      hasSetupVideo: '',
     })
     setSearchQuery('')
   }

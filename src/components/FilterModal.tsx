@@ -198,6 +198,15 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             />
 
             <CustomDropdown
+              label="Has User Install Video"
+              options={['Yes', 'No']}
+              value={filters().hasSetupVideo}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, hasSetupVideo: value }))
+              }
+            />
+
+            <CustomDropdown
               label="Support Level"
               options={supportLevels}
               value={filters().supportLevel}
