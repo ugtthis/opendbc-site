@@ -70,7 +70,6 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
               id={`youtube-player-${id()}`}
               src={getYouTubeEmbedUrl(id())}
               class="w-full h-full"
-              allow="encrypted-media"
               title="YouTube video player"
             />
           </div>
