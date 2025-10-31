@@ -321,7 +321,7 @@ export default function ComparePage() {
                   </div>
                   <div class="text-white">
                     <span class="text-base font-semibold md:text-lg">
-                      {selectedCars()[highlight().selected!.columnIndex].years} {selectedCars()[highlight().selected!.columnIndex].make} {selectedCars()[highlight().selected!.columnIndex].model}
+                      {selectedCars()[highlight().selected!.columnIndex].name}
                     </span>
                   </div>
                 </div>
