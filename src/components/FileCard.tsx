@@ -192,6 +192,7 @@ const Card: Component<CardProps> = (props) => {
                 checked={isSelected()}
                 onChange={() => toggleCarSelection(props.car.name)}
                 disabled={isDisabled()}
+                autocomplete="off" // Firefox browser fix to prevent restoring form state on refresh
                 class={cn(
                   'peer relative size-7 border-3 border-black/70 appearance-none',
                   'checked:border-[#102f0c] checked:bg-[#2e5232] checked:shadow-elev-1',

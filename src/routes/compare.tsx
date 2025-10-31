@@ -18,10 +18,10 @@ const MIN_CARS_FOR_COMPARISON = 2
 export default function ComparePage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const navigate = useNavigate()
-  const { setCompareMode } = useModelComparison()
+  const { setIsCompareMode } = useModelComparison()
 
   const navigateToCompareMode = () => {
-    setCompareMode(true)
+    setIsCompareMode(true)
     navigate('/')
   }
 

@@ -1,9 +1,9 @@
 import { createContext, useContext, type ParentProps } from 'solid-js'
-import { createSignal, type Accessor, type Setter } from 'solid-js'
+import { createSignal, type Accessor } from 'solid-js'
 
 type ModelComparisonContextValue = {
-  compareMode: Accessor<boolean>
-  setCompareMode: Setter<boolean>
+  isCompareMode: Accessor<boolean>
+  setIsCompareMode: (value: boolean) => void
   selectedCars: Accessor<string[]>
   toggleCarSelection: (carName: string) => void
   clearSelectedCars: () => void
@@ -12,8 +12,12 @@ type ModelComparisonContextValue = {
 const ModelComparisonContext = createContext<ModelComparisonContextValue>()
 
 export const ModelComparisonProvider = (props: ParentProps) => {
-  const [compareMode, setCompareMode] = createSignal(false)
+  const [isInCompareMode, setIsInCompareMode] = createSignal(false)
   const [selectedCars, setSelectedCars] = createSignal<string[]>([])
+
+  const setIsCompareMode = (enabled: boolean) => {
+    setIsInCompareMode(enabled)
+  }
 
   const toggleCarSelection = (carName: string) => {
     setSelectedCars((prev) => {
@@ -33,8 +37,8 @@ export const ModelComparisonProvider = (props: ParentProps) => {
   return (
     <ModelComparisonContext.Provider
       value={{
-        compareMode,
-        setCompareMode,
+        isCompareMode: isInCompareMode,
+        setIsCompareMode,
         selectedCars,
         toggleCarSelection,
         clearSelectedCars,

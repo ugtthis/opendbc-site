@@ -13,7 +13,7 @@ import { cn } from '~/lib/utils'
 
 export default function Home() {
   const { filteredResults, resultCount, searchQuery } = useFilter()
-  const { compareMode, setCompareMode, clearSelectedCars } = useModelComparison()
+  const { isCompareMode, setIsCompareMode } = useModelComparison()
 
   return (
     <>
@@ -27,15 +27,10 @@ export default function Home() {
           <div class="flex border-5 border-[#dcded6] bg-white shadow-sm">
             <button
               type="button"
-              onClick={() => {
-                if (compareMode()) {
-                  clearSelectedCars()
-                }
-                setCompareMode(false)
-              }}
+              onClick={() => setIsCompareMode(false)}
               class={cn(
                 'flex items-center justify-center p-2 transition-colors cursor-pointer',
-                !compareMode()
+                !isCompareMode()
                   ? 'bg-[#242424] text-white border-2 border-[#65e063] shadow-md/70'
                   : 'bg-[#bbbbbbcd] text-white/70 hover:bg-[#aeaeae]'
               )}
@@ -45,10 +40,10 @@ export default function Home() {
             </button>
             <button
               type="button"
-              onClick={() => setCompareMode(true)}
+              onClick={() => setIsCompareMode(true)}
               class={cn(
                 'flex items-center justify-center p-2 transition-colors cursor-pointer',
-                compareMode()
+                isCompareMode()
                   ? 'bg-[#242424] text-white border-2 border-[#65e063] shadow-md/70'
                   : 'bg-[#bbbbbbcd] text-white/70 hover:bg-[#aeaeae]'
               )}
@@ -63,7 +58,7 @@ export default function Home() {
         <div
           class={cn(
             'grid grid-cols-1 mt-8',
-            compareMode()
+            isCompareMode()
               ? 'gap-2 compare-mode-active'
               : 'gap-6 md:grid-cols-2 lg:grid-cols-3',
           )}
@@ -77,7 +72,7 @@ export default function Home() {
           </For>
         </div>
       </main>
-      {compareMode() && <CompareFooter />}
+      {isCompareMode() && <CompareFooter />}
     </>
   )
 }
