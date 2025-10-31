@@ -3,6 +3,7 @@ import { createMemo, For, createSignal, onMount, onCleanup, Show, type Component
 import type { Car } from '~/types/CarDataTypes'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
+import LinkNewWindowSvg from '~/lib/icons/link-new-window.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
@@ -782,6 +783,30 @@ function CarDetailContent() {
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
+
+                {/* Feedback Button */}
+                <a
+                  href="https://opendbc.userjot.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class={cn(
+                    'flex items-center justify-between',
+                    'w-full gap-2 px-5 py-3 text-sm font-semibold tracking-wide text-white',
+                    'border-6 border-gray-700 bg-gradient-to-r from-[#4A4A4A] to-[#686868]',
+                    'transition-all duration-200 ease-in cursor-pointer',
+                    'md:hover:translate-y-[-2px] md:hover:from-[#0F2F24] md:hover:to-[#00FFA3]',
+                    'md:hover:shadow-lg md:hover:shadow-[0_4px_10px_#0F2F24]/40',
+                  )}
+                >
+                  <div class="flex flex-col">
+                    <span>See a bug?</span>
+                    <span>Submit feedback!</span>
+                  </div>
+                  <div
+                    class="h-8 w-8"
+                    innerHTML={LinkNewWindowSvg}
+                  />
+                </a>
               </div>
             </div>
           </div>
