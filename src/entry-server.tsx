@@ -9,6 +9,11 @@ export default createHandler(() => (
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.svg" />
+          <script async src="https://plausible.io/js/pa-vfDsbF0-tA72L6Wnf0rXO.js"></script>
+          <script>
+            {`window.plausible = window.plausible || function() { (plausible.q = plausible.q || []).push(arguments) },
+            plausible.init = plausible.init || function(i) { plausible.o = i || {} }; plausible.init();`}
+          </script>
           <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
           <link
