@@ -10,6 +10,8 @@ import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import OpenFolderSvg from '~/lib/icons/open-folder.svg?raw'
 import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
+import RotateLeftSvg from '~/lib/icons/rotate-left.svg?raw'
+import ZoomOutSvg from '~/lib/icons/zoom-out.svg?raw'
 
 const MIN_CARS_FOR_COMPARISON = 2
 
@@ -331,20 +333,22 @@ export default function ComparePage() {
           </Show>
 
           {/* Compare Specs Header with Zoom Button */}
-          <div class="flex flex-col gap-2 mb-4">
+          <div class="flex justify-between items-center">
             <h2 class="text-xl font-bold md:text-2xl">Compare Specs</h2>
             <Show when={hasHorizontalOverflow() || isZoomedOut()}>
               <button
                 onClick={toggleTableUIScale}
                 class={cn(
-                  'w-fit border-2 border-black py-2 px-4 text-sm font-medium transition-all cursor-pointer',
+                  'flex items-center gap-2.5 py-2 px-4 w-fit text-sm font-medium border-2 border-black',
+                  'cursor-pointer shadow-md/30 inset-shadow-[0_1px_2px_rgba(0,0,0,0.5)] hover:opacity-80',
                   isZoomedOut()
-                    ? 'bg-[#4A9B6F] text-white hover:bg-[#3d8159]'
-                    : 'bg-white text-black hover:bg-gray-100',
+                    ? 'border-3 border-gray-300 bg-gradient-to-b from-white to-gray-100 text-black'
+                    : 'border-3 border-green-900 bg-gradient-to-b from-[#4A9B6F] to-[#005925] text-white',
                 )}
                 title={isZoomedOut() ? 'Reset zoom' : 'Zoom out to view full table'}
               >
-                {isZoomedOut() ? '↻ Reset Zoom' : '🔍 Fit to Screen'}
+                <div class="flex-shrink-0 w-5 h-5" innerHTML={isZoomedOut() ? RotateLeftSvg : ZoomOutSvg} />
+                <span>{isZoomedOut() ? 'Reset Zoom' : 'Fit to Screen'}</span>
               </button>
             </Show>
           </div>
@@ -355,7 +359,7 @@ export default function ComparePage() {
               {/* Car Cards - Aligned with columns */}
               <div
                 ref={selectedCarCardsRef}
-                class="grid items-stretch py-2 mb-2 w-full min-w-fit"
+                class="grid items-stretch pt-9 pb-2 mb-2 w-full min-w-fit md:pt-16"
                 style={{
                   "grid-template-columns": `280px repeat(${selectedCars().length}, minmax(220px, 1fr))`,
                   "gap": "0 0"
