@@ -4,6 +4,7 @@ import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
 import PauseSvg from '~/lib/icons/pause.svg?raw'
 import VolumeOnSvg from '~/lib/icons/volume-on.svg?raw'
 import VolumeOffSvg from '~/lib/icons/volume-off.svg?raw'
+import LinkNewWindowSvg from '~/lib/icons/link-new-window.svg?raw'
 import { cn } from '~/lib/utils'
 
 type YoutubeVidPlayerProps = {
@@ -110,6 +111,25 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
               <div class="w-6 h-6" innerHTML={isMuted() ? VolumeOffSvg : VolumeOnSvg} />
             </button>
           </div>
+
+          <a
+            href={props.videoUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class={cn(
+              'flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium',
+              'bg-gray-100 text-black border-t border-black hover:text-white',
+              'hover:bg-gradient-to-r hover:from-red-400 hover:to-red-500',
+              'hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.7)]',
+              'transition-all duration-200 cursor-pointer group'
+            )}
+          >
+            <span class="tracking-wide uppercase">View on YouTube</span>
+            <div
+              class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              innerHTML={LinkNewWindowSvg}
+            />
+          </a>
         </AccordionContainer>
       )}
     </Show>
