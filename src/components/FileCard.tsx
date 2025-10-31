@@ -15,7 +15,10 @@ import VideoCameraSvg from '~/lib/icons/video-camera.svg?raw'
 import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
 import CheckSvg from '~/lib/icons/checkmark.svg?raw'
 import Checkmark2Svg from '~/lib/icons/checkmark-2.svg?raw'
+import CloseXIcon from '~/lib/icons/close-x.png'
 import { formatSpeed as formatEngageSpeed } from '~/lib/utils'
+
+const RED_PNG_FILTER = "brightness(0) saturate(90%) invert(23%) sepia(89%) saturate(3520%) hue-rotate(352deg) brightness(85%) contrast(95%)"
 
 const getACCDescription = (longitudinal: string, minEngageSpeed: number): string => {
   const speed = formatEngageSpeed(minEngageSpeed)
@@ -66,6 +69,7 @@ type ExpandableRowProps = {
   description: string
   class?: string
   icon?: string
+  iconUrl?: string
   isExpanded: boolean
   onToggle: () => void
 }
@@ -103,6 +107,10 @@ const ExpandableRow = (props: ExpandableRowProps) => {
         <div class="flex items-center gap-3">
           {props.icon ? (
             <div class="w-5 h-5" innerHTML={props.icon} />
+          ) : props.iconUrl ? (
+            <div class="w-5 h-5 flex items-center justify-center">
+              <img src={props.iconUrl} alt="" class="w-full h-full" style={{ filter: RED_PNG_FILTER }} />
+            </div>
           ) : (
             <div class="text-sm font-semibold">{props.value}</div>
           )}
@@ -148,10 +156,16 @@ const Card: Component<CardProps> = (props) => {
     openSupportTypeModal(props.car.support_type)
   }
 
+  const getResumeIcon = () => {
+    if (props.car.auto_resume === true) return { icon: CheckSvg }
+    if (props.car.auto_resume === false) return { iconUrl: CloseXIcon }
+    return {}
+  }
+
   const resumeRowProps = {
     label: "Resume from stop",
     value: "NA",
-    icon: props.car.auto_resume ? CheckSvg : undefined,
+    ...getResumeIcon(),
     description: getAutoResumeDescription(props.car.auto_resume),
     class: "border-2 border-border-soft"
   }
