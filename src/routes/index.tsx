@@ -18,12 +18,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main
-        class={cn(
-          'mx-auto max-w-7xl px-4 pt-4',
-          compareMode() ? 'pb-32' : 'pb-16',
-        )}
-      >
+      <main class="mx-auto max-w-7xl px-4 pt-4 pb-16">
         <div class="flex items-center justify-between mb-1.5">
           <div class="text-md text-gray-600 md:text-lg">
             {resultCount()} of {metadata.length} cars
