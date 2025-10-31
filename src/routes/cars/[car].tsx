@@ -124,7 +124,7 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
                     props.showUpArrow ? 'cursor-pointer hover:font-semibold hover:text-[#76ab7a]' : 'cursor-default',
                   )}
                 >
-                  {`${currentCar().make} ${currentCar().model} ${currentCar().years}`}
+                  {currentCar().name}
                   {props.showUpArrow && (
                     <div
                       class="flex-shrink-0 w-5 h-5 duration-300 bouncy-arrow"
@@ -260,7 +260,7 @@ function CarDetailContent() {
                     <MasterToggle />
                   </div>
                   <div class="py-3 pl-4 bg-white">
-                    <div class="font-medium">{currentCar().years} {currentCar().make} {currentCar().model}</div>
+                    <div class="font-medium">{currentCar().name}</div>
                   </div>
                 </div>
 
