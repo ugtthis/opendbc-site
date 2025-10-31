@@ -15,13 +15,7 @@ import VideoCameraSvg from '~/lib/icons/video-camera.svg?raw'
 import PlayVideoSvg from '~/lib/icons/play-video.svg?raw'
 import CheckSvg from '~/lib/icons/checkmark.svg?raw'
 import Checkmark2Svg from '~/lib/icons/checkmark-2.svg?raw'
-
-const MS_TO_MPH = 2.237
-
-const formatEngageSpeed = (speedMs: number | null): string => {
-  if (speedMs === null) return 'N/A'
-  return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
-}
+import { formatSpeed as formatEngageSpeed } from '~/lib/utils'
 
 const getACCDescription = (longitudinal: string, minEngageSpeed: number): string => {
   const speed = formatEngageSpeed(minEngageSpeed)

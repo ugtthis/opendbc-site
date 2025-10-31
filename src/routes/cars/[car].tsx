@@ -14,36 +14,12 @@ import { DESCRIPTIONS } from '~/data/specDescriptions'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
-import { slugify, hasObjectEntries } from '~/lib/utils'
+import { slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
 
 import metadata from '~/data/metadata.json'
-
-const MS_TO_MPH = 2.237
-const KG_TO_LBS = 2.20462
-
-const formatSpeed = (speedMs: number | null): string => {
-  if (speedMs === null) return 'N/A'
-  return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
-}
-
-const formatValue = (value: number | undefined | null, unit: string = ''): string => {
-  if (value === undefined || value === null) return 'N/A'
-
-  if (Math.abs(value) >= 1000) {
-    return `~${Math.round(value).toLocaleString()}${unit}`
-  }
-
-  return `~${value.toFixed(2)}${unit}`
-}
-
-const formatWeight = (kg: number | undefined): string => {
-  if (kg === undefined) return 'N/A'
-  const lbs = Math.round(kg * KG_TO_LBS)
-  return `${lbs.toLocaleString()} lbs`
-}
 
 type DetailedSpecs = Car & {
   parts?: Array<{

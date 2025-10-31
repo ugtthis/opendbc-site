@@ -1,28 +1,6 @@
-// Formatters for display values
-const MS_TO_MPH = 2.237
-const KG_TO_LBS = 2.20462
+import { formatSpeed, formatValue, formatWeight, formatBoolean, formatEnabled } from '~/lib/utils'
 
-const formatSpeed = (speedMs: number | null): string => {
-  if (speedMs === null) return 'N/A'
-  return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
-}
-
-const formatValue = (value: number | undefined | null, unit: string = ''): string => {
-  if (value === undefined || value === null) return 'N/A'
-  if (Math.abs(value) >= 1000) {
-    return `~${Math.round(value).toLocaleString()}${unit}`
-  }
-  return `~${value.toFixed(2)}${unit}`
-}
-
-const formatWeight = (kg: number | undefined): string => {
-  if (kg === undefined) return 'N/A'
-  const lbs = Math.round(kg * KG_TO_LBS)
-  return `${lbs.toLocaleString()} lbs`
-}
-
-const formatBoolean = (val: boolean): string => val ? 'Yes' : 'No'
-const formatEnabled = (val: boolean): string => val ? 'Enabled' : 'Disabled'
+type JsonValue = any
 
 type SpecDefinition = {
   id: string
@@ -30,7 +8,7 @@ type SpecDefinition = {
   key: string
   category: string
   accordionId: string
-  format?: (val: any) => string
+  format?: (val: JsonValue) => string
 }
 
 export const SPECS: SpecDefinition[] = [
