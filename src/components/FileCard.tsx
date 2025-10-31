@@ -18,7 +18,8 @@ import Checkmark2Svg from '~/lib/icons/checkmark-2.svg?raw'
 
 const MS_TO_MPH = 2.237
 
-const formatEngageSpeed = (speedMs: number): string => {
+const formatEngageSpeed = (speedMs: number | null): string => {
+  if (speedMs === null) return 'N/A'
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 

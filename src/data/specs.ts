@@ -2,12 +2,13 @@
 const MS_TO_MPH = 2.237
 const KG_TO_LBS = 2.20462
 
-const formatSpeed = (speedMs: number): string => {
+const formatSpeed = (speedMs: number | null): string => {
+  if (speedMs === null) return 'N/A'
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
-const formatValue = (value: number | undefined, unit: string = ''): string => {
-  if (value === undefined) return 'N/A'
+const formatValue = (value: number | undefined | null, unit: string = ''): string => {
+  if (value === undefined || value === null) return 'N/A'
   if (Math.abs(value) >= 1000) {
     return `~${Math.round(value).toLocaleString()}${unit}`
   }

@@ -16,7 +16,8 @@ export type Car = {
   mass_curb_weight: number
   steer_ratio: number
   wheelbase: number
-  min_steer_speed: number
+  min_steer_speed: number | null
   min_enable_speed: number
+  max_lateral_accel?: number | null
   [key: string]: string | number | boolean | string[] | null | undefined | Record<string, unknown>
 }
