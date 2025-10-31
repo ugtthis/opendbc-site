@@ -11,7 +11,7 @@ import { QuickNavProvider, QuickNavWrapper, useQuickNavScrollTarget, HIGHLIGHT_S
 import QuickNavDrawer from '~/components/QuickNavDrawer'
 import QuickNavSpecLinks from '~/components/QuickNavSpecLinks'
 import { SPEC_ID, getAccordionIdForSpec } from '~/data/specs'
-import { DESCRIPTIONS } from '~/data/specDescriptions'
+import { SPEC_DESCRIPTIONS } from '~/data/descriptions'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
@@ -306,7 +306,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'adas-package'}
                       onToggle={() => toggleDesc('adas-package')}
-                      description={DESCRIPTIONS[SPEC_ID.ADAS_PACKAGE]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.ADAS_PACKAGE]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FINGERPRINT}>
@@ -316,7 +316,7 @@ function CarDetailContent() {
                       value={currentCar().car_fingerprint}
                       isOpen={openDesc() === 'fingerprint'}
                       onToggle={() => toggleDesc('fingerprint')}
-                      description={DESCRIPTIONS[SPEC_ID.FINGERPRINT]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.FINGERPRINT]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.HARNESS}>
@@ -327,7 +327,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'harness'}
                       onToggle={() => toggleDesc('harness')}
-                      description={DESCRIPTIONS[SPEC_ID.HARNESS]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.HARNESS]}
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
@@ -428,7 +428,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'tire-stiffness-factor'}
                             onToggle={() => toggleDesc('tire-stiffness-factor')}
-                            description={DESCRIPTIONS[SPEC_ID.TIRE_STIFFNESS_FACTOR]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.TIRE_STIFFNESS_FACTOR]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS}>
@@ -438,7 +438,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'tire-front-stiffness'}
                             onToggle={() => toggleDesc('tire-front-stiffness')}
-                            description={DESCRIPTIONS[SPEC_ID.TIRE_FRONT_STIFFNESS]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.TIRE_FRONT_STIFFNESS]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS}>
@@ -448,7 +448,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'tire-rear-stiffness'}
                             onToggle={() => toggleDesc('tire-rear-stiffness')}
-                            description={DESCRIPTIONS[SPEC_ID.TIRE_REAR_STIFFNESS]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.TIRE_REAR_STIFFNESS]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -463,7 +463,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'actuator-delay'}
                             onToggle={() => toggleDesc('actuator-delay')}
-                            description={DESCRIPTIONS[SPEC_ID.ACTUATOR_DELAY]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.ACTUATOR_DELAY]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.LIMIT_TIMER}>
@@ -473,7 +473,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'limit-timer'}
                             onToggle={() => toggleDesc('limit-timer')}
-                            description={DESCRIPTIONS[SPEC_ID.LIMIT_TIMER]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.LIMIT_TIMER]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.CONTROL_TYPE}>
@@ -483,7 +483,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'control-type'}
                             onToggle={() => toggleDesc('control-type')}
-                            description={DESCRIPTIONS[SPEC_ID.CONTROL_TYPE]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.CONTROL_TYPE]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -498,7 +498,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'stopping-speed'}
                             onToggle={() => toggleDesc('stopping-speed')}
-                            description={DESCRIPTIONS[SPEC_ID.STOPPING_SPEED]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.STOPPING_SPEED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.STARTING_SPEED}>
@@ -508,7 +508,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'starting-speed'}
                             onToggle={() => toggleDesc('starting-speed')}
-                            description={DESCRIPTIONS[SPEC_ID.STARTING_SPEED]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.STARTING_SPEED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.STOP_ACCEL}>
@@ -518,7 +518,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'stop-accel'}
                             onToggle={() => toggleDesc('stop-accel')}
-                            description={DESCRIPTIONS[SPEC_ID.STOP_ACCEL]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.STOP_ACCEL]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -545,7 +545,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'network-location'}
                             onToggle={() => toggleDesc('network-location')}
-                            description={DESCRIPTIONS[SPEC_ID.NETWORK_LOCATION]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.NETWORK_LOCATION]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.BUS_LOOKUP}>
@@ -554,7 +554,7 @@ function CarDetailContent() {
                             label="Bus Lookup"
                             isOpen={openDesc() === 'bus-lookup'}
                             onToggle={() => toggleDesc('bus-lookup')}
-                            description={DESCRIPTIONS[SPEC_ID.BUS_LOOKUP]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.BUS_LOOKUP]}
                           >
                             {(() => {
                               const busLookup = currentCar().bus_lookup
@@ -590,7 +590,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'experimental-longitudinal'}
                             onToggle={() => toggleDesc('experimental-longitudinal')}
-                            description={DESCRIPTIONS[SPEC_ID.EXPERIMENTAL_LONGITUDINAL]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.EXPERIMENTAL_LONGITUDINAL]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.DSU_ENABLED}>
@@ -600,7 +600,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'dsu-enabled'}
                             onToggle={() => toggleDesc('dsu-enabled')}
-                            description={DESCRIPTIONS[SPEC_ID.DSU_ENABLED]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.DSU_ENABLED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.BSM_ENABLED}>
@@ -610,7 +610,7 @@ function CarDetailContent() {
                             isEven={true}
                             isOpen={openDesc() === 'bsm-enabled'}
                             onToggle={() => toggleDesc('bsm-enabled')}
-                            description={DESCRIPTIONS[SPEC_ID.BSM_ENABLED]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.BSM_ENABLED]}
                           />
                         </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.PCM_CRUISE}>
@@ -620,7 +620,7 @@ function CarDetailContent() {
                             isEven={false}
                             isOpen={openDesc() === 'pcm-cruise'}
                             onToggle={() => toggleDesc('pcm-cruise')}
-                            description={DESCRIPTIONS[SPEC_ID.PCM_CRUISE]}
+                            description={SPEC_DESCRIPTIONS[SPEC_ID.PCM_CRUISE]}
                           />
                         </QuickNavWrapper>
                       </div>
@@ -641,7 +641,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'min-steering-speed'}
                       onToggle={() => toggleDesc('min-steering-speed')}
-                      description={DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.MIN_ENABLE_SPEED}>
@@ -651,7 +651,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'min-enable-speed'}
                       onToggle={() => toggleDesc('min-enable-speed')}
-                      description={DESCRIPTIONS[SPEC_ID.MIN_ENABLE_SPEED]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.MIN_ENABLE_SPEED]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL}>
@@ -661,7 +661,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'longitudinal-control'}
                       onToggle={() => toggleDesc('longitudinal-control')}
-                      description={DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.AUTO_RESUME}>
@@ -671,7 +671,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'auto-resume'}
                       onToggle={() => toggleDesc('auto-resume')}
-                      description={DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL}>
@@ -681,7 +681,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'fsr-longitudinal'}
                       onToggle={() => toggleDesc('fsr-longitudinal')}
-                      description={DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.FSR_STEERING}>
@@ -691,7 +691,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'fsr-steering'}
                       onToggle={() => toggleDesc('fsr-steering')}
-                      description={DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE}>
@@ -701,7 +701,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'steering-torque'}
                       onToggle={() => toggleDesc('steering-torque')}
-                      description={DESCRIPTIONS[SPEC_ID.STEERING_TORQUE]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.STEERING_TORQUE]}
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>
@@ -738,7 +738,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'curb-weight'}
                       onToggle={() => toggleDesc('curb-weight')}
-                      description={DESCRIPTIONS[SPEC_ID.CURB_WEIGHT]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.CURB_WEIGHT]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.WHEELBASE}>
@@ -748,7 +748,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'wheelbase'}
                       onToggle={() => toggleDesc('wheelbase')}
-                      description={DESCRIPTIONS[SPEC_ID.WHEELBASE]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.WHEELBASE]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.STEER_RATIO}>
@@ -758,7 +758,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'steer-ratio'}
                       onToggle={() => toggleDesc('steer-ratio')}
-                      description={DESCRIPTIONS[SPEC_ID.STEER_RATIO]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.STEER_RATIO]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.CENTER_FRONT_RATIO}>
@@ -768,7 +768,7 @@ function CarDetailContent() {
                       isEven={true}
                       isOpen={openDesc() === 'center-front-ratio'}
                       onToggle={() => toggleDesc('center-front-ratio')}
-                      description={DESCRIPTIONS[SPEC_ID.CENTER_FRONT_RATIO]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.CENTER_FRONT_RATIO]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.MAX_LATERAL_ACCEL}>
@@ -778,7 +778,7 @@ function CarDetailContent() {
                       isEven={false}
                       isOpen={openDesc() === 'max-lateral-accel'}
                       onToggle={() => toggleDesc('max-lateral-accel')}
-                      description={DESCRIPTIONS[SPEC_ID.MAX_LATERAL_ACCEL]}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.MAX_LATERAL_ACCEL]}
                     />
                   </QuickNavWrapper>
                 </AccordionContainer>

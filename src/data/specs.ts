@@ -69,7 +69,6 @@ export const getAccordionIdForSpec = (specId: string): string | undefined => {
   return SPECS.find(spec => spec.id === specId)?.accordionId
 }
 
-// Constants for lookup - explicitly typed for autocomplete
 export const SPEC_ID = {
   SUPPORT_TYPE_BADGE: 'support-type-badge',
   ADAS_PACKAGE: 'adas-package',

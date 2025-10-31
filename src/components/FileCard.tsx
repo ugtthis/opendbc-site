@@ -17,31 +17,9 @@ import CheckSvg from '~/lib/icons/checkmark.svg?raw'
 import Checkmark2Svg from '~/lib/icons/checkmark-2.svg?raw'
 import CloseXIcon from '~/lib/icons/close-x.png'
 import { formatSpeed as formatEngageSpeed } from '~/lib/utils'
+import { getACCDescription, getAutoResumeDescription } from '~/data/descriptions'
 
 const RED_PNG_FILTER = "brightness(0) saturate(90%) invert(23%) sepia(89%) saturate(3520%) hue-rotate(352deg) brightness(85%) contrast(95%)"
-
-const getACCDescription = (longitudinal: string, minEngageSpeed: number): string => {
-  const speed = formatEngageSpeed(minEngageSpeed)
-
-  switch (longitudinal) {
-    case 'openpilot':
-      return `Full openpilot Adaptive Cruise Control (ACC) with automatic speed and following distance control. openpilot handles all longitudinal control including acceleration, deceleration, and maintaining safe following distances. Minimum engagement speed: ${speed}.`
-    case 'openpilot available':
-      return `openpilot Adaptive Cruise Control (ACC) is available as an option but requires enabling. When enabled, openpilot provides enhanced longitudinal control with automatic speed and following distance management. Minimum engagement speed: ${speed}.`
-    case 'Stock':
-      return `Uses the vehicle's factory Adaptive Cruise Control (ACC) system. openpilot provides steering assistance but relies on the car's built-in cruise control for speed management. Minimum engagement speed: ${speed}.`
-    default:
-      return `Adaptive Cruise Control (ACC) maintains a safe following distance from the vehicle ahead. Minimum engagement speed: ${speed}.`
-  }
-}
-
-const getAutoResumeDescription = (autoResume: boolean): string => {
-  if (autoResume) {
-    return `Automatically resumes from a complete stop when traffic ahead starts moving again. This feature works with openpilot's Adaptive Cruise Control and eliminates the need to manually restart cruise control after coming to a stop in traffic.`
-  } else {
-    return `Does not automatically resume from a complete stop. When traffic stops, you'll need to manually press the accelerator or cruise control button to resume after the vehicle ahead starts moving again.`
-  }
-}
 
 type CardProps = {
   car: Car
@@ -181,7 +159,8 @@ const Card: Component<CardProps> = (props) => {
   const steeringRowProps = {
     label: "Steering Ratio",
     value: props.car.steer_ratio.toFixed(2),
-    description: "The steering ratio is the relationship between steering wheel rotation and front wheel angle. A lower ratio means more responsive steering - less steering wheel input needed for the same wheel movement.",
+    description: "The steering ratio is the relationship between steering wheel rotation and front wheel angle. " +
+      "A lower ratio means more responsive steering - less steering wheel input needed for the same wheel movement.",
     class: "border-2 border-border-soft"
   }
 

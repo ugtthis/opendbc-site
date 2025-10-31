@@ -15,7 +15,7 @@ import {
   SUPPORT_TYPE_CONTENT,
   getSupportTypeOrder,
   type SupportTypeContent,
-} from '~/data/supportTypeDescriptions'
+} from '~/data/descriptions'
 import { cn } from '~/lib/utils'
 import LinkIcon from '~/lib/icons/link-new-window.svg?raw'
 import ChevronIcon from '~/lib/icons/down-chevron.svg?raw'
