@@ -23,7 +23,7 @@ const Header: Component = () => {
       >
         <img
           src="/opendbc-logo.png"
-          alt="opendbc logo"
+          role="presentation"
           width="200"
           height="59"
           class="w-[200px] h-auto"
