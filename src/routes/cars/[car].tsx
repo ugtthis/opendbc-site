@@ -107,12 +107,12 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
           <Show when={props.car}>
             {(currentCar) => (
               <>
-                <span class="mx-2 text-gray-300">{'>'}</span>
+                <span class="mx-2">{'>'}</span>
                 <button
                   onClick={props.onScrollToTop}
                   class={cn(
                     'flex flex-1 items-center justify-between gap-4',
-                    'text-gray-200 transition-colors cursor-pointer hover:text-white',
+                    'transition-colors cursor-pointer',
                   )}
                 >
                   {`${currentCar().make} ${currentCar().model} ${currentCar().years}`}
