@@ -44,7 +44,7 @@ const HighlightText: Component<HighlightTextProps> = (props) => {
       <For each={segments()}>
         {(segment) =>
           segment.highlighted
-            ? <mark class="text-black bg-yellow-300">{segment.text}</mark>
+            ? <mark class="bg-yellow-300 text-black">{segment.text}</mark>
             : <span>{segment.text}</span>
         }
       </For>

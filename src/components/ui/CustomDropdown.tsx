@@ -52,8 +52,8 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
           type="button"
           onClick={() => setIsOpen(!isOpen())}
           class={cn(
-            'w-full p-4 text-left border border-black bg-white flex justify-between items-center',
-            'hover:bg-surface transition-colors cursor-pointer',
+            'flex w-full items-center justify-between border border-black bg-white p-4',
+            'cursor-pointer text-left transition-colors hover:bg-surface',
           )}
         >
           <span>{props.value || 'All'}</span>
@@ -62,16 +62,20 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
             alt=""
             width="24"
             height="24"
-            class={`transition-transform ${isOpen() ? 'rotate-180' : ''} opacity-60`}
+            class={cn(
+              'opacity-60 transition-transform',
+              isOpen() && 'rotate-180',
+            )}
           />
         </button>
 
         <Show when={isOpen()}>
-          <div class="overflow-y-auto w-full bg-white border border-t-0 border-black max-h-[200px]">
+          <div class="max-h-[200px] w-full overflow-y-auto border border-t-0 border-black bg-white">
             <button
               class={cn(
-                'w-full h-[40px] px-4 text-left hover:bg-gray-100 cursor-pointer',
-                !props.value ? 'bg-gray-100' : '',
+                'h-[40px] w-full cursor-pointer px-4 text-left',
+                'hover:bg-gray-100',
+                !props.value && 'bg-gray-100',
               )}
               onClick={() => handleSelect('')}
             >
@@ -81,8 +85,9 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
               {(option) => (
                 <button
                   class={cn(
-                    'w-full h-[40px] px-4 text-left hover:bg-gray-100 cursor-pointer',
-                    props.value === option ? 'bg-gray-100' : '',
+                    'h-[40px] w-full cursor-pointer px-4 text-left',
+                    'hover:bg-gray-100',
+                    props.value === option && 'bg-gray-100',
                   )}
                   onClick={() => handleSelect(option)}
                 >
