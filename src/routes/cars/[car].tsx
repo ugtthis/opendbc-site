@@ -121,7 +121,7 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
                   onClick={props.onScrollToTop}
                   class={cn(
                     'flex flex-1 items-center justify-between gap-4 font-normal transition-colors',
-                    props.showUpArrow ? 'cursor-pointer hover:font-semibold hover:text-[#76ab7a]' : 'cursor-default',
+                    props.showUpArrow ? 'cursor-pointer md:hover:font-semibold md:hover:text-[#76ab7a]' : 'cursor-default',
                   )}
                 >
                   {currentCar().name}
