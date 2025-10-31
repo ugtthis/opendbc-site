@@ -133,7 +133,8 @@ const ExpandableRow = (props: ExpandableRowProps) => {
           </div>
           {/* Scroll gradient indicator */}
           <div class={cn(
-            'absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-200 pointer-events-none',
+            'absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/50 to-transparent opacity-0',
+            'transition-opacity duration-200 pointer-events-none',
             isScrolledToBottom() ? 'opacity-0' : 'opacity-100',
           )} />
         </div>
