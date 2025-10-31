@@ -2,7 +2,7 @@ import { useSearchParams, useNavigate } from '@solidjs/router'
 import { createMemo, For, Show, createSignal, onMount, onCleanup, createEffect } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 import { getSupportTypeColor } from '~/types/supportType'
-import { slugify, hasObjectEntries } from '~/lib/utils'
+import { cn, slugify, hasObjectEntries } from '~/lib/utils'
 import metadata from '~/data/metadata.json'
 import { useModelComparison } from '~/contexts/ModelComparisonContext'
 import { SPECS_BY_CATEGORY } from '~/data/specs'
@@ -283,10 +283,13 @@ export default function ComparePage() {
   return (
     <div class="min-h-screen bg-gray-100">
       {/* Header */}
-      <header class="py-4 border-black md:py-6 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
+      <header class="py-4 border-b-[3px] border-black gradient-dark-forrest shadow-[0_6px_20px_rgba(0,0,0,0.6)] md:py-6">
         <div class="px-4 mx-auto md:px-6 max-w-[2200px]">
           <nav class="flex items-center text-sm font-medium text-white">
-            <button onClick={navigateToCompareMode} class="flex gap-1.5 items-center transition-colors hover:text-gray-200 hover:cursor-pointer">
+            <button
+              onClick={navigateToCompareMode}
+              class="flex items-center gap-1.5 transition-colors cursor-pointer hover:text-gray-200"
+            >
               <div class="flex-shrink-0 w-3 h-3 rotate-180" innerHTML={RightArrowSvg} />
               <span>Car List</span>
             </button>
@@ -301,11 +304,17 @@ export default function ComparePage() {
             <div
               data-preserve-selection
               onClick={scrollToTop}
-              class="fixed top-0 right-0 left-0 z-40 py-3 md:py-4 hover:cursor-pointer gradient-dark-forrest shadow-[0_6px_20px_rgba(0,0,0,0.6)]"
+              class={cn(
+                'fixed top-0 right-0 left-0 z-40 py-3 md:py-4',
+                'gradient-dark-forrest shadow-[0_6px_20px_rgba(0,0,0,0.6)] cursor-pointer',
+              )}
             >
               <div class="flex justify-between items-center px-4 mx-auto md:px-6 max-w-[2200px]">
                 <div class="flex gap-3 items-center">
-                  <div class={`py-1.5 px-3 border-4 border-white/80 ${getSupportTypeColor(selectedCars()[highlight().selected!.columnIndex].support_type)}`}>
+                  <div class={cn(
+                    'py-1.5 px-3 border-4 border-white/80',
+                    getSupportTypeColor(selectedCars()[highlight().selected!.columnIndex].support_type),
+                  )}>
                     <span class="text-xs font-bold uppercase md:text-sm">
                       {selectedCars()[highlight().selected!.columnIndex].support_type}
                     </span>
@@ -327,11 +336,12 @@ export default function ComparePage() {
             <Show when={hasHorizontalOverflow()}>
               <button
                 onClick={toggleTableUIScale}
-                class={`py-2 px-4 text-sm font-medium transition-all border-2 border-black w-fit hover:cursor-pointer ${
+                class={cn(
+                  'w-fit border-2 border-black py-2 px-4 text-sm font-medium transition-all cursor-pointer',
                   isZoomedOut()
                     ? 'bg-[#4A9B6F] text-white hover:bg-[#3d8159]'
-                    : 'bg-white text-black hover:bg-gray-100'
-                }`}
+                    : 'bg-white text-black hover:bg-gray-100',
+                )}
                 title={isZoomedOut() ? 'Reset zoom' : 'Zoom out to view full table'}
               >
                 {isZoomedOut() ? '↻ Reset Zoom' : '🔍 Fit to Screen'}
@@ -361,14 +371,21 @@ export default function ComparePage() {
                         {/* Support Type Badge - Tab Style */}
                         <button
                           onClick={() => openSupportTypeModal(car.support_type)}
-                          class={`relative z-10 py-0.5 px-2 block w-fit border-2 border-black border-b-0 text-center cursor-pointer transition-opacity hover:opacity-80 ${getSupportTypeColor(car.support_type)}`}
+                          class={cn(
+                            'relative z-10 block w-fit border-2 border-black border-b-0 py-0.5 px-2',
+                            'text-center transition-opacity cursor-pointer hover:opacity-80',
+                            getSupportTypeColor(car.support_type),
+                          )}
                         >
                           <p class="text-xs font-bold uppercase">{car.support_type}</p>
                         </button>
 
                         {/* Card */}
                         <div
-                          class={`relative flex flex-col flex-1 w-full border-2 border-black transition-all duration-200 bg-white ${getCardHighlightClass(columnIndex())}`}
+                          class={cn(
+                            'relative flex w-full flex-1 flex-col border-2 border-black bg-white transition-all duration-200',
+                            getCardHighlightClass(columnIndex()),
+                          )}
                         >
                           {/* Car Info */}
                           <div class="flex flex-col flex-grow p-2 border-b border-black">
@@ -381,14 +398,20 @@ export default function ComparePage() {
                           <div class="flex">
                             <a
                               href={`/cars/${slugify(car.name)}`}
-                              class="flex justify-center items-center py-1.5 border-r border-black transition-colors flex-[7] bg-[#A8A8A8] hover:bg-[#8B8B8B]"
+                              class={cn(
+                                'flex flex-[7] items-center justify-center border-r border-black bg-[#A8A8A8]',
+                                'py-1.5 transition-colors hover:bg-[#8B8B8B]',
+                              )}
                               title="View full details"
                             >
                               <div class="size-4" innerHTML={OpenFolderSvg} />
                             </a>
                             <button
                               onClick={() => removeCar(car.name)}
-                              class="flex justify-center items-center py-1.5 text-sm font-medium text-white transition-colors cursor-pointer flex-[3] bg-[#A07878] hover:bg-[#8B6B6B]"
+                              class={cn(
+                                'flex flex-[3] items-center justify-center py-1.5 bg-[#A07878] text-sm font-medium text-white',
+                                'transition-colors cursor-pointer hover:bg-[#8B6B6B]',
+                              )}
                               title="Remove from comparison"
                             >
                               <span class="text-base">×</span>
@@ -402,7 +425,7 @@ export default function ComparePage() {
 
               {/* Comparison Table */}
               <div
-                class="w-full bg-white border-2 border-black shadow-elev-1 min-w-fit"
+                class="min-w-fit w-full bg-white border-2 border-black shadow-elev-1"
                 onMouseLeave={clearCellHover}
               >
               {/* Render specs grouped by category */}
@@ -440,7 +463,10 @@ export default function ComparePage() {
                           {/* Spec Label */}
                           <div
                             data-spec-label
-                            class={`flex items-center py-3 pl-4 pr-3 font-medium border-r border-gray-300 ${getLabelHighlightClass(spec.key)}`}
+                            class={cn(
+                              'flex items-center py-3 pl-4 pr-3 font-medium border-r border-gray-300',
+                              getLabelHighlightClass(spec.key),
+                            )}
                           >
                             <span class="break-words">{spec.label}</span>
                           </div>
@@ -460,7 +486,11 @@ export default function ComparePage() {
                               return (
                                 <div
                                   data-column-value
-                                  class={`flex ${isObject ? 'items-start' : 'items-center'} py-3 px-4 text-sm cursor-pointer ${getCellHighlightClass(columnIndex(), spec.key)}`}
+                                  class={cn(
+                                    'flex py-3 px-4 text-sm cursor-pointer',
+                                    isObject ? 'items-start' : 'items-center',
+                                    getCellHighlightClass(columnIndex(), spec.key),
+                                  )}
                                   onMouseEnter={() => updateCellHover(columnIndex(), spec.key)}
                                   onClick={() => handleCellClick(columnIndex(), spec.key)}
                                   style={{ "word-break": "break-word", "overflow-wrap": "anywhere" }}
@@ -511,7 +541,13 @@ export default function ComparePage() {
                 ? 'Select cars from the list to compare them'
                 : 'Add more cars to start comparing'}
             </p>
-            <button onClick={navigateToCompareMode} class="inline-block py-2 px-6 text-white border-2 border-black transition-colors hover:cursor-pointer bg-accent hover:bg-[#727272]">
+            <button
+              onClick={navigateToCompareMode}
+              class={cn(
+                'inline-block border-2 border-black bg-accent py-2 px-6 text-white',
+                'transition-colors cursor-pointer hover:bg-[#727272]',
+              )}
+            >
               Go Back to Car List
             </button>
           </div>
