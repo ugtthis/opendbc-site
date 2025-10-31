@@ -97,9 +97,9 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
       <div
         class={cn(
           'absolute inset-x-0 bottom-0 h-[10px]',
-          'opacity-0 shadow-[0_8px_10px_rgba(0,0,0,0.5),inset_0_2px_4px_rgba(0,0,0,0.4)]',
+          'opacity-0 shadow-[0_8px_10px_rgba(0,0,0,0.6),inset_0_2px_4px_rgba(0,0,0,0.4)]',
           'transition-opacity duration-[3000ms] ease-in-out pointer-events-none shine-border-overlay',
-          props.showUpArrow && 'opacity-100',
+          props.showUpArrow && 'opacity-70',
         )}
       />
       <div class="px-4 mx-auto md:px-6 max-w-[1500px]">
