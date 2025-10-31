@@ -349,7 +349,7 @@ const Card: Component<CardProps> = (props) => {
               <div class="flex gap-2">
                 <InfoBox
                   label="curb weight"
-                  value={`${Math.round(props.car.mass_curb_weight).toLocaleString()}lb`}
+                  value={`${Math.round(props.car.mass_curb_weight).toLocaleString()} lb`}
                   class="flex-1 border-2 border-border-soft"
                 />
                 <InfoBox
