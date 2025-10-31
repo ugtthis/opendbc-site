@@ -95,7 +95,7 @@ const ExpandableRow = (props: ExpandableRowProps) => {
       <div
         class={cn(
           'flex items-center justify-between px-4 py-4',
-          'transition-colors duration-200 cursor-pointer hover:bg-accent hover:text-white',
+          'transition-colors duration-200 cursor-pointer hover:bg-white',
         )}
         onClick={props.onToggle}
       >
