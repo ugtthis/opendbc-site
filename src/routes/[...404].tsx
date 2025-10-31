@@ -1,8 +1,13 @@
+import { onMount } from 'solid-js'
 import { useNavigate } from '@solidjs/router'
 import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
 
 export default function NotFound() {
   const navigate = useNavigate()
+
+  onMount(() => {
+    window.plausible?.('404')
+  })
 
   return (
     <div class="min-h-screen bg-gray-100">
