@@ -14,7 +14,7 @@ import { DESCRIPTIONS } from '~/data/specDescriptions'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
-import { slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
+import { cn, slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
@@ -87,10 +87,18 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
   const navigate = useNavigate()
 
   return (
-    <div class="fixed top-0 right-0 left-0 z-50 py-4 border-black md:py-5 gradient-dark-forrest border-b-[3px] shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
+    <div
+      class={cn(
+        'fixed top-0 right-0 left-0 z-50 py-4 md:py-5 border-b-[3px] border-black',
+        'gradient-dark-forrest shadow-[0_6px_20px_rgba(0,0,0,0.6)]',
+      )}
+    >
       <div class="px-4 mx-auto md:px-6 max-w-[1500px]">
         <nav class="flex items-center text-sm font-medium text-white">
-          <button onClick={() => navigate('/')} class="flex gap-1.5 items-center transition-colors hover:text-gray-200 hover:cursor-pointer">
+          <button
+            onClick={() => navigate('/')}
+            class="flex items-center gap-1.5 transition-colors cursor-pointer hover:text-gray-200"
+          >
             <Show when={!props.car}>
               <div class="flex-shrink-0 w-3 h-3 rotate-180" innerHTML={RightArrowSvg} />
             </Show>
@@ -102,7 +110,10 @@ const GradientHeader: Component<GradientHeaderProps> = (props) => {
                 <span class="mx-2 text-gray-300">{'>'}</span>
                 <button
                   onClick={props.onScrollToTop}
-                  class="flex flex-1 gap-4 justify-between items-center text-gray-200 transition-colors cursor-pointer hover:text-white"
+                  class={cn(
+                    'flex flex-1 items-center justify-between gap-4',
+                    'text-gray-200 transition-colors cursor-pointer hover:text-white',
+                  )}
                 >
                   {`${currentCar().make} ${currentCar().model} ${currentCar().years}`}
                   {props.showUpArrow && (
@@ -207,7 +218,7 @@ function CarDetailContent() {
         <Show
           when={car()}
           fallback={
-            <main class="flex justify-center items-center p-8 pt-24 min-h-[calc(100vh-80px)]">
+            <main class="flex items-center justify-center p-8 pt-24 min-h-[calc(100vh-80px)]">
               <div class="max-w-2xl text-center">
                 <h1 class="mb-4 text-4xl font-bold text-gray-900 md:text-5xl">Car Not Found</h1>
                 <p class="mb-8 text-lg text-gray-600">
@@ -215,7 +226,10 @@ function CarDetailContent() {
                 </p>
                 <button
                   onClick={() => navigate('/')}
-                  class="inline-block py-3 px-8 text-white border-2 border-black transition-colors hover:cursor-pointer bg-accent hover:bg-[#727272]"
+                  class={cn(
+                    'inline-block py-3 px-8 border-2 border-black bg-accent text-white',
+                    'transition-colors cursor-pointer hover:bg-[#727272]',
+                  )}
                 >
                   Go Back Home
                 </button>
@@ -245,7 +259,10 @@ function CarDetailContent() {
                 <Show when={isMobile()}>
                   <button
                     onClick={() => setQuickNavDrawerOpen(true)}
-                    class="flex gap-2 justify-center items-center py-3 px-4 w-full font-medium text-white bg-black border border-black transition-colors cursor-pointer hover:bg-gray-800"
+                    class={cn(
+                      'flex items-center justify-center gap-2 w-full border border-black bg-black',
+                      'py-3 px-4 font-medium text-white transition-colors cursor-pointer hover:bg-gray-800',
+                    )}
                   >
                     <span>Quick Navigation</span>
                   </button>
