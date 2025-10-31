@@ -20,7 +20,7 @@ export default function MasterToggle() {
   return (
     <button
       onClick={toggle.toggleAll}
-      class="flex flex-shrink-0 justify-center items-center w-14 bg-gray-500 transition-colors hover:bg-gray-600 hover:cursor-pointer"
+      class="flex w-14 flex-shrink-0 items-center justify-center bg-gray-500 transition-colors cursor-pointer hover:bg-gray-600"
       title={buttonText()}
     >
       {/* Double chevron SVG */}

@@ -53,7 +53,7 @@ type InfoBoxProps = {
 
 const InfoBox = (props: InfoBoxProps) => {
   return (
-    <div class={cn('flex flex-col justify-center py-4 px-4 border border-black bg-surface min-h-[80px]', props.class)}>
+    <div class={cn('flex flex-col justify-center min-h-[80px] px-4 py-4 border border-black bg-surface', props.class)}>
       <div class="text-sm font-medium">{props.label}</div>
       <div class="mt-1 text-lg font-semibold">{props.value}</div>
     </div>
@@ -93,35 +93,41 @@ const ExpandableRow = (props: ExpandableRowProps) => {
     <div class={cn('border border-black bg-surface', props.class)}>
       {/* Toggle header */}
       <div
-        class="flex justify-between items-center py-4 px-4 transition-colors duration-200 cursor-pointer hover:text-white hover:bg-accent"
+        class={cn(
+          'flex items-center justify-between px-4 py-4',
+          'transition-colors duration-200 cursor-pointer hover:bg-accent hover:text-white',
+        )}
         onClick={props.onToggle}
       >
         <div class="text-sm font-medium">{props.label}</div>
-        <div class="flex gap-3 items-center">
+        <div class="flex items-center gap-3">
           {props.icon ? (
             <div class="w-5 h-5" innerHTML={props.icon} />
           ) : (
             <div class="text-sm font-semibold">{props.value}</div>
           )}
           <div
-            class={`w-2 h-2 transition-transform duration-200 ${props.isExpanded ? 'rotate-180' : ''}`}
+            class={cn('h-2 w-2 transition-transform duration-200', props.isExpanded && 'rotate-180')}
             innerHTML={DownChevronSvg}
           />
         </div>
       </div>
 
       {/* Expandable description */}
-      <div class={`overflow-hidden transition-all duration-300 ${props.isExpanded ? 'max-h-20' : 'max-h-0'}`}>
+      <div class={cn('overflow-hidden transition-all duration-300', props.isExpanded ? 'max-h-20' : 'max-h-0')}>
         <div class="relative">
           <div
             ref={scrollRef}
-            class="overflow-y-auto py-3 px-4 text-sm text-black h-row-height bg-surface-secondary"
+            class="h-row-height overflow-y-auto bg-surface-secondary px-4 py-3 text-sm text-black"
             onScroll={handleScroll}
           >
             {props.description}
           </div>
           {/* Scroll gradient indicator */}
-          <div class={`absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/50 to-transparent pointer-events-none transition-opacity duration-200 ${isScrolledToBottom() ? 'opacity-0' : 'opacity-100'}`} />
+          <div class={cn(
+            'absolute bottom-0 left-0 right-0 h-10 bg-gradient-to-t from-black/50 to-transparent opacity-0 transition-opacity duration-200 pointer-events-none',
+            isScrolledToBottom() ? 'opacity-0' : 'opacity-100',
+          )} />
         </div>
       </div>
     </div>
@@ -169,7 +175,7 @@ const Card: Component<CardProps> = (props) => {
   }
 
   const supportLabelClass = cn(
-    'py-1 px-6 inline-block border border-black border-b-0 text-center cursor-pointer transition-opacity hover:opacity-80',
+    'py-1 px-6 inline-block border border-black border-b-0 text-center transition-opacity cursor-pointer hover:opacity-80',
     getSupportTypeColor(props.car.support_type),
   )
 
@@ -179,26 +185,31 @@ const Card: Component<CardProps> = (props) => {
       <div class="card-compare-mode">
         <div class="flex w-full border border-black bg-surface shadow-elev-1">
           {/* Checkbox */}
-          <div class="flex justify-center items-center px-2 md:px-3">
+          <div class="flex items-center justify-center px-2 md:px-3">
             <label class="inline-block relative cursor-pointer select-none size-7">
               <input
                 type="checkbox"
                 checked={isSelected()}
                 onChange={() => toggleCarSelection(props.car.name)}
                 disabled={isDisabled()}
-                class="relative appearance-none cursor-pointer disabled:opacity-40 disabled:cursor-not-allowed size-7 border-3 border-black/70 peer checked:bg-[#2e5232] checked:border-[#102f0c] checked:shadow-elev-1 hover:bg-[#2e5232]"
+                class={cn(
+                  'peer relative size-7 border-3 border-black/70 appearance-none',
+                  'checked:border-[#102f0c] checked:bg-[#2e5232] checked:shadow-elev-1',
+                  'transition-colors cursor-pointer',
+                  'hover:bg-[#2e5232] disabled:cursor-not-allowed disabled:opacity-40',
+                )}
                 aria-label={`Select ${props.car.make} ${props.car.model}`}
               />
               <div class="absolute inset-0 opacity-0 transition-opacity duration-75 pointer-events-none peer-checked:opacity-100">
-                <div class="flex justify-center items-center size-7 text-[#65e063]" innerHTML={Checkmark2Svg} />
+                <div class="flex size-7 items-center justify-center text-[#65e063]" innerHTML={Checkmark2Svg} />
               </div>
             </label>
           </div>
 
           {/* Mobile wrapper - stacks vertically below 370px, horizontal at 370px+ */}
-          <div class="flex flex-col flex-1 border-r border-l border-black md:hidden min-[370px]:flex-row">
+          <div class="flex flex-1 flex-col border-l border-r border-black md:hidden min-[370px]:flex-row">
             {/* Year and Model - Mobile only */}
-            <div class="flex flex-1 items-center py-2.5 px-2 border-b border-black min-[370px]:border-b-0 min-[370px]:border-r">
+            <div class="flex flex-1 items-center border-b border-black px-2 py-2.5 min-[370px]:border-b-0 min-[370px]:border-r">
               <h1 class="text-xs font-semibold leading-tight">
                 <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
                 {' '}
@@ -210,7 +221,8 @@ const Card: Component<CardProps> = (props) => {
             <button
               onClick={handleSupportTypeClick}
               class={cn(
-                'flex items-center justify-center py-1.5 min-[370px]:py-2.5 px-2 w-full min-[370px]:w-[100px] text-center cursor-pointer transition-opacity hover:opacity-80',
+                'flex w-full items-center justify-center px-2 py-1.5 text-center',
+                'transition-opacity cursor-pointer hover:opacity-80 min-[370px]:w-[100px] min-[370px]:py-2.5',
                 getSupportTypeColor(props.car.support_type),
               )}
             >
@@ -221,14 +233,14 @@ const Card: Component<CardProps> = (props) => {
           </div>
 
           {/* Year - Desktop only */}
-          <div class="hidden items-center py-2.5 px-3 border-r border-l border-black md:flex w-[110px]">
+          <div class="hidden items-center w-[110px] border-l border-r border-black px-3 py-2.5 md:flex">
             <h2 class="text-base font-medium leading-tight">
               <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
             </h2>
           </div>
 
           {/* Model name - Desktop only */}
-          <div class="hidden flex-1 items-center py-2.5 px-3 border-r border-black md:flex">
+          <div class="hidden flex-1 items-center border-r border-black px-3 py-2.5 md:flex">
             <h1 class="text-lg font-semibold">
               <HighlightText text={`${props.car.make} ${props.car.model}`} query={props.searchQuery} />
             </h1>
@@ -238,7 +250,8 @@ const Card: Component<CardProps> = (props) => {
           <button
             onClick={handleSupportTypeClick}
             class={cn(
-              'hidden md:flex items-center justify-center py-2.5 px-3 w-[160px] text-center border-r border-black cursor-pointer transition-opacity hover:opacity-80',
+              'hidden items-center justify-center w-[160px] border-r border-black px-3 py-2.5',
+              'text-center transition-opacity cursor-pointer hover:opacity-80 md:flex',
               getSupportTypeColor(props.car.support_type),
             )}
           >
@@ -250,10 +263,13 @@ const Card: Component<CardProps> = (props) => {
           {/* Arrow button to detailed page */}
           <a
             href={`/cars/${slugify(props.car.name)}`}
-            class="flex justify-center items-center py-2.5 px-3 transition-colors md:px-4 bg-accent min-w-[48px] hover:bg-[#727272] hover:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]"
+            class={cn(
+              'flex items-center justify-center min-w-[48px] bg-accent px-3 py-2.5',
+              'transition-colors cursor-pointer hover:bg-[#727272] hover:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)] md:px-4',
+            )}
             title="View details"
           >
-            <div class="w-5 h-5 text-white md:w-6 md:h-6" innerHTML={OpenFolderSvg} />
+            <div class="h-5 w-5 text-white md:h-6 md:w-6" innerHTML={OpenFolderSvg} />
           </a>
         </div>
       </div>
@@ -268,42 +284,42 @@ const Card: Component<CardProps> = (props) => {
       </button>
 
       {/* Card body */}
-      <div class="flex flex-col border border-black bg-surface shadow-elev-1 min-h-[180px]">
+      <div class="flex flex-col min-h-[180px] border border-black bg-surface shadow-elev-1">
         <div class="flex-grow">
           {/* Year and Model */}
           <div class="flex border-b border-black">
-            <div class="flex items-center py-2.5 px-2 border-r border-black">
+            <div class="flex items-center px-2 py-2.5 border-r border-black">
               <h2 class="text-lg">
                 <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
               </h2>
             </div>
-            <div class="flex flex-1 justify-between items-center py-2.5 px-3 min-h-[60px]">
+            <div class="flex flex-1 items-center justify-between min-h-[60px] px-3 py-2.5">
               <h1 class="flex-1 pr-3 text-xl font-semibold">
                 <HighlightText text={`${props.car.make} ${props.car.model}`} query={props.searchQuery} />
               </h1>
-              <div class={`flex-shrink-0 ml-2 ${!props.car.video ? 'invisible' : ''}`}>
+              <div class={cn('ml-2 flex-shrink-0', !props.car.video && 'invisible')}>
                 <a
                   href={props.car.video || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
-                  class={`
-                    flex items-center p-2 text-white transition-all duration-300 cursor-pointer
-                    hover:bg-red-600 hover:shadow-xl group bg-accent
-                  `}
+                  class={cn(
+                    'group flex items-center bg-accent p-2 text-white transition-all duration-300 cursor-pointer',
+                    'hover:bg-red-600 hover:shadow-xl',
+                  )}
                 >
-                  <div class="block w-5 h-5 transition-opacity duration-200 group-hover:hidden" innerHTML={VideoCameraSvg} />
-                  <div class="hidden w-5 h-5 transition-opacity duration-200 group-hover:block" innerHTML={PlayVideoSvg} />
+                <div class="block h-5 w-5 transition-opacity duration-200 group-hover:hidden" innerHTML={VideoCameraSvg} />
+                <div class="hidden h-5 w-5 transition-opacity duration-200 group-hover:block" innerHTML={PlayVideoSvg} />
                 </a>
               </div>
             </div>
           </div>
 
-          <div class="py-2.5 px-2 border-b border-black min-h-[60px]">
+          <div class="min-h-[60px] border-b border-black px-2 py-2.5">
             <p class="font-sans text-sm">
               <strong>ADAS Package:</strong> <HighlightText text={props.car.package} query={props.searchQuery} />
             </p>
           </div>
-          <div class="flex p-3 border-b border-black @container">
+          <div class="@container flex border-b border-black p-3">
             <div class="flex flex-1 items-center min-w-0">
               <p class="leading-tight text-md">
                 <strong>
@@ -313,13 +329,13 @@ const Card: Component<CardProps> = (props) => {
               </p>
             </div>
             <div class="flex flex-col gap-2 flex-[1.618]">
-              <div class="flex flex-col flex-1 justify-center py-1 px-2 bg-white border border-black">
+              <div class="flex flex-1 flex-col justify-center border border-black bg-white px-2 py-1">
                 <p class="text-sm">
                   <strong>ALC:</strong> {formatEngageSpeed(props.car.min_steer_speed)}
                 </p>
                 <p class="text-xs text-gray-500">Automated Lane Centering</p>
               </div>
-              <div class="flex flex-col flex-1 justify-center py-1 px-2 bg-white border border-black">
+              <div class="flex flex-1 flex-col justify-center border border-black bg-white px-2 py-1">
                 <p class="text-sm">
                   <strong>ACC:</strong> {formatEngageSpeed(props.car.min_enable_speed)}
                 </p>
@@ -335,7 +351,12 @@ const Card: Component<CardProps> = (props) => {
         <input type="checkbox" id={`toggle-${props.car.name}`} class="hidden peer" />
 
         {/* Expanded Card Body */}
-        <div class="overflow-hidden max-h-0 transition-all duration-300 bg-surface-secondary peer-checked:max-h-card-height peer-checked:border-t peer-checked:border-black">
+        <div
+          class={cn(
+            'max-h-0 overflow-hidden bg-surface-secondary transition-all duration-300',
+            'peer-checked:max-h-card-height peer-checked:border-t peer-checked:border-black',
+          )}
+        >
           <div class="p-4">
             <div class="flex flex-col gap-2">
               {/* Row 1 */}
@@ -378,10 +399,10 @@ const Card: Component<CardProps> = (props) => {
             <div class="mt-4">
               <GradientButton href={`/cars/${slugify(props.car.name)}`}>
                 <div
-                  class={`
-                    text-black transition-all duration-200 ease-in w-[28px] h-[24px]
-                    translate-y-[-1px] group-hover:translate-x-[2px] group-hover:text-surface
-                  `}
+                  class={cn(
+                    'h-[24px] w-[28px] translate-y-[-1px] text-black transition-all duration-200 ease-in',
+                    'group-hover:translate-x-[2px] group-hover:text-surface',
+                  )}
                   innerHTML={OpenFolderSvg}
                 />
               </GradientButton>
@@ -392,16 +413,15 @@ const Card: Component<CardProps> = (props) => {
         {/* Chevron button */}
         <label
           for={`toggle-${props.car.name}`}
-          class={`
-            flex justify-center py-1 border-t border-black cursor-pointer
-            bg-accent peer-checked:bg-surface-secondary peer-checked:[&>div]:rotate-180
-            max-md:bg-[#727272] max-md:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]
-            peer-checked:max-md:shadow-none
-            hover:bg-[#727272] hover:duration-300
-            hover:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]
-          `}
+          class={cn(
+            'flex justify-center py-1 border-t border-black bg-accent cursor-pointer',
+            'peer-checked:bg-surface-secondary peer-checked:[&>div]:rotate-180',
+            'hover:bg-[#727272] hover:duration-300 hover:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]',
+            'max-md:bg-[#727272] max-md:shadow-[inset_0_0_15px_rgba(0,0,0,0.6)]',
+            'peer-checked:max-md:shadow-none',
+          )}
         >
-          <div class="w-5 h-5" innerHTML={DownChevronSvg} />
+          <div class="h-5 w-5" innerHTML={DownChevronSvg} />
         </label>
       </div>
       </div>

@@ -52,8 +52,8 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
           type="button"
           onClick={() => setIsOpen(!isOpen())}
           class={cn(
-            'flex w-full items-center justify-between border border-black bg-white p-4',
-            'cursor-pointer text-left transition-colors hover:bg-surface',
+            'flex w-full items-center justify-between border border-black bg-white',
+            'p-4 text-left transition-colors cursor-pointer hover:bg-surface',
           )}
         >
           <span>{props.value || 'All'}</span>
@@ -73,8 +73,7 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
           <div class="max-h-[200px] w-full overflow-y-auto border border-t-0 border-black bg-white">
             <button
               class={cn(
-                'h-[40px] w-full cursor-pointer px-4 text-left',
-                'hover:bg-gray-100',
+                'h-[40px] w-full px-4 text-left cursor-pointer hover:bg-gray-100',
                 !props.value && 'bg-gray-100',
               )}
               onClick={() => handleSelect('')}
@@ -85,8 +84,7 @@ const CustomDropdown: Component<CustomDropdownProps> = (props) => {
               {(option) => (
                 <button
                   class={cn(
-                    'h-[40px] w-full cursor-pointer px-4 text-left',
-                    'hover:bg-gray-100',
+                    'h-[40px] w-full px-4 text-left cursor-pointer hover:bg-gray-100',
                     props.value === option && 'bg-gray-100',
                   )}
                   onClick={() => handleSelect(option)}

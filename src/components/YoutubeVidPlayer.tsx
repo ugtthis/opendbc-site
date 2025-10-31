@@ -85,14 +85,13 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
             />
           </div>
 
-          <div class="flex bg-gray-100 divide-x divide-black shadow-[inset_0_8px_12px_-8px_rgba(0,0,0,0.8)]">
+          <div class="flex divide-x divide-black bg-gray-100 shadow-[inset_0_8px_12px_-8px_rgba(0,0,0,0.8)]">
             <button
               type="button"
               onClick={togglePlay}
               class={cn(
-                'flex flex-1 items-center justify-center gap-2 px-4 py-4 text-sm',
+                'flex flex-1 items-center justify-center gap-2 px-4 py-4 text-sm transition-all cursor-pointer',
                 'hover:bg-gray-400 hover:text-white hover:shadow-[inset_0_0_0_4px_rgba(0,0,0,0.3)]',
-                'cursor-pointer transition-all'
               )}
             >
               <div class="w-6 h-6" innerHTML={isPlaying() ? PauseSvg : PlayVideoSvg} />
@@ -102,9 +101,8 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
               type="button"
               onClick={toggleMute}
               class={cn(
-                'flex flex-1 items-center justify-center px-4 py-4 text-sm',
+                'flex flex-1 items-center justify-center px-4 py-4 text-sm transition-all cursor-pointer',
                 'hover:bg-gray-400 hover:text-white hover:shadow-[inset_0_0_0_4px_rgba(0,0,0,0.3)]',
-                'cursor-pointer transition-all'
               )}
               aria-label={isMuted() ? 'Unmute' : 'Mute'}
             >
@@ -117,16 +115,15 @@ const YoutubeVidPlayer: Component<YoutubeVidPlayerProps> = (props) => {
             target="_blank"
             rel="noopener noreferrer"
             class={cn(
-              'flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium',
-              'bg-gray-100 text-black border-t border-black hover:text-white',
+              'group flex items-center justify-center gap-2 border-t border-black bg-gray-100',
+              'px-3 py-2 text-xs font-medium text-black transition-all duration-200 cursor-pointer',
               'hover:bg-gradient-to-r hover:from-red-400 hover:to-red-500',
-              'hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.7)]',
-              'transition-all duration-200 cursor-pointer group'
+              'hover:text-white hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.7)]',
             )}
           >
             <span class="tracking-wide uppercase">View on YouTube</span>
             <div
-              class="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+              class="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
               innerHTML={LinkNewWindowSvg}
             />
           </a>

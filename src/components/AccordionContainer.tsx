@@ -28,20 +28,21 @@ export default function AccordionContainer(props: AccordionContainerProps) {
     <div class="border border-black">
       {/* Header */}
       <div
-        class="flex justify-between items-center py-4 px-4 text-white bg-black transition-colors cursor-pointer touch-manipulation hover:bg-zinc-900"
+        class={cn(
+          'flex items-center justify-between px-4 py-4',
+          'bg-black text-white transition-colors touch-manipulation cursor-pointer hover:bg-zinc-900',
+        )}
         onClick={() => toggle.toggleSection(props.id)}
       >
-        <h3 class="text-sm font-medium tracking-wide uppercase">{props.title}</h3>
+        <h3 class="text-sm font-medium uppercase tracking-wide">{props.title}</h3>
         <div
-          class={`w-3 h-3 ${isExpanded() ? 'rotate-180' : ''}`}
+          class={cn('h-3 w-3', isExpanded() && 'rotate-180')}
           innerHTML={DownChevronSvg}
         />
       </div>
 
       {/* Content - flexible wrapper */}
-      <div class={`overflow-hidden ${
-        isExpanded() ? 'block' : 'hidden'
-      }`}>
+      <div class={cn('overflow-hidden', isExpanded() ? 'block' : 'hidden')}>
         <div class={contentClass}>
           {props.children}
         </div>

@@ -1,5 +1,6 @@
 import { Show, type JSX } from 'solid-js';
 import { useQuickNavScrollTarget, HIGHLIGHT_STYLES as QuickNavColors } from './QuickNavHighlight';
+import { cn } from '~/lib/utils';
 
 interface ExpandableSpecProps {
   label: string;
@@ -33,33 +34,39 @@ export default function ExpandableSpec(props: ExpandableSpecProps) {
   return (
     <div>
       <div
-        class={`flex px-3 py-3 min-h-[48px] cursor-pointer ${hover()} ${bg()} ${border()} ${
-          isVertical ? 'flex-col' : 'justify-between items-center'
-        }`}
+        class={cn(
+          'flex min-h-[48px] px-3 py-3 cursor-pointer',
+          isVertical ? 'flex-col' : 'items-center justify-between',
+          hover(),
+          bg(),
+          border(),
+        )}
         onClick={props.onToggle}
       >
-        <span class={`text-xs ${
-          isVertical ? 'mb-1' : 'flex-1 pr-2 min-w-0'
-        } ${
-          props.isOpen ? 'text-amber-600 font-medium' : ''
-        }`}>
+        <span class={cn(
+          'text-xs',
+          isVertical ? 'mb-1' : 'min-w-0 flex-1 pr-2',
+          props.isOpen && 'font-medium text-amber-600',
+        )}>
           {props.label}
         </span>
         {props.children || (
-          <span class={`text-xs ${
-            isVertical ? 'break-words' : 'whitespace-nowrap shrink-0'
-          }`}>
+          <span class={cn(
+            'text-xs',
+            isVertical ? 'break-words' : 'shrink-0 whitespace-nowrap',
+          )}>
             {props.value ?? 'N/A'}
           </span>
         )}
       </div>
 
       <Show when={props.isOpen}>
-        <div class={`px-3 pt-1 pb-3 border-l-4 ${
+        <div class={cn(
+          'border-l-4 px-3 pt-1 pb-3',
           quickNavTarget.isActive()
             ? `${QuickNavColors.bg} ${QuickNavColors.borderColor}`
-            : 'bg-amber-50 border-amber-400'
-        }`}>
+            : 'border-amber-400 bg-amber-50',
+        )}>
           <p class="text-xs leading-relaxed text-gray-600">{props.description}</p>
         </div>
       </Show>

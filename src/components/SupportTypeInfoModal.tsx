@@ -97,8 +97,7 @@ const ReadMoreSection: Component<{
       <button
         onClick={props.onToggle}
         class={cn(
-          "text-sm font-semibold text-white/80 hover:text-white",
-          "underline cursor-pointer",
+          "text-sm font-semibold text-white/80 underline cursor-pointer hover:text-white",
           props.isExpanded ? "mt-6" : "mt-4"
         )}
       >
@@ -121,9 +120,8 @@ const SupportTypeTab: Component<{
       ref={props.buttonRef}
       onClick={props.onClick}
       class={cn(
-        'flex items-center transition-all duration-300 cursor-pointer flex-shrink-0',
-        'border-4 whitespace-nowrap uppercase tracking-wide py-3',
-        'bg-[#3a3a3a] text-white',
+        'flex flex-shrink-0 items-center whitespace-nowrap border-4',
+        'bg-[#3a3a3a] py-3 text-white uppercase tracking-wide transition-all duration-300 cursor-pointer',
         props.isSelected
           ? 'gap-2 px-3 text-sm font-bold border-black shadow-md/60'
           : 'gap-2 px-3 text-sm border-transparent opacity-70 hover:opacity-90'
@@ -131,7 +129,7 @@ const SupportTypeTab: Component<{
     >
       {/* Support type rectangle gem */}
       <div class={cn(
-        'w-5 h-7 border-4 border-[#101010] bg-gradient-to-b flex-shrink-0',
+        'flex-shrink-0 h-7 w-5 bg-gradient-to-b border-4 border-[#101010]',
         'shadow-[2px_4px_3px_rgba(0,0,0,0.4),inset_0_3px_8px_rgba(0,0,0,0.8),inset_0_-2px_4px_rgba(255,255,255,0.1)]',
         gradientClass
       )} />
@@ -220,12 +218,12 @@ const SupportTypeInfoModal: Component<SupportTypeInfoModalProps> = (props) => {
 
   const ModalContent = () => (
     <>
-      <div class="overflow-y-auto flex-1 px-6 pt-6 pb-6">
+      <div class="flex-1 overflow-y-auto px-6 pt-6 pb-6">
         <div class="relative mb-1">
           {/* Support Type Badge */}
           <div
             class={cn(
-              'w-full  px-4 md:px-9 py-2 border-4 border-black border-b-0',
+              'w-full border-4 border-b-0 border-black px-4 py-2 md:px-9',
               getSupportTypeColor(selectedSupportType())
             )}
           >
@@ -234,8 +232,8 @@ const SupportTypeInfoModal: Component<SupportTypeInfoModalProps> = (props) => {
             </span>
           </div>
           {/* Main Content Card */}
-          <div class="overflow-y-auto text-white border-4 border-black shadow-lg h-[290px] bg-[#3a3a3a]">
-            <div class="p-4 text-sm leading-relaxed md:py-4 md:px-8 md:text-md">
+          <div class="h-[290px] overflow-y-auto border-4 border-black bg-[#3a3a3a] text-white shadow-lg">
+            <div class="p-4 text-sm leading-relaxed md:px-8 md:py-4 md:text-md">
               {/* Main paragraphs */}
               <SpacedParagraphList paragraphs={selectedContent().paragraphs} />
 
@@ -262,8 +260,8 @@ const SupportTypeInfoModal: Component<SupportTypeInfoModalProps> = (props) => {
         </div>
 
         {/* Support Type Tabs */}
-        <div ref={setScrollContainer} class="overflow-x-auto mb-6 scrollbar-hide scroll-smooth">
-          <div class="flex gap-3 py-2 pl-[5%] items-center">
+        <div ref={setScrollContainer} class="mb-6 overflow-x-auto scrollbar-hide scroll-smooth">
+          <div class="flex items-center gap-3 py-2 pl-[5%]">
             <For each={SUPPORT_TYPE_ORDER}>
               {(supportType, index) => (
                 <SupportTypeTab
@@ -395,7 +393,7 @@ const SupportTypeInfoModal: Component<SupportTypeInfoModalProps> = (props) => {
           )}
         >
           {/* Desktop header */}
-          <div class="flex flex-shrink-0 justify-between items-center p-4 border-b border-black bg-accent">
+          <div class="flex flex-shrink-0 items-center justify-between border-b border-black bg-accent p-4">
             <Dialog.Label class="text-xl font-bold text-white">
               Types of Support:
             </Dialog.Label>
