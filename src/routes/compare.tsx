@@ -320,7 +320,7 @@ export default function ComparePage() {
                     </span>
                   </div>
                   <div class="text-white">
-                    <span class="text-base font-semibold md:text-lg">
+                    <span class="text-sm font-semibold md:text-lg">
                       {selectedCars()[highlight().selected!.columnIndex].name}
                     </span>
                   </div>
