@@ -333,7 +333,7 @@ export default function ComparePage() {
           {/* Compare Specs Header with Zoom Button */}
           <div class="flex flex-col gap-2 mb-4">
             <h2 class="text-xl font-bold md:text-2xl">Compare Specs</h2>
-            <Show when={hasHorizontalOverflow()}>
+            <Show when={hasHorizontalOverflow() || isZoomedOut()}>
               <button
                 onClick={toggleTableUIScale}
                 class={cn(
