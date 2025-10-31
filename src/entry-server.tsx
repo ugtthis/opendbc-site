@@ -9,6 +9,10 @@ export default createHandler(() => (
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/favicon.svg" />
+          <meta property="og:title" content="opendbc.com" />
+          <meta property="og:image" content="https://opendbc.com/opendbc-social-share.png" />
+          <meta property="twitter:card" content="summary_large_image" />
+          <meta property="twitter:image" content="https://opendbc.com/opendbc-social-share.png" />
           <script async src="https://plausible.io/js/pa-vfDsbF0-tA72L6Wnf0rXO.js"></script>
           <script>
             {`window.plausible = window.plausible || function() { (plausible.q = plausible.q || []).push(arguments) },
