@@ -173,7 +173,6 @@ function CarDetailContent() {
   // Scroll detection for up arrow visibility
   onMount(() => {
     const handleScroll = () => {
-      // Show up arrow when scrolled down more than 150px
       setShowUpArrow(window.scrollY > 150)
     }
 
@@ -817,7 +816,6 @@ function CarDetailContent() {
   )
 }
 
-// Main component that provides the context
 export default function CarDetailPage() {
   return (
     <ToggleProvider>

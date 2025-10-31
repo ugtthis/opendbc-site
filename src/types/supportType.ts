@@ -9,11 +9,11 @@ const supportTypeStyles: Record<string, string> = {
 }
 
 const supportTypeGradients: Record<string, string> = {
-  Upstream: 'from-[#22c55e] to-[#15803d]',        // green-500 to dark green
-  'Under review': 'from-[#fbbf24] to-[#d97706]',  // amber-400 to dark amber
+  Upstream: 'from-[#22c55e] to-[#15803d]',         // green-500 to dark green
+  'Under review': 'from-[#fbbf24] to-[#d97706]',   // amber-400 to dark amber
   'Not compatible': 'from-[#ef4444] to-[#991b1b]', // red-500 to dark red
-  Community: 'from-[#60a5fa] to-[#1e40af]',       // blue-400 to dark blue
-  'Dashcam mode': 'from-[#c084fc] to-[#6b21a8]',  // purple-400 to dark purple
+  Community: 'from-[#60a5fa] to-[#1e40af]',        // blue-400 to dark blue
+  'Dashcam mode': 'from-[#c084fc] to-[#6b21a8]',   // purple-400 to dark purple
 }
 
 export function getSupportTypeColor(supportType: SupportType): string {
