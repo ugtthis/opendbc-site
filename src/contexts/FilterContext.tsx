@@ -4,20 +4,35 @@ import type { Car } from '~/types/CarDataTypes'
 import { normalize } from '~/lib/utils'
 import carData from '~/data/metadata.json'
 
-const searchAttributes = (car: Car, query: string): boolean => {
-  const searchFields = [
+type SearchableCar = Car & {
+  searchText: string
+}
+
+function buildSearchText(car: Car): string {
+  return [
     car.name,
     car.make,
     car.model,
     car.support_type,
     car.package,
-    ...(car.year_list as string[])
-  ]
+    ...car.year_list
+  ].join(' ')
+}
 
-  const searchText = normalize(searchFields.join(' '))
-  const queryWords = normalize(query).trim().split(/\s+/)
+function matchesQuery(car: SearchableCar, query: string): boolean {
+  const words = normalize(query).trim().split(/\s+/)
+  return words.every(word => car.searchText.includes(word))
+}
 
-  return queryWords.every(word => searchText.includes(word))
+function getRelevanceScore(car: Car, normalizedQuery: string): number {
+  const make = normalize(car.make)
+  const model = normalize(car.model)
+
+  if (make.startsWith(normalizedQuery)) return 4
+  if (make.includes(normalizedQuery)) return 3
+  if (model.startsWith(normalizedQuery)) return 2
+  if (model.includes(normalizedQuery)) return 1
+  return 0
 }
 
 export type FilterState = {
@@ -52,7 +67,7 @@ type FilterContextValue = {
   setSearchQuery: Setter<string>
   sortConfig: Accessor<SortConfig>
   setSortConfig: Setter<SortConfig>
-  filteredResults: Accessor<Car[]>
+  filteredResults: Accessor<SearchableCar[]>
   resultCount: Accessor<number>
   hasActiveFilters: Accessor<boolean>
 }
@@ -75,12 +90,14 @@ export const FilterProvider = (props: ParentProps) => {
     order: 'ASC',
   })
 
-  const typedCarData = carData as Car[]
+  const searchableCars: SearchableCar[] = (carData as Car[]).map(car => ({
+    ...car,
+    searchText: normalize(buildSearchText(car))
+  }))
 
   const filteredResults = createMemo(() => {
-    let result = [...typedCarData]
+    let result = [...searchableCars]
     const currentFilters = filters()
-
     if (currentFilters.supportLevel) {
       result = result.filter(
         (car) => car.support_type === currentFilters.supportLevel,
@@ -111,30 +128,17 @@ export const FilterProvider = (props: ParentProps) => {
 
     const query = searchQuery().trim()
     if (query) {
-      result = result.filter((car) => searchAttributes(car, query))
+      result = result.filter((car) => matchesQuery(car, query))
     }
 
     const sort = sortConfig()
     result.sort((a, b) => {
       if (query) {
         const normalizedQuery = normalize(query)
-        // Sort priority: make prefix > make contains > model prefix > model contains
-        const getScore = (car: Car) => {
-          const make = normalize(car.make)
-          const model = normalize(car.model)
-          if (make.startsWith(normalizedQuery)) return 4
-          if (make.includes(normalizedQuery)) return 3
-          if (model.startsWith(normalizedQuery)) return 2
-          if (model.includes(normalizedQuery)) return 1
-          return 0
-        }
-
-        const scoreA = getScore(a)
-        const scoreB = getScore(b)
+        const scoreA = getRelevanceScore(a, normalizedQuery)
+        const scoreB = getRelevanceScore(b, normalizedQuery)
         if (scoreA !== scoreB) return scoreB - scoreA
       }
-
-      // Regular sorting
       const field: SortField = sort.field
       let aVal: string | number | string[] = a[field]
       let bVal: string | number | string[] = b[field]
