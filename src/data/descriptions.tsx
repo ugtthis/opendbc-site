@@ -79,11 +79,6 @@ steer manually.`,
 
   [SPEC_ID.MIN_ENABLE_SPEED]: `The minimum speed at which openpilot can be enabled. Below this speed, the system will not activate.`,
 
-  [SPEC_ID.FSR_LONGITUDINAL]: `Full Self-Driving Capability longitudinal speed threshold. The minimum speed for longitudinal
-(acceleration/braking) control in FSR mode.`,
-
-  [SPEC_ID.FSR_STEERING]: `Full Self-Driving Capability steering speed threshold. The minimum speed for steering control in FSR mode.`,
-
   [SPEC_ID.LONGITUDINAL_CONTROL]: `The system responsible for acceleration and braking control. 'openpilot' means full longitudinal
 control, while other values may indicate limited or no longitudinal control.`,
 

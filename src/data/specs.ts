@@ -24,8 +24,6 @@ export const SPECS: SpecDefinition[] = [
   { id: 'min-enable-speed', label: 'Min Enable Speed', key: 'min_enable_speed', format: formatSpeed, category: 'Capabilities', accordionId: 'capabilities' },
   { id: 'longitudinal-control', label: 'Longitudinal Control', key: 'longitudinal', category: 'Capabilities', accordionId: 'capabilities' },
   { id: 'auto-resume', label: 'Auto Resume', key: 'auto_resume', format: formatBoolean, category: 'Capabilities', accordionId: 'capabilities' },
-  { id: 'fsr-longitudinal', label: 'FSR Longitudinal', key: 'fsr_longitudinal', category: 'Capabilities', accordionId: 'capabilities' },
-  { id: 'fsr-steering', label: 'FSR Steering', key: 'fsr_steering', category: 'Capabilities', accordionId: 'capabilities' },
   { id: 'steering-torque', label: 'Steering Torque', key: 'steering_torque', category: 'Capabilities', accordionId: 'capabilities' },
 
   // Vehicle Metrics
@@ -79,8 +77,6 @@ export const SPEC_ID = {
   MIN_ENABLE_SPEED: 'min-enable-speed',
   LONGITUDINAL_CONTROL: 'longitudinal-control',
   AUTO_RESUME: 'auto-resume',
-  FSR_LONGITUDINAL: 'fsr-longitudinal',
-  FSR_STEERING: 'fsr-steering',
   STEERING_TORQUE: 'steering-torque',
   TIRE_STIFFNESS_FACTOR: 'tire-stiffness-factor',
   TIRE_FRONT_STIFFNESS: 'tire-front-stiffness',

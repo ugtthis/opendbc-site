@@ -51,8 +51,6 @@ type DetailedSpecs = Car & {
   enable_bsm?: boolean
   pcm_cruise?: boolean
   min_enable_speed?: number
-  fsr_longitudinal?: string
-  fsr_steering?: string
   longitudinal?: string
   steering_torque?: string
   wheelbase?: number
@@ -771,26 +769,6 @@ function CarDetailContent() {
                       isOpen={openDesc() === 'auto-resume'}
                       onToggle={() => toggleDesc('auto-resume')}
                       description={SPEC_DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_LONGITUDINAL}>
-                    <ExpandableSpec
-                      label="FSR Longitudinal"
-                      value={currentCar().fsr_longitudinal}
-                      isEven={false}
-                      isOpen={openDesc() === 'fsr-longitudinal'}
-                      onToggle={() => toggleDesc('fsr-longitudinal')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.FSR_LONGITUDINAL]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.FSR_STEERING}>
-                    <ExpandableSpec
-                      label="FSR Steering"
-                      value={currentCar().fsr_steering}
-                      isEven={true}
-                      isOpen={openDesc() === 'fsr-steering'}
-                      onToggle={() => toggleDesc('fsr-steering')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.FSR_STEERING]}
                     />
                   </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE}>
