@@ -1,0 +1,38 @@
+name: Update Longitudinal Reports
+
+on:
+  schedule:
+    - cron: '10 8 * * *' # Run daily at 12:10am PST (5 mins after metadata update)
+  workflow_dispatch:
+
+jobs:
+  update-longitudinal-reports:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Fetch and parse longitudinal reports
+        run: |
+          python3 scripts/get_longitudinal_reports.py
+          mv longitudinal_reports.json src/data/longitudinal_reports.json
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@af7c021bb9c41362d0986422bd244ce51a3bf52f
+        with:
+          commit-message: 'reports: Auto-update longitudinal reports from opendbc-data'
+          title: '[bot] Scheduled longitudinal reports update'
+          body: 'Automated PR to update longitudinal reports from opendbc-data repository'
+          branch: update-longitudinal-reports
+          base: main
+          delete-branch: true
+
