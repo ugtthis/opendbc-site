@@ -8086,7 +8086,7 @@
     "enable_dsu": false,
     "enable_bsm": false,
     "pcm_cruise": false,
-    "flags": 4,
+    "flags": 1028,
     "auto_resume_sng": true,
     "radarUnavailable": true,
     "passive": false,
@@ -8300,7 +8300,7 @@
     "enable_dsu": false,
     "enable_bsm": false,
     "pcm_cruise": false,
-    "flags": 4,
+    "flags": 1028,
     "auto_resume_sng": true,
     "radarUnavailable": true,
     "passive": false,
@@ -8679,14 +8679,15 @@
     ]
   },
   {
-    "name": "Honda CR-V 2023-25",
+    "name": "Honda CR-V 2023-26",
     "make": "Honda",
     "model": "CR-V",
-    "years": "2023-25",
+    "years": "2023-26",
     "year_list": [
       "2023",
       "2024",
-      "2025"
+      "2025",
+      "2026"
     ],
     "package": "All",
     "video": null,
@@ -8701,7 +8702,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda CR-V</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "HONDA_CRV_6G",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20CR-V%202023-25",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20CR-V%202023-26",
     "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -9956,12 +9957,13 @@
     ]
   },
   {
-    "name": "Honda Civic Hybrid 2025",
+    "name": "Honda Civic Hybrid 2025-26",
     "make": "Honda",
     "model": "Civic Hybrid",
-    "years": "2025",
+    "years": "2025-26",
     "year_list": [
-      "2025"
+      "2025",
+      "2026"
     ],
     "package": "All",
     "video": null,
@@ -9978,7 +9980,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda Civic Hybrid</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "HONDA_CIVIC_2022",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Civic%20Hybrid%202025",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Civic%20Hybrid%202025-26",
     "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -10713,7 +10715,7 @@
     "enable_dsu": false,
     "enable_bsm": false,
     "pcm_cruise": false,
-    "flags": 4,
+    "flags": 1028,
     "auto_resume_sng": true,
     "radarUnavailable": true,
     "passive": false,
@@ -10982,16 +10984,17 @@
     ]
   },
   {
-    "name": "Honda Odyssey 2021-25",
+    "name": "Honda Odyssey 2021-26",
     "make": "Honda",
     "model": "Odyssey",
-    "years": "2021-25",
+    "years": "2021-26",
     "year_list": [
       "2021",
       "2022",
       "2023",
       "2024",
-      "2025"
+      "2025",
+      "2026"
     ],
     "package": "All",
     "video": null,
@@ -11008,7 +11011,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda Odyssey</strong> with automated lane centering <strong>above 43 mph</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. This car may not be able to take tight turns on its own.",
     "car_fingerprint": "HONDA_ODYSSEY_5G_MMR",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Odyssey%202021-25",
+    "buy_link": "https://comma.ai/shop/comma-3x?harness=Honda%20Odyssey%202021-26",
     "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "43 mph",
@@ -11267,18 +11270,28 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
     "center_to_front_ratio": 0.442,
-    "has_angled_mount": false,
+    "has_angled_mount": true,
     "harness": "bosch_c",
     "tools_required": [],
     "parts": [
+      {
+        "name": "comma 3X",
+        "type": "device",
+        "count": 1
+      },
       {
         "name": "Honda Bosch C connector",
         "type": "connector",
         "count": 1
       },
       {
-        "name": "comma 3X",
-        "type": "device",
+        "name": "angled mount (8 degrees)",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "right angle OBD-C cable (1.5 ft)",
+        "type": "cable",
         "count": 1
       },
       {
@@ -11289,16 +11302,6 @@
       {
         "name": "comma power v3",
         "type": "accessory",
-        "count": 1
-      },
-      {
-        "name": "mount",
-        "type": "mount",
-        "count": 1
-      },
-      {
-        "name": "right angle OBD-C cable (1.5 ft)",
-        "type": "cable",
         "count": 1
       }
     ]
