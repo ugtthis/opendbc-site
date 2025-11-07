@@ -78,6 +78,28 @@ const SupportTypeButton: Component<SupportTypeButtonProps> = (props) => {
   )
 }
 
+type ReportRowProps = {
+  description: string
+  link: string
+}
+
+const ReportRow: Component<ReportRowProps> = (props) => {
+  return (
+    <a
+      href={props.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={cn(
+        'flex items-center justify-between gap-3 w-full py-4 pl-5 pr-5 text-left text-xs',
+        'border-b border-gray-200 transition-colors cursor-pointer hover:bg-amber-50',
+      )}
+    >
+      <div>{props.description}</div>
+      <div class="h-5 w-5 flex-shrink-0" innerHTML={LinkNewWindowSvg} />
+    </a>
+  )
+}
+
 type GradientHeaderProps = {
   car: DetailedSpecs | undefined
   showUpArrow: boolean
@@ -330,6 +352,26 @@ function CarDetailContent() {
                       description={SPEC_DESCRIPTIONS[SPEC_ID.HARNESS]}
                     />
                   </QuickNavWrapper>
+                </AccordionContainer>
+
+                {/* Longitudinal Maneuver Reports */}
+                <AccordionContainer
+                  title="Longitudinal reports"
+                  id="longitudinal-reports"
+                  disableDefaultPadding={true}
+                >
+                  <ReportRow
+                    description="high speed gas step response w/ permit braking	"
+                    link="https://example.com/report1"
+                  />
+                  <ReportRow
+                    description="sf_model, user report, opendbc@661a42c	"
+                    link="https://example.com/report2"
+                  />
+                  <ReportRow
+                    description="master"
+                    link="https://example.com/report3"
+                  />
                 </AccordionContainer>
 
                 {/* User Video */}
