@@ -4,6 +4,7 @@ import type { Car } from '~/types/CarDataTypes'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
 import LinkNewWindowSvg from '~/lib/icons/link-new-window.svg?raw'
+import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
@@ -18,9 +19,12 @@ import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn, slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
+import { openReportModal, closeReportModal, reportModalState, type ReportData } from '~/contexts/LongitudinalReportModalContext'
 import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
+import LongitudinalReportModal from '~/components/LongitudinalReportModal'
 
 import metadata from '~/data/metadata.json'
+import longitudinalReports from '~/data/longitudinal_reports.json'
 
 type DetailedSpecs = Car & {
   parts?: Array<{
@@ -78,27 +82,18 @@ const SupportTypeButton: Component<SupportTypeButtonProps> = (props) => {
   )
 }
 
-type ReportRowProps = {
-  description: string
-  link: string
-}
-
-const ReportRow: Component<ReportRowProps> = (props) => {
-  return (
-    <a
-      href={props.link}
-      target="_blank"
-      rel="noopener noreferrer"
-      class={cn(
-        'flex items-center justify-between gap-3 w-full py-4 pl-5 pr-5 text-left text-xs',
-        'border-b border-gray-200 transition-colors cursor-pointer hover:bg-amber-50',
-      )}
-    >
-      <div>{props.description}</div>
-      <div class="h-5 w-5 flex-shrink-0" innerHTML={LinkNewWindowSvg} />
-    </a>
-  )
-}
+const ReportRow: Component<ReportData> = (props) => (
+  <button
+    onClick={() => openReportModal(props)}
+    class={cn(
+      'flex items-center justify-between gap-3 w-full py-4 pl-5 pr-5 text-left text-xs',
+      'border-b border-gray-200 transition-colors cursor-pointer hover:bg-amber-50',
+    )}
+  >
+    <div>{props.description}</div>
+    <div class="h-3 w-3 flex-shrink-0 -rotate-90" innerHTML={DownChevronSvg} />
+  </button>
+)
 
 type GradientHeaderProps = {
   car: DetailedSpecs | undefined
@@ -191,6 +186,16 @@ function CarDetailContent() {
     return (metadata as DetailedSpecs[]).find(c => slugify(c.name) === params.car)
   })
 
+  const reportsForCurrentCar = createMemo(() => {
+    const currentCar = car()
+    if (!currentCar?.car_fingerprint) return []
+
+    const reportsData = longitudinalReports as Record<string, ReportData[]>
+    const isHybrid = currentCar.name.toLowerCase().includes('hybrid')
+    const key = isHybrid ? `${currentCar.car_fingerprint} (hybrid)` : currentCar.car_fingerprint
+
+    return reportsData[key] || []
+  })
 
   // Scroll detection for up arrow visibility
   onMount(() => {
@@ -360,18 +365,70 @@ function CarDetailContent() {
                   id="longitudinal-reports"
                   disableDefaultPadding={true}
                 >
-                  <ReportRow
-                    description="high speed gas step response w/ permit braking	"
-                    link="https://example.com/report1"
-                  />
-                  <ReportRow
-                    description="sf_model, user report, opendbc@661a42c	"
-                    link="https://example.com/report2"
-                  />
-                  <ReportRow
-                    description="master"
-                    link="https://example.com/report3"
-                  />
+                  <Show
+                    when={reportsForCurrentCar().length > 0}
+                    fallback={
+                      <div class="px-5 pb-10 pt-6 space-y-6">
+                        <p class="text-sm text-gray-700">
+                          No report available - click "Learn more" to find out how to create one.
+                        </p>
+                        <div class="flex flex-col gap-3">
+                          <a
+                            href="https://github.com/commaai/openpilot/blob/master/tools/longitudinal_maneuvers/README.md"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={cn(
+                              'flex items-center justify-between py-3 px-4',
+                              'border-2 border-black bg-accent text-white text-sm font-medium',
+                              'transition-colors cursor-pointer hover:bg-[#727272]',
+                            )}
+                          >
+                            <span>Learn more</span>
+                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
+                          </a>
+                          <a
+                            href="https://commaai.github.io/opendbc-data/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={cn(
+                              'flex items-center justify-between py-3 px-4',
+                              'border-2 border-black bg-white text-black text-sm font-medium',
+                              'transition-colors cursor-pointer hover:bg-gray-100',
+                            )}
+                          >
+                            <span>View reports from other models</span>
+                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
+                          </a>
+                        </div>
+                      </div>
+                    }
+                  >
+                    <For each={reportsForCurrentCar()}>
+                      {(report) => (
+                        <ReportRow
+                          description={report.description}
+                          link={report.link}
+                        />
+                      )}
+                    </For>
+
+                    <a
+                      href="https://commaai.github.io/opendbc-data/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={cn(
+                        'flex items-center justify-center gap-2 border-t border-black bg-gray-100',
+                        'px-3 py-2 text-xs text-black transition-all duration-200 cursor-pointer',
+                        'hover:bg-gray-400 hover:text-white hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.7)]',
+                      )}
+                    >
+                      <span class="tracking-wide uppercase">Explore other car reports</span>
+                      <div
+                        class="h-3.5 w-3.5 ml-0.5 mb-0.5"
+                        innerHTML={LinkNewWindowSvg}
+                      />
+                    </a>
+                  </Show>
                 </AccordionContainer>
 
                 {/* User Video */}
@@ -853,6 +910,14 @@ function CarDetailContent() {
           </div>
           )}
         </Show>
+
+        {/* Longitudinal Report Modal */}
+        <LongitudinalReportModal
+          open={reportModalState.isOpen()}
+          onOpenChange={(isOpen) => !isOpen && closeReportModal()}
+          description={reportModalState.reportData()?.description}
+          link={reportModalState.reportData()?.link}
+        />
       </div>
     </QuickNavProvider>
   )

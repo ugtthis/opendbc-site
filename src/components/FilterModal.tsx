@@ -191,6 +191,15 @@ const FilterModal: Component<FilterModalProps> = (props) => {
           <h2 class="mb-4 text-lg font-semibold">FILTER BY:</h2>
           <div class="space-y-4">
             <CustomDropdown
+              label="Has Longitudinal Report"
+              options={['Yes', 'No']}
+              value={filters().hasLongitudinalReport}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, hasLongitudinalReport: value }))
+              }
+            />
+
+            <CustomDropdown
               label="Has User Video"
               options={['Yes', 'No']}
               value={filters().hasUserVideo}
