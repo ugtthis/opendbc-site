@@ -72,7 +72,7 @@ const SupportTypeButton: Component<SupportTypeButtonProps> = (props) => {
   return (
     <button
       onClick={props.onClick}
-      class={`w-full py-4 px-3 text-left cursor-pointer border-b border-gray-200
+      class={`w-full py-4 px-3 text-left cursor-pointer
         ${isActive() ? HIGHLIGHT_STYLES.bg : ' hover:bg-amber-50'}
         ${isActive() ? `${HIGHLIGHT_STYLES.border} ${HIGHLIGHT_STYLES.transition}` : ''}`}
     >
