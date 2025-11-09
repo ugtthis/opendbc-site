@@ -191,6 +191,15 @@ const FilterModal: Component<FilterModalProps> = (props) => {
           <h2 class="mb-4 text-lg font-semibold">FILTER BY:</h2>
           <div class="space-y-4">
             <CustomDropdown
+              label="Support Level"
+              options={supportLevels}
+              value={filters().supportLevel}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, supportLevel: value }))
+              }
+            />
+
+            <CustomDropdown
               label="Has Longitudinal Report"
               options={['Yes', 'No']}
               value={filters().hasLongitudinalReport}
@@ -214,15 +223,6 @@ const FilterModal: Component<FilterModalProps> = (props) => {
               value={filters().hasSetupVideo}
               onChange={(value) =>
                 setFilters((prev) => ({ ...prev, hasSetupVideo: value }))
-              }
-            />
-
-            <CustomDropdown
-              label="Support Level"
-              options={supportLevels}
-              value={filters().supportLevel}
-              onChange={(value) =>
-                setFilters((prev) => ({ ...prev, supportLevel: value }))
               }
             />
 
