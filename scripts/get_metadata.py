@@ -39,7 +39,7 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
       "detail_sentence": car_doc.detail_sentence,
       "car_fingerprint": car_doc.car_fingerprint,
       "brand": car_doc.brand, # The parent company
-      "buy_link": f"https://comma.ai/shop/comma-3x?harness={car_doc.name.replace(' ', '%20')}",
+      "buy_link": f"https://comma.ai/shop/comma-four?harness={car_doc.name.replace(' ', '%20')}",
 
       # Capability info
       "longitudinal": car_doc.row.get(Column.LONGITUDINAL),
