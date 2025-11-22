@@ -458,46 +458,28 @@ function CarDetailContent() {
                   </div>
                 </AccordionContainer>
 
-                {/* Required Parts */}
+                {/* Suggested Parts */}
                 <AccordionContainer
-                  title="Required Parts"
+                  title="Suggested Parts"
                   id="parts"
                 >
                   <div class="overflow-x-auto px-2 -mx-2 md:px-0 md:mx-0">
-                    <table class="w-full text-sm border-collapse md:min-w-0 min-w-[600px]">
+                    <table class="w-full text-sm border-collapse">
                       <thead>
                         <tr class="bg-gray-50">
                           <th class="p-3 font-medium text-left text-gray-700 border-b border-gray-200">QTY</th>
                           <th class="p-3 font-medium text-left text-gray-700 border-b border-gray-200">PART NAME</th>
-                          <th class="p-3 font-medium text-center text-gray-700 border-b border-gray-200">INCLUDED WITH HARNESS</th>
-                          <th class="p-3 font-medium text-center text-gray-700 border-b border-gray-200">INCLUDED WITH COMMA 3X</th>
                         </tr>
                       </thead>
                       <tbody>
                         <For
                           each={currentCar().parts || []}
-                          fallback={<tr><td colspan="4" class="p-6 text-center text-gray-500">No parts data available</td></tr>}
+                          fallback={<tr><td colspan="2" class="p-6 text-center text-gray-500">No parts data available</td></tr>}
                         >
                           {(part) => (
                             <tr class="border-b border-gray-100">
                               <td class="p-3 font-medium">{part.count}</td>
                               <td class="p-3">{part.name}</td>
-                              <td class="p-3 text-lg text-center">
-                                <Show
-                                  when={part.type === 'connector' || part.type === 'accessory'}
-                                  fallback={<span class="text-gray-400">–</span>}
-                                >
-                                  <span class="text-green-600">✓</span>
-                                </Show>
-                              </td>
-                              <td class="p-3 text-lg text-center">
-                                <Show
-                                  when={part.type === 'device'}
-                                  fallback={<span class="text-gray-400">–</span>}
-                                >
-                                  <span class="text-green-600">✓</span>
-                                </Show>
-                              </td>
                             </tr>
                           )}
                         </For>
