@@ -97,7 +97,6 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
     tools = [p for p in all_parts if isinstance(p, Tool)]
 
     model_metadata.update({
-      "has_angled_mount": any(p.name in ["angled_mount_8_degrees", "threex_angled_mount"] for p in all_parts),
       "harness": next((p.name for p in all_parts if isinstance(p.value, BaseCarHarness)), None),
       "tools_required": [{"name": t.value.name, "count": tools.count(t)} for t in dict.fromkeys(tools)],
       "parts": [{"name": p.value.name, "type": p.part_type.name, "count": parts.count(p)} for p in dict.fromkeys(parts)],
