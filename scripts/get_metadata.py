@@ -104,7 +104,7 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
 
     return model_metadata
   except Exception as e:
-    print(f"Error processing {car_doc.name}: {e}")
+    print(f"{car_doc.name}: {e}", file=sys.stderr)
     return None
 
 
@@ -118,6 +118,10 @@ if __name__ == "__main__":
 
   metadata = [data for car_doc in all_cars if (data := extract_metadata(car_doc)) is not None]
   metadata.sort(key=lambda car: (car.get("make") or "", car.get("model") or ""))
+
+  if len(metadata) == 0:
+    print("No cars extracted", file=sys.stderr)
+    sys.exit(1)
 
   filename = "metadata.json"
   with open(filename, "w") as f:
