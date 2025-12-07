@@ -40,12 +40,24 @@ jobs:
           python ../scripts/get_metadata.py
           mv metadata.json ../src/data/metadata.json
 
+      - name: Get model count
+        id: stats
+        run: |
+          NEW=$(python -c "import json; print(len(json.load(open('src/data/metadata.json'))))")
+          OLD=$(git show HEAD:src/data/metadata.json 2>/dev/null | python -c "import json, sys; print(len(json.load(sys.stdin)))" || echo "0")
+          echo "new=$NEW" >> $GITHUB_OUTPUT
+          echo "old=$OLD" >> $GITHUB_OUTPUT
+          echo "diff=$((NEW - OLD))" >> $GITHUB_OUTPUT
+
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7.0.11
         with:
           commit-message: 'metadata: Auto-update from opendbc repo'
           title: '[bot] Scheduled metadata update'
-          body: 'Automated PR to update metadata from opendbc repo'
+          body: |
+            🤖 Automated metadata update
+
+            ${{ steps.stats.outputs.old }} → ${{ steps.stats.outputs.new }} (${{ steps.stats.outputs.diff }})
           branch: update-car-metadata
           base: main
           delete-branch: true
