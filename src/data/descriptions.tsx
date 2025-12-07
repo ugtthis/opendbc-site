@@ -64,9 +64,6 @@ on bus 1. This tells openpilot which physical CAN bus carries each type of vehic
   [SPEC_ID.EXPERIMENTAL_LONGITUDINAL]: `If vehicle supports experimental mode's longitudinal control and is enabled, openpilot will drive
 the speed that the model thinks a human would drive. This includes slowing down for turns, stopping at stop signs and traffic lights, etc.`,
 
-  [SPEC_ID.DSU_ENABLED]: `Toyota-specific: The DSU (Driving Support Unit) is the radar/ACC module on pre-TSS2 Toyotas. When enabled,
-openpilot sends longitudinal control commands through the DSU instead of directly to the PCM. Only relevant for certain Toyota models.`,
-
   [SPEC_ID.BSM_ENABLED]: `Indicates if the vehicle has BSM (Blind Spot Monitoring) capability that openpilot can read from the CAN bus.`,
 
   [SPEC_ID.PCM_CRUISE]: `Indicates if the vehicle uses PCM (Powertrain Control Module) cruise control vs camera-based cruise. PCM cruise
