@@ -65,7 +65,6 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
       "experimental_longitudinal_available": CP.alphaLongitudinalAvailable,
       "openpilot_longitudinal_control": CP.openpilotLongitudinalControl,
       "dashcam_only": CP.dashcamOnly,
-      "enable_dsu": CP.enableDsu,
       "enable_bsm": CP.enableBsm,
       "pcm_cruise": CP.pcmCruise,
       "flags": CP.flags,
