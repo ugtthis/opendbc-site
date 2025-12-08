@@ -452,9 +452,81 @@ function CarDetailContent() {
                   title="General Information"
                   id="general"
                 >
-                  <div class="max-w-none prose prose-sm">
-                    <div class="text-sm leading-relaxed text-gray-700" innerHTML={String(currentCar().detail_sentence || '')} />
-                  </div>
+                  <div class="text-sm leading-relaxed text-gray-700" innerHTML={String(currentCar().detail_sentence || '')} />
+                </AccordionContainer>
+
+                {/* Important Notes */}
+                <AccordionContainer
+                  title="Important Notes"
+                  id="important-notes"
+                >
+                  <Show
+                    when={currentCar().footnotes?.length || currentCar().setup_notes?.length}
+                    fallback={
+                      <div class="text-center py-4">
+                        <p class="text-sm text-gray-600">
+                          Be the first to add helpful footnotes or setup notes for this model!
+                          Help improve this page by contributing to opendbc.
+                        </p>
+                        <div class="flex justify-center pt-6">
+                          <a
+                            href="https://github.com/commaai/opendbc/pull/2122/files"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={cn(
+                              "flex items-center justify-between py-3 px-4",
+                              "border-2 border-black bg-accent text-white text-sm font-medium",
+                              "transition-colors cursor-pointer hover:bg-[#727272]"
+                            )}
+                          >
+                            <span>Example PR</span>
+                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
+                          </a>
+                        </div>
+                      </div>
+                    }
+                  >
+                    <div class="space-y-4">
+                      {/* Footnotes */}
+                      <Show when={(currentCar().footnotes?.length ?? 0) > 0}>
+                        <ul class="space-y-2 list-none pl-0">
+                          <For each={currentCar().footnotes}>
+                            {(note: string) => (
+                              <li
+                                class={cn(
+                                  "relative pl-4 text-sm leading-relaxed text-gray-700",
+                                  "before:absolute before:left-0 before:text-gray-500 before:content-['•']",
+                                  "[&_a]:text-blue-600 [&_a]:underline [&_a]:cursor-pointer hover:[&_a]:text-blue-800"
+                                )}
+                                innerHTML={note}
+                              />
+                            )}
+                          </For>
+                        </ul>
+                      </Show>
+
+                      {/* Setup Notes */}
+                      <Show when={(currentCar().setup_notes?.length ?? 0) > 0}>
+                        <div class="space-y-2">
+                          <h4 class="text-sm font-semibold text-gray-900">Install Notes:</h4>
+                          <ul class="space-y-2 list-none pl-0">
+                            <For each={currentCar().setup_notes}>
+                              {(note: string) => (
+                                <li
+                                  class={cn(
+                                    "relative pl-4 text-sm leading-relaxed text-gray-700",
+                                    "before:absolute before:left-0 before:text-gray-500 before:content-['•']",
+                                    "[&_a]:text-blue-600 [&_a]:underline [&_a]:cursor-pointer hover:[&_a]:text-blue-800"
+                                  )}
+                                  innerHTML={note}
+                                />
+                              )}
+                            </For>
+                          </ul>
+                        </div>
+                      </Show>
+                    </div>
+                  </Show>
                 </AccordionContainer>
 
                 {/* Suggested Parts */}
