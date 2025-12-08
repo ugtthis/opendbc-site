@@ -529,6 +529,64 @@ function CarDetailContent() {
                   </Show>
                 </AccordionContainer>
 
+                {/* Capabilities */}
+                <AccordionContainer
+                  title="Capabilities"
+                  id="capabilities"
+                  disableDefaultPadding={true}
+                >
+                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED}>
+                    <ExpandableSpec
+                      label="Min Steering Speed"
+                      value={formatSpeed(currentCar().min_steer_speed)}
+                      isEven={false}
+                      isOpen={openDesc() === 'min-steering-speed'}
+                      onToggle={() => toggleDesc('min-steering-speed')}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
+                    />
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.MIN_ENABLE_SPEED}>
+                    <ExpandableSpec
+                      label="Min Enable Speed"
+                      value={formatSpeed(currentCar().min_enable_speed ?? 0)}
+                      isEven={true}
+                      isOpen={openDesc() === 'min-enable-speed'}
+                      onToggle={() => toggleDesc('min-enable-speed')}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.MIN_ENABLE_SPEED]}
+                    />
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL}>
+                    <ExpandableSpec
+                      label="Longitudinal Control"
+                      value={currentCar().longitudinal}
+                      isEven={false}
+                      isOpen={openDesc() === 'longitudinal-control'}
+                      onToggle={() => toggleDesc('longitudinal-control')}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
+                    />
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME}>
+                    <ExpandableSpec
+                      label="Auto Resume"
+                      value={currentCar().auto_resume ? 'Yes' : 'No'}
+                      isEven={true}
+                      isOpen={openDesc() === 'auto-resume'}
+                      onToggle={() => toggleDesc('auto-resume')}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
+                    />
+                  </QuickNavWrapper>
+                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE}>
+                    <ExpandableSpec
+                      label="Steering Torque"
+                      value={currentCar().steering_torque}
+                      isEven={false}
+                      isOpen={openDesc() === 'steering-torque'}
+                      onToggle={() => toggleDesc('steering-torque')}
+                      description={SPEC_DESCRIPTIONS[SPEC_ID.STEERING_TORQUE]}
+                    />
+                  </QuickNavWrapper>
+                </AccordionContainer>
+
                 {/* Suggested Parts */}
                 <AccordionContainer
                   title="Suggested Parts"
@@ -766,64 +824,6 @@ function CarDetailContent() {
                       </div>
                     </div>
                   </div>
-                </AccordionContainer>
-
-                {/* Capabilities */}
-                <AccordionContainer
-                  title="Capabilities"
-                  id="capabilities"
-                  disableDefaultPadding={true}
-                >
-                  <QuickNavWrapper id={SPEC_ID.MIN_STEERING_SPEED}>
-                    <ExpandableSpec
-                      label="Min Steering Speed"
-                      value={formatSpeed(currentCar().min_steer_speed)}
-                      isEven={false}
-                      isOpen={openDesc() === 'min-steering-speed'}
-                      onToggle={() => toggleDesc('min-steering-speed')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.MIN_STEERING_SPEED]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.MIN_ENABLE_SPEED}>
-                    <ExpandableSpec
-                      label="Min Enable Speed"
-                      value={formatSpeed(currentCar().min_enable_speed ?? 0)}
-                      isEven={true}
-                      isOpen={openDesc() === 'min-enable-speed'}
-                      onToggle={() => toggleDesc('min-enable-speed')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.MIN_ENABLE_SPEED]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.LONGITUDINAL_CONTROL}>
-                    <ExpandableSpec
-                      label="Longitudinal Control"
-                      value={currentCar().longitudinal}
-                      isEven={false}
-                      isOpen={openDesc() === 'longitudinal-control'}
-                      onToggle={() => toggleDesc('longitudinal-control')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.LONGITUDINAL_CONTROL]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.AUTO_RESUME}>
-                    <ExpandableSpec
-                      label="Auto Resume"
-                      value={currentCar().auto_resume ? 'Yes' : 'No'}
-                      isEven={true}
-                      isOpen={openDesc() === 'auto-resume'}
-                      onToggle={() => toggleDesc('auto-resume')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.AUTO_RESUME]}
-                    />
-                  </QuickNavWrapper>
-                  <QuickNavWrapper id={SPEC_ID.STEERING_TORQUE}>
-                    <ExpandableSpec
-                      label="Steering Torque"
-                      value={currentCar().steering_torque}
-                      isEven={false}
-                      isOpen={openDesc() === 'steering-torque'}
-                      onToggle={() => toggleDesc('steering-torque')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.STEERING_TORQUE]}
-                    />
-                  </QuickNavWrapper>
                 </AccordionContainer>
               </div>
 
