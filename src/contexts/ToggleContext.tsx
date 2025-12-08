@@ -15,7 +15,7 @@ export function ToggleProvider(props: { children: JSX.Element }) {
   const isDesktop = createMediaQuery('(min-width: 1024px)')
 
   const DEFAULT_OPEN_SECTIONS = new Set<string>([
-    'general', 'technical', 'system', 'capabilities',
+    'general', 'important-notes', 'technical', 'system', 'capabilities',
     'compatibility-info', 'longitudinal-reports', 'quick-nav', 'vehicle-metrics'
   ])
 

@@ -9,6 +9,8 @@ export type Car = {
   package: string
   video: string | null
   setup_video: string | null
+  footnotes: string[]
+  setup_notes?: string[]
   support_type: SupportType
   car_fingerprint: string
   auto_resume: boolean
