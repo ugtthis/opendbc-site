@@ -13,6 +13,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 11.176000000000002,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -115,6 +116,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 11.176000000000002,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -219,6 +221,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -288,6 +291,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -359,6 +363,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -429,6 +434,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -497,6 +503,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -600,6 +607,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -706,6 +714,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 1.34112,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -810,6 +819,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -878,6 +888,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -948,6 +959,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1018,6 +1030,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1088,6 +1101,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1190,6 +1204,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1258,6 +1273,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1334,6 +1350,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1444,6 +1461,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1558,6 +1576,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1634,6 +1653,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1705,6 +1725,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1819,6 +1840,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -1932,6 +1954,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -2003,6 +2026,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -2114,6 +2138,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -2228,6 +2253,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -2337,6 +2363,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": 1.3888888359069824,
     "auto_resume": false,
@@ -2438,6 +2465,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": 1.3888888359069824,
     "auto_resume": false,
@@ -2541,6 +2569,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": 1.3888888359069824,
     "auto_resume": false,
@@ -2642,6 +2671,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -2743,6 +2773,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": 1.3888888359069824,
     "auto_resume": false,
@@ -2842,6 +2873,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 3.799999952316284,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -2945,6 +2977,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 17.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3049,6 +3082,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 17.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3152,6 +3186,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 3.799999952316284,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3260,6 +3295,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 17.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3363,6 +3399,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 17.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3468,6 +3505,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3572,6 +3610,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3677,6 +3716,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3790,6 +3830,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -3895,6 +3936,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4008,6 +4050,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4113,6 +4156,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4228,6 +4272,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4343,6 +4388,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4449,6 +4495,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4555,6 +4602,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4670,6 +4718,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4783,6 +4832,7 @@
     "footnotes": [
       "Refers only to the Focus Mk4 (C519) available in Europe/China/Taiwan/Australasia, not the Focus Mk3 (C346) in North and South America/Southeast Asia."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4887,6 +4937,7 @@
     "footnotes": [
       "Refers only to the Focus Mk4 (C519) available in Europe/China/Taiwan/Australasia, not the Focus Mk3 (C346) in North and South America/Southeast Asia."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -4992,6 +5043,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5097,6 +5149,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5201,6 +5254,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5315,6 +5369,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5419,6 +5474,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5530,6 +5586,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5633,6 +5690,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5735,6 +5793,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5838,6 +5897,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -5945,6 +6005,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6058,6 +6119,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6172,6 +6234,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -6271,6 +6334,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 2.777777671813965,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -6369,6 +6433,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6474,6 +6539,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6579,6 +6645,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6681,6 +6748,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 16.66666603088379,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -6783,6 +6851,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6886,6 +6955,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -6992,6 +7062,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7095,6 +7166,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7199,6 +7271,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7304,6 +7377,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7408,6 +7482,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7511,6 +7586,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7615,6 +7691,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7718,6 +7795,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7820,6 +7898,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7894,6 +7973,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 1.34112,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -7997,6 +8077,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8104,6 +8185,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 1.34112,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8207,6 +8289,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8309,6 +8392,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -8418,6 +8502,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 6.7056000000000004,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8523,6 +8608,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8631,6 +8717,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8734,6 +8821,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8837,6 +8925,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 6.388888835906982,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -8940,6 +9029,7 @@
     "video": "https://youtu.be/-IkImTe1NYE",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9047,6 +9137,7 @@
       "2019 Honda Civic 1.6L Diesel Sedan does not have ALC below 12mph.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.8940800000000001,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9152,6 +9243,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9256,6 +9348,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9361,6 +9454,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9466,6 +9560,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9570,6 +9665,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9673,6 +9769,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9777,6 +9874,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9881,6 +9979,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -9951,6 +10050,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -10053,6 +10153,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -10158,6 +10259,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -10264,6 +10366,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -10370,6 +10473,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 1.34112,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -10473,6 +10577,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 1.34112,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -10576,6 +10681,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 5.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -10679,6 +10785,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -10788,6 +10895,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 19.444444444444446,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -10895,6 +11003,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -10997,6 +11106,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11104,6 +11214,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -11208,6 +11319,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11310,6 +11422,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11386,6 +11499,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 5.36448,
     "min_enable_speed": 11.403990745544434,
     "auto_resume": false,
@@ -11490,6 +11604,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 1.34112,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11593,6 +11708,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11696,6 +11812,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11799,6 +11916,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -11902,6 +12020,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12004,6 +12123,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -12105,6 +12225,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -12210,6 +12331,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12314,6 +12436,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12419,6 +12542,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12521,6 +12645,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 16.66666603088379,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -12626,6 +12751,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12731,6 +12857,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12836,6 +12963,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -12938,6 +13066,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13039,6 +13168,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13143,6 +13273,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13248,6 +13379,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13351,6 +13483,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13454,6 +13587,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13559,6 +13693,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13662,6 +13797,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 2.68224,
     "auto_resume": false,
@@ -13766,6 +13902,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13872,6 +14009,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -13976,6 +14114,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14077,6 +14216,7 @@
     "video": "https://www.youtube.com/watch?v=U2fOCmcQ8hw",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14180,6 +14320,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14283,6 +14424,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14388,6 +14530,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14491,6 +14634,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14563,6 +14707,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14667,6 +14812,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14773,6 +14919,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14877,6 +15024,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -14981,6 +15129,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15083,6 +15232,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15189,6 +15339,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15296,6 +15447,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15400,6 +15552,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15503,6 +15656,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -15606,6 +15760,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15710,6 +15865,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15813,6 +15969,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -15918,6 +16075,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16021,6 +16179,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16123,6 +16282,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 2.2352000000000003,
     "auto_resume": false,
@@ -16226,6 +16386,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16329,6 +16490,7 @@
     "video": "https://www.youtube.com/watch?v=eLR9o2JkuRk",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 3.799999952316284,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16433,6 +16595,7 @@
     "video": "https://www.youtube.com/watch?v=jBe4lWnRSu4",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 17.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16539,6 +16702,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16642,6 +16806,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16745,6 +16910,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16850,6 +17016,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -16955,6 +17122,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17060,6 +17228,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17165,6 +17334,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 2.68224,
     "auto_resume": false,
@@ -17269,6 +17439,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17375,6 +17546,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17480,6 +17652,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17584,6 +17757,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17687,6 +17861,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17791,6 +17966,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17895,6 +18071,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -17999,6 +18176,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18103,6 +18281,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18208,6 +18387,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18309,6 +18489,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": 4.470400000000001,
     "auto_resume": false,
@@ -18413,6 +18594,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18516,6 +18698,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18619,6 +18802,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18721,6 +18905,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": 4.470400000000001,
     "auto_resume": false,
@@ -18823,6 +19008,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -18927,6 +19113,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19031,6 +19218,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19133,6 +19321,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.305279731750488,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19235,6 +19424,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19336,6 +19526,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19437,6 +19628,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19540,6 +19732,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19641,6 +19834,7 @@
     "video": "https://www.youtube.com/watch?v=Fkh3s6WHJz8",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19742,6 +19936,7 @@
     "video": "https://www.youtube.com/watch?v=Fkh3s6WHJz8",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19847,6 +20042,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -19952,6 +20148,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20056,6 +20253,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20160,6 +20358,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20263,6 +20462,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20368,6 +20568,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20472,6 +20673,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20577,6 +20779,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20680,6 +20883,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -20749,6 +20953,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -20852,6 +21057,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -20960,6 +21166,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -21063,6 +21270,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -21171,6 +21379,7 @@
     "video": "https://youtu.be/BZ29osRVJeg?t=12",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -21273,6 +21482,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -21377,6 +21587,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -21481,6 +21692,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -21584,6 +21796,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -21689,6 +21902,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -21758,6 +21972,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -21861,6 +22076,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -21964,6 +22180,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -22067,6 +22284,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -22171,6 +22389,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -22273,6 +22492,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -22375,6 +22595,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -22479,6 +22700,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -22583,6 +22805,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -22685,6 +22908,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -22789,6 +23013,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -22893,6 +23118,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23000,6 +23226,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23106,6 +23333,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23212,6 +23440,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23324,6 +23553,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23437,6 +23667,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23544,6 +23775,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 12.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23648,6 +23880,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 12.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23753,6 +23986,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 12.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23857,6 +24091,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -23962,6 +24197,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 12.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -24065,6 +24301,7 @@
     "video": "https://youtu.be/dA3duO4a0O4",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 12.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -24167,7 +24404,8 @@
     "package": "ProPILOT Assist",
     "video": null,
     "setup_video": null,
-    "footnotes": [
+    "footnotes": [],
+    "setup_notes": [
       "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/nissan\" target=\"_blank\">Nissan</a>."
     ],
     "min_steer_speed": 0.0,
@@ -24285,7 +24523,8 @@
     "package": "ProPILOT Assist",
     "video": "https://youtu.be/vaMbtAh_0cY",
     "setup_video": null,
-    "footnotes": [
+    "footnotes": [],
+    "setup_notes": [
       "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/nissan\" target=\"_blank\">Nissan</a>."
     ],
     "min_steer_speed": 0.0,
@@ -24400,7 +24639,8 @@
     "package": "ProPILOT Assist",
     "video": null,
     "setup_video": null,
-    "footnotes": [
+    "footnotes": [],
+    "setup_notes": [
       "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/nissan\" target=\"_blank\">Nissan</a>."
     ],
     "min_steer_speed": 0.0,
@@ -24513,7 +24753,8 @@
     "package": "ProPILOT Assist",
     "video": null,
     "setup_video": null,
-    "footnotes": [
+    "footnotes": [],
+    "setup_notes": [
       "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/nissan\" target=\"_blank\">Nissan</a>."
     ],
     "min_steer_speed": 0.0,
@@ -24633,6 +24874,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -24749,6 +24991,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -24860,6 +25103,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 14.5,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -24965,6 +25209,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 16.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25069,6 +25314,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 16.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25172,6 +25418,7 @@
     "video": null,
     "setup_video": "https://youtu.be/uaISd1j7Z4U",
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25286,6 +25533,7 @@
     "video": null,
     "setup_video": "https://youtu.be/uaISd1j7Z4U",
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25403,6 +25651,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25519,6 +25768,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25634,6 +25884,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -25746,6 +25997,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -25858,6 +26110,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -25973,6 +26226,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26090,6 +26344,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26202,6 +26457,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26315,6 +26571,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26431,6 +26688,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26545,6 +26803,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26657,6 +26916,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26773,6 +27033,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -26889,6 +27150,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27004,6 +27266,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27118,6 +27381,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27232,6 +27496,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27345,6 +27610,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27459,6 +27725,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27571,6 +27838,7 @@
     "footnotes": [
       "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27683,6 +27951,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -27756,6 +28025,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27871,6 +28141,7 @@
       "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -27986,8 +28257,10 @@
     "setup_video": null,
     "footnotes": [
       "Some 2023 model years have HW4. To check which hardware type your vehicle has, look for <b>Autopilot computer</b> under <b>Software -> Additional Vehicle Information</b> on your vehicle's touchscreen. </br></br>See <a href=\"https://www.notateslaapp.com/news/2173/how-to-check-if-your-tesla-has-hardware-4-ai4-or-hardware-3\">this page</a> for more information.",
-      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "setup_notes": [
+      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>."
     ],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
@@ -28097,8 +28370,10 @@
     "setup_video": null,
     "footnotes": [
       "Some 2023 model years have HW4. To check which hardware type your vehicle has, look for <b>Autopilot computer</b> under <b>Software -> Additional Vehicle Information</b> on your vehicle's touchscreen. </br></br>See <a href=\"https://www.notateslaapp.com/news/2173/how-to-check-if-your-tesla-has-hardware-4-ai4-or-hardware-3\">this page</a> for more information.",
-      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "setup_notes": [
+      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>."
     ],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
@@ -28207,8 +28482,10 @@
     "setup_video": null,
     "footnotes": [
       "Some 2023 model years have HW4. To check which hardware type your vehicle has, look for <b>Autopilot computer</b> under <b>Software -> Additional Vehicle Information</b> on your vehicle's touchscreen. </br></br>See <a href=\"https://www.notateslaapp.com/news/2173/how-to-check-if-your-tesla-has-hardware-4-ai4-or-hardware-3\">this page</a> for more information.",
-      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "setup_notes": [
+      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>."
     ],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
@@ -28320,8 +28597,10 @@
     "setup_video": null,
     "footnotes": [
       "Some 2023 model years have HW4. To check which hardware type your vehicle has, look for <b>Autopilot computer</b> under <b>Software -> Additional Vehicle Information</b> on your vehicle's touchscreen. </br></br>See <a href=\"https://www.notateslaapp.com/news/2173/how-to-check-if-your-tesla-has-hardware-4-ai4-or-hardware-3\">this page</a> for more information.",
-      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "setup_notes": [
+      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>."
     ],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
@@ -28431,8 +28710,10 @@
     "setup_video": null,
     "footnotes": [
       "Some 2023 model years have HW4. To check which hardware type your vehicle has, look for <b>Autopilot computer</b> under <b>Software -> Additional Vehicle Information</b> on your vehicle's touchscreen. </br></br>See <a href=\"https://www.notateslaapp.com/news/2173/how-to-check-if-your-tesla-has-hardware-4-ai4-or-hardware-3\">this page</a> for more information.",
-      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "setup_notes": [
+      "See more setup details for <a href=\"https://github.com/commaai/openpilot/wiki/tesla\" target=\"_blank\">Tesla</a>."
     ],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
@@ -28541,6 +28822,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -28643,6 +28925,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -28745,6 +29028,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -28848,6 +29132,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -28952,6 +29237,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -29054,6 +29340,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -29158,6 +29445,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -29260,6 +29548,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -29365,6 +29654,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -29469,6 +29759,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -29573,6 +29864,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -29678,6 +29970,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -29783,6 +30076,7 @@
     "footnotes": [
       "openpilot operates above 28mph for Camry 4CYL L, 4CYL LE and 4CYL SE which don't have Full-Speed Range Dynamic Radar Cruise Control."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -29890,6 +30184,7 @@
     "footnotes": [
       "openpilot operates above 28mph for Camry 4CYL L, 4CYL LE and 4CYL SE which don't have Full-Speed Range Dynamic Radar Cruise Control."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -29992,6 +30287,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -30062,6 +30358,7 @@
     "video": "https://www.youtube.com/watch?v=Q2DYY0AWKgk",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -30167,6 +30464,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -30271,6 +30569,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -30375,6 +30674,7 @@
     "video": "https://www.youtube.com/watch?v=_66pXk0CBYA",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -30480,6 +30780,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -30551,6 +30852,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 7.5,
     "auto_resume": false,
@@ -30655,6 +30957,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 7.5,
     "auto_resume": false,
@@ -30760,6 +31063,7 @@
     "video": "https://www.youtube.com/watch?v=_66pXk0CBYA",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -30864,6 +31168,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -30969,6 +31274,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 7.5,
     "auto_resume": false,
@@ -31073,6 +31379,7 @@
     "video": "https://www.youtube.com/watch?v=0wS0wXSLzoo",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -31178,6 +31485,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -31280,6 +31588,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -31350,6 +31659,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -31455,6 +31765,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -31557,6 +31868,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -31659,6 +31971,7 @@
     "video": "https://www.youtube.com/watch?v=8zopPJI8XQ0",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -31764,6 +32077,7 @@
     "video": "https://www.youtube.com/watch?v=8zopPJI8XQ0",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -31867,6 +32181,7 @@
     "video": "https://www.youtube.com/watch?v=J58TvCpUd4U",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -31972,6 +32287,7 @@
     "video": "https://www.youtube.com/watch?v=8zopPJI8XQ0",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -32075,6 +32391,7 @@
     "video": "https://www.youtube.com/watch?v=J58TvCpUd4U",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -32177,6 +32494,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -32279,6 +32597,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -32382,6 +32701,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -32486,6 +32806,7 @@
     "video": "https://www.youtube.com/watch?v=wJxjDd42gGA",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -32590,6 +32911,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -32695,6 +33017,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -32796,6 +33119,7 @@
     "video": "https://youtu.be/LhT5VzJVfNI?t=26",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -32899,6 +33223,7 @@
     "video": "https://youtu.be/LhT5VzJVfNI?t=26",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760108947754,
     "auto_resume": false,
@@ -33003,6 +33328,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33107,6 +33433,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33212,6 +33539,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33315,6 +33643,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -33418,6 +33747,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33488,6 +33818,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33558,6 +33889,7 @@
     "video": "https://www.youtube.com/watch?v=q1UPOo4Sh68",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -33662,6 +33994,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -33765,6 +34098,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33836,6 +34170,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33908,6 +34243,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -33979,6 +34315,7 @@
     "footnotes": [
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": 8.493760000000002,
     "auto_resume": false,
@@ -34082,6 +34419,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": 0.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34158,6 +34496,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34270,6 +34609,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34382,6 +34722,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34494,6 +34835,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34608,6 +34950,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34719,6 +35062,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34832,6 +35176,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -34941,6 +35286,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 5.833333492279053,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35050,6 +35396,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 5.833333492279053,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35161,6 +35508,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 14.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35270,6 +35618,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 14.0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35386,6 +35735,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35500,6 +35850,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -35613,6 +35964,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -35727,6 +36079,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35841,6 +36194,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -35956,6 +36310,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": false,
@@ -36069,6 +36424,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36183,6 +36539,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36297,6 +36654,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36409,6 +36767,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": 5.55555534362793,
     "auto_resume": false,
@@ -36523,6 +36882,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36634,6 +36994,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36751,6 +37112,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36867,6 +37229,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36983,6 +37346,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37097,6 +37461,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": 5.55555534362793,
     "auto_resume": false,
@@ -37212,6 +37577,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37327,6 +37693,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37440,6 +37807,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37550,6 +37918,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37664,6 +38033,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37775,6 +38145,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37888,6 +38259,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -37998,6 +38370,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38108,6 +38481,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38223,6 +38597,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38334,6 +38709,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38450,6 +38826,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38565,6 +38942,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 13.88888931274414,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38680,6 +39058,7 @@
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38784,6 +39163,7 @@
     "video": "https://youtu.be/VT-i3yRsX2s?t=2736",
     "setup_video": null,
     "footnotes": [],
+    "setup_notes": [],
     "min_steer_speed": null,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38860,6 +39240,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -38974,6 +39355,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39088,6 +39470,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39204,6 +39587,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39318,6 +39702,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39428,6 +39813,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39540,6 +39926,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39654,6 +40041,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -39771,6 +40159,7 @@
       "Some Škoda vehicles are equipped with heated windshields, which are known to block GPS signal needed for some comma four functionality.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
     ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
