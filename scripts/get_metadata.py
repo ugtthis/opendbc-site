@@ -29,7 +29,7 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
       "package": car_doc.package,
       "video": car_doc.video,
       "setup_video": car_doc.setup_video,
-      "footnotes": [fn.value.text for fn in car_doc.footnotes if not fn.value.docs_only and not fn.value.setup_note] if car_doc.footnotes else [],
+      "footnotes": [fn.value.text for fn in car_doc.footnotes if not fn.value.setup_note] if car_doc.footnotes else [],
       "setup_notes": [fn.value.text for fn in car_doc.footnotes if fn.value.setup_note] if car_doc.footnotes else [],
       "min_steer_speed": min_steer_speed,
       "min_enable_speed": car_doc.min_enable_speed,
