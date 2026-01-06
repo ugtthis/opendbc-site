@@ -32,7 +32,7 @@ jobs:
           cd opendbc
           pip install -e .
           pip install jinja2==3.1.4 natsort==8.4.0
-          scons -c && scons -j$(nproc)
+          python3 opendbc/dbc/generator/generator.py
 
       - name: Extract metadata from opendbc
         run: |
