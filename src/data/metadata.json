@@ -1263,6 +1263,108 @@
     "parts": []
   },
   {
+    "name": "Acura TLX 2025",
+    "make": "Acura",
+    "model": "TLX",
+    "years": "2025",
+    "year_list": [
+      "2025"
+    ],
+    "package": "All",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [],
+    "setup_notes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Acura TLX</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "ACURA_TLX_2G_MMR",
+    "brand": "honda",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Acura%20TLX%202025",
+    "longitudinal": "Stock",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 1945.83203125,
+    "wheelbase": 2.869999885559082,
+    "steer_ratio": 13.699999809265137,
+    "radar_delay": 0.10000000149011612,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.0,
+    "steer_actuator_delay": 0.15000000596046448,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.800000011920929,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 242952.828125,
+    "tire_stiffness_rear": 289728.6875,
+    "rotational_inertia": 3759.53564453125,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
+    "dashcam_only": false,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 132,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.5,
+    "vEgo_starting": 0.5,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.5,
+    "max_lateral_accel": 1.7000000476837158,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 1809.83208,
+    "center_to_front_ratio_base": 0.43,
+    "bus_lookup": {
+      "pt": "honda_common_canfd_generated"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.43,
+    "harness": "bosch_c",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Honda Bosch C connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Acura ZDX 2024",
     "make": "Acura",
     "model": "ZDX",
@@ -9088,7 +9190,7 @@
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": false,
-    "flags": 4,
+    "flags": 1028,
     "auto_resume_sng": true,
     "radarUnavailable": true,
     "passive": false,
@@ -9299,7 +9401,7 @@
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": false,
-    "flags": 4,
+    "flags": 1028,
     "auto_resume_sng": true,
     "radarUnavailable": true,
     "passive": false,
@@ -9405,7 +9507,7 @@
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": false,
-    "flags": 4,
+    "flags": 1028,
     "auto_resume_sng": true,
     "radarUnavailable": true,
     "passive": false,
@@ -21918,7 +22020,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -27902,7 +28004,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -30213,7 +30315,7 @@
     "year_list": [
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -30706,7 +30808,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -31514,7 +31616,7 @@
     "year_list": [
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -33673,7 +33775,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -33744,7 +33846,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -34024,7 +34126,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -34096,7 +34198,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -34169,7 +34271,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
@@ -34345,7 +34447,7 @@
       "2024",
       "2025"
     ],
-    "package": "Any",
+    "package": "All",
     "video": null,
     "setup_video": null,
     "footnotes": [],
