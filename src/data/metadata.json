@@ -18078,6 +18078,110 @@
     ]
   },
   {
+    "name": "Kia K7 2017",
+    "make": "Kia",
+    "model": "K7",
+    "years": "2017",
+    "year_list": [
+      "2017"
+    ],
+    "package": "Smart Cruise Control (SCC)",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [
+      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `devel` or `nightly-dev`."
+    ],
+    "setup_notes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Kia K7</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "KIA_K7_2017",
+    "brand": "hyundai",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Kia%20K7%202017",
+    "longitudinal": "openpilot available",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 1784.0,
+    "wheelbase": 2.859999895095825,
+    "steer_ratio": 16.799999237060547,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 1.0,
+    "steer_actuator_delay": 0.10000000149011612,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.4000000059604645,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 234470.3125,
+    "tire_stiffness_rear": 247099.859375,
+    "rotational_inertia": 3422.882568359375,
+    "experimental_longitudinal_available": true,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": false,
+    "enable_bsm": false,
+    "pcm_cruise": false,
+    "flags": 0,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.5,
+    "vEgo_starting": 0.10000000149011612,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.5,
+    "max_lateral_accel": 2.200000047683716,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 1648,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "hyundai_kia_generic"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "harness": "hyundai_c",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Hyundai C connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Kia K8 Hybrid (with HDA II) 2023",
     "make": "Kia",
     "model": "K8 Hybrid (with HDA II)",
