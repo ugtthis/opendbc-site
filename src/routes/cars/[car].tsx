@@ -25,6 +25,7 @@ import LongitudinalReportModal from '~/components/LongitudinalReportModal'
 
 import metadata from '~/data/metadata.json'
 import longitudinalReports from '~/data/longitudinal_reports.json'
+import lateralReports from '~/data/lateral_reports.json'
 
 type DetailedSpecs = Car & {
   parts?: Array<{
@@ -188,6 +189,17 @@ function CarDetailContent() {
     if (!currentCar?.car_fingerprint) return []
 
     const reportsData = longitudinalReports as Record<string, ReportData[]>
+    const isHybrid = currentCar.name.toLowerCase().includes('hybrid')
+    const key = isHybrid ? `${currentCar.car_fingerprint} (hybrid)` : currentCar.car_fingerprint
+
+    return reportsData[key] || []
+  })
+
+  const lateralReportsForCurrentCar = createMemo(() => {
+    const currentCar = car()
+    if (!currentCar?.car_fingerprint) return []
+
+    const reportsData = lateralReports as Record<string, ReportData[]>
     const isHybrid = currentCar.name.toLowerCase().includes('hybrid')
     const key = isHybrid ? `${currentCar.car_fingerprint} (hybrid)` : currentCar.car_fingerprint
 
@@ -401,6 +413,78 @@ function CarDetailContent() {
                     }
                   >
                     <For each={reportsForCurrentCar()}>
+                      {(report) => (
+                        <ReportRow
+                          description={report.description}
+                          link={report.link}
+                        />
+                      )}
+                    </For>
+
+                    <a
+                      href="https://commaai.github.io/opendbc-data/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class={cn(
+                        'flex items-center justify-center gap-2 border-t border-black bg-gray-100',
+                        'px-3 py-2 text-xs text-black transition-all duration-200 cursor-pointer',
+                        'hover:bg-gray-400 hover:text-white hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.7)]',
+                      )}
+                    >
+                      <span class="tracking-wide uppercase">Explore other car reports</span>
+                      <div
+                        class="h-3.5 w-3.5 ml-0.5 mb-0.5"
+                        innerHTML={LinkNewWindowSvg}
+                      />
+                    </a>
+                  </Show>
+                </AccordionContainer>
+
+                {/* Lateral Maneuver Reports */}
+                <AccordionContainer
+                  title="Lateral reports"
+                  id="lateral-reports"
+                  disableDefaultPadding={true}
+                >
+                  <Show
+                    when={lateralReportsForCurrentCar().length > 0}
+                    fallback={
+                      <div class="px-5 pb-10 pt-6 space-y-6">
+                        <p class="text-sm text-gray-700">
+                          No report available - click "Learn more" to find out how to create one.
+                        </p>
+                        <div class="flex flex-col gap-3">
+                          <a
+                            href="https://github.com/commaai/openpilot/blob/master/tools/lateral_maneuvers/README.md"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={cn(
+                              'flex items-center justify-between py-3 px-4',
+                              'border-2 border-black bg-accent text-white text-sm font-medium',
+                              'transition-colors cursor-pointer hover:bg-[#727272]',
+                            )}
+                          >
+                            <span>Learn more</span>
+                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
+                          </a>
+                          <a
+                            href="https://commaai.github.io/opendbc-data/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={cn(
+                              'flex items-center justify-between py-3 px-4',
+                              'border-2 border-black bg-white text-black text-sm font-medium',
+                              'transition-colors cursor-pointer hover:bg-gray-100',
+                            )}
+                          >
+                            <span>View reports from other models</span>
+                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
+                          </a>
+                        </div>
+                      </div>
+                    }
+                  >
+                    <For each={lateralReportsForCurrentCar()}>
                       {(report) => (
                         <ReportRow
                           description={report.description}
@@ -939,6 +1023,7 @@ function CarDetailContent() {
           description={reportModalState.reportData()?.description}
           link={reportModalState.reportData()?.link}
         />
+
       </div>
     </QuickNavProvider>
   )

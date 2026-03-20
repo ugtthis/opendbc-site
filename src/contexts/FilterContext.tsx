@@ -4,6 +4,7 @@ import type { Car } from '~/types/CarDataTypes'
 import { normalize } from '~/lib/utils'
 import carData from '~/data/metadata.json'
 import longitudinalReports from '~/data/longitudinal_reports.json'
+import lateralReports from '~/data/lateral_reports.json'
 
 type SearchableCar = Car & {
   searchText: string
@@ -43,6 +44,7 @@ export type FilterState = {
   hasUserVideo: string
   hasSetupVideo: string
   hasLongitudinalReport: string
+  hasLateralReport: string
 }
 
 export const filterLabels = {
@@ -51,7 +53,8 @@ export const filterLabels = {
   supportLevel: 'Support',
   hasUserVideo: 'Has Video',
   hasSetupVideo: 'Has Install Video',
-  hasLongitudinalReport: 'Has Report'
+  hasLongitudinalReport: 'Has Report',
+  hasLateralReport: 'Has Lateral Report'
 } as const
 
 export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>
@@ -85,6 +88,7 @@ export const FilterProvider = (props: ParentProps) => {
     hasUserVideo: '',
     hasSetupVideo: '',
     hasLongitudinalReport: '',
+    hasLateralReport: '',
   })
 
   const [searchQuery, setSearchQuery] = createSignal('')
@@ -136,6 +140,16 @@ export const FilterProvider = (props: ParentProps) => {
         const isHybrid = car.name.toLowerCase().includes('hybrid')
         const key = isHybrid ? `${car.car_fingerprint} (hybrid)` : car.car_fingerprint
         const hasReport = (longitudinalReports as Record<string, unknown>)[key] !== undefined
+        return shouldHaveReport === hasReport
+      })
+    }
+    if (currentFilters.hasLateralReport) {
+      const shouldHaveReport = currentFilters.hasLateralReport === 'Yes'
+
+      result = result.filter((car) => {
+        const isHybrid = car.name.toLowerCase().includes('hybrid')
+        const key = isHybrid ? `${car.car_fingerprint} (hybrid)` : car.car_fingerprint
+        const hasReport = (lateralReports as Record<string, unknown>)[key] !== undefined
         return shouldHaveReport === hasReport
       })
     }
@@ -197,6 +211,7 @@ export const FilterProvider = (props: ParentProps) => {
       hasUserVideo: '',
       hasSetupVideo: '',
       hasLongitudinalReport: '',
+      hasLateralReport: '',
     })
     setSearchQuery('')
   }
