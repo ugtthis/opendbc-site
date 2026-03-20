@@ -1,1 +1,14 @@
-{}
+{
+  "KIA_EV6": [
+    {
+      "description": "high limits",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/KIA_EV6_98395b7c5b27882e_00000268--6b3e66b898.html"
+    }
+  ],
+  "TESLA_MODEL_Y": [
+    {
+      "description": "master",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/TESLA_MODEL_Y_0f79c454f812791a_000001bd--15bdf1ba66.html"
+    }
+  ]
+}

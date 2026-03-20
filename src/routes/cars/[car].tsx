@@ -486,10 +486,16 @@ function CarDetailContent() {
                   >
                     <For each={lateralReportsForCurrentCar()}>
                       {(report) => (
-                        <ReportRow
-                          description={report.description}
-                          link={report.link}
-                        />
+                        <button
+                          onClick={() => openReportModal(report, "Lateral Report")}
+                          class={cn(
+                            'flex items-center justify-between gap-3 w-full py-4 pl-5 pr-5 text-left text-xs',
+                            'border-b border-gray-200 transition-colors cursor-pointer hover:bg-amber-50',
+                          )}
+                        >
+                          <div>{report.description}</div>
+                          <div class="h-3 w-3 flex-shrink-0 -rotate-90" innerHTML={DownChevronSvg} />
+                        </button>
                       )}
                     </For>
 
@@ -1022,6 +1028,7 @@ function CarDetailContent() {
           onOpenChange={(isOpen) => !isOpen && closeReportModal()}
           description={reportModalState.reportData()?.description}
           link={reportModalState.reportData()?.link}
+          title={reportModalState.modalTitle()}
         />
 
       </div>

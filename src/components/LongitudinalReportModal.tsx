@@ -10,6 +10,7 @@ type LongitudinalReportModalProps = {
   onOpenChange: (open: boolean) => void
   description?: string
   link?: string
+  title?: string
 }
 
 const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props) => {
@@ -61,7 +62,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
           <iframe
             src={props.link}
             class="w-full h-full border-0"
-            title="Longitudinal Report"
+            title={props.title ?? "Longitudinal Report"}
             sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
           />
         </Show>
@@ -107,7 +108,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
               {/* Header */}
               <div class="flex justify-between items-center px-4 pb-4 border-b border-black">
                 <Drawer.Label class="text-xl font-bold text-white">
-                  Longitudinal Report
+                  {props.title ?? "Longitudinal Report"}
                 </Drawer.Label>
                 <Drawer.Close
                   class={cn(
