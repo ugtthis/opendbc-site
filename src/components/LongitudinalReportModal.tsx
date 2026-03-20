@@ -159,7 +159,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
           {/* Desktop header */}
           <div class="flex flex-shrink-0 items-center justify-between border-b border-black bg-accent p-4">
             <Dialog.Label class="text-xl font-bold text-white">
-              Longitudinal Report
+              {props.title ?? "Longitudinal Report"}
             </Dialog.Label>
             <Dialog.Close
               class={cn(
