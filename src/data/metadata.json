@@ -26386,15 +26386,14 @@
     ]
   },
   {
-    "name": "Rivian R1S 2022-25",
+    "name": "Rivian R1S 2022-24",
     "make": "Rivian",
     "model": "R1S",
-    "years": "2022-25",
+    "years": "2022-24",
     "year_list": [
       "2022",
       "2023",
-      "2024",
-      "2025"
+      "2024"
     ],
     "package": "All",
     "video": null,
@@ -26410,7 +26409,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Rivian R1S</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "RIVIAN_R1",
     "brand": "rivian",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Rivian%20R1S%202022-25",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Rivian%20R1S%202022-24",
     "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -26456,7 +26455,7 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
     "center_to_front_ratio": 0.5,
-    "harness": "rivian",
+    "harness": "rivian_a",
     "tools_required": [],
     "parts": [
       {
@@ -26497,19 +26496,16 @@
     ]
   },
   {
-    "name": "Rivian R1T 2022-25",
+    "name": "Rivian R1S 2025",
     "make": "Rivian",
-    "model": "R1T",
-    "years": "2022-25",
+    "model": "R1S",
+    "years": "2025",
     "year_list": [
-      "2022",
-      "2023",
-      "2024",
       "2025"
     ],
     "package": "All",
     "video": null,
-    "setup_video": "https://youtu.be/uaISd1j7Z4U",
+    "setup_video": null,
     "footnotes": [],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -26518,10 +26514,10 @@
     "merged": true,
     "support_type": "Upstream",
     "support_link": "#upstream",
-    "detail_sentence": "openpilot upgrades your <strong>Rivian R1T</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
+    "detail_sentence": "openpilot upgrades your <strong>Rivian R1S</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "RIVIAN_R1",
     "brand": "rivian",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Rivian%20R1T%202022-25",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Rivian%20R1S%202025",
     "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -26567,11 +26563,229 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
     "center_to_front_ratio": 0.5,
-    "harness": "rivian",
+    "harness": "rivian_b",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Rivian B connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "long OBD-C cable (9.5 ft)",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Rivian R1T 2022-24",
+    "make": "Rivian",
+    "model": "R1T",
+    "years": "2022-24",
+    "year_list": [
+      "2022",
+      "2023",
+      "2024"
+    ],
+    "package": "All",
+    "video": null,
+    "setup_video": "https://youtu.be/uaISd1j7Z4U",
+    "footnotes": [],
+    "setup_notes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Rivian R1T</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
+    "car_fingerprint": "RIVIAN_R1",
+    "brand": "rivian",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Rivian%20R1T%202022-24",
+    "longitudinal": "openpilot",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 3342.0,
+    "wheelbase": 3.0799999237060547,
+    "steer_ratio": 15.199999809265137,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.0,
+    "steer_actuator_delay": 0.15000000596046448,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.4000000059604645,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 366031.28125,
+    "tire_stiffness_rear": 578620.875,
+    "rotational_inertia": 7436.5751953125,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": false,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 1,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.25,
+    "vEgo_starting": 0.5,
+    "stop_accel": 0.0,
+    "longitudinal_actuator_delay": 0.3499999940395355,
+    "max_lateral_accel": 2.5,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 3206.0,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "rivian_primary_actuator",
+      "radar": "rivian_mando_front_radar_generated"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "harness": "rivian_a",
     "tools_required": [],
     "parts": [
       {
         "name": "Rivian A connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "long OBD-C cable (9.5 ft)",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Rivian R1T 2025",
+    "make": "Rivian",
+    "model": "R1T",
+    "years": "2025",
+    "year_list": [
+      "2025"
+    ],
+    "package": "All",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [],
+    "setup_notes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Rivian R1T</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
+    "car_fingerprint": "RIVIAN_R1",
+    "brand": "rivian",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Rivian%20R1T%202025",
+    "longitudinal": "openpilot",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 3342.0,
+    "wheelbase": 3.0799999237060547,
+    "steer_ratio": 15.199999809265137,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.0,
+    "steer_actuator_delay": 0.15000000596046448,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.4000000059604645,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 366031.28125,
+    "tire_stiffness_rear": 578620.875,
+    "rotational_inertia": 7436.5751953125,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": false,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 1,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.25,
+    "vEgo_starting": 0.5,
+    "stop_accel": 0.0,
+    "longitudinal_actuator_delay": 0.3499999940395355,
+    "max_lateral_accel": 2.5,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 3206.0,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "rivian_primary_actuator",
+      "radar": "rivian_mando_front_radar_generated"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "harness": "rivian_b",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Rivian B connector",
         "type": "connector",
         "count": 1
       },
