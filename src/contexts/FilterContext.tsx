@@ -53,8 +53,8 @@ export const filterLabels = {
   supportLevel: 'Support',
   hasUserVideo: 'Has Video',
   hasSetupVideo: 'Has Install Video',
-  hasLongitudinalReport: 'Has Report',
-  hasLateralReport: 'Has Lateral Report'
+  hasLongitudinalReport: 'Has Longitudinal Report',
+  hasLateralReport: 'Has Lateral Report',
 } as const
 
 export type SortField = keyof Pick<Car, 'make' | 'support_type' | 'year_list'>

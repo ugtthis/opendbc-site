@@ -209,6 +209,15 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             />
 
             <CustomDropdown
+              label="Has Lateral Report"
+              options={['Yes', 'No']}
+              value={filters().hasLateralReport}
+              onChange={(value) =>
+                setFilters((prev) => ({ ...prev, hasLateralReport: value }))
+              }
+            />
+
+            <CustomDropdown
               label="Has User Video"
               options={['Yes', 'No']}
               value={filters().hasUserVideo}
