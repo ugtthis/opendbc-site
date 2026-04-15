@@ -2,7 +2,7 @@ name: Update Lateral Reports
 
 on:
   schedule:
-    - cron: '15 8 * * *' # Run daily at 12:15am PST (10 mins after metadata update)
+    - cron: '10 8 * * *' # Same schedule as longitudinal reports (daily)
   workflow_dispatch:
 
 jobs:
@@ -23,7 +23,7 @@ jobs:
 
       - name: Fetch and parse lateral reports
         run: |
-          python3 scripts/get_lateral_reports.py
+          python3 scripts/fetch_maneuver_reports.py --lateral
           mv lateral_reports.json src/data/lateral_reports.json
 
       - name: Create Pull Request

@@ -23,7 +23,7 @@ jobs:
 
       - name: Fetch and parse longitudinal reports
         run: |
-          python3 scripts/get_longitudinal_reports.py
+          python3 scripts/fetch_maneuver_reports.py --longitudinal
           mv longitudinal_reports.json src/data/longitudinal_reports.json
 
       - name: Create Pull Request
