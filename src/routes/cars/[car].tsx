@@ -19,7 +19,7 @@ import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn, slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
-import { openReportModal, openCompareModal, closeReportModal, reportModalState, type ReportData } from '~/contexts/LongitudinalReportModalContext'
+import { openReportModal, closeReportModal, reportModalState, type ReportData } from '~/contexts/LongitudinalReportModalContext'
 import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
 import LongitudinalReportModal from '~/components/LongitudinalReportModal'
 
@@ -205,18 +205,6 @@ function CarDetailContent() {
 
     return reportsData[key] || []
   })
-
-  const allLongitudinalReports = createMemo(() =>
-    Object.entries(longitudinalReports as Record<string, ReportData[]>).flatMap(([platform, reports]) =>
-      reports.map(r => ({ description: `${platform} - ${r.description}`, link: r.link }))
-    )
-  )
-
-  const allLateralReports = createMemo(() =>
-    Object.entries(lateralReports as Record<string, ReportData[]>).flatMap(([platform, reports]) =>
-      reports.map(r => ({ description: `${platform} - ${r.description}`, link: r.link }))
-    )
-  )
 
   // Scroll detection for up arrow visibility
   onMount(() => {
@@ -433,24 +421,6 @@ function CarDetailContent() {
                       )}
                     </For>
 
-                    <Show when={allLongitudinalReports().length >= 2}>
-                      <button
-                        onClick={() => {
-                          const all = allLongitudinalReports()
-                          const fp = car()?.car_fingerprint
-                          const idx = fp ? all.findIndex(r => r.description.startsWith(fp)) : 0
-                          openCompareModal(all, undefined, idx >= 0 ? idx : 0)
-                        }}
-                        class={cn(
-                          'flex items-center justify-center gap-2 w-full border-t border-gray-200',
-                          'px-3 py-2 text-xs text-black transition-all duration-200 cursor-pointer',
-                          'hover:bg-amber-50',
-                        )}
-                      >
-                        <span class="tracking-wide uppercase">Compare reports</span>
-                      </button>
-                    </Show>
-
                     <a
                       href="https://commaai.github.io/opendbc-data/"
                       target="_blank"
@@ -528,24 +498,6 @@ function CarDetailContent() {
                         </button>
                       )}
                     </For>
-
-                    <Show when={allLateralReports().length >= 2}>
-                      <button
-                        onClick={() => {
-                          const all = allLateralReports()
-                          const fp = car()?.car_fingerprint
-                          const idx = fp ? all.findIndex(r => r.description.startsWith(fp)) : 0
-                          openCompareModal(all, "Lateral Report", idx >= 0 ? idx : 0)
-                        }}
-                        class={cn(
-                          'flex items-center justify-center gap-2 w-full border-t border-gray-200',
-                          'px-3 py-2 text-xs text-black transition-all duration-200 cursor-pointer',
-                          'hover:bg-amber-50',
-                        )}
-                      >
-                        <span class="tracking-wide uppercase">Compare reports</span>
-                      </button>
-                    </Show>
 
                     <a
                       href="https://commaai.github.io/opendbc-data/"
@@ -1077,8 +1029,6 @@ function CarDetailContent() {
           description={reportModalState.reportData()?.description}
           link={reportModalState.reportData()?.link}
           title={reportModalState.modalTitle()}
-          compareReports={reportModalState.compareReports()}
-          compareDefaultIdx={reportModalState.compareDefaultIdx()}
         />
 
       </div>

@@ -1,10 +1,9 @@
-import { type Component, Show, For, createSignal, createEffect } from 'solid-js'
+import { type Component, Show, createSignal, createEffect } from 'solid-js'
 import * as Drawer from 'corvu/drawer'
 import * as Dialog from 'corvu/dialog'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn } from '~/lib/utils'
-import type { ReportData } from '~/contexts/LongitudinalReportModalContext'
 
 type LongitudinalReportModalProps = {
   open: boolean
@@ -12,8 +11,6 @@ type LongitudinalReportModalProps = {
   description?: string
   link?: string
   title?: string
-  compareReports?: ReportData[]
-  compareDefaultIdx?: number
 }
 
 const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props) => {
@@ -42,73 +39,6 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
   })
 
   const shouldUseDesktop = () => openedAsDesktop() ?? isDesktop()
-
-  const isCompare = () => (props.compareReports?.length ?? 0) >= 2
-  const [leftIdx, setLeftIdx] = createSignal(0)
-  const [rightIdx, setRightIdx] = createSignal(1)
-
-  createEffect(() => {
-    if (props.open && isCompare()) {
-      const def = props.compareDefaultIdx ?? 0
-      const len = props.compareReports?.length ?? 0
-      setLeftIdx(def)
-      setRightIdx((def + 1) % len)
-    }
-  })
-
-  const CompareContent = () => {
-    let leftRef!: HTMLDivElement
-    let rightRef!: HTMLDivElement
-    let syncing = false
-
-    const syncScroll = (source: HTMLDivElement, target: HTMLDivElement) => {
-      if (syncing) return
-      syncing = true
-      target.scrollTop = source.scrollTop
-      syncing = false
-    }
-
-    return (
-      <div class="flex flex-1 min-h-0">
-        <For each={[leftIdx, rightIdx]}>
-          {(idxSignal, i) => (
-            <div class={cn("flex flex-col flex-1 min-h-0", i() === 0 && "border-r border-gray-300")}>
-              <div class="flex-shrink-0 px-3 py-2 bg-gray-100 border-b border-gray-300">
-                <select
-                  class="w-full text-sm bg-white border border-gray-300 rounded px-2 py-1"
-                  value={idxSignal()}
-                  onChange={(e) => (i() === 0 ? setLeftIdx : setRightIdx)(Number(e.target.value))}
-                >
-                  <For each={props.compareReports}>
-                    {(r, ri) => {
-                      const otherIdx = i() === 0 ? rightIdx() : leftIdx()
-                      return <option value={ri()} disabled={ri() === otherIdx}>{r.description}</option>
-                    }}
-                  </For>
-                </select>
-              </div>
-              <div
-                class="flex-1 min-h-0 overflow-y-auto overflow-x-hidden"
-                ref={(el) => { if (i() === 0) leftRef = el; else rightRef = el }}
-                onScroll={(e) => syncScroll(e.currentTarget, i() === 0 ? rightRef : leftRef)}
-              >
-                <div class="overflow-hidden" style="width: calc(100% + 20px)">
-                  <iframe
-                    src={props.compareReports?.[idxSignal()]?.link}
-                    class="border-0"
-                    style={`height: 10000px; width: calc(100% + 20px)`}
-                    title="Report"
-                    scrolling="no"
-                    sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-                  />
-                </div>
-              </div>
-            </div>
-          )}
-        </For>
-      </div>
-    )
-  }
 
   const ModalContent = () => (
     <>
@@ -193,10 +123,9 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
               </div>
             </div>
 
+            {/* Modal content */}
             <div class="flex flex-col flex-1 min-h-0">
-              <Show when={isCompare()} fallback={<ModalContent />}>
-                <CompareContent />
-              </Show>
+              <ModalContent />
             </div>
           </Drawer.Content>
         </Drawer.Portal>
@@ -216,8 +145,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
         />
         <Dialog.Content
           class={cn(
-            'fixed left-1/2 top-1/2 z-50 w-full',
-            isCompare() ? 'max-w-6xl' : 'max-w-2xl',
+            'fixed left-1/2 top-1/2 z-50 w-full max-w-2xl',
             '-translate-x-1/2 -translate-y-1/2',
             'border-4 border-black bg-white',
             'shadow-[0_6px_20px_rgba(0,0,0,0.6)]',
@@ -245,10 +173,9 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
             </Dialog.Close>
           </div>
 
+          {/* Modal content */}
           <div class="flex flex-col flex-1 min-h-0">
-            <Show when={isCompare()} fallback={<ModalContent />}>
-              <CompareContent />
-            </Show>
+            <ModalContent />
           </div>
         </Dialog.Content>
       </Dialog.Portal>
