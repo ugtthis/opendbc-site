@@ -4,10 +4,10 @@ import type { Car } from '~/types/CarDataTypes'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
 import LinkNewWindowSvg from '~/lib/icons/link-new-window.svg?raw'
-import DownChevronSvg from '~/lib/icons/down-chevron.svg?raw'
 import MasterToggle from '~/components/MasterToggle'
 import AccordionContainer from '~/components/AccordionContainer'
 import ExpandableSpec from '~/components/ExpandableSpec'
+import ManeuverReportSection from '~/components/ManeuverReportSection'
 import { QuickNavProvider, QuickNavWrapper, useQuickNavScrollTarget, HIGHLIGHT_STYLES } from '~/components/QuickNavHighlight'
 import QuickNavDrawer from '~/components/QuickNavDrawer'
 import QuickNavSpecLinks from '~/components/QuickNavSpecLinks'
@@ -19,12 +19,13 @@ import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn, slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
-import { openReportModal, closeReportModal, reportModalState, type ReportData } from '~/contexts/LongitudinalReportModalContext'
+import { closeReportModal, reportModalState, type ReportData } from '~/contexts/ReportModalContext'
 import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
-import LongitudinalReportModal from '~/components/LongitudinalReportModal'
+import ReportModal from '~/components/ReportModal'
 
 import metadata from '~/data/metadata.json'
 import longitudinalReports from '~/data/longitudinal_reports.json'
+import lateralReports from '~/data/lateral_reports.json'
 
 type DetailedSpecs = Car & {
   parts?: Array<{
@@ -57,6 +58,20 @@ type DetailedSpecs = Car & {
   max_lateral_accel?: number
 }
 
+function getFingerprintKey(car: DetailedSpecs | undefined): string | undefined {
+  if (!car?.car_fingerprint) return undefined
+  const isHybrid = car.name.toLowerCase().includes('hybrid')
+  return isHybrid ? `${car.car_fingerprint} (hybrid)` : car.car_fingerprint
+}
+
+function reportsForCar(
+  car: DetailedSpecs | undefined,
+  reportsData: Record<string, ReportData[]>,
+): ReportData[] {
+  const key = getFingerprintKey(car)
+  if (!key) return []
+  return reportsData[key] || []
+}
 
 type SupportTypeButtonProps = {
   supportType: string
@@ -78,19 +93,6 @@ const SupportTypeButton: Component<SupportTypeButtonProps> = (props) => {
     </button>
   )
 }
-
-const ReportRow: Component<ReportData> = (props) => (
-  <button
-    onClick={() => openReportModal(props)}
-    class={cn(
-      'flex items-center justify-between gap-3 w-full py-4 pl-5 pr-5 text-left text-xs',
-      'border-b border-gray-200 transition-colors cursor-pointer hover:bg-amber-50',
-    )}
-  >
-    <div>{props.description}</div>
-    <div class="h-3 w-3 flex-shrink-0 -rotate-90" innerHTML={DownChevronSvg} />
-  </button>
-)
 
 type GradientHeaderProps = {
   car: DetailedSpecs | undefined
@@ -183,16 +185,13 @@ function CarDetailContent() {
     return (metadata as DetailedSpecs[]).find(c => slugify(c.name) === params.car)
   })
 
-  const reportsForCurrentCar = createMemo(() => {
-    const currentCar = car()
-    if (!currentCar?.car_fingerprint) return []
+  const reportsForCurrentCar = createMemo(() =>
+    reportsForCar(car(), longitudinalReports as Record<string, ReportData[]>),
+  )
 
-    const reportsData = longitudinalReports as Record<string, ReportData[]>
-    const isHybrid = currentCar.name.toLowerCase().includes('hybrid')
-    const key = isHybrid ? `${currentCar.car_fingerprint} (hybrid)` : currentCar.car_fingerprint
-
-    return reportsData[key] || []
-  })
+  const lateralReportsForCurrentCar = createMemo(() =>
+    reportsForCar(car(), lateralReports as Record<string, ReportData[]>),
+  )
 
   // Scroll detection for up arrow visibility
   onMount(() => {
@@ -356,77 +355,21 @@ function CarDetailContent() {
                   </QuickNavWrapper>
                 </AccordionContainer>
 
-                {/* Longitudinal Maneuver Reports */}
-                <AccordionContainer
+                {/* Maneuver Reports */}
+                <ManeuverReportSection
                   title="Longitudinal reports"
                   id="longitudinal-reports"
-                  disableDefaultPadding={true}
-                >
-                  <Show
-                    when={reportsForCurrentCar().length > 0}
-                    fallback={
-                      <div class="px-5 pb-10 pt-6 space-y-6">
-                        <p class="text-sm text-gray-700">
-                          No report available - click "Learn more" to find out how to create one.
-                        </p>
-                        <div class="flex flex-col gap-3">
-                          <a
-                            href="https://github.com/commaai/openpilot/blob/master/tools/longitudinal_maneuvers/README.md"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class={cn(
-                              'flex items-center justify-between py-3 px-4',
-                              'border-2 border-black bg-accent text-white text-sm font-medium',
-                              'transition-colors cursor-pointer hover:bg-[#727272]',
-                            )}
-                          >
-                            <span>Learn more</span>
-                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
-                          </a>
-                          <a
-                            href="https://commaai.github.io/opendbc-data/"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class={cn(
-                              'flex items-center justify-between py-3 px-4',
-                              'border-2 border-black bg-white text-black text-sm font-medium',
-                              'transition-colors cursor-pointer hover:bg-gray-100',
-                            )}
-                          >
-                            <span>View reports from other models</span>
-                            <div class="h-5 w-5 flex-shrink-0 ml-4" innerHTML={LinkNewWindowSvg} />
-                          </a>
-                        </div>
-                      </div>
-                    }
-                  >
-                    <For each={reportsForCurrentCar()}>
-                      {(report) => (
-                        <ReportRow
-                          description={report.description}
-                          link={report.link}
-                        />
-                      )}
-                    </For>
+                  learnMoreReadmeUrl="https://github.com/commaai/openpilot/blob/master/tools/longitudinal_maneuvers/README.md"
+                  reports={reportsForCurrentCar}
+                />
 
-                    <a
-                      href="https://commaai.github.io/opendbc-data/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class={cn(
-                        'flex items-center justify-center gap-2 border-t border-black bg-gray-100',
-                        'px-3 py-2 text-xs text-black transition-all duration-200 cursor-pointer',
-                        'hover:bg-gray-400 hover:text-white hover:shadow-[inset_0_0_20px_rgba(0,0,0,0.7)]',
-                      )}
-                    >
-                      <span class="tracking-wide uppercase">Explore other car reports</span>
-                      <div
-                        class="h-3.5 w-3.5 ml-0.5 mb-0.5"
-                        innerHTML={LinkNewWindowSvg}
-                      />
-                    </a>
-                  </Show>
-                </AccordionContainer>
+                <ManeuverReportSection
+                  title="Lateral reports"
+                  id="lateral-reports"
+                  learnMoreReadmeUrl="https://github.com/commaai/openpilot/blob/master/tools/lateral_maneuvers/README.md"
+                  reports={lateralReportsForCurrentCar}
+                  rowModalTitle="Lateral Report"
+                />
 
                 {/* User Video */}
                 <Show when={currentCar().video}>
@@ -932,13 +875,15 @@ function CarDetailContent() {
           )}
         </Show>
 
-        {/* Longitudinal Report Modal */}
-        <LongitudinalReportModal
+        {/* Shared maneuver report modal (longitudinal + lateral) */}
+        <ReportModal
           open={reportModalState.isOpen()}
           onOpenChange={(isOpen) => !isOpen && closeReportModal()}
           description={reportModalState.reportData()?.description}
           link={reportModalState.reportData()?.link}
+          title={reportModalState.modalTitle()}
         />
+
       </div>
     </QuickNavProvider>
   )

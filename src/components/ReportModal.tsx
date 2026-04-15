@@ -5,14 +5,15 @@ import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn } from '~/lib/utils'
 
-type LongitudinalReportModalProps = {
+type ReportModalProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
   description?: string
   link?: string
+  title?: string
 }
 
-const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props) => {
+const ReportModal: Component<ReportModalProps> = (props) => {
   const isDesktop = createMediaQuery(BREAKPOINTS.desktop)
   const [openedAsDesktop, setOpenedAsDesktop] = createSignal<boolean | null>(null)
 
@@ -61,7 +62,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
           <iframe
             src={props.link}
             class="w-full h-full border-0"
-            title="Longitudinal Report"
+            title={props.title ?? "Longitudinal Report"}
             sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
           />
         </Show>
@@ -107,7 +108,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
               {/* Header */}
               <div class="flex justify-between items-center px-4 pb-4 border-b border-black">
                 <Drawer.Label class="text-xl font-bold text-white">
-                  Longitudinal Report
+                  {props.title ?? "Longitudinal Report"}
                 </Drawer.Label>
                 <Drawer.Close
                   class={cn(
@@ -158,7 +159,7 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
           {/* Desktop header */}
           <div class="flex flex-shrink-0 items-center justify-between border-b border-black bg-accent p-4">
             <Dialog.Label class="text-xl font-bold text-white">
-              Longitudinal Report
+              {props.title ?? "Longitudinal Report"}
             </Dialog.Label>
             <Dialog.Close
               class={cn(
@@ -189,5 +190,4 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
   )
 }
 
-export default LongitudinalReportModal
-
+export default ReportModal

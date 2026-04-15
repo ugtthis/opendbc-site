@@ -1,0 +1,37 @@
+name: Update Lateral Reports
+
+on:
+  schedule:
+    - cron: '10 8 * * *' # Same schedule as longitudinal reports (daily)
+  workflow_dispatch:
+
+jobs:
+  update-lateral-reports:
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Fetch and parse lateral reports
+        run: |
+          python3 scripts/fetch_maneuver_reports.py --lateral
+          mv lateral_reports.json src/data/lateral_reports.json
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@af7c021bb9c41362d0986422bd244ce51a3bf52f
+        with:
+          commit-message: 'reports: Auto-update lateral reports from opendbc-data'
+          title: '[bot] Scheduled lateral reports update'
+          body: 'Automated PR to update lateral reports from opendbc-data repository'
+          branch: update-lateral-reports
+          base: main
+          delete-branch: true
