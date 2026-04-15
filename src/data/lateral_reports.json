@@ -1,6 +1,10 @@
 {
   "KIA_EV6": [
     {
+      "description": "master",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/KIA_EV6_98395b7c5b27882e_0000029a--b2f9848b93.html"
+    },
+    {
       "description": "high limits",
       "link": "https://commaai.github.io/opendbc-data/lateral_reports/KIA_EV6_98395b7c5b27882e_00000268--6b3e66b898.html"
     }
