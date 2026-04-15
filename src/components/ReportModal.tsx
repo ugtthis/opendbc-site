@@ -4,6 +4,8 @@ import * as Dialog from 'corvu/dialog'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn } from '~/lib/utils'
+import type { ReportData } from '~/contexts/ReportModalContext'
+import CompareReportContent from '~/components/report-modal/CompareReportContent'
 
 type ReportModalProps = {
   open: boolean
@@ -11,7 +13,39 @@ type ReportModalProps = {
   description?: string
   link?: string
   title?: string
+  compareReports?: ReportData[]
+  compareDefaultIdx?: number
 }
+
+const SingleReportContent: Component<Pick<ReportModalProps, 'description' | 'link' | 'title'>> = (
+  props,
+) => (
+  <>
+    <Show when={props.description}>
+      <div class="flex-shrink-0 px-6 py-4 bg-gray-100 border-b border-gray-300">
+        <p class="text-sm text-gray-700">{props.description}</p>
+      </div>
+    </Show>
+
+    <div class="flex-1 min-h-[600px] bg-white">
+      <Show
+        when={props.link}
+        fallback={
+          <div class="flex items-center justify-center h-full text-gray-500">
+            No report available
+          </div>
+        }
+      >
+        <iframe
+          src={props.link}
+          class="w-full h-full border-0"
+          title={props.title ?? 'Longitudinal Report'}
+          sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
+        />
+      </Show>
+    </div>
+  </>
+)
 
 const ReportModal: Component<ReportModalProps> = (props) => {
   const isDesktop = createMediaQuery(BREAKPOINTS.desktop)
@@ -40,35 +74,17 @@ const ReportModal: Component<ReportModalProps> = (props) => {
 
   const shouldUseDesktop = () => openedAsDesktop() ?? isDesktop()
 
-  const ModalContent = () => (
-    <>
-      {/* Description header */}
-      <Show when={props.description}>
-        <div class="flex-shrink-0 px-6 py-4 bg-gray-100 border-b border-gray-300">
-          <p class="text-sm text-gray-700">{props.description}</p>
-        </div>
-      </Show>
+  const isCompare = () => (props.compareReports?.length ?? 0) >= 2
+  const modalHeaderTitle = () =>
+    isCompare() ? 'Compare Reports' : props.title ?? 'Longitudinal Report'
 
-      {/* iframe container */}
-      <div class="flex-1 min-h-[600px] bg-white">
-        <Show
-          when={props.link}
-          fallback={
-            <div class="flex items-center justify-center h-full text-gray-500">
-              No report available
-            </div>
-          }
-        >
-          <iframe
-            src={props.link}
-            class="w-full h-full border-0"
-            title={props.title ?? "Longitudinal Report"}
-            sandbox="allow-scripts allow-same-origin allow-popups allow-forms"
-          />
-        </Show>
-      </div>
-    </>
-  )
+  const [syncScrollEnabled, setSyncScrollEnabled] = createSignal(true)
+
+  createEffect(() => {
+    if (props.open && isCompare()) {
+      setSyncScrollEnabled(true)
+    }
+  })
 
   const MobileDrawer = () => (
     <Drawer.Root
@@ -81,9 +97,9 @@ const ReportModal: Component<ReportModalProps> = (props) => {
         <Drawer.Portal>
           <Drawer.Overlay
             class={cn(
-              "fixed inset-0 z-40 bg-black/50",
-              "data-[transitioning]:transition-all",
-              "data-[transitioning]:duration-300"
+              'fixed inset-0 z-40 bg-black/50',
+              'data-[transitioning]:transition-all',
+              'data-[transitioning]:duration-300',
             )}
             style={{
               'background-color': `rgb(0 0 0 / ${0.5 * drawerProps.openPercentage})`,
@@ -105,27 +121,57 @@ const ReportModal: Component<ReportModalProps> = (props) => {
                 <div class="w-12 h-1.5 rounded-full shadow-sm bg-[#292929]" />
               </div>
 
-              {/* Header */}
-              <div class="flex justify-between items-center px-4 pb-4 border-b border-black">
-                <Drawer.Label class="text-xl font-bold text-white">
-                  {props.title ?? "Longitudinal Report"}
+              {/* Mobile header */}
+              <div class="flex flex-wrap items-center justify-between gap-2 px-4 pb-4 border-b border-black">
+                <Drawer.Label class="text-xl font-bold text-white min-w-0 flex-1">
+                  {modalHeaderTitle()}
                 </Drawer.Label>
-                <Drawer.Close
-                  class={cn(
-                    'flex items-center justify-center size-8',
-                    'bg-surface-secondary border border-black',
-                    'hover:bg-white transition-colors',
-                    'text-lg font-bold text-black cursor-pointer',
-                  )}
-                >
-                  ×
-                </Drawer.Close>
+                <div class="flex items-center gap-2 flex-shrink-0">
+                  <Show when={isCompare()}>
+                    <button
+                      type="button"
+                      onClick={() => setSyncScrollEnabled((v) => !v)}
+                      class={cn(
+                        'cursor-pointer border border-white/80 px-2.5 py-1.5 text-xs font-medium uppercase text-white',
+                        'transition-colors hover:bg-white/15',
+                      )}
+                    >
+                      Sync scroll: {syncScrollEnabled() ? 'On' : 'Off'}
+                    </button>
+                  </Show>
+                  <Drawer.Close
+                    class={cn(
+                      'flex items-center justify-center size-8',
+                      'bg-surface-secondary border border-black',
+                      'hover:bg-white transition-colors',
+                      'text-lg font-bold text-black cursor-pointer',
+                    )}
+                  >
+                    ×
+                  </Drawer.Close>
+                </div>
               </div>
             </div>
 
             {/* Modal content */}
             <div class="flex flex-col flex-1 min-h-0">
-              <ModalContent />
+              <Show
+                when={isCompare()}
+                fallback={
+                  <SingleReportContent
+                    description={props.description}
+                    link={props.link}
+                    title={props.title}
+                  />
+                }
+              >
+                <CompareReportContent
+                  reports={props.compareReports ?? []}
+                  open={props.open}
+                  compareDefaultIdx={props.compareDefaultIdx ?? 0}
+                  syncScrollEnabled={syncScrollEnabled}
+                />
+              </Show>
             </div>
           </Drawer.Content>
         </Drawer.Portal>
@@ -138,14 +184,15 @@ const ReportModal: Component<ReportModalProps> = (props) => {
       <Dialog.Portal>
         <Dialog.Overlay
           class={cn(
-            "fixed inset-0 z-40 bg-black/50",
-            "data-[opening]:animate-in data-[opening]:fade-in-0",
-            "data-[closing]:animate-out data-[closing]:fade-out-0"
+            'fixed inset-0 z-40 bg-black/50',
+            'data-[opening]:animate-in data-[opening]:fade-in-0',
+            'data-[closing]:animate-out data-[closing]:fade-out-0',
           )}
         />
         <Dialog.Content
           class={cn(
-            'fixed left-1/2 top-1/2 z-50 w-full max-w-2xl',
+            'fixed left-1/2 top-1/2 z-50 w-full',
+            isCompare() ? 'max-w-6xl' : 'max-w-2xl',
             '-translate-x-1/2 -translate-y-1/2',
             'border-4 border-black bg-white',
             'shadow-[0_6px_20px_rgba(0,0,0,0.6)]',
@@ -157,25 +204,55 @@ const ReportModal: Component<ReportModalProps> = (props) => {
           )}
         >
           {/* Desktop header */}
-          <div class="flex flex-shrink-0 items-center justify-between border-b border-black bg-accent p-4">
-            <Dialog.Label class="text-xl font-bold text-white">
-              {props.title ?? "Longitudinal Report"}
+          <div class="flex flex-shrink-0 flex-wrap items-center justify-between gap-2 border-b border-black bg-accent p-4">
+            <Dialog.Label class="text-xl font-bold text-white min-w-0 flex-1">
+              {modalHeaderTitle()}
             </Dialog.Label>
-            <Dialog.Close
-              class={cn(
-                'flex items-center justify-center size-8',
-                'bg-[#D9D9D9] border border-black',
-                'hover:bg-white transition-colors',
-                'text-lg font-bold text-black cursor-pointer',
-              )}
-            >
-              ×
-            </Dialog.Close>
+            <div class="flex items-center gap-2 flex-shrink-0">
+              <Show when={isCompare()}>
+                <button
+                  type="button"
+                  onClick={() => setSyncScrollEnabled((v) => !v)}
+                  class={cn(
+                    'cursor-pointer border border-black bg-[#D9D9D9] px-3 py-2 text-xs font-medium uppercase text-black',
+                    'transition-colors hover:bg-white',
+                  )}
+                >
+                  Sync scroll: {syncScrollEnabled() ? 'On' : 'Off'}
+                </button>
+              </Show>
+              <Dialog.Close
+                class={cn(
+                  'flex items-center justify-center size-8',
+                  'bg-[#D9D9D9] border border-black',
+                  'hover:bg-white transition-colors',
+                  'text-lg font-bold text-black cursor-pointer',
+                )}
+              >
+                ×
+              </Dialog.Close>
+            </div>
           </div>
 
           {/* Modal content */}
           <div class="flex flex-col flex-1 min-h-0">
-            <ModalContent />
+            <Show
+              when={isCompare()}
+              fallback={
+                <SingleReportContent
+                  description={props.description}
+                  link={props.link}
+                  title={props.title}
+                />
+              }
+            >
+              <CompareReportContent
+                reports={props.compareReports ?? []}
+                open={props.open}
+                compareDefaultIdx={props.compareDefaultIdx ?? 0}
+                syncScrollEnabled={syncScrollEnabled}
+              />
+            </Show>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

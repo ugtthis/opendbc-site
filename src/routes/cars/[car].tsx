@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from '@solidjs/router'
-import { createMemo, For, createSignal, onMount, onCleanup, Show, type Component } from 'solid-js'
+import { createEffect, createMemo, For, createSignal, onMount, onCleanup, Show, type Component } from 'solid-js'
 import type { Car } from '~/types/CarDataTypes'
 import UpArrowSvg from '~/lib/icons/up-arrow.svg?raw'
 import RightArrowSvg from '~/lib/icons/right-arrow.svg?raw'
@@ -19,7 +19,12 @@ import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn, slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
-import { closeReportModal, reportModalState, type ReportData } from '~/contexts/ReportModalContext'
+import {
+  closeReportModal,
+  openCompareModal,
+  reportModalState,
+  type ReportData,
+} from '~/contexts/ReportModalContext'
 import YoutubeVidPlayer from '~/components/YoutubeVidPlayer'
 import ReportModal from '~/components/ReportModal'
 
@@ -193,6 +198,35 @@ function CarDetailContent() {
     reportsForCar(car(), lateralReports as Record<string, ReportData[]>),
   )
 
+  const allLongitudinalReports = createMemo(() =>
+    Object.entries(longitudinalReports as Record<string, ReportData[]>).flatMap(([platform, reports]) =>
+      reports.map(r => ({ description: `${platform} - ${r.description}`, link: r.link })),
+    ),
+  )
+
+  const allLateralReports = createMemo(() =>
+    Object.entries(lateralReports as Record<string, ReportData[]>).flatMap(([platform, reports]) =>
+      reports.map(r => ({ description: `${platform} - ${r.description}`, link: r.link })),
+    ),
+  )
+
+  const [matchesCompareReportsBreakpoint, setMatchesCompareReportsBreakpoint] = createSignal(false)
+
+  onMount(() => {
+    const mq = window.matchMedia(BREAKPOINTS.compareReports)
+    const sync = () => setMatchesCompareReportsBreakpoint(mq.matches)
+    sync()
+    mq.addEventListener('change', sync)
+    onCleanup(() => mq.removeEventListener('change', sync))
+  })
+
+  createEffect(() => {
+    if (matchesCompareReportsBreakpoint()) return
+    if (!reportModalState.isOpen()) return
+    if (reportModalState.compareReports().length < 2) return
+    closeReportModal()
+  })
+
   // Scroll detection for up arrow visibility
   onMount(() => {
     const handleScroll = () => {
@@ -361,6 +395,16 @@ function CarDetailContent() {
                   id="longitudinal-reports"
                   learnMoreReadmeUrl="https://github.com/commaai/openpilot/blob/master/tools/longitudinal_maneuvers/README.md"
                   reports={reportsForCurrentCar}
+                  compare={{
+                    show: () =>
+                      matchesCompareReportsBreakpoint() && allLongitudinalReports().length >= 2,
+                    onClick: () => {
+                      const all = allLongitudinalReports()
+                      const fp = car()?.car_fingerprint
+                      const idx = fp ? all.findIndex(r => r.description.startsWith(fp)) : 0
+                      openCompareModal(all, idx >= 0 ? idx : 0)
+                    },
+                  }}
                 />
 
                 <ManeuverReportSection
@@ -369,6 +413,15 @@ function CarDetailContent() {
                   learnMoreReadmeUrl="https://github.com/commaai/openpilot/blob/master/tools/lateral_maneuvers/README.md"
                   reports={lateralReportsForCurrentCar}
                   rowModalTitle="Lateral Report"
+                  compare={{
+                    show: () => matchesCompareReportsBreakpoint() && allLateralReports().length >= 2,
+                    onClick: () => {
+                      const all = allLateralReports()
+                      const fp = car()?.car_fingerprint
+                      const idx = fp ? all.findIndex(r => r.description.startsWith(fp)) : 0
+                      openCompareModal(all, idx >= 0 ? idx : 0)
+                    },
+                  }}
                 />
 
                 {/* User Video */}
@@ -882,6 +935,8 @@ function CarDetailContent() {
           description={reportModalState.reportData()?.description}
           link={reportModalState.reportData()?.link}
           title={reportModalState.modalTitle()}
+          compareReports={reportModalState.compareReports()}
+          compareDefaultIdx={reportModalState.compareDefaultIdx()}
         />
 
       </div>

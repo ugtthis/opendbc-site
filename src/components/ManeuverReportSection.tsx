@@ -11,6 +11,10 @@ type ManeuverReportSectionProps = {
   learnMoreReadmeUrl: string
   reports: () => ReportData[]
   rowModalTitle?: string
+  compare?: {
+    show: () => boolean
+    onClick: () => void
+  }
 }
 
 const ReportRow: Component<ReportData & { modalTitle?: string }> = (props) => (
@@ -81,6 +85,20 @@ const ManeuverReportSection: Component<ManeuverReportSectionProps> = (props) => 
           />
         )}
       </For>
+
+      <Show when={props.compare?.show()}>
+        <button
+          type="button"
+          onClick={() => props.compare?.onClick()}
+          class={cn(
+            'flex items-center justify-center gap-2 w-full border-t border-gray-200',
+            'px-3 py-2 text-xs text-black transition-all duration-200 cursor-pointer',
+            'hover:bg-amber-50',
+          )}
+        >
+          <span class="tracking-wide uppercase">Compare reports</span>
+        </button>
+      </Show>
 
       <a
         href="https://commaai.github.io/opendbc-data/"
