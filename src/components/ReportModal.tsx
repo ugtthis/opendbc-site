@@ -5,7 +5,7 @@ import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
 import { cn } from '~/lib/utils'
 
-type LongitudinalReportModalProps = {
+type ReportModalProps = {
   open: boolean
   onOpenChange: (open: boolean) => void
   description?: string
@@ -13,7 +13,7 @@ type LongitudinalReportModalProps = {
   title?: string
 }
 
-const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props) => {
+const ReportModal: Component<ReportModalProps> = (props) => {
   const isDesktop = createMediaQuery(BREAKPOINTS.desktop)
   const [openedAsDesktop, setOpenedAsDesktop] = createSignal<boolean | null>(null)
 
@@ -190,5 +190,4 @@ const LongitudinalReportModal: Component<LongitudinalReportModalProps> = (props)
   )
 }
 
-export default LongitudinalReportModal
-
+export default ReportModal
