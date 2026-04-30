@@ -138,5 +138,11 @@
       "description": "pcm accel compensation, user report",
       "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/TOYOTA_PRIUS_TSS2_74b008694de53cc1_00000034--0faa8ed1ab.html"
     }
+  ],
+  "VOLKSWAGEN_ID4_MK1": [
+    {
+      "description": "master",
+      "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/VOLKSWAGEN_ID4_MK1_aebd8f1d4ea16066_000000c4--6932a266c7.html"
+    }
   ]
 }
