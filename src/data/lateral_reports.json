@@ -14,5 +14,11 @@
       "description": "master",
       "link": "https://commaai.github.io/opendbc-data/lateral_reports/TESLA_MODEL_Y_0f79c454f812791a_000001bd--15bdf1ba66.html"
     }
+  ],
+  "VOLKSWAGEN_ID4_MK1": [
+    {
+      "description": "master",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/VOLKSWAGEN_ID4_MK1_aebd8f1d4ea16066_00000084--3ff94803c8.html"
+    }
   ]
 }
