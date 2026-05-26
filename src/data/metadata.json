@@ -504,6 +504,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -890,6 +891,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -996,6 +998,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -1382,6 +1385,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -6906,7 +6910,7 @@
     "mass_curb_weight": 1640,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -7012,7 +7016,7 @@
     "mass_curb_weight": 1640,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -7118,7 +7122,7 @@
     "mass_curb_weight": 1640,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -7221,7 +7225,7 @@
     "mass_curb_weight": 2060,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 16.666666666666668,
     "min_enable_speed_base": -1.0,
@@ -7324,7 +7328,7 @@
     "mass_curb_weight": 2060,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -7535,7 +7539,7 @@
     "mass_curb_weight": 2200,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -8395,6 +8399,7 @@
     "video": "https://www.youtube.com/watch?v=mrUwlj3Mi58",
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -8676,6 +8681,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -8993,6 +8999,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -9208,6 +9215,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -9417,6 +9425,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -9629,6 +9638,7 @@
     "setup_video": null,
     "footnotes": [
       "2019 Honda Civic 1.6L Diesel Sedan does not have ALC below 12mph.",
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -9735,6 +9745,7 @@
     "video": "https://youtu.be/ytiOT5lcp6Q",
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -9840,6 +9851,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -9946,6 +9958,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -10052,6 +10065,7 @@
     "video": "https://youtu.be/ytiOT5lcp6Q",
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -10157,6 +10171,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -10261,6 +10276,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -10366,6 +10382,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -10858,6 +10875,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -10965,6 +10983,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -11069,6 +11088,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -11173,6 +11193,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -11387,6 +11408,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -12372,6 +12394,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
+      "Enabling longitudinal control (alpha) will disable all CMBS functionality, including AEB and FCW.",
       "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
     ],
     "setup_notes": [],
@@ -12527,7 +12550,7 @@
     "mass_curb_weight": 1600,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -12631,7 +12654,7 @@
     "mass_curb_weight": 1675,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -12735,7 +12758,7 @@
     "mass_curb_weight": 1675,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -12839,7 +12862,7 @@
     "mass_curb_weight": 1690,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -12942,7 +12965,7 @@
     "mass_curb_weight": 1275,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -13044,7 +13067,7 @@
     "mass_curb_weight": 1275,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -13150,7 +13173,7 @@
     "mass_curb_weight": 1270.0576,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -13255,7 +13278,7 @@
     "mass_curb_weight": 1275,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -13361,7 +13384,7 @@
     "mass_curb_weight": 1368.487064,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -13464,7 +13487,7 @@
     "mass_curb_weight": 2060,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 16.666666666666668,
     "min_enable_speed_base": -1.0,
@@ -13927,6 +13950,109 @@
     ]
   },
   {
+    "name": "Hyundai Ioniq 6 (without HDA II) 2023-24",
+    "make": "Hyundai",
+    "model": "Ioniq 6 (without HDA II)",
+    "years": "2023-24",
+    "year_list": [
+      "2023",
+      "2024"
+    ],
+    "package": "Highway Driving Assist",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [],
+    "setup_notes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Upstream",
+    "support_link": "#upstream",
+    "detail_sentence": "openpilot upgrades your <strong>Hyundai Ioniq 6 (without HDA II)</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "HYUNDAI_IONIQ_6",
+    "brand": "hyundai",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Hyundai%20Ioniq%206%20(without%20HDA%20II)%202023-24",
+    "longitudinal": "Stock",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 2084.0,
+    "wheelbase": 2.9700000286102295,
+    "steer_ratio": 14.260000228881836,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 1.0,
+    "steer_actuator_delay": 0.10000000149011612,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.4000000059604645,
+    "tire_stiffness_factor": 0.6499999761581421,
+    "tire_stiffness_front": 178034.46875,
+    "tire_stiffness_rear": 187624.125,
+    "rotational_inertia": 4311.97021484375,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
+    "dashcam_only": false,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 1058890,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.5,
+    "vEgo_starting": 0.10000000149011612,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.5,
+    "max_lateral_accel": 2.5,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 1948,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "hyundai_canfd_generated"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 0.65,
+    "center_to_front_ratio": 0.5,
+    "harness": "hyundai_l",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "Hyundai L connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Hyundai Ioniq Electric 2019",
     "make": "Hyundai",
     "model": "Ioniq Electric",
@@ -13987,7 +14113,7 @@
     "mass_curb_weight": 1490,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
@@ -14092,7 +14218,7 @@
     "mass_curb_weight": 1490,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -14198,7 +14324,7 @@
     "mass_curb_weight": 1490,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -14302,7 +14428,7 @@
     "mass_curb_weight": 1490,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -14406,7 +14532,7 @@
     "mass_curb_weight": 1490,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -14512,7 +14638,7 @@
     "mass_curb_weight": 1490,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -14616,7 +14742,7 @@
     "mass_curb_weight": 1275,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -14721,7 +14847,7 @@
     "mass_curb_weight": 1491,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -14828,7 +14954,7 @@
     "mass_curb_weight": 1685,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -14933,7 +15059,7 @@
     "mass_curb_weight": 1743,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -15139,7 +15265,7 @@
     "mass_curb_weight": 1425,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -15243,7 +15369,7 @@
     "mass_curb_weight": 1809.83208,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -15349,7 +15475,7 @@
     "mass_curb_weight": 1999,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -15631,7 +15757,7 @@
     "mass_curb_weight": 1806.203344,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -15738,7 +15864,7 @@
     "mass_curb_weight": 1806.203344,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -15843,7 +15969,7 @@
     "mass_curb_weight": 1806.203344,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -15948,7 +16074,7 @@
     "mass_curb_weight": 1806.203344,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -16051,7 +16177,7 @@
     "mass_curb_weight": 1536,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -16158,7 +16284,7 @@
     "mass_curb_weight": 1513,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -16266,7 +16392,7 @@
     "mass_curb_weight": 1513,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -16475,7 +16601,7 @@
     "mass_curb_weight": 1596.64384,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -16788,7 +16914,7 @@
     "mass_curb_weight": 1596.64384,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -17101,7 +17227,7 @@
     "mass_curb_weight": 1323.127864,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -17205,7 +17331,7 @@
     "mass_curb_weight": 1275,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -17835,7 +17961,7 @@
     "mass_curb_weight": 1450,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -18259,7 +18385,7 @@
     "mass_curb_weight": 1305.437776,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -18364,7 +18490,7 @@
     "mass_curb_weight": 1305.437776,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -18471,7 +18597,7 @@
     "mass_curb_weight": 1533.594552,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -18577,7 +18703,7 @@
     "mass_curb_weight": 1533.594552,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -18682,7 +18808,7 @@
     "mass_curb_weight": 1648,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -18890,7 +19016,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -18995,7 +19121,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -19100,7 +19226,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -19205,7 +19331,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -19519,7 +19645,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
@@ -19624,7 +19750,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -19728,7 +19854,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -19936,7 +20062,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
@@ -20039,7 +20165,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
@@ -20144,7 +20270,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -20249,7 +20375,7 @@
     "mass_curb_weight": 1607.076456,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -20352,7 +20478,7 @@
     "mass_curb_weight": 1613.880336,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 14.305280000000002,
     "min_enable_speed_base": -1.0,
@@ -20455,7 +20581,7 @@
     "mass_curb_weight": 1613.880336,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -20557,7 +20683,7 @@
     "mass_curb_weight": 1613.880336,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -20659,7 +20785,7 @@
     "mass_curb_weight": 1613.880336,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -20763,7 +20889,7 @@
     "mass_curb_weight": 1337,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -20865,7 +20991,7 @@
     "mass_curb_weight": 1985,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -20967,7 +21093,7 @@
     "mass_curb_weight": 1985,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -21599,7 +21725,7 @@
     "mass_curb_weight": 1825,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -21704,7 +21830,7 @@
     "mass_curb_weight": 1825,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic"
+      "pt": "hyundai_can_generated"
     },
     "min_steer_speed_base": 0.0,
     "min_enable_speed_base": -1.0,
@@ -21810,7 +21936,7 @@
     "mass_curb_weight": 1999,
     "center_to_front_ratio_base": 0.5,
     "bus_lookup": {
-      "pt": "hyundai_kia_generic",
+      "pt": "hyundai_can_generated",
       "radar": "hyundai_kia_mando_front_radar_generated"
     },
     "min_steer_speed_base": 0.0,
@@ -25471,13 +25597,16 @@
     ]
   },
   {
-    "name": "Nissan Altima 2019-20, 2024",
+    "name": "Nissan Altima 2019-24",
     "make": "Nissan",
     "model": "Altima",
-    "years": "2019-20, 2024",
+    "years": "2019-24",
     "year_list": [
       "2019",
       "2020",
+      "2021",
+      "2022",
+      "2023",
       "2024"
     ],
     "package": "ProPILOT Assist",
@@ -25496,7 +25625,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Nissan Altima</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control.",
     "car_fingerprint": "NISSAN_ALTIMA",
     "brand": "nissan",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Nissan%20Altima%202019-20,%202024",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Nissan%20Altima%202019-24",
     "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
