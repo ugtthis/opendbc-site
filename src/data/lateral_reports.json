@@ -1,4 +1,14 @@
 {
+  "FORD_BRONCO_SPORT_MK1": [
+    {
+      "description": "master",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/FORD_BRONCO_SPORT_MK1_5beb9b58bd12b691_0000027d--08f3ec2873.html"
+    },
+    {
+      "description": "new curvature safety",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/FORD_BRONCO_SPORT_MK1_5beb9b58bd12b691_00000280--0681ceae98.html"
+    }
+  ],
   "KIA_EV6": [
     {
       "description": "master",
