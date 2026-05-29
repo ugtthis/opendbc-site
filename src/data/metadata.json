@@ -5267,12 +5267,16 @@
     ]
   },
   {
-    "name": "Ford Focus 2018",
+    "name": "Ford Focus 2018-22",
     "make": "Ford",
     "model": "Focus",
-    "years": "2018",
+    "years": "2018-22",
     "year_list": [
-      "2018"
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022"
     ],
     "package": "Adaptive Cruise Control with Lane Centering",
     "video": null,
@@ -5290,7 +5294,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Ford Focus</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "FORD_FOCUS_MK4",
     "brand": "ford",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Ford%20Focus%202018",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Ford%20Focus%202018-22",
     "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -5372,12 +5376,16 @@
     ]
   },
   {
-    "name": "Ford Focus Hybrid 2018",
+    "name": "Ford Focus Hybrid 2018-22",
     "make": "Ford",
     "model": "Focus Hybrid",
-    "years": "2018",
+    "years": "2018-22",
     "year_list": [
-      "2018"
+      "2018",
+      "2019",
+      "2020",
+      "2021",
+      "2022"
     ],
     "package": "Adaptive Cruise Control with Lane Centering",
     "video": null,
@@ -5395,7 +5403,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Ford Focus Hybrid</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "FORD_FOCUS_MK4",
     "brand": "ford",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Ford%20Focus%20Hybrid%202018",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Ford%20Focus%20Hybrid%202018-22",
     "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
