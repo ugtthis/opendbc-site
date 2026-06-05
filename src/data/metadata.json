@@ -8783,14 +8783,15 @@
     ]
   },
   {
-    "name": "Honda Accord Hybrid 2023-25",
+    "name": "Honda Accord Hybrid 2023-26",
     "make": "Honda",
     "model": "Accord Hybrid",
-    "years": "2023-25",
+    "years": "2023-26",
     "year_list": [
       "2023",
       "2024",
-      "2025"
+      "2025",
+      "2026"
     ],
     "package": "All",
     "video": null,
@@ -8806,7 +8807,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda Accord Hybrid</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "HONDA_ACCORD_11G",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Honda%20Accord%20Hybrid%202023-25",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Honda%20Accord%20Hybrid%202023-26",
     "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
