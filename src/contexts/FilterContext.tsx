@@ -116,7 +116,7 @@ export const FilterProvider = (props: ParentProps) => {
     }
     if (currentFilters.year) {
       result = result.filter((car) =>
-        (car.year_list as string[]).includes(currentFilters.year),
+        car.year_list.includes(currentFilters.year),
       )
     }
     if (currentFilters.hasUserVideo) {

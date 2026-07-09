@@ -206,7 +206,7 @@ const Card: Component<CardProps> = (props) => {
             {/* Year and Model - Mobile only */}
             <div class="flex flex-1 items-center border-b border-black px-2 py-2.5 min-[370px]:border-b-0 min-[370px]:border-r">
               <h1 class="text-xs font-semibold leading-tight">
-                <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
+                <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list} />
                 {' '}
                 <HighlightText text={`${props.car.make} ${props.car.model}`} query={props.searchQuery} />
               </h1>
@@ -230,7 +230,7 @@ const Card: Component<CardProps> = (props) => {
           {/* Year - Desktop only */}
           <div class="hidden items-center w-[110px] border-l border-r border-black px-3 py-2.5 md:flex">
             <h2 class="text-base font-medium leading-tight">
-              <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
+              <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list} />
             </h2>
           </div>
 
@@ -285,7 +285,7 @@ const Card: Component<CardProps> = (props) => {
           <div class="flex border-b border-black">
             <div class="flex items-center px-2 py-2.5 border-r border-black">
               <h2 class="text-lg">
-                <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list as string[]} />
+                <HighlightText text={props.car.years} query={props.searchQuery} yearList={props.car.year_list} />
               </h2>
             </div>
             <div class="flex flex-1 items-center justify-between min-h-[60px] px-3 py-2.5">
