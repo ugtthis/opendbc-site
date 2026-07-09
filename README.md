@@ -1,6 +1,8 @@
 <div align="center">
 
-  # [opendbc.com](https://opendbc.com)
+  <a href="https://opendbc.com">
+    <img src="./public/opendbc-logo.svg" alt="opendbc logo" width="220" />
+  </a>
 
   **Web experience for exploring vehicle specs and compatability with [openpilot](https://github.com/commaai/openpilot)** <br>
   Built with data from [https://github.com/commaai/opendbc](https://github.com/commaai/opendbc)

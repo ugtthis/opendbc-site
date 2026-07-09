@@ -22,11 +22,11 @@ const Header: Component = () => {
         )}
       >
         <img
-          src="/opendbc-logo.png"
+          src="/opendbc-logo.svg"
           role="presentation"
-          width="200"
-          height="59"
-          class="w-[200px] h-auto"
+          width="210"
+          height="62"
+          class="w-[210px] h-auto"
         />
 
         <div class="flex w-full justify-center px-14 max-[410px]:px-8">
