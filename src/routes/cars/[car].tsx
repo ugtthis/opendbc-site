@@ -55,11 +55,8 @@ type DetailedSpecs = Car & {
   experimental_longitudinal_available?: boolean
   enable_bsm?: boolean
   pcm_cruise?: boolean
-  min_enable_speed?: number
   steering_torque?: string
-  wheelbase?: number
   center_to_front_ratio?: number
-  max_lateral_accel?: number
 }
 
 function getFingerprintKey(car: DetailedSpecs | undefined): string | undefined {
