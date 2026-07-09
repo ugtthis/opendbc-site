@@ -540,7 +540,7 @@ function CarDetailContent() {
                   <QuickNavWrapper id={SPEC_ID.MIN_ENABLE_SPEED}>
                     <ExpandableSpec
                       label="Min Enable Speed"
-                      value={formatSpeed(currentCar().min_enable_speed ?? 0)}
+                      value={formatSpeed(currentCar().min_enable_speed)}
                       isEven={true}
                       isOpen={openDesc() === 'min-enable-speed'}
                       onToggle={() => toggleDesc('min-enable-speed')}

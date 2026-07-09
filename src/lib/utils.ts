@@ -38,8 +38,8 @@ export function hasObjectEntries(value: unknown): boolean {
 const MS_TO_MPH = 2.237
 const KG_TO_LBS = 2.20462
 
-export function formatSpeed(speedMs: number | null): string {
-  if (speedMs === null) return 'N/A'
+export function formatSpeed(speedMs: number | null | undefined): string {
+  if (speedMs == null) return 'N/A'
   return speedMs > 0 ? `${Math.round(speedMs * MS_TO_MPH)} mph` : 'any speed'
 }
 
