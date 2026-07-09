@@ -260,9 +260,9 @@ const FilterModal: Component<FilterModalProps> = (props) => {
       <div class="flex-shrink-0 p-6 border-t border-gray-200 bg-surface shadow-[0_-6px_16px_rgba(0,0,0,0.2)]">
         <div
           class="p-3 mb-4 font-semibold text-center bg-black border border-white"
-          style={{ color: getResultsColor(resultCount() || 0) }}
+          style={{ color: getResultsColor(resultCount()) }}
         >
-          {resultCount() || 0} RESULT{(resultCount() || 0) !== 1 ? 'S' : ''}
+          {resultCount()} RESULT{resultCount() !== 1 ? 'S' : ''}
         </div>
         <div class="flex gap-2">
           <button
@@ -288,8 +288,8 @@ const FilterModal: Component<FilterModalProps> = (props) => {
             onClick={() => props.onOpenChange(false)}
             class="relative flex flex-1 items-center justify-center gap-2 border-2 border-black p-3 font-medium transition-colors cursor-pointer"
             style={{
-              color: `color-mix(in srgb, ${getResultsColor(resultCount() || 0)} 90%, black 10%)`,
-              'background-color': `color-mix(in srgb, ${getResultsColor(resultCount() || 0)} 20%, white 80%)`
+              color: `color-mix(in srgb, ${getResultsColor(resultCount())} 90%, black 10%)`,
+              'background-color': `color-mix(in srgb, ${getResultsColor(resultCount())} 20%, white 80%)`
             }}
           >
             <span class="font-bold">VIEW</span>
