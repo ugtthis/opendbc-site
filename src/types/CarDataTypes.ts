@@ -20,6 +20,7 @@ export type Car = {
   wheelbase: number
   min_steer_speed: number | null
   min_enable_speed: number
+  longitudinal: string
   max_lateral_accel?: number | null
   [key: string]: string | number | boolean | string[] | null | undefined | Record<string, unknown>
 }

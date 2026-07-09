@@ -236,6 +236,8 @@ export const getSupportTypeOrder = (): string[] => [
 // ============================================================================
 
 export const getACCDescription = (longitudinal: string, minEngageSpeed: number): string => {
+  if (!longitudinal) return ''
+
   const speed = formatSpeed(minEngageSpeed)
 
   switch (longitudinal) {

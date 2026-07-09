@@ -151,8 +151,8 @@ const Card: Component<CardProps> = (props) => {
 
   const accRowProps = {
     label: "ACC",
-    value: props.car.longitudinal as string || "Stock",
-    description: getACCDescription(props.car.longitudinal as string || "Stock", props.car.min_enable_speed),
+    value: props.car.longitudinal,
+    description: getACCDescription(props.car.longitudinal, props.car.min_enable_speed),
     class: "border-2 border-border-soft"
   }
 

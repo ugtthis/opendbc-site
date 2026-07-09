@@ -56,7 +56,6 @@ type DetailedSpecs = Car & {
   enable_bsm?: boolean
   pcm_cruise?: boolean
   min_enable_speed?: number
-  longitudinal?: string
   steering_torque?: string
   wheelbase?: number
   center_to_front_ratio?: number
