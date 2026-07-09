@@ -8,7 +8,10 @@ export default createHandler(() => (
         <head>
           <meta charset="utf-8" />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <link rel="icon" href="/favicon.svg" />
+          <meta name="theme-color" content="#0a0f0e" />
+          <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+          <link rel="manifest" href="/site.webmanifest" />
           <meta property="og:title" content="opendbc.com" />
           <meta property="og:image" content="https://opendbc.com/opendbc-social-share.png" />
           <meta property="twitter:card" content="summary_large_image" />
