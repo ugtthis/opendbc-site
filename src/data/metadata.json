@@ -2869,7 +2869,7 @@
     "start_accel": 0.800000011920929,
     "steer_actuator_delay": 0.30000001192092896,
     "steer_ratio_rear": 0.0,
-    "steer_limit_timer": 0.10000000149011612,
+    "steer_limit_timer": 0.4000000059604645,
     "tire_stiffness_factor": 1.0,
     "tire_stiffness_front": 252038.078125,
     "tire_stiffness_rear": 325980.65625,
@@ -2894,8 +2894,8 @@
     "mass_curb_weight": 1956,
     "center_to_front_ratio_base": 0.45,
     "bus_lookup": {
-      "pt": "vw_meb",
-      "radar": "vw_meb"
+      "pt": "vw_meb_generated",
+      "radar": "vw_meb_generated"
     },
     "min_steer_speed_base": 0.4,
     "min_enable_speed_base": -1.0,
@@ -37987,7 +37987,7 @@
     "start_accel": 0.800000011920929,
     "steer_actuator_delay": 0.30000001192092896,
     "steer_ratio_rear": 0.0,
-    "steer_limit_timer": 0.10000000149011612,
+    "steer_limit_timer": 0.4000000059604645,
     "tire_stiffness_factor": 1.0,
     "tire_stiffness_front": 284325.90625,
     "tire_stiffness_rear": 367741.125,
@@ -38012,8 +38012,117 @@
     "mass_curb_weight": 2224,
     "center_to_front_ratio_base": 0.45,
     "bus_lookup": {
-      "pt": "vw_meb",
-      "radar": "vw_meb"
+      "pt": "vw_meb_generated",
+      "radar": "vw_meb_generated"
+    },
+    "min_steer_speed_base": 0.4,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.45,
+    "harness": "vw_j533",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "VW J533 connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "long OBD-C cable (9.5 ft)",
+        "type": "cable",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "name": "Volkswagen ID.4 2024-25",
+    "make": "Volkswagen",
+    "model": "ID.4",
+    "years": "2024-25",
+    "year_list": [
+      "2024",
+      "2025"
+    ],
+    "package": "Adaptive Cruise Control (ACC) & Lane Assist",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [
+      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
+      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+    ],
+    "setup_notes": [
+      "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
+    ],
+    "min_steer_speed": 0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Dashcam mode",
+    "support_link": "#dashcam",
+    "detail_sentence": "openpilot upgrades your <strong>Volkswagen ID.4</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "VOLKSWAGEN_ID4_MK2",
+    "brand": "volkswagen",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Volkswagen%20ID.4%202024-25",
+    "longitudinal": "openpilot available",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 2360.0,
+    "wheelbase": 2.7699999809265137,
+    "steer_ratio": 15.600000381469727,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "start_accel": 0.800000011920929,
+    "steer_actuator_delay": 0.30000001192092896,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 0.4000000059604645,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 284325.90625,
+    "tire_stiffness_rear": 367741.125,
+    "rotational_inertia": 4247.53173828125,
+    "experimental_longitudinal_available": true,
+    "openpilot_longitudinal_control": true,
+    "dashcam_only": true,
+    "enable_bsm": false,
+    "pcm_cruise": false,
+    "flags": 144,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stopping_decel_rate": 0.800000011920929,
+    "vEgo_stopping": 0.5,
+    "vEgo_starting": 0.5,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.5,
+    "max_lateral_accel": 2.5,
+    "network_location": "fwdCamera",
+    "steer_control_type": "curvature",
+    "mass_curb_weight": 2224,
+    "center_to_front_ratio_base": 0.45,
+    "bus_lookup": {
+      "pt": "vw_meb_2024_generated",
+      "radar": "vw_meb_2024_generated"
     },
     "min_steer_speed_base": 0.4,
     "min_enable_speed_base": -1.0,
