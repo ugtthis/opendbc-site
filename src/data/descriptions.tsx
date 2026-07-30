@@ -46,12 +46,6 @@ authority. This prevents sustained excessive steering commands that could trigge
   [SPEC_ID.CONTROL_TYPE]: `The method openpilot uses to control steering. 'Torque' control commands steering wheel torque directly, while
 'angle' control commands specific steering angles. Most vehicles use torque-based control.`,
 
-  [SPEC_ID.STOPPING_SPEED]: `The speed threshold below which the vehicle is considered stopped. This is used to determine when to apply
-different control strategies, such as holding the vehicle at a complete stop.`,
-
-  [SPEC_ID.STARTING_SPEED]: `The speed threshold above which the vehicle is considered moving after a stop. This hysteresis prevents rapid
-toggling between stopped and moving states when the vehicle is barely moving.`,
-
   [SPEC_ID.STOP_ACCEL]: `The deceleration rate applied when bringing the vehicle to a stop. This negative acceleration value determines
 how aggressively the vehicle brakes when coming to a complete stop.`,
 

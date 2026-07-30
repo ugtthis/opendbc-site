@@ -44,8 +44,6 @@ type DetailedSpecs = Car & {
   steer_actuator_delay?: number
   steer_limit_timer?: number
   steer_control_type?: string
-  vEgo_stopping?: number
-  vEgo_starting?: number
   stop_accel?: number
   network_location?: string
   bus_lookup?: {
@@ -691,26 +689,6 @@ function CarDetailContent() {
                     <div class="flex flex-col bg-white border border-[#e5e7eb]">
                       <h3 class="py-3 px-3 text-sm font-medium uppercase">Speed Parameters:</h3>
                       <div class="flex flex-col flex-1">
-                        <QuickNavWrapper id={SPEC_ID.STOPPING_SPEED}>
-                          <ExpandableSpec
-                            label="Stopping Speed"
-                            value={formatValue(currentCar().vEgo_stopping, ' m/s')}
-                            isEven={true}
-                            isOpen={openDesc() === 'stopping-speed'}
-                            onToggle={() => toggleDesc('stopping-speed')}
-                            description={SPEC_DESCRIPTIONS[SPEC_ID.STOPPING_SPEED]}
-                          />
-                        </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.STARTING_SPEED}>
-                          <ExpandableSpec
-                            label="Starting Speed"
-                            value={formatValue(currentCar().vEgo_starting, ' m/s')}
-                            isEven={false}
-                            isOpen={openDesc() === 'starting-speed'}
-                            onToggle={() => toggleDesc('starting-speed')}
-                            description={SPEC_DESCRIPTIONS[SPEC_ID.STARTING_SPEED]}
-                          />
-                        </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.STOP_ACCEL}>
                           <ExpandableSpec
                             label="Stop Accel"
