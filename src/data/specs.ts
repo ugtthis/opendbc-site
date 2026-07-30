@@ -40,8 +40,6 @@ export const SPECS: SpecDefinition[] = [
   { id: 'actuator-delay', label: 'Actuator Delay', key: 'steer_actuator_delay', format: (val: number) => formatValue(val, 's'), category: 'Technical Parameters', accordionId: 'technical' },
   { id: 'limit-timer', label: 'Limit Timer', key: 'steer_limit_timer', format: (val: number) => formatValue(val, 's'), category: 'Technical Parameters', accordionId: 'technical' },
   { id: 'control-type', label: 'Control Type', key: 'steer_control_type', category: 'Technical Parameters', accordionId: 'technical' },
-  { id: 'stopping-speed', label: 'Stopping Speed', key: 'vEgo_stopping', format: (val: number) => formatValue(val, ' m/s'), category: 'Technical Parameters', accordionId: 'technical' },
-  { id: 'starting-speed', label: 'Starting Speed', key: 'vEgo_starting', format: (val: number) => formatValue(val, ' m/s'), category: 'Technical Parameters', accordionId: 'technical' },
   { id: 'stop-accel', label: 'Stop Accel', key: 'stop_accel', format: (val: number) => formatValue(val, ' m/s²'), category: 'Technical Parameters', accordionId: 'technical' },
 
   // System Configuration
@@ -83,8 +81,6 @@ export const SPEC_ID = {
   ACTUATOR_DELAY: 'actuator-delay',
   LIMIT_TIMER: 'limit-timer',
   CONTROL_TYPE: 'control-type',
-  STOPPING_SPEED: 'stopping-speed',
-  STARTING_SPEED: 'starting-speed',
   STOP_ACCEL: 'stop-accel',
   NETWORK_LOCATION: 'network-location',
   BUS_LOOKUP: 'bus-lookup',
