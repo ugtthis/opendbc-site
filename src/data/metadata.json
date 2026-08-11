@@ -2716,8 +2716,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC."
     ],
     "setup_notes": [
       "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
@@ -2728,11 +2727,11 @@
     "merged": true,
     "support_type": "Upstream",
     "support_link": "#upstream",
-    "detail_sentence": "openpilot upgrades your <strong>CUPRA Born</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "detail_sentence": "openpilot upgrades your <strong>CUPRA Born</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "CUPRA_BORN_MK1",
     "brand": "volkswagen",
     "buy_link": "https://comma.ai/shop/comma-four?harness=CUPRA%20Born%202021-23",
-    "longitudinal": "openpilot available",
+    "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -2749,7 +2748,7 @@
     "tire_stiffness_front": 252038.078125,
     "tire_stiffness_rear": 325980.65625,
     "rotational_inertia": 3754.31884765625,
-    "experimental_longitudinal_available": true,
+    "experimental_longitudinal_available": false,
     "openpilot_longitudinal_control": true,
     "dashcam_only": false,
     "enable_bsm": false,
@@ -2759,7 +2758,7 @@
     "radarUnavailable": true,
     "passive": false,
     "stop_accel": -0.550000011920929,
-    "longitudinal_actuator_delay": 0.5,
+    "longitudinal_actuator_delay": 0.30000001192092896,
     "max_lateral_accel": 2.5,
     "network_location": "fwdCamera",
     "steer_control_type": "curvature",
@@ -9459,14 +9458,16 @@
     ]
   },
   {
-    "name": "Honda Civic 2022-24",
+    "name": "Honda Civic 2022-26",
     "make": "Honda",
     "model": "Civic",
-    "years": "2022-24",
+    "years": "2022-26",
     "year_list": [
       "2022",
       "2023",
-      "2024"
+      "2024",
+      "2025",
+      "2026"
     ],
     "package": "All",
     "video": "https://youtu.be/ytiOT5lcp6Q",
@@ -9485,7 +9486,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda Civic</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "HONDA_CIVIC_2022",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Honda%20Civic%202022-24",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Honda%20Civic%202022-26",
     "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -36556,8 +36557,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC."
     ],
     "setup_notes": [
       "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
@@ -36568,11 +36568,11 @@
     "merged": true,
     "support_type": "Upstream",
     "support_link": "#upstream",
-    "detail_sentence": "openpilot upgrades your <strong>Volkswagen ID.4</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "detail_sentence": "openpilot upgrades your <strong>Volkswagen ID.4</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "VOLKSWAGEN_ID4_MK1",
     "brand": "volkswagen",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Volkswagen%20ID.4%202021-23",
-    "longitudinal": "openpilot available",
+    "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -36589,7 +36589,7 @@
     "tire_stiffness_front": 284325.90625,
     "tire_stiffness_rear": 367741.125,
     "rotational_inertia": 4247.53173828125,
-    "experimental_longitudinal_available": true,
+    "experimental_longitudinal_available": false,
     "openpilot_longitudinal_control": true,
     "dashcam_only": false,
     "enable_bsm": false,
@@ -36599,7 +36599,7 @@
     "radarUnavailable": true,
     "passive": false,
     "stop_accel": -0.550000011920929,
-    "longitudinal_actuator_delay": 0.5,
+    "longitudinal_actuator_delay": 0.30000001192092896,
     "max_lateral_accel": 2.5,
     "network_location": "fwdCamera",
     "steer_control_type": "curvature",
@@ -36661,8 +36661,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC."
     ],
     "setup_notes": [
       "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
@@ -36673,11 +36672,11 @@
     "merged": true,
     "support_type": "Upstream",
     "support_link": "#upstream",
-    "detail_sentence": "openpilot upgrades your <strong>Volkswagen ID.4</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "detail_sentence": "openpilot upgrades your <strong>Volkswagen ID.4</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>. Traffic light and stop sign handling is also available in <a href='https://blog.comma.ai/090release/#experimental-mode' target='_blank' class='highlight'>Experimental mode</a>.",
     "car_fingerprint": "VOLKSWAGEN_ID4_MK2",
     "brand": "volkswagen",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Volkswagen%20ID.4%202024-25",
-    "longitudinal": "openpilot available",
+    "longitudinal": "openpilot",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -36694,7 +36693,7 @@
     "tire_stiffness_front": 284325.90625,
     "tire_stiffness_rear": 367741.125,
     "rotational_inertia": 4247.53173828125,
-    "experimental_longitudinal_available": true,
+    "experimental_longitudinal_available": false,
     "openpilot_longitudinal_control": true,
     "dashcam_only": false,
     "enable_bsm": false,
@@ -36704,7 +36703,7 @@
     "radarUnavailable": true,
     "passive": false,
     "stop_accel": -0.550000011920929,
-    "longitudinal_actuator_delay": 0.5,
+    "longitudinal_actuator_delay": 0.30000001192092896,
     "max_lateral_accel": 2.5,
     "network_location": "fwdCamera",
     "steer_control_type": "curvature",
