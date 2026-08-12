@@ -69,6 +69,12 @@
       "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/TESLA_MODEL_3_c0fe59cc1ebbd1b3_0000000f--06e674a8d7.html"
     }
   ],
+  "TESLA_MODEL_Y": [
+    {
+      "description": "master",
+      "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/TESLA_MODEL_Y_aebd8f1d4ea16066_00000234--32df0536f7.html"
+    }
+  ],
   "TOYOTA_CAMRY_TSS2 (hybrid)": [
     {
       "description": "master",
@@ -143,6 +149,14 @@
     {
       "description": "master",
       "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/VOLKSWAGEN_ID4_MK1_aebd8f1d4ea16066_000000c4--6932a266c7.html"
+    },
+    {
+      "description": "master, higher long jerk",
+      "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/VOLKSWAGEN_ID4_MK2_e0e091ddbbef0297_0000002e--9e96400b2b.html"
+    },
+    {
+      "description": "master, higher long jerk, no integral",
+      "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/VOLKSWAGEN_ID4_MK2_e0e091ddbbef0297_00000035--d40726e4ef.html"
     }
   ]
 }
