@@ -10546,14 +10546,16 @@
     ]
   },
   {
-    "name": "Honda HR-V 2023-25",
+    "name": "Honda HR-V 2023-27",
     "make": "Honda",
     "model": "HR-V",
-    "years": "2023-25",
+    "years": "2023-27",
     "year_list": [
       "2023",
       "2024",
-      "2025"
+      "2025",
+      "2026",
+      "2027"
     ],
     "package": "All",
     "video": null,
@@ -10572,7 +10574,7 @@
     "detail_sentence": "openpilot upgrades your <strong>Honda HR-V</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
     "car_fingerprint": "HONDA_HRV_3G",
     "brand": "honda",
-    "buy_link": "https://comma.ai/shop/comma-four?harness=Honda%20HR-V%202023-25",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=Honda%20HR-V%202023-27",
     "longitudinal": "openpilot available",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
@@ -24174,6 +24176,104 @@
     ]
   },
   {
+    "name": "MG 5 EV 2021",
+    "make": "MG",
+    "model": "5 EV",
+    "years": "2021",
+    "year_list": [
+      "2021"
+    ],
+    "package": "All",
+    "video": null,
+    "setup_video": null,
+    "footnotes": [],
+    "setup_notes": [],
+    "min_steer_speed": 0.0,
+    "min_enable_speed": -1.0,
+    "auto_resume": true,
+    "merged": true,
+    "support_type": "Dashcam mode",
+    "support_link": "#dashcam",
+    "detail_sentence": "openpilot upgrades your <strong>MG 5 EV</strong> with automated lane centering <strong>at all speeds</strong>, and adaptive cruise control <strong>that automatically resumes from a stop</strong>.",
+    "car_fingerprint": "MG_5_EV",
+    "brand": "mg",
+    "buy_link": "https://comma.ai/shop/comma-four?harness=MG%205%20EV%202021",
+    "longitudinal": "Stock",
+    "fsr_longitudinal": "0 mph",
+    "fsr_steering": "0 mph",
+    "steering_torque": "full",
+    "auto_resume_star": "full",
+    "mass": 1776.0,
+    "wheelbase": 2.6600000858306885,
+    "steer_ratio": 15.800000190734863,
+    "radar_delay": 0.0,
+    "wheel_speed_factor": 1.0,
+    "steer_actuator_delay": 0.30000001192092896,
+    "steer_ratio_rear": 0.0,
+    "steer_limit_timer": 1.0,
+    "tire_stiffness_factor": 1.0,
+    "tire_stiffness_front": 194515.734375,
+    "tire_stiffness_rear": 307489.75,
+    "rotational_inertia": 2947.619140625,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
+    "dashcam_only": true,
+    "enable_bsm": false,
+    "pcm_cruise": true,
+    "flags": 0,
+    "auto_resume_sng": true,
+    "radarUnavailable": true,
+    "passive": false,
+    "stop_accel": -2.0,
+    "longitudinal_actuator_delay": 0.15000000596046448,
+    "max_lateral_accel": 2.5,
+    "network_location": "fwdCamera",
+    "steer_control_type": "torque",
+    "mass_curb_weight": 1640.0,
+    "center_to_front_ratio_base": 0.5,
+    "bus_lookup": {
+      "pt": "mg"
+    },
+    "min_steer_speed_base": 0.0,
+    "min_enable_speed_base": -1.0,
+    "tire_stiffness_factor_base": 1.0,
+    "center_to_front_ratio": 0.5,
+    "harness": "vw_a",
+    "tools_required": [],
+    "parts": [
+      {
+        "name": "VW A connector",
+        "type": "connector",
+        "count": 1
+      },
+      {
+        "name": "comma four",
+        "type": "device",
+        "count": 1
+      },
+      {
+        "name": "harness box",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "comma power v3",
+        "type": "accessory",
+        "count": 1
+      },
+      {
+        "name": "mount",
+        "type": "mount",
+        "count": 1
+      },
+      {
+        "name": "OBD-C cable (2 ft)",
+        "type": "cable",
+        "count": 1
+      }
+    ]
+  },
+  {
     "name": "Mazda 3 2017-18",
     "make": "Mazda",
     "model": "3",
@@ -26280,9 +26380,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -26295,7 +26393,7 @@
     "car_fingerprint": "SUBARU_ASCENT",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20Ascent%202019-21",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -26312,8 +26410,8 @@
     "tire_stiffness_front": 237339.859375,
     "tire_stiffness_rear": 375185.96875,
     "rotational_inertia": 4245.4111328125,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -26501,9 +26599,7 @@
     "video": "https://youtu.be/Agww7oE1k-s?t=26",
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -26516,7 +26612,7 @@
     "car_fingerprint": "SUBARU_IMPREZA",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20Crosstrek%202018-19",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "empty",
@@ -26533,8 +26629,8 @@
     "tire_stiffness_front": 186629.953125,
     "tire_stiffness_rear": 295023.9375,
     "rotational_inertia": 2849.425048828125,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -26615,9 +26711,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -26630,7 +26724,7 @@
     "car_fingerprint": "SUBARU_IMPREZA_2020",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20Crosstrek%202020-23",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -26647,8 +26741,8 @@
     "tire_stiffness_front": 176991.796875,
     "tire_stiffness_rear": 279787.96875,
     "rotational_inertia": 2702.271728515625,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -26947,9 +27041,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -26962,7 +27054,7 @@
     "car_fingerprint": "SUBARU_FORESTER",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20Forester%202019-21",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -26979,8 +27071,8 @@
     "tire_stiffness_front": 186629.953125,
     "tire_stiffness_rear": 295023.9375,
     "rotational_inertia": 2849.425048828125,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -27280,9 +27372,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -27295,7 +27385,7 @@
     "car_fingerprint": "SUBARU_IMPREZA",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20Impreza%202017-19",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "empty",
@@ -27312,8 +27402,8 @@
     "tire_stiffness_front": 186629.953125,
     "tire_stiffness_rear": 295023.9375,
     "rotational_inertia": 2849.425048828125,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -27393,9 +27483,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -27408,7 +27496,7 @@
     "car_fingerprint": "SUBARU_IMPREZA_2020",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20Impreza%202020-22",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -27425,8 +27513,8 @@
     "tire_stiffness_front": 176991.796875,
     "tire_stiffness_rear": 279787.96875,
     "rotational_inertia": 2702.271728515625,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -28236,9 +28324,7 @@
     "video": "https://youtu.be/Agww7oE1k-s?t=26",
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -28251,7 +28337,7 @@
     "car_fingerprint": "SUBARU_IMPREZA",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20XV%202018-19",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "empty",
@@ -28268,8 +28354,8 @@
     "tire_stiffness_front": 186629.953125,
     "tire_stiffness_rear": 295023.9375,
     "rotational_inertia": 2849.425048828125,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
@@ -28348,9 +28434,7 @@
     "video": null,
     "setup_video": null,
     "footnotes": [
-      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance.",
-      "Enabling longitudinal control (alpha) will disable all EyeSight functionality, including AEB, LDW, and RAB.",
-      "openpilot Longitudinal Control (Alpha) is available behind a toggle; the toggle is only available in non-release branches such as `nightly-dev`."
+      "In the non-US market, openpilot requires the car to come equipped with EyeSight with Lane Keep Assistance."
     ],
     "setup_notes": [],
     "min_steer_speed": 0.0,
@@ -28363,7 +28447,7 @@
     "car_fingerprint": "SUBARU_IMPREZA_2020",
     "brand": "subaru",
     "buy_link": "https://comma.ai/shop/comma-four?harness=Subaru%20XV%202020-21",
-    "longitudinal": "openpilot available",
+    "longitudinal": "Stock",
     "fsr_longitudinal": "0 mph",
     "fsr_steering": "0 mph",
     "steering_torque": "full",
@@ -28380,8 +28464,8 @@
     "tire_stiffness_front": 176991.796875,
     "tire_stiffness_rear": 279787.96875,
     "rotational_inertia": 2702.271728515625,
-    "experimental_longitudinal_available": true,
-    "openpilot_longitudinal_control": true,
+    "experimental_longitudinal_available": false,
+    "openpilot_longitudinal_control": false,
     "dashcam_only": false,
     "enable_bsm": false,
     "pcm_cruise": true,
