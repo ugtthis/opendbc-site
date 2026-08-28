@@ -29,6 +29,12 @@
       "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/FORD_MAVERICK_MK1_6cc716ffa2eb1f32_00000007--2a12e72bc9.html"
     }
   ],
+  "GENESIS_GV80_2025": [
+    {
+      "description": "dev",
+      "link": "https://commaai.github.io/opendbc-data/longitudinal_reports/GENESIS_GV80_2025_098aecbf8ea45630_00000037--fc5fd1803a.html"
+    }
+  ],
   "GWM_HAVAL_H6": [
     {
       "description": "master",
