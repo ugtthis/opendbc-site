@@ -2718,9 +2718,7 @@
     "footnotes": [
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC."
     ],
-    "setup_notes": [
-      "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
-    ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -2772,11 +2770,11 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
     "center_to_front_ratio": 0.45,
-    "harness": "vw_j533",
+    "harness": "vw_meb",
     "tools_required": [],
     "parts": [
       {
-        "name": "VW J533 connector",
+        "name": "VW MEB connector",
         "type": "connector",
         "count": 1
       },
@@ -36643,9 +36641,7 @@
     "footnotes": [
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC."
     ],
-    "setup_notes": [
-      "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
-    ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36697,11 +36693,11 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
     "center_to_front_ratio": 0.45,
-    "harness": "vw_j533",
+    "harness": "vw_meb",
     "tools_required": [],
     "parts": [
       {
-        "name": "VW J533 connector",
+        "name": "VW MEB connector",
         "type": "connector",
         "count": 1
       },
@@ -36747,9 +36743,7 @@
     "footnotes": [
       "Only available for vehicles using a gateway (J533) harness. At this time, vehicles using a camera harness are limited to using stock ACC."
     ],
-    "setup_notes": [
-      "The J533 harness plugs in at the CAN gateway under the dashboard, just above the steering column. More information can be found at <a href=\"https://docs.howtocomma.com/docs/j533-harness-install\" target=\"_blank\">this guide</a>."
-    ],
+    "setup_notes": [],
     "min_steer_speed": 0,
     "min_enable_speed": -1.0,
     "auto_resume": true,
@@ -36801,11 +36795,11 @@
     "min_enable_speed_base": -1.0,
     "tire_stiffness_factor_base": 1.0,
     "center_to_front_ratio": 0.45,
-    "harness": "vw_j533",
+    "harness": "vw_meb",
     "tools_required": [],
     "parts": [
       {
-        "name": "VW J533 connector",
+        "name": "VW MEB connector",
         "type": "connector",
         "count": 1
       },
