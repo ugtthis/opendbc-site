@@ -9,6 +9,12 @@
       "link": "https://commaai.github.io/opendbc-data/lateral_reports/FORD_BRONCO_SPORT_MK1_5beb9b58bd12b691_00000280--0681ceae98.html"
     }
   ],
+  "GENESIS_GV80_2025": [
+    {
+      "description": "dev",
+      "link": "https://commaai.github.io/opendbc-data/lateral_reports/GENESIS_GV80_2025_098aecbf8ea45630_00000028--a3696a9828.html"
+    }
+  ],
   "KIA_EV6": [
     {
       "description": "master",
