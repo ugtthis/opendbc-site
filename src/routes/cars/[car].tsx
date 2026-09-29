@@ -51,7 +51,6 @@ type DetailedSpecs = Car & {
     radar?: string
   }
   experimental_longitudinal_available?: boolean
-  enable_bsm?: boolean
   pcm_cruise?: boolean
   steering_torque?: string
   center_to_front_ratio?: number
@@ -771,21 +770,11 @@ function CarDetailContent() {
                             description={SPEC_DESCRIPTIONS[SPEC_ID.EXPERIMENTAL_LONGITUDINAL]}
                           />
                         </QuickNavWrapper>
-                        <QuickNavWrapper id={SPEC_ID.BSM_ENABLED}>
-                          <ExpandableSpec
-                            label="BSM Enabled"
-                            value={currentCar().enable_bsm ? 'Yes' : 'No'}
-                            isEven={false}
-                            isOpen={openDesc() === 'bsm-enabled'}
-                            onToggle={() => toggleDesc('bsm-enabled')}
-                            description={SPEC_DESCRIPTIONS[SPEC_ID.BSM_ENABLED]}
-                          />
-                        </QuickNavWrapper>
                         <QuickNavWrapper id={SPEC_ID.PCM_CRUISE}>
                           <ExpandableSpec
                             label="PCM Cruise"
                             value={currentCar().pcm_cruise ? 'Yes' : 'No'}
-                            isEven={true}
+                            isEven={false}
                             isOpen={openDesc() === 'pcm-cruise'}
                             onToggle={() => toggleDesc('pcm-cruise')}
                             description={SPEC_DESCRIPTIONS[SPEC_ID.PCM_CRUISE]}

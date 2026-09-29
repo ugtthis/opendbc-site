@@ -58,8 +58,6 @@ on bus 1. This tells openpilot which physical CAN bus carries each type of vehic
   [SPEC_ID.EXPERIMENTAL_LONGITUDINAL]: `If vehicle supports experimental mode's longitudinal control and is enabled, openpilot will drive
 the speed that the model thinks a human would drive. This includes slowing down for turns, stopping at stop signs and traffic lights, etc.`,
 
-  [SPEC_ID.BSM_ENABLED]: `Indicates if the vehicle has BSM (Blind Spot Monitoring) capability that openpilot can read from the CAN bus.`,
-
   [SPEC_ID.PCM_CRUISE]: `Indicates if the vehicle uses PCM (Powertrain Control Module) cruise control vs camera-based cruise. PCM cruise
 is the traditional setup where the engine computer handles cruise control. This affects which CAN messages openpilot uses for
 longitudinal control.`,

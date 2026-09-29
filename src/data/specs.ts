@@ -46,7 +46,6 @@ export const SPECS: SpecDefinition[] = [
   { id: 'network-location', label: 'Network Location', key: 'network_location', category: 'System Configuration', accordionId: 'system' },
   { id: 'bus-lookup', label: 'Bus Lookup', key: 'bus_lookup', category: 'System Configuration', accordionId: 'system' },
   { id: 'experimental-longitudinal', label: 'Experimental Longitudinal', key: 'experimental_longitudinal_available', format: formatEnabled, category: 'System Configuration', accordionId: 'system' },
-  { id: 'bsm-enabled', label: 'BSM Enabled', key: 'enable_bsm', format: formatBoolean, category: 'System Configuration', accordionId: 'system' },
   { id: 'pcm-cruise', label: 'PCM Cruise', key: 'pcm_cruise', format: formatBoolean, category: 'System Configuration', accordionId: 'system' },
 ]
 
@@ -85,7 +84,6 @@ export const SPEC_ID = {
   NETWORK_LOCATION: 'network-location',
   BUS_LOOKUP: 'bus-lookup',
   EXPERIMENTAL_LONGITUDINAL: 'experimental-longitudinal',
-  BSM_ENABLED: 'bsm-enabled',
   PCM_CRUISE: 'pcm-cruise',
   CURB_WEIGHT: 'curb-weight',
   WHEELBASE: 'wheelbase',
