@@ -77,8 +77,6 @@ control, while other values may indicate limited or no longitudinal control.`,
 means no specific torque data is available.`,
 
   // Vehicle Metrics
-  [SPEC_ID.CURB_WEIGHT]: `The weight of the vehicle without passengers or cargo, including all fluids and a full tank of fuel.`,
-
   [SPEC_ID.WHEELBASE]: `The distance between the centers of the front and rear wheels. A longer wheelbase typically provides better
 stability at high speeds.`,
 

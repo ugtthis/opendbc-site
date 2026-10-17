@@ -1,4 +1,4 @@
-import { formatSpeed, formatValue, formatWeight, formatBoolean, formatEnabled } from '~/lib/utils'
+import { formatSpeed, formatValue, formatBoolean, formatEnabled } from '~/lib/utils'
 
 type JsonValue = any
 
@@ -27,7 +27,6 @@ export const SPECS: SpecDefinition[] = [
   { id: 'steering-torque', label: 'Steering Torque', key: 'steering_torque', category: 'Capabilities', accordionId: 'capabilities' },
 
   // Vehicle Metrics
-  { id: 'curb-weight', label: 'Curb Weight', key: 'mass_curb_weight', format: formatWeight, category: 'Vehicle Metrics', accordionId: 'vehicle-metrics' },
   { id: 'wheelbase', label: 'Wheelbase', key: 'wheelbase', format: (val: number) => formatValue(val, ' m'), category: 'Vehicle Metrics', accordionId: 'vehicle-metrics' },
   { id: 'steer-ratio', label: 'Steer Ratio', key: 'steer_ratio', format: (val: number) => formatValue(val), category: 'Vehicle Metrics', accordionId: 'vehicle-metrics' },
   { id: 'center-front-ratio', label: 'Center to Front Ratio', key: 'center_to_front_ratio', format: (val: number) => formatValue(val), category: 'Vehicle Metrics', accordionId: 'vehicle-metrics' },
@@ -85,7 +84,6 @@ export const SPEC_ID = {
   BUS_LOOKUP: 'bus-lookup',
   EXPERIMENTAL_LONGITUDINAL: 'experimental-longitudinal',
   PCM_CRUISE: 'pcm-cruise',
-  CURB_WEIGHT: 'curb-weight',
   WHEELBASE: 'wheelbase',
   STEER_RATIO: 'steer-ratio',
   CENTER_FRONT_RATIO: 'center-front-ratio',

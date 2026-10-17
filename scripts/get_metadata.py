@@ -50,7 +50,6 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
       "auto_resume_star": "full" if car_doc.auto_resume else "empty",
 
       # CarParams
-      "mass": CP.mass, # Includes STD_CARGO_KG = 136
       "wheelbase": CP.wheelbase,
       "steer_ratio": CP.steerRatio,
       "radar_delay": CP.radarDelay,
@@ -77,7 +76,6 @@ def extract_metadata(car_doc: CarDocs) -> dict[str, Any] | None:
       "steer_control_type": str(CP.steerControlType),
 
       # Platform Config
-      "mass_curb_weight": platform.config.specs.mass,
       "center_to_front_ratio_base": platform.config.specs.centerToFrontRatio,
       "bus_lookup": platform.config.dbc_dict,
       "min_steer_speed_base": platform.config.specs.minSteerSpeed,

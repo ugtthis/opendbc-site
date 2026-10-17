@@ -15,7 +15,6 @@ export type Car = {
   car_fingerprint: string
   auto_resume: boolean
   harness: string | null
-  mass_curb_weight: number
   steer_ratio: number
   wheelbase: number
   min_steer_speed: number | null

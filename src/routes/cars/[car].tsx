@@ -16,7 +16,7 @@ import { SPEC_DESCRIPTIONS } from '~/data/descriptions'
 import { ToggleProvider, useToggle } from '~/contexts/ToggleContext'
 import createMediaQuery from '~/utils/createMediaQuery'
 import { BREAKPOINTS } from '~/utils/breakpoints'
-import { cn, slugify, hasObjectEntries, formatSpeed, formatValue, formatWeight } from '~/lib/utils'
+import { cn, slugify, hasObjectEntries, formatSpeed, formatValue } from '~/lib/utils'
 import { getSupportTypeColor } from '~/types/supportType'
 import { openSupportTypeModal } from '~/contexts/SupportTypeModalContext'
 import {
@@ -810,21 +810,11 @@ function CarDetailContent() {
                   id="vehicle-metrics"
                   disableDefaultPadding={true}
                 >
-                  <QuickNavWrapper id={SPEC_ID.CURB_WEIGHT}>
-                    <ExpandableSpec
-                      label="Curb Weight"
-                      value={formatWeight(currentCar().mass_curb_weight)}
-                      isEven={false}
-                      isOpen={openDesc() === 'curb-weight'}
-                      onToggle={() => toggleDesc('curb-weight')}
-                      description={SPEC_DESCRIPTIONS[SPEC_ID.CURB_WEIGHT]}
-                    />
-                  </QuickNavWrapper>
                   <QuickNavWrapper id={SPEC_ID.WHEELBASE}>
                     <ExpandableSpec
                       label="Wheelbase"
                       value={formatValue(currentCar().wheelbase, ' m')}
-                      isEven={true}
+                      isEven={false}
                       isOpen={openDesc() === 'wheelbase'}
                       onToggle={() => toggleDesc('wheelbase')}
                       description={SPEC_DESCRIPTIONS[SPEC_ID.WHEELBASE]}
@@ -834,7 +824,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Steer Ratio"
                       value={formatValue(currentCar().steer_ratio)}
-                      isEven={false}
+                      isEven={true}
                       isOpen={openDesc() === 'steer-ratio'}
                       onToggle={() => toggleDesc('steer-ratio')}
                       description={SPEC_DESCRIPTIONS[SPEC_ID.STEER_RATIO]}
@@ -844,7 +834,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Center to Front Ratio"
                       value={formatValue(currentCar().center_to_front_ratio)}
-                      isEven={true}
+                      isEven={false}
                       isOpen={openDesc() === 'center-front-ratio'}
                       onToggle={() => toggleDesc('center-front-ratio')}
                       description={SPEC_DESCRIPTIONS[SPEC_ID.CENTER_FRONT_RATIO]}
@@ -854,7 +844,7 @@ function CarDetailContent() {
                     <ExpandableSpec
                       label="Max Lateral Accel"
                       value={formatValue(currentCar().max_lateral_accel, ' m/s²')}
-                      isEven={false}
+                      isEven={true}
                       isOpen={openDesc() === 'max-lateral-accel'}
                       onToggle={() => toggleDesc('max-lateral-accel')}
                       description={SPEC_DESCRIPTIONS[SPEC_ID.MAX_LATERAL_ACCEL]}

@@ -36,7 +36,6 @@ export function hasObjectEntries(value: unknown): boolean {
 // ============================================================================
 
 const MS_TO_MPH = 2.237
-const KG_TO_LBS = 2.20462
 
 export function formatSpeed(speedMs: number | null | undefined): string {
   if (speedMs == null) return 'N/A'
@@ -51,12 +50,6 @@ export function formatValue(value: number | undefined | null, unit: string = '')
   }
 
   return `~${value.toFixed(2)}${unit}`
-}
-
-export function formatWeight(kg: number | undefined | null): string {
-  if (kg === undefined || kg === null) return 'N/A'
-  const lbs = Math.round(kg * KG_TO_LBS)
-  return `${lbs.toLocaleString()} lbs`
 }
 
 export function formatBoolean(val: boolean): string {
