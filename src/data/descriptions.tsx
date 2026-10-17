@@ -31,11 +31,11 @@ Use the car harness to connect your comma device to your vehicle.`,
   [SPEC_ID.TIRE_STIFFNESS_FACTOR]: `A multiplier applied to the tire stiffness values to adjust handling characteristics. This factor
 fine-tunes how the vehicle's tires respond to steering inputs and road conditions.`,
 
-  [SPEC_ID.TIRE_FRONT_STIFFNESS]: `The cornering stiffness of the front tires measured in N/rad. Higher values indicate stiffer tires that
-resist lateral deformation more, affecting steering response and front-end grip.`,
+  [SPEC_ID.TIRE_FRONT_STIFFNESS]: `The cornering stiffness of the front tires per kilogram of vehicle mass, in N/(rad·kg). Higher values
+indicate stiffer tires that resist lateral deformation more, affecting steering response and front-end grip.`,
 
-  [SPEC_ID.TIRE_REAR_STIFFNESS]: `The cornering stiffness of the rear tires measured in N/rad. This value affects rear-end stability and
-the vehicle's tendency to understeer or oversteer during cornering.`,
+  [SPEC_ID.TIRE_REAR_STIFFNESS]: `The cornering stiffness of the rear tires per kilogram of vehicle mass, in N/(rad·kg). This value affects
+rear-end stability and the vehicle's tendency to understeer or oversteer during cornering.`,
 
   [SPEC_ID.ACTUATOR_DELAY]: `The time delay between when openpilot sends a steering command and when the vehicle's steering actuator
 responds. This accounts for mechanical and electrical latency in the steering system.`,

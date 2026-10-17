@@ -39,8 +39,8 @@ type DetailedSpecs = Car & {
     count: number
   }>
   tire_stiffness_factor?: number
-  tire_stiffness_front?: number
-  tire_stiffness_rear?: number
+  tire_stiffness_front_per_mass?: number
+  tire_stiffness_rear_per_mass?: number
   steer_actuator_delay?: number
   steer_limit_timer?: number
   steer_control_type?: string
@@ -631,7 +631,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_FRONT_STIFFNESS}>
                           <ExpandableSpec
                             label="Front Stiffness"
-                            value={formatValue(currentCar().tire_stiffness_front)}
+                            value={formatValue(currentCar().tire_stiffness_front_per_mass, ' N/(rad·kg)')}
                             isEven={false}
                             isOpen={openDesc() === 'tire-front-stiffness'}
                             onToggle={() => toggleDesc('tire-front-stiffness')}
@@ -641,7 +641,7 @@ function CarDetailContent() {
                         <QuickNavWrapper id={SPEC_ID.TIRE_REAR_STIFFNESS}>
                           <ExpandableSpec
                             label="Rear Stiffness"
-                            value={formatValue(currentCar().tire_stiffness_rear)}
+                            value={formatValue(currentCar().tire_stiffness_rear_per_mass, ' N/(rad·kg)')}
                             isEven={true}
                             isOpen={openDesc() === 'tire-rear-stiffness'}
                             onToggle={() => toggleDesc('tire-rear-stiffness')}

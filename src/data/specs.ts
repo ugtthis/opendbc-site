@@ -34,8 +34,8 @@ export const SPECS: SpecDefinition[] = [
 
   // Technical Parameters
   { id: 'tire-stiffness-factor', label: 'Tire Stiffness Factor', key: 'tire_stiffness_factor', format: (val: number) => formatValue(val), category: 'Technical Parameters', accordionId: 'technical' },
-  { id: 'tire-front-stiffness', label: 'Front Stiffness', key: 'tire_stiffness_front', format: (val: number) => formatValue(val), category: 'Technical Parameters', accordionId: 'technical' },
-  { id: 'tire-rear-stiffness', label: 'Rear Stiffness', key: 'tire_stiffness_rear', format: (val: number) => formatValue(val), category: 'Technical Parameters', accordionId: 'technical' },
+  { id: 'tire-front-stiffness', label: 'Front Stiffness', key: 'tire_stiffness_front_per_mass', format: (val: number) => formatValue(val, ' N/(rad·kg)'), category: 'Technical Parameters', accordionId: 'technical' },
+  { id: 'tire-rear-stiffness', label: 'Rear Stiffness', key: 'tire_stiffness_rear_per_mass', format: (val: number) => formatValue(val, ' N/(rad·kg)'), category: 'Technical Parameters', accordionId: 'technical' },
   { id: 'actuator-delay', label: 'Actuator Delay', key: 'steer_actuator_delay', format: (val: number) => formatValue(val, 's'), category: 'Technical Parameters', accordionId: 'technical' },
   { id: 'limit-timer', label: 'Limit Timer', key: 'steer_limit_timer', format: (val: number) => formatValue(val, 's'), category: 'Technical Parameters', accordionId: 'technical' },
   { id: 'control-type', label: 'Control Type', key: 'steer_control_type', category: 'Technical Parameters', accordionId: 'technical' },
